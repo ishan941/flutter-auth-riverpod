@@ -1,5 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:nepstayapp/features/Auth/data/model/auth_model/auth_model.dart';
+import 'package:nepstayapp/features/Auth/data/model/auth_model/user_model.dart';
 part 'auth_state.freezed.dart';
 
 @freezed
@@ -13,7 +13,7 @@ class AuthState with _$AuthState {
   }) = Loading;
 
   const factory AuthState.authenticated(
-    AuthModel user, {
+    UserModel user, {
     @Default(false) bool? rememberMe,
   }) = Authenticated;
 

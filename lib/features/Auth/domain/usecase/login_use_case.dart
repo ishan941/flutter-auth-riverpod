@@ -1,3 +1,4 @@
+import 'package:nepstayapp/features/Auth/data/model/auth_model/user_model.dart';
 import 'package:nepstayapp/features/Auth/domain/repository/auth_repository.dart';
 
 class LoginUseCase {
@@ -5,16 +6,15 @@ class LoginUseCase {
 
   LoginUseCase({required this.authRepository});
 
-  Future<Map<String, dynamic>> execute(String email, String password) {
-    return authRepository.login(email, password);
-  }
+  // Future<Map<String, dynamic>> execute(String email, String password) {
+  //   return authRepository.login(email, password);
+  // }
 }
 
 class SignUpUserUseCase {
   final AuthRepository authRepository;
   SignUpUserUseCase({required this.authRepository});
-  Future<Map<String, dynamic>> execute(
-      String username, String email, String password) {
-    return authRepository.signUpUser(username, email, password);
+  Future<Map<String, dynamic>> execute(UserModel userModel) {
+    return authRepository.signUpUser(userModel);
   }
 }

@@ -21,7 +21,7 @@ mixin _$AuthState {
   TResult when<TResult extends Object?>({
     required TResult Function(bool? rememberMe) idle,
     required TResult Function(bool? rememberMe) loading,
-    required TResult Function(AuthModel user, bool? rememberMe) authenticated,
+    required TResult Function(UserModel user, bool? rememberMe) authenticated,
     required TResult Function(bool? rememberMe) unauthenticated,
     required TResult Function(String message, bool? rememberMe) error,
   }) =>
@@ -30,7 +30,7 @@ mixin _$AuthState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(bool? rememberMe)? idle,
     TResult? Function(bool? rememberMe)? loading,
-    TResult? Function(AuthModel user, bool? rememberMe)? authenticated,
+    TResult? Function(UserModel user, bool? rememberMe)? authenticated,
     TResult? Function(bool? rememberMe)? unauthenticated,
     TResult? Function(String message, bool? rememberMe)? error,
   }) =>
@@ -39,7 +39,7 @@ mixin _$AuthState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(bool? rememberMe)? idle,
     TResult Function(bool? rememberMe)? loading,
-    TResult Function(AuthModel user, bool? rememberMe)? authenticated,
+    TResult Function(UserModel user, bool? rememberMe)? authenticated,
     TResult Function(bool? rememberMe)? unauthenticated,
     TResult Function(String message, bool? rememberMe)? error,
     required TResult orElse(),
@@ -179,7 +179,7 @@ class _$IdleImpl implements Idle {
   TResult when<TResult extends Object?>({
     required TResult Function(bool? rememberMe) idle,
     required TResult Function(bool? rememberMe) loading,
-    required TResult Function(AuthModel user, bool? rememberMe) authenticated,
+    required TResult Function(UserModel user, bool? rememberMe) authenticated,
     required TResult Function(bool? rememberMe) unauthenticated,
     required TResult Function(String message, bool? rememberMe) error,
   }) {
@@ -191,7 +191,7 @@ class _$IdleImpl implements Idle {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(bool? rememberMe)? idle,
     TResult? Function(bool? rememberMe)? loading,
-    TResult? Function(AuthModel user, bool? rememberMe)? authenticated,
+    TResult? Function(UserModel user, bool? rememberMe)? authenticated,
     TResult? Function(bool? rememberMe)? unauthenticated,
     TResult? Function(String message, bool? rememberMe)? error,
   }) {
@@ -203,7 +203,7 @@ class _$IdleImpl implements Idle {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(bool? rememberMe)? idle,
     TResult Function(bool? rememberMe)? loading,
-    TResult Function(AuthModel user, bool? rememberMe)? authenticated,
+    TResult Function(UserModel user, bool? rememberMe)? authenticated,
     TResult Function(bool? rememberMe)? unauthenticated,
     TResult Function(String message, bool? rememberMe)? error,
     required TResult orElse(),
@@ -336,7 +336,7 @@ class _$LoadingImpl implements Loading {
   TResult when<TResult extends Object?>({
     required TResult Function(bool? rememberMe) idle,
     required TResult Function(bool? rememberMe) loading,
-    required TResult Function(AuthModel user, bool? rememberMe) authenticated,
+    required TResult Function(UserModel user, bool? rememberMe) authenticated,
     required TResult Function(bool? rememberMe) unauthenticated,
     required TResult Function(String message, bool? rememberMe) error,
   }) {
@@ -348,7 +348,7 @@ class _$LoadingImpl implements Loading {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(bool? rememberMe)? idle,
     TResult? Function(bool? rememberMe)? loading,
-    TResult? Function(AuthModel user, bool? rememberMe)? authenticated,
+    TResult? Function(UserModel user, bool? rememberMe)? authenticated,
     TResult? Function(bool? rememberMe)? unauthenticated,
     TResult? Function(String message, bool? rememberMe)? error,
   }) {
@@ -360,7 +360,7 @@ class _$LoadingImpl implements Loading {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(bool? rememberMe)? idle,
     TResult Function(bool? rememberMe)? loading,
-    TResult Function(AuthModel user, bool? rememberMe)? authenticated,
+    TResult Function(UserModel user, bool? rememberMe)? authenticated,
     TResult Function(bool? rememberMe)? unauthenticated,
     TResult Function(String message, bool? rememberMe)? error,
     required TResult orElse(),
@@ -431,9 +431,9 @@ abstract class _$$AuthenticatedImplCopyWith<$Res>
       __$$AuthenticatedImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({AuthModel user, bool? rememberMe});
+  $Res call({UserModel user, bool? rememberMe});
 
-  $AuthModelCopyWith<$Res> get user;
+  $UserModelCopyWith<$Res> get user;
 }
 
 /// @nodoc
@@ -454,7 +454,7 @@ class __$$AuthenticatedImplCopyWithImpl<$Res>
       null == user
           ? _value.user
           : user // ignore: cast_nullable_to_non_nullable
-              as AuthModel,
+              as UserModel,
       rememberMe: freezed == rememberMe
           ? _value.rememberMe
           : rememberMe // ignore: cast_nullable_to_non_nullable
@@ -464,8 +464,8 @@ class __$$AuthenticatedImplCopyWithImpl<$Res>
 
   @override
   @pragma('vm:prefer-inline')
-  $AuthModelCopyWith<$Res> get user {
-    return $AuthModelCopyWith<$Res>(_value.user, (value) {
+  $UserModelCopyWith<$Res> get user {
+    return $UserModelCopyWith<$Res>(_value.user, (value) {
       return _then(_value.copyWith(user: value));
     });
   }
@@ -477,7 +477,7 @@ class _$AuthenticatedImpl implements Authenticated {
   const _$AuthenticatedImpl(this.user, {this.rememberMe = false});
 
   @override
-  final AuthModel user;
+  final UserModel user;
   @override
   @JsonKey()
   final bool? rememberMe;
@@ -511,7 +511,7 @@ class _$AuthenticatedImpl implements Authenticated {
   TResult when<TResult extends Object?>({
     required TResult Function(bool? rememberMe) idle,
     required TResult Function(bool? rememberMe) loading,
-    required TResult Function(AuthModel user, bool? rememberMe) authenticated,
+    required TResult Function(UserModel user, bool? rememberMe) authenticated,
     required TResult Function(bool? rememberMe) unauthenticated,
     required TResult Function(String message, bool? rememberMe) error,
   }) {
@@ -523,7 +523,7 @@ class _$AuthenticatedImpl implements Authenticated {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(bool? rememberMe)? idle,
     TResult? Function(bool? rememberMe)? loading,
-    TResult? Function(AuthModel user, bool? rememberMe)? authenticated,
+    TResult? Function(UserModel user, bool? rememberMe)? authenticated,
     TResult? Function(bool? rememberMe)? unauthenticated,
     TResult? Function(String message, bool? rememberMe)? error,
   }) {
@@ -535,7 +535,7 @@ class _$AuthenticatedImpl implements Authenticated {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(bool? rememberMe)? idle,
     TResult Function(bool? rememberMe)? loading,
-    TResult Function(AuthModel user, bool? rememberMe)? authenticated,
+    TResult Function(UserModel user, bool? rememberMe)? authenticated,
     TResult Function(bool? rememberMe)? unauthenticated,
     TResult Function(String message, bool? rememberMe)? error,
     required TResult orElse(),
@@ -588,10 +588,10 @@ class _$AuthenticatedImpl implements Authenticated {
 }
 
 abstract class Authenticated implements AuthState {
-  const factory Authenticated(final AuthModel user, {final bool? rememberMe}) =
+  const factory Authenticated(final UserModel user, {final bool? rememberMe}) =
       _$AuthenticatedImpl;
 
-  AuthModel get user;
+  UserModel get user;
   @override
   bool? get rememberMe;
   @override
@@ -671,7 +671,7 @@ class _$UnauthenticatedImpl implements Unauthenticated {
   TResult when<TResult extends Object?>({
     required TResult Function(bool? rememberMe) idle,
     required TResult Function(bool? rememberMe) loading,
-    required TResult Function(AuthModel user, bool? rememberMe) authenticated,
+    required TResult Function(UserModel user, bool? rememberMe) authenticated,
     required TResult Function(bool? rememberMe) unauthenticated,
     required TResult Function(String message, bool? rememberMe) error,
   }) {
@@ -683,7 +683,7 @@ class _$UnauthenticatedImpl implements Unauthenticated {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(bool? rememberMe)? idle,
     TResult? Function(bool? rememberMe)? loading,
-    TResult? Function(AuthModel user, bool? rememberMe)? authenticated,
+    TResult? Function(UserModel user, bool? rememberMe)? authenticated,
     TResult? Function(bool? rememberMe)? unauthenticated,
     TResult? Function(String message, bool? rememberMe)? error,
   }) {
@@ -695,7 +695,7 @@ class _$UnauthenticatedImpl implements Unauthenticated {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(bool? rememberMe)? idle,
     TResult Function(bool? rememberMe)? loading,
-    TResult Function(AuthModel user, bool? rememberMe)? authenticated,
+    TResult Function(UserModel user, bool? rememberMe)? authenticated,
     TResult Function(bool? rememberMe)? unauthenticated,
     TResult Function(String message, bool? rememberMe)? error,
     required TResult orElse(),
@@ -836,7 +836,7 @@ class _$ErrorImpl implements Error {
   TResult when<TResult extends Object?>({
     required TResult Function(bool? rememberMe) idle,
     required TResult Function(bool? rememberMe) loading,
-    required TResult Function(AuthModel user, bool? rememberMe) authenticated,
+    required TResult Function(UserModel user, bool? rememberMe) authenticated,
     required TResult Function(bool? rememberMe) unauthenticated,
     required TResult Function(String message, bool? rememberMe) error,
   }) {
@@ -848,7 +848,7 @@ class _$ErrorImpl implements Error {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(bool? rememberMe)? idle,
     TResult? Function(bool? rememberMe)? loading,
-    TResult? Function(AuthModel user, bool? rememberMe)? authenticated,
+    TResult? Function(UserModel user, bool? rememberMe)? authenticated,
     TResult? Function(bool? rememberMe)? unauthenticated,
     TResult? Function(String message, bool? rememberMe)? error,
   }) {
@@ -860,7 +860,7 @@ class _$ErrorImpl implements Error {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(bool? rememberMe)? idle,
     TResult Function(bool? rememberMe)? loading,
-    TResult Function(AuthModel user, bool? rememberMe)? authenticated,
+    TResult Function(UserModel user, bool? rememberMe)? authenticated,
     TResult Function(bool? rememberMe)? unauthenticated,
     TResult Function(String message, bool? rememberMe)? error,
     required TResult orElse(),

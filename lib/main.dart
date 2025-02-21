@@ -1,15 +1,9 @@
-// import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:hive_flutter/adapters.dart';
-import 'package:nepstayapp/core/nef_custom/nef_nav_bar.dart';
-import 'package:nepstayapp/features/Auth/data/model/hive/user.dart';
-import 'package:nepstayapp/features/Auth/presentation/pages/login_page.dart';
-import 'package:nepstayapp/features/Auth/presentation/pages/sign_up_screen.dart';
-import 'package:nepstayapp/features/Auth/presentation/pages/verify.dart';
-import 'package:nepstayapp/features/Home/presentation/pages/silver_app_bar.dart';
-import 'package:nepstayapp/firebase_options.dart';
+import 'package:nepstayapp/features/initialPage/splash_screen.dart';
+import 'package:nepstayapp/features/initialPage/welcome.dart';
 
 import 'injection_container.dart' as di;
 
@@ -69,8 +63,11 @@ class _MyAppState extends State<MyApp> {
     return MaterialApp(
         navigatorKey: _navigatorKey,
         debugShowCheckedModeBanner: false,
+        theme: ThemeData.light(),
         // home: NefNavBar()
         // home: SliverAppBarExample()
-        home: SignUpScreen());
+        // home: SignUpScreen());
+        // home: WelcomePage());
+        home: SplashScreen());
   }
 }

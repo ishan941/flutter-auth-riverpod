@@ -33,6 +33,12 @@ class UserHiveNotifier extends StateNotifier<User?> {
     }
     state = user;
   }
+
+  // void updateGender(String gender) {
+  //   if (state != null) {
+  //     state = state!.copyWith(gender: gender);
+  //   }
+  // }
 }
 
 final userProvider = StateNotifierProvider<UserHiveNotifier, User?>(

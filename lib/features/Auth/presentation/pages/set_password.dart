@@ -5,21 +5,20 @@ import 'package:nepstayapp/core/nef_custom/nef_elevated_button.dart';
 import 'package:nepstayapp/core/nef_custom/nef_nav_bar.dart';
 import 'package:nepstayapp/core/nef_custom/nef_padding.dart';
 import 'package:nepstayapp/core/nef_custom/nef_text_form_field.dart';
-import 'package:nepstayapp/core/nef_custom/nef_typography.dart';
 import 'package:nepstayapp/core/utils/nef_spacing.dart';
 import 'package:nepstayapp/core/utils/string_util.dart';
 import 'package:nepstayapp/features/Auth/data/model/auth_state/auth_state.dart';
 import 'package:nepstayapp/features/Auth/presentation/pages/sign_up_page.dart';
 import 'package:nepstayapp/features/Auth/presentation/provider/auth_notifier.dart';
 
-class LoginPage extends ConsumerStatefulWidget {
-  const LoginPage({super.key});
+class SetPassword extends ConsumerStatefulWidget {
+  const SetPassword({super.key});
 
   @override
-  ConsumerState<LoginPage> createState() => _LoginPageState();
+  ConsumerState<SetPassword> createState() => _SetPasswordState();
 }
 
-class _LoginPageState extends ConsumerState<LoginPage> {
+class _SetPasswordState extends ConsumerState<SetPassword> {
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
   final FocusNode _emailFocusNode = FocusNode();
@@ -38,35 +37,25 @@ class _LoginPageState extends ConsumerState<LoginPage> {
         onTap: () => FocusScope.of(context).unfocus(),
         child: NefPadding(
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              SizedBox(
-                  height: 150, child: Image.asset("assets/images/Splash.png")),
               const SizedBox(height: NefSpacing.spacing4),
-              NefTextFormField(
-                labelText: enterYourEmailStr,
-                controller: _emailController,
-                focusNode: _emailFocusNode,
-              ),
               NefTextFormField(
                   labelText: enterYourPasswordStr,
                   controller: _passwordController,
                   obscureText: true,
                   focusNode: _passwordFocusNode,
                   suffixIcon: Icons.visibility_off_outlined),
-              Row(
-                children: [
-                  Checkbox(
-                      value: authState.rememberMe,
-                      onChanged: (bool? value) {
-                        authNotifier.toggleRememberMe(value ?? false);
-                      }),
-                  const Text("Remember Me"),
-                ],
-              ),
-              const SizedBox(height: NefSpacing.spacing2),
+              NefTextFormField(
+                  labelText: confimPassword,
+                  controller: _passwordController,
+                  obscureText: true,
+                  focusNode: _passwordFocusNode,
+                  suffixIcon: Icons.visibility_off_outlined),
+              Text("Atleast 1 number or a special character"),
+              const SizedBox(height: NefSpacing.spacing4),
               NefElevatedButton(
-                text: "Sign In",
+                text: "Register",
                 onPressed: _handleSignIn,
               ),
               Row(

@@ -1,11 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_otp_text_field/flutter_otp_text_field.dart';
+import 'package:nepstayapp/core/nef_custom/nef_elevated_button.dart';
+import 'package:nepstayapp/core/nef_custom/nef_typography.dart';
+import 'package:nepstayapp/core/nef_custom/nef_typography_helper.dart';
+import 'package:nepstayapp/core/utils/color_util.dart';
+import 'package:nepstayapp/core/utils/string_util.dart';
+import 'package:nepstayapp/features/Auth/presentation/pages/set_password.dart';
 
 class OTPVerificationScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Phone Verification'),
+        title: Text(phoneVerificationStr),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -13,29 +20,50 @@ class OTPVerificationScreen extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            Text(
-              'Enter your OTP code',
+            const Text(
+              'Please verify you email',
               style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
               textAlign: TextAlign.center,
             ),
-            SizedBox(height: 20),
-            TextField(
+            Text(
+              'Enter your OTP code',
+              style: NefTypographyHelper.bodyLgRegular.copyWith(color: grey400),
               textAlign: TextAlign.center,
-              keyboardType: TextInputType.number,
-              decoration: InputDecoration(
-                border: OutlineInputBorder(),
-                hintText: 'Enter OTP',
-              ),
             ),
-            SizedBox(height: 20),
-            ElevatedButton(
-              onPressed: () {}, // Add verification logic
-              child: Text('Verify'),
+            const SizedBox(height: 20),
+            OtpTextField(
+              numberOfFields: 5,
+              borderColor: Color(0xFF512DA8),
+              showFieldAsBox: true,
+              onCodeChanged: (String code) {},
+              onSubmit: (String verificationCode) {
+                showDialog(
+                    context: context,
+                    builder: (context) {
+                      return AlertDialog(
+                        title: const Text("Verification Code"),
+                        content: Text('Code entered is $verificationCode'),
+                      );
+                    });
+              },
             ),
-            SizedBox(height: 20),
-            TextButton(
-              onPressed: () {}, // Add resend logic
-              child: Text('Didn’t receive code? Resend again'),
+            const SizedBox(height: 20),
+            NefElevatedButton(
+                text: "Confirm verification",
+                onPressed: () {
+                  Navigator.push(context,
+                      (MaterialPageRoute(builder: (context) => SetPassword())));
+                }),
+            const Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text("Didn’t receive code? "),
+                InkWell(
+                    child: Text(
+                  "Resend it",
+                  style: TextStyle(color: primaryColor),
+                )),
+              ],
             ),
           ],
         ),

@@ -7,6 +7,7 @@ class NefTextFormField extends StatelessWidget {
   final String? labelText;
   final String? hintText;
   final IconData? prefixIcon;
+  final IconData? suffixIcon;
   final bool obscureText;
   final TextInputType? keyboardType;
   final TextEditingController? controller;
@@ -19,6 +20,7 @@ class NefTextFormField extends StatelessWidget {
     this.labelText,
     this.hintText,
     this.prefixIcon,
+    this.suffixIcon,
     this.obscureText = false,
     this.keyboardType,
     this.controller,
@@ -44,6 +46,7 @@ class NefTextFormField extends StatelessWidget {
           labelText: labelText,
           hintText: hintText,
           prefixIcon: prefixIcon != null ? Icon(prefixIcon) : null,
+          suffixIcon: suffixIcon != null ? Icon(suffixIcon) : null,
           border: OutlineInputBorder(
             borderRadius: BorderRadius.circular(NefSpacing.spacing2),
           ),

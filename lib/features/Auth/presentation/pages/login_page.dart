@@ -59,7 +59,7 @@ class _LoginPageState extends ConsumerState<LoginPage> {
                   Checkbox(
                       value: authState.rememberMe,
                       onChanged: (bool? value) {
-                        authNotifier.toggleRememberMe(value ?? false);
+                        // authNotifier.toggleRememberMe(value ?? false);
                       }),
                   const Text("Remember Me"),
                 ],

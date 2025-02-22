@@ -8,11 +8,11 @@ part of 'user_model.dart';
 
 _$UserModelImpl _$$UserModelImplFromJson(Map<String, dynamic> json) =>
     _$UserModelImpl(
-      firstName: json['firstName'] as String,
-      lastName: json['lastName'] as String,
-      email: json['email'] as String,
-      password: json['password'] as String,
-      contactNumber: (json['contactNumber'] as num).toInt(),
+      firstName: json['firstName'] as String?,
+      lastName: json['lastName'] as String?,
+      email: json['email'] as String?,
+      password: json['password'] as String?,
+      contactNumber: (json['contactNumber'] as num?)?.toInt(),
       gender: json['gender'] as String?,
       city: json['city'] as String?,
       street: json['street'] as String?,
@@ -54,7 +54,7 @@ Map<String, dynamic> _$$UserModelImplToJson(_$UserModelImpl instance) =>
     };
 
 _$RoleImpl _$$RoleImplFromJson(Map<String, dynamic> json) => _$RoleImpl(
-      roleName: json['roleName'] as String,
+      roleName: json['roleName'] as String?,
     );
 
 Map<String, dynamic> _$$RoleImplToJson(_$RoleImpl instance) =>
@@ -64,8 +64,8 @@ Map<String, dynamic> _$$RoleImplToJson(_$RoleImpl instance) =>
 
 _$ImageModelImpl _$$ImageModelImplFromJson(Map<String, dynamic> json) =>
     _$ImageModelImpl(
-      id: (json['id'] as num).toInt(),
-      url: json['url'] as String,
+      id: (json['id'] as num?)?.toInt(),
+      url: json['url'] as String?,
     );
 
 Map<String, dynamic> _$$ImageModelImplToJson(_$ImageModelImpl instance) =>

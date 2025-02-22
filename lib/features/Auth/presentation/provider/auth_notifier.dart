@@ -25,6 +25,10 @@ class AuthNotifier extends StateNotifier<AuthState> {
       TextEditingController(text: "USER");
   bool rememberMe = false;
 
+  void setGender(String? gender) {
+    genderController.text = gender.toString();
+  }
+
   AuthNotifier({
     required this.signUpUserUseCase,
     required this.loginUseCase,
@@ -135,17 +139,18 @@ class AuthNotifier extends StateNotifier<AuthState> {
     print('User data cleared from Hive.');
   }
 
-  void toggleRememberMe(bool value) async {
-    await sharedPref.saveDataToPreference('remember_me', value);
-    state = state.when(
-      idle: (_) => AuthState.idle(rememberMe: value),
-      loading: (_) => AuthState.loading(rememberMe: value),
-      authenticated: (user, _) =>
-          AuthState.authenticated(user, rememberMe: value),
-      unauthenticated: (_) => AuthState.unauthenticated(rememberMe: value),
-      error: (message, _) => AuthState.error(message, rememberMe: value),
-    );
-  }
+  // void toggleRememberMe(bool value) async {
+  //   await sharedPref.saveDataToPreference('remember_me', value);
+  //   state = state.when(
+
+  //     idle: (_) => AuthState.idle(rememberMe: value),
+  //     loading: (_) => AuthState.loading(rememberMe: value),
+  //     authenticated: (user, _) =>
+  //         AuthState.authenticated(user, rememberMe: value),
+  //     unauthenticated: (_) => AuthState.unauthenticated(rememberMe: value),
+  //     error: (message, _) => AuthState.error(message, rememberMe: value),
+  //   );
+  // }
 }
 
 final authProvider = StateNotifierProvider<AuthNotifier, AuthState>(

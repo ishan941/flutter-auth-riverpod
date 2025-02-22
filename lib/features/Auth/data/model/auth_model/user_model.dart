@@ -6,11 +6,11 @@ part 'user_model.g.dart';
 @freezed
 class UserModel with _$UserModel {
   const factory UserModel({
-    required String firstName,
-    required String lastName,
-    required String email,
-    required String password,
-    required int contactNumber,
+    String? firstName,
+    String? lastName,
+    String? email,
+    String? password,
+    int? contactNumber,
     String? gender,
     String? city,
     String? street,
@@ -31,7 +31,7 @@ class UserModel with _$UserModel {
 @freezed
 class Role with _$Role {
   const factory Role({
-    required String roleName,
+    String? roleName,
   }) = _Role;
 
   factory Role.fromJson(Map<String, dynamic> json) => _$RoleFromJson(json);
@@ -40,8 +40,8 @@ class Role with _$Role {
 @freezed
 class ImageModel with _$ImageModel {
   const factory ImageModel({
-    required int id,
-    required String url,
+    int? id,
+    String? url,
   }) = _ImageModel;
 
   factory ImageModel.fromJson(Map<String, dynamic> json) =>

@@ -5,12 +5,12 @@ import 'package:nepstayapp/core/nef_custom/nef_app_bar.dart';
 import 'package:nepstayapp/core/nef_custom/nef_elevated_button.dart';
 import 'package:nepstayapp/core/nef_custom/nef_padding.dart';
 import 'package:nepstayapp/core/nef_custom/nef_text_form_field.dart';
-import 'package:nepstayapp/core/nef_custom/nef_typography.dart';
 import 'package:nepstayapp/core/nef_custom/nef_typography_helper.dart';
 import 'package:nepstayapp/core/utils/color_util.dart';
 import 'package:nepstayapp/core/utils/nef_spacing.dart';
 import 'package:nepstayapp/core/utils/rid_dropdown.dart';
 import 'package:nepstayapp/features/Auth/presentation/pages/login_page.dart';
+import 'package:nepstayapp/features/Auth/presentation/pages/upload_profile.dart';
 import 'package:nepstayapp/features/Auth/presentation/pages/verify.dart';
 import 'package:nepstayapp/features/Auth/presentation/provider/auth_notifier.dart';
 
@@ -74,6 +74,7 @@ class _SignUpPageState extends ConsumerState<SignUpPage> {
   @override
   Widget build(BuildContext context) {
     final authState = ref.watch(authProvider);
+    final authNotifier = ref.read(authProvider.notifier);
 
     return Scaffold(
       appBar: NefAppBar(title: ""),
@@ -90,17 +91,17 @@ class _SignUpPageState extends ConsumerState<SignUpPage> {
                 const SizedBox(height: NefSpacing.spacing7),
                 NefTextFormField(
                   labelText: 'First name',
-                  controller: _userNameController,
+                  controller: authNotifier.firstNameController,
                   focusNode: _userNameFocusNode,
                 ),
                 NefTextFormField(
                   labelText: 'Last name',
-                  controller: _userNameController,
+                  controller: authNotifier.lastNameController,
                   focusNode: _userNameFocusNode,
                 ),
                 NefTextFormField(
                   labelText: 'Email',
-                  controller: _emailController,
+                  controller: authNotifier.emailController,
                   focusNode: _emailFocusNode,
                 ),
                 IntlPhoneField(
@@ -119,17 +120,13 @@ class _SignUpPageState extends ConsumerState<SignUpPage> {
                     ),
                   ),
                   initialCountryCode: 'NP',
-                  onChanged: (phone) {
-                    print(phone.completeNumber);
-                  },
+                  controller: authNotifier.contactNumberController,
                 ),
                 NefDropdownGenderField(
-                  value: selectedGender,
+                  value: authState.gender,
                   hintText: "Gender",
                   onChanged: (gender) {
-                    setState(() {
-                      selectedGender = gender;
-                    });
+                    ref.read(authProvider.notifier).setGender(gender);
                   },
                 ),
                 Row(
@@ -173,21 +170,17 @@ class _SignUpPageState extends ConsumerState<SignUpPage> {
                 ),
                 const SizedBox(height: NefSpacing.spacing10),
                 NefElevatedButton(
-                    text: authState.maybeWhen(
-                      // loading: () => 'Signing Up...',
-                      orElse: () => 'Sign Up',
-                    ),
-                    // onPressed: _handleSignUp,
-                    onPressed: () =>
-                        ref.watch(authProvider.notifier).signUpUser()
+                  text: "Next",
+                  // onPressed: _handleSignUp,
+                  onPressed: () =>
+                      //     ref.watch(authProvider.notifier).signUpUser()
 
-                    //  Navigator.pushReplacement(
-                    //   context,
-                    //   MaterialPageRoute(
-                    //       builder: (context) => OTPVerificationScreen()),
-                    // ),
-                    // authState.maybeWhen(loading: () => null, orElse: _handleSignUp),
-                    ),
+                      Navigator.pushReplacement(
+                    context,
+                    MaterialPageRoute(builder: (context) => UploadProfile()),
+                  ),
+                  // authState.maybeWhen(loading: () => null, orElse: _handleSignUp),
+                ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [

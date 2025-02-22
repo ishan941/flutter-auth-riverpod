@@ -45,18 +45,18 @@ class NefElevatedButton extends StatelessWidget {
   }
 }
 
-class NefElevationBackButton extends StatelessWidget {
-  void Function()? onPressed;
-  final double? height;
+class RidElevatedButton extends StatelessWidget {
   final String text;
-  final bool? isSignUp;
-  NefElevationBackButton(
-      {Key? key,
-      this.onPressed,
+  final VoidCallback onPressed;
+  final Color? backgroundColor;
+  final double? height;
+
+  const RidElevatedButton(
+      {super.key,
       required this.text,
       this.height,
-      this.isSignUp = false})
-      : super(key: key);
+      required this.onPressed,
+      this.backgroundColor});
 
   @override
   Widget build(BuildContext context) {
@@ -65,22 +65,76 @@ class NefElevationBackButton extends StatelessWidget {
       height: height ?? 50,
       child: ElevatedButton(
         style: ElevatedButton.styleFrom(
-          elevation: 0,
-          side: const BorderSide(color: primaryColor, width: 1),
+          foregroundColor: Colors.white,
+          backgroundColor: backgroundColor ?? primaryColor,
+          elevation: 1,
+          padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 32),
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(NefRadius.radius2),
+            borderRadius:
+                BorderRadius.circular(NefSpacing.spacing2), // Border radius
           ),
         ),
-        onPressed: onPressed ??
-            () {
-              Navigator.pop(context);
-            },
-        child: Text(text,
-            style: Theme.of(context)
-                .textTheme
-                .subheadingRegular
-                ?.copyWith(color: primary700)),
+        onPressed: onPressed,
+        child: Text(
+          text,
+          style: const TextStyle(
+            fontSize: 16,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
       ),
+    );
+  }
+}
+
+class NefElevationBackButton extends StatelessWidget {
+  void Function()? onPressed;
+  final double? height;
+  final String text;
+  final bool? isSignUp;
+  final bool? isTextCenter;
+  final bool? isForm;
+  NefElevationBackButton(
+      {Key? key,
+      this.onPressed,
+      required this.text,
+      this.height,
+      this.isSignUp = false,
+      this.isTextCenter = true,
+      this.isForm = true})
+      : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      width: MediaQuery.of(context).size.width,
+      height: height ?? 50,
+      child: ElevatedButton(
+          style: ElevatedButton.styleFrom(
+            elevation: 0,
+            side: const BorderSide(color: primaryColor, width: 1),
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(NefRadius.radius2),
+            ),
+          ),
+          onPressed: onPressed ??
+              () {
+                isForm! ? Navigator.pop(context) : null;
+              },
+          child: isTextCenter!
+              ? Text(text,
+                  style: Theme.of(context)
+                      .textTheme
+                      .subheadingRegular
+                      ?.copyWith(color: primary700))
+              : Align(
+                  alignment: AlignmentDirectional.centerStart,
+                  child: Text(text,
+                      style: Theme.of(context)
+                          .textTheme
+                          .subheadingRegular
+                          ?.copyWith(color: primary700)),
+                )),
     );
   }
 }

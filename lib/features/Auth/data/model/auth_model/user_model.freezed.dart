@@ -20,11 +20,11 @@ UserModel _$UserModelFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$UserModel {
-  String get firstName => throw _privateConstructorUsedError;
-  String get lastName => throw _privateConstructorUsedError;
-  String get email => throw _privateConstructorUsedError;
-  String get password => throw _privateConstructorUsedError;
-  int get contactNumber => throw _privateConstructorUsedError;
+  String? get firstName => throw _privateConstructorUsedError;
+  String? get lastName => throw _privateConstructorUsedError;
+  String? get email => throw _privateConstructorUsedError;
+  String? get password => throw _privateConstructorUsedError;
+  int? get contactNumber => throw _privateConstructorUsedError;
   String? get gender => throw _privateConstructorUsedError;
   String? get city => throw _privateConstructorUsedError;
   String? get street => throw _privateConstructorUsedError;
@@ -49,11 +49,11 @@ abstract class $UserModelCopyWith<$Res> {
       _$UserModelCopyWithImpl<$Res, UserModel>;
   @useResult
   $Res call(
-      {String firstName,
-      String lastName,
-      String email,
-      String password,
-      int contactNumber,
+      {String? firstName,
+      String? lastName,
+      String? email,
+      String? password,
+      int? contactNumber,
       String? gender,
       String? city,
       String? street,
@@ -83,11 +83,11 @@ class _$UserModelCopyWithImpl<$Res, $Val extends UserModel>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? firstName = null,
-    Object? lastName = null,
-    Object? email = null,
-    Object? password = null,
-    Object? contactNumber = null,
+    Object? firstName = freezed,
+    Object? lastName = freezed,
+    Object? email = freezed,
+    Object? password = freezed,
+    Object? contactNumber = freezed,
     Object? gender = freezed,
     Object? city = freezed,
     Object? street = freezed,
@@ -101,26 +101,26 @@ class _$UserModelCopyWithImpl<$Res, $Val extends UserModel>
     Object? image = freezed,
   }) {
     return _then(_value.copyWith(
-      firstName: null == firstName
+      firstName: freezed == firstName
           ? _value.firstName
           : firstName // ignore: cast_nullable_to_non_nullable
-              as String,
-      lastName: null == lastName
+              as String?,
+      lastName: freezed == lastName
           ? _value.lastName
           : lastName // ignore: cast_nullable_to_non_nullable
-              as String,
-      email: null == email
+              as String?,
+      email: freezed == email
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
-              as String,
-      password: null == password
+              as String?,
+      password: freezed == password
           ? _value.password
           : password // ignore: cast_nullable_to_non_nullable
-              as String,
-      contactNumber: null == contactNumber
+              as String?,
+      contactNumber: freezed == contactNumber
           ? _value.contactNumber
           : contactNumber // ignore: cast_nullable_to_non_nullable
-              as int,
+              as int?,
       gender: freezed == gender
           ? _value.gender
           : gender // ignore: cast_nullable_to_non_nullable
@@ -202,11 +202,11 @@ abstract class _$$UserModelImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {String firstName,
-      String lastName,
-      String email,
-      String password,
-      int contactNumber,
+      {String? firstName,
+      String? lastName,
+      String? email,
+      String? password,
+      int? contactNumber,
       String? gender,
       String? city,
       String? street,
@@ -236,11 +236,11 @@ class __$$UserModelImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? firstName = null,
-    Object? lastName = null,
-    Object? email = null,
-    Object? password = null,
-    Object? contactNumber = null,
+    Object? firstName = freezed,
+    Object? lastName = freezed,
+    Object? email = freezed,
+    Object? password = freezed,
+    Object? contactNumber = freezed,
     Object? gender = freezed,
     Object? city = freezed,
     Object? street = freezed,
@@ -254,26 +254,26 @@ class __$$UserModelImplCopyWithImpl<$Res>
     Object? image = freezed,
   }) {
     return _then(_$UserModelImpl(
-      firstName: null == firstName
+      firstName: freezed == firstName
           ? _value.firstName
           : firstName // ignore: cast_nullable_to_non_nullable
-              as String,
-      lastName: null == lastName
+              as String?,
+      lastName: freezed == lastName
           ? _value.lastName
           : lastName // ignore: cast_nullable_to_non_nullable
-              as String,
-      email: null == email
+              as String?,
+      email: freezed == email
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
-              as String,
-      password: null == password
+              as String?,
+      password: freezed == password
           ? _value.password
           : password // ignore: cast_nullable_to_non_nullable
-              as String,
-      contactNumber: null == contactNumber
+              as String?,
+      contactNumber: freezed == contactNumber
           ? _value.contactNumber
           : contactNumber // ignore: cast_nullable_to_non_nullable
-              as int,
+              as int?,
       gender: freezed == gender
           ? _value.gender
           : gender // ignore: cast_nullable_to_non_nullable
@@ -326,11 +326,11 @@ class __$$UserModelImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$UserModelImpl implements _UserModel {
   const _$UserModelImpl(
-      {required this.firstName,
-      required this.lastName,
-      required this.email,
-      required this.password,
-      required this.contactNumber,
+      {this.firstName,
+      this.lastName,
+      this.email,
+      this.password,
+      this.contactNumber,
       this.gender,
       this.city,
       this.street,
@@ -347,15 +347,15 @@ class _$UserModelImpl implements _UserModel {
       _$$UserModelImplFromJson(json);
 
   @override
-  final String firstName;
+  final String? firstName;
   @override
-  final String lastName;
+  final String? lastName;
   @override
-  final String email;
+  final String? email;
   @override
-  final String password;
+  final String? password;
   @override
-  final int contactNumber;
+  final int? contactNumber;
   @override
   final String? gender;
   @override
@@ -457,11 +457,11 @@ class _$UserModelImpl implements _UserModel {
 
 abstract class _UserModel implements UserModel {
   const factory _UserModel(
-      {required final String firstName,
-      required final String lastName,
-      required final String email,
-      required final String password,
-      required final int contactNumber,
+      {final String? firstName,
+      final String? lastName,
+      final String? email,
+      final String? password,
+      final int? contactNumber,
       final String? gender,
       final String? city,
       final String? street,
@@ -478,15 +478,15 @@ abstract class _UserModel implements UserModel {
       _$UserModelImpl.fromJson;
 
   @override
-  String get firstName;
+  String? get firstName;
   @override
-  String get lastName;
+  String? get lastName;
   @override
-  String get email;
+  String? get email;
   @override
-  String get password;
+  String? get password;
   @override
-  int get contactNumber;
+  int? get contactNumber;
   @override
   String? get gender;
   @override
@@ -521,7 +521,7 @@ Role _$RoleFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$Role {
-  String get roleName => throw _privateConstructorUsedError;
+  String? get roleName => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -533,7 +533,7 @@ abstract class $RoleCopyWith<$Res> {
   factory $RoleCopyWith(Role value, $Res Function(Role) then) =
       _$RoleCopyWithImpl<$Res, Role>;
   @useResult
-  $Res call({String roleName});
+  $Res call({String? roleName});
 }
 
 /// @nodoc
@@ -549,13 +549,13 @@ class _$RoleCopyWithImpl<$Res, $Val extends Role>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? roleName = null,
+    Object? roleName = freezed,
   }) {
     return _then(_value.copyWith(
-      roleName: null == roleName
+      roleName: freezed == roleName
           ? _value.roleName
           : roleName // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
     ) as $Val);
   }
 }
@@ -567,7 +567,7 @@ abstract class _$$RoleImplCopyWith<$Res> implements $RoleCopyWith<$Res> {
       __$$RoleImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String roleName});
+  $Res call({String? roleName});
 }
 
 /// @nodoc
@@ -580,13 +580,13 @@ class __$$RoleImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? roleName = null,
+    Object? roleName = freezed,
   }) {
     return _then(_$RoleImpl(
-      roleName: null == roleName
+      roleName: freezed == roleName
           ? _value.roleName
           : roleName // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
     ));
   }
 }
@@ -594,13 +594,13 @@ class __$$RoleImplCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$RoleImpl implements _Role {
-  const _$RoleImpl({required this.roleName});
+  const _$RoleImpl({this.roleName});
 
   factory _$RoleImpl.fromJson(Map<String, dynamic> json) =>
       _$$RoleImplFromJson(json);
 
   @override
-  final String roleName;
+  final String? roleName;
 
   @override
   String toString() {
@@ -635,12 +635,12 @@ class _$RoleImpl implements _Role {
 }
 
 abstract class _Role implements Role {
-  const factory _Role({required final String roleName}) = _$RoleImpl;
+  const factory _Role({final String? roleName}) = _$RoleImpl;
 
   factory _Role.fromJson(Map<String, dynamic> json) = _$RoleImpl.fromJson;
 
   @override
-  String get roleName;
+  String? get roleName;
   @override
   @JsonKey(ignore: true)
   _$$RoleImplCopyWith<_$RoleImpl> get copyWith =>
@@ -653,8 +653,8 @@ ImageModel _$ImageModelFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$ImageModel {
-  int get id => throw _privateConstructorUsedError;
-  String get url => throw _privateConstructorUsedError;
+  int? get id => throw _privateConstructorUsedError;
+  String? get url => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -668,7 +668,7 @@ abstract class $ImageModelCopyWith<$Res> {
           ImageModel value, $Res Function(ImageModel) then) =
       _$ImageModelCopyWithImpl<$Res, ImageModel>;
   @useResult
-  $Res call({int id, String url});
+  $Res call({int? id, String? url});
 }
 
 /// @nodoc
@@ -684,18 +684,18 @@ class _$ImageModelCopyWithImpl<$Res, $Val extends ImageModel>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = null,
-    Object? url = null,
+    Object? id = freezed,
+    Object? url = freezed,
   }) {
     return _then(_value.copyWith(
-      id: null == id
+      id: freezed == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as int,
-      url: null == url
+              as int?,
+      url: freezed == url
           ? _value.url
           : url // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
     ) as $Val);
   }
 }
@@ -708,7 +708,7 @@ abstract class _$$ImageModelImplCopyWith<$Res>
       __$$ImageModelImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({int id, String url});
+  $Res call({int? id, String? url});
 }
 
 /// @nodoc
@@ -722,18 +722,18 @@ class __$$ImageModelImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = null,
-    Object? url = null,
+    Object? id = freezed,
+    Object? url = freezed,
   }) {
     return _then(_$ImageModelImpl(
-      id: null == id
+      id: freezed == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as int,
-      url: null == url
+              as int?,
+      url: freezed == url
           ? _value.url
           : url // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
     ));
   }
 }
@@ -741,15 +741,15 @@ class __$$ImageModelImplCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$ImageModelImpl implements _ImageModel {
-  const _$ImageModelImpl({required this.id, required this.url});
+  const _$ImageModelImpl({this.id, this.url});
 
   factory _$ImageModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$ImageModelImplFromJson(json);
 
   @override
-  final int id;
+  final int? id;
   @override
-  final String url;
+  final String? url;
 
   @override
   String toString() {
@@ -784,16 +784,16 @@ class _$ImageModelImpl implements _ImageModel {
 }
 
 abstract class _ImageModel implements ImageModel {
-  const factory _ImageModel(
-      {required final int id, required final String url}) = _$ImageModelImpl;
+  const factory _ImageModel({final int? id, final String? url}) =
+      _$ImageModelImpl;
 
   factory _ImageModel.fromJson(Map<String, dynamic> json) =
       _$ImageModelImpl.fromJson;
 
   @override
-  int get id;
+  int? get id;
   @override
-  String get url;
+  String? get url;
   @override
   @JsonKey(ignore: true)
   _$$ImageModelImplCopyWith<_$ImageModelImpl> get copyWith =>

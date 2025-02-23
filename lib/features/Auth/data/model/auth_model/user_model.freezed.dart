@@ -33,7 +33,7 @@ mixin _$UserModel {
   String? get verificationCode => throw _privateConstructorUsedError;
   DateTime? get verificationCodeExpiresAt => throw _privateConstructorUsedError;
   bool get isEmailVerified => throw _privateConstructorUsedError;
-  Role? get role => throw _privateConstructorUsedError;
+  String? get role => throw _privateConstructorUsedError;
   String? get roleName => throw _privateConstructorUsedError;
   ImageModel? get image => throw _privateConstructorUsedError;
 
@@ -62,11 +62,10 @@ abstract class $UserModelCopyWith<$Res> {
       String? verificationCode,
       DateTime? verificationCodeExpiresAt,
       bool isEmailVerified,
-      Role? role,
+      String? role,
       String? roleName,
       ImageModel? image});
 
-  $RoleCopyWith<$Res>? get role;
   $ImageModelCopyWith<$Res>? get image;
 }
 
@@ -156,7 +155,7 @@ class _$UserModelCopyWithImpl<$Res, $Val extends UserModel>
       role: freezed == role
           ? _value.role
           : role // ignore: cast_nullable_to_non_nullable
-              as Role?,
+              as String?,
       roleName: freezed == roleName
           ? _value.roleName
           : roleName // ignore: cast_nullable_to_non_nullable
@@ -166,18 +165,6 @@ class _$UserModelCopyWithImpl<$Res, $Val extends UserModel>
           : image // ignore: cast_nullable_to_non_nullable
               as ImageModel?,
     ) as $Val);
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $RoleCopyWith<$Res>? get role {
-    if (_value.role == null) {
-      return null;
-    }
-
-    return $RoleCopyWith<$Res>(_value.role!, (value) {
-      return _then(_value.copyWith(role: value) as $Val);
-    });
   }
 
   @override
@@ -215,12 +202,10 @@ abstract class _$$UserModelImplCopyWith<$Res>
       String? verificationCode,
       DateTime? verificationCodeExpiresAt,
       bool isEmailVerified,
-      Role? role,
+      String? role,
       String? roleName,
       ImageModel? image});
 
-  @override
-  $RoleCopyWith<$Res>? get role;
   @override
   $ImageModelCopyWith<$Res>? get image;
 }
@@ -309,7 +294,7 @@ class __$$UserModelImplCopyWithImpl<$Res>
       role: freezed == role
           ? _value.role
           : role // ignore: cast_nullable_to_non_nullable
-              as Role?,
+              as String?,
       roleName: freezed == roleName
           ? _value.roleName
           : roleName // ignore: cast_nullable_to_non_nullable
@@ -375,7 +360,7 @@ class _$UserModelImpl implements _UserModel {
   @JsonKey()
   final bool isEmailVerified;
   @override
-  final Role? role;
+  final String? role;
   @override
   final String? roleName;
   @override
@@ -470,7 +455,7 @@ abstract class _UserModel implements UserModel {
       final String? verificationCode,
       final DateTime? verificationCodeExpiresAt,
       final bool isEmailVerified,
-      final Role? role,
+      final String? role,
       final String? roleName,
       final ImageModel? image}) = _$UserModelImpl;
 
@@ -504,7 +489,7 @@ abstract class _UserModel implements UserModel {
   @override
   bool get isEmailVerified;
   @override
-  Role? get role;
+  String? get role;
   @override
   String? get roleName;
   @override
@@ -798,6 +783,389 @@ abstract class _ImageModel implements ImageModel {
   @JsonKey(ignore: true)
   _$$ImageModelImplCopyWith<_$ImageModelImpl> get copyWith =>
       throw _privateConstructorUsedError;
+}
+
+AuthenticationRequest _$AuthenticationRequestFromJson(
+    Map<String, dynamic> json) {
+  return _AuthenticationRequest.fromJson(json);
+}
+
+/// @nodoc
+mixin _$AuthenticationRequest {
+  String get email => throw _privateConstructorUsedError;
+  String get password => throw _privateConstructorUsedError;
+  String? get fcmToken => throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $AuthenticationRequestCopyWith<AuthenticationRequest> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $AuthenticationRequestCopyWith<$Res> {
+  factory $AuthenticationRequestCopyWith(AuthenticationRequest value,
+          $Res Function(AuthenticationRequest) then) =
+      _$AuthenticationRequestCopyWithImpl<$Res, AuthenticationRequest>;
+  @useResult
+  $Res call({String email, String password, String? fcmToken});
+}
+
+/// @nodoc
+class _$AuthenticationRequestCopyWithImpl<$Res,
+        $Val extends AuthenticationRequest>
+    implements $AuthenticationRequestCopyWith<$Res> {
+  _$AuthenticationRequestCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? email = null,
+    Object? password = null,
+    Object? fcmToken = freezed,
+  }) {
+    return _then(_value.copyWith(
+      email: null == email
+          ? _value.email
+          : email // ignore: cast_nullable_to_non_nullable
+              as String,
+      password: null == password
+          ? _value.password
+          : password // ignore: cast_nullable_to_non_nullable
+              as String,
+      fcmToken: freezed == fcmToken
+          ? _value.fcmToken
+          : fcmToken // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$AuthenticationRequestImplCopyWith<$Res>
+    implements $AuthenticationRequestCopyWith<$Res> {
+  factory _$$AuthenticationRequestImplCopyWith(
+          _$AuthenticationRequestImpl value,
+          $Res Function(_$AuthenticationRequestImpl) then) =
+      __$$AuthenticationRequestImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({String email, String password, String? fcmToken});
+}
+
+/// @nodoc
+class __$$AuthenticationRequestImplCopyWithImpl<$Res>
+    extends _$AuthenticationRequestCopyWithImpl<$Res,
+        _$AuthenticationRequestImpl>
+    implements _$$AuthenticationRequestImplCopyWith<$Res> {
+  __$$AuthenticationRequestImplCopyWithImpl(_$AuthenticationRequestImpl _value,
+      $Res Function(_$AuthenticationRequestImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? email = null,
+    Object? password = null,
+    Object? fcmToken = freezed,
+  }) {
+    return _then(_$AuthenticationRequestImpl(
+      email: null == email
+          ? _value.email
+          : email // ignore: cast_nullable_to_non_nullable
+              as String,
+      password: null == password
+          ? _value.password
+          : password // ignore: cast_nullable_to_non_nullable
+              as String,
+      fcmToken: freezed == fcmToken
+          ? _value.fcmToken
+          : fcmToken // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$AuthenticationRequestImpl implements _AuthenticationRequest {
+  const _$AuthenticationRequestImpl(
+      {required this.email, required this.password, this.fcmToken});
+
+  factory _$AuthenticationRequestImpl.fromJson(Map<String, dynamic> json) =>
+      _$$AuthenticationRequestImplFromJson(json);
+
+  @override
+  final String email;
+  @override
+  final String password;
+  @override
+  final String? fcmToken;
+
+  @override
+  String toString() {
+    return 'AuthenticationRequest(email: $email, password: $password, fcmToken: $fcmToken)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$AuthenticationRequestImpl &&
+            (identical(other.email, email) || other.email == email) &&
+            (identical(other.password, password) ||
+                other.password == password) &&
+            (identical(other.fcmToken, fcmToken) ||
+                other.fcmToken == fcmToken));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(runtimeType, email, password, fcmToken);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$AuthenticationRequestImplCopyWith<_$AuthenticationRequestImpl>
+      get copyWith => __$$AuthenticationRequestImplCopyWithImpl<
+          _$AuthenticationRequestImpl>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$AuthenticationRequestImplToJson(
+      this,
+    );
+  }
+}
+
+abstract class _AuthenticationRequest implements AuthenticationRequest {
+  const factory _AuthenticationRequest(
+      {required final String email,
+      required final String password,
+      final String? fcmToken}) = _$AuthenticationRequestImpl;
+
+  factory _AuthenticationRequest.fromJson(Map<String, dynamic> json) =
+      _$AuthenticationRequestImpl.fromJson;
+
+  @override
+  String get email;
+  @override
+  String get password;
+  @override
+  String? get fcmToken;
+  @override
+  @JsonKey(ignore: true)
+  _$$AuthenticationRequestImplCopyWith<_$AuthenticationRequestImpl>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+AuthenticationResponse _$AuthenticationResponseFromJson(
+    Map<String, dynamic> json) {
+  return _AuthenticationResponse.fromJson(json);
+}
+
+/// @nodoc
+mixin _$AuthenticationResponse {
+  String get accessToken => throw _privateConstructorUsedError;
+  String get refreshToken => throw _privateConstructorUsedError;
+  String get role => throw _privateConstructorUsedError;
+  String? get imageUrl => throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $AuthenticationResponseCopyWith<AuthenticationResponse> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $AuthenticationResponseCopyWith<$Res> {
+  factory $AuthenticationResponseCopyWith(AuthenticationResponse value,
+          $Res Function(AuthenticationResponse) then) =
+      _$AuthenticationResponseCopyWithImpl<$Res, AuthenticationResponse>;
+  @useResult
+  $Res call(
+      {String accessToken, String refreshToken, String role, String? imageUrl});
+}
+
+/// @nodoc
+class _$AuthenticationResponseCopyWithImpl<$Res,
+        $Val extends AuthenticationResponse>
+    implements $AuthenticationResponseCopyWith<$Res> {
+  _$AuthenticationResponseCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? accessToken = null,
+    Object? refreshToken = null,
+    Object? role = null,
+    Object? imageUrl = freezed,
+  }) {
+    return _then(_value.copyWith(
+      accessToken: null == accessToken
+          ? _value.accessToken
+          : accessToken // ignore: cast_nullable_to_non_nullable
+              as String,
+      refreshToken: null == refreshToken
+          ? _value.refreshToken
+          : refreshToken // ignore: cast_nullable_to_non_nullable
+              as String,
+      role: null == role
+          ? _value.role
+          : role // ignore: cast_nullable_to_non_nullable
+              as String,
+      imageUrl: freezed == imageUrl
+          ? _value.imageUrl
+          : imageUrl // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$AuthenticationResponseImplCopyWith<$Res>
+    implements $AuthenticationResponseCopyWith<$Res> {
+  factory _$$AuthenticationResponseImplCopyWith(
+          _$AuthenticationResponseImpl value,
+          $Res Function(_$AuthenticationResponseImpl) then) =
+      __$$AuthenticationResponseImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call(
+      {String accessToken, String refreshToken, String role, String? imageUrl});
+}
+
+/// @nodoc
+class __$$AuthenticationResponseImplCopyWithImpl<$Res>
+    extends _$AuthenticationResponseCopyWithImpl<$Res,
+        _$AuthenticationResponseImpl>
+    implements _$$AuthenticationResponseImplCopyWith<$Res> {
+  __$$AuthenticationResponseImplCopyWithImpl(
+      _$AuthenticationResponseImpl _value,
+      $Res Function(_$AuthenticationResponseImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? accessToken = null,
+    Object? refreshToken = null,
+    Object? role = null,
+    Object? imageUrl = freezed,
+  }) {
+    return _then(_$AuthenticationResponseImpl(
+      accessToken: null == accessToken
+          ? _value.accessToken
+          : accessToken // ignore: cast_nullable_to_non_nullable
+              as String,
+      refreshToken: null == refreshToken
+          ? _value.refreshToken
+          : refreshToken // ignore: cast_nullable_to_non_nullable
+              as String,
+      role: null == role
+          ? _value.role
+          : role // ignore: cast_nullable_to_non_nullable
+              as String,
+      imageUrl: freezed == imageUrl
+          ? _value.imageUrl
+          : imageUrl // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$AuthenticationResponseImpl implements _AuthenticationResponse {
+  const _$AuthenticationResponseImpl(
+      {required this.accessToken,
+      required this.refreshToken,
+      required this.role,
+      this.imageUrl});
+
+  factory _$AuthenticationResponseImpl.fromJson(Map<String, dynamic> json) =>
+      _$$AuthenticationResponseImplFromJson(json);
+
+  @override
+  final String accessToken;
+  @override
+  final String refreshToken;
+  @override
+  final String role;
+  @override
+  final String? imageUrl;
+
+  @override
+  String toString() {
+    return 'AuthenticationResponse(accessToken: $accessToken, refreshToken: $refreshToken, role: $role, imageUrl: $imageUrl)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$AuthenticationResponseImpl &&
+            (identical(other.accessToken, accessToken) ||
+                other.accessToken == accessToken) &&
+            (identical(other.refreshToken, refreshToken) ||
+                other.refreshToken == refreshToken) &&
+            (identical(other.role, role) || other.role == role) &&
+            (identical(other.imageUrl, imageUrl) ||
+                other.imageUrl == imageUrl));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, accessToken, refreshToken, role, imageUrl);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$AuthenticationResponseImplCopyWith<_$AuthenticationResponseImpl>
+      get copyWith => __$$AuthenticationResponseImplCopyWithImpl<
+          _$AuthenticationResponseImpl>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$AuthenticationResponseImplToJson(
+      this,
+    );
+  }
+}
+
+abstract class _AuthenticationResponse implements AuthenticationResponse {
+  const factory _AuthenticationResponse(
+      {required final String accessToken,
+      required final String refreshToken,
+      required final String role,
+      final String? imageUrl}) = _$AuthenticationResponseImpl;
+
+  factory _AuthenticationResponse.fromJson(Map<String, dynamic> json) =
+      _$AuthenticationResponseImpl.fromJson;
+
+  @override
+  String get accessToken;
+  @override
+  String get refreshToken;
+  @override
+  String get role;
+  @override
+  String? get imageUrl;
+  @override
+  @JsonKey(ignore: true)
+  _$$AuthenticationResponseImplCopyWith<_$AuthenticationResponseImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc

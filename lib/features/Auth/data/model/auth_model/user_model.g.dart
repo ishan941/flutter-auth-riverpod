@@ -23,9 +23,7 @@ _$UserModelImpl _$$UserModelImplFromJson(Map<String, dynamic> json) =>
           ? null
           : DateTime.parse(json['verificationCodeExpiresAt'] as String),
       isEmailVerified: json['isEmailVerified'] as bool? ?? false,
-      role: json['role'] == null
-          ? null
-          : Role.fromJson(json['role'] as Map<String, dynamic>),
+      role: json['role'] as String?,
       roleName: json['roleName'] as String?,
       image: json['image'] == null
           ? null
@@ -72,4 +70,38 @@ Map<String, dynamic> _$$ImageModelImplToJson(_$ImageModelImpl instance) =>
     <String, dynamic>{
       'id': instance.id,
       'url': instance.url,
+    };
+
+_$AuthenticationRequestImpl _$$AuthenticationRequestImplFromJson(
+        Map<String, dynamic> json) =>
+    _$AuthenticationRequestImpl(
+      email: json['email'] as String,
+      password: json['password'] as String,
+      fcmToken: json['fcmToken'] as String?,
+    );
+
+Map<String, dynamic> _$$AuthenticationRequestImplToJson(
+        _$AuthenticationRequestImpl instance) =>
+    <String, dynamic>{
+      'email': instance.email,
+      'password': instance.password,
+      'fcmToken': instance.fcmToken,
+    };
+
+_$AuthenticationResponseImpl _$$AuthenticationResponseImplFromJson(
+        Map<String, dynamic> json) =>
+    _$AuthenticationResponseImpl(
+      accessToken: json['accessToken'] as String,
+      refreshToken: json['refreshToken'] as String,
+      role: json['role'] as String,
+      imageUrl: json['imageUrl'] as String?,
+    );
+
+Map<String, dynamic> _$$AuthenticationResponseImplToJson(
+        _$AuthenticationResponseImpl instance) =>
+    <String, dynamic>{
+      'accessToken': instance.accessToken,
+      'refreshToken': instance.refreshToken,
+      'role': instance.role,
+      'imageUrl': instance.imageUrl,
     };

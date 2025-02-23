@@ -19,7 +19,7 @@ class UserModel with _$UserModel {
     String? verificationCode,
     DateTime? verificationCodeExpiresAt,
     @Default(false) bool isEmailVerified,
-    Role? role,
+    String? role,
     String? roleName,
     ImageModel? image,
   }) = _UserModel;
@@ -46,6 +46,37 @@ class ImageModel with _$ImageModel {
 
   factory ImageModel.fromJson(Map<String, dynamic> json) =>
       _$ImageModelFromJson(json);
+}
+
+@freezed
+class AuthenticationRequest with _$AuthenticationRequest {
+  const factory AuthenticationRequest({
+    required String email,
+    required String password,
+    String? fcmToken,
+  }) = _AuthenticationRequest;
+
+  factory AuthenticationRequest.fromJson(Map<String, dynamic> json) =>
+      _$AuthenticationRequestFromJson(json);
+}
+
+@freezed
+class AuthenticationResponse with _$AuthenticationResponse {
+  const factory AuthenticationResponse({
+    required String accessToken,
+    required String refreshToken,
+    required String role,
+    String? imageUrl,
+  }) = _AuthenticationResponse;
+
+  factory AuthenticationResponse.fromJson(Map<String, dynamic> json) {
+    return _AuthenticationResponse(
+      accessToken: json['AccessToken'] as String? ?? '',
+      refreshToken: json['RefreshToken'] as String? ?? '',
+      role: json['role'] as String? ?? '',
+      imageUrl: json['imageUrl'] as String?,
+    );
+  }
 }
 
 @freezed

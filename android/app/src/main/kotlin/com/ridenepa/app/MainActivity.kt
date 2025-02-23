@@ -1,4 +1,4 @@
-package com.example.nepstayapp
+package com.ridenepa.app
 
 import io.flutter.embedding.android.FlutterActivity
 

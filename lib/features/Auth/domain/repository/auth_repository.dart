@@ -1,6 +1,8 @@
 import 'package:nepstayapp/features/Auth/data/model/auth_model/user_model.dart';
 
 abstract class AuthRepository {
-  // Future<Map<String, dynamic>> login(String email, String password);
+  Future<AuthenticationResponse> login(
+      AuthenticationRequest authenticationRequest);
   Future<Map<String, dynamic>> signUpUser(UserModel userModel);
+  Future<bool> verifyOtp(String email, String verificationCode);
 }

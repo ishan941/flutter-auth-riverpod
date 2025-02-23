@@ -10,6 +10,7 @@ import 'package:nepstayapp/injection_container.dart';
 class AuthNotifier extends StateNotifier<AuthState> {
   final LoginUseCase loginUseCase;
   final SignUpUserUseCase signUpUserUseCase;
+  final VerifyEmailUseCase verifyEmailUseCase;
   final SharedPref sharedPref;
 
   final TextEditingController firstNameController = TextEditingController();
@@ -24,12 +25,12 @@ class AuthNotifier extends StateNotifier<AuthState> {
   final TextEditingController roleController =
       TextEditingController(text: "USER");
   bool rememberMe = false;
-
   void setGender(String? gender) {
-    genderController.text = gender.toString();
+    state = state.copyWith(gender: gender);
   }
 
   AuthNotifier({
+    required this.verifyEmailUseCase,
     required this.signUpUserUseCase,
     required this.loginUseCase,
     required this.sharedPref,
@@ -44,78 +45,62 @@ class AuthNotifier extends StateNotifier<AuthState> {
     return 'An unexpected error occurred.';
   }
 
-  // Future<void> login(String email, String password) async {
-  //   state = const AuthState.loading();
+  Future<void> login() async {
+    state = const AuthState.loading();
 
-  //   try {
-  //     state = AuthState.loading(rememberMe: state.rememberMe);
-  //     final userData = await loginUseCase.execute(email, password);
-  //     final user = userData['user'] as UserModel?;
-  //     final accessToken = userData['accessToken'] as String;
-  //     final refreshToken = userData['refreshToken'] as String;
+    AuthenticationRequest authenticationRequest = AuthenticationRequest(
+        email: emailController.text, password: passwordController.text);
 
-  //     if (user != null) {
-  //       final authModel = AuthModel(
-  //         access: accessToken,
-  //         refresh: refreshToken,
-  //         user: user,
-  //       );
-  //       state = AuthState.authenticated(authModel);
-  //     } else {
-  //       state = const AuthState.error("User data is null");
-  //     }
-  //   } catch (e) {
-  //     state = AuthState.error(e.toString());
-  //   }
-  // }
+    try {
+      final authResponse = await loginUseCase.execute(authenticationRequest);
 
-  // Future<void> login(String email, String password) async {
-  //   state = const AuthState.loading();
-  //   try {
-  //     final result = await authDataSource.login(email, password);
-  //     final user = result['user'] as UserModel?;
-  //     final accessToken = result['accessToken'] as String;
-  //     final refreshToken = result['refreshToken'] as String;
+      state = AuthState.loading(rememberMe: state.rememberMe);
 
-  //     if (user != null) {
-  //       final authModel = AuthModel(
-  //         access: accessToken,
-  //         refresh: refreshToken,
-  //         user: user,
-  //       );
-  //       state = AuthState.authenticated(authModel);
-  //     } else {
-  //       state = const AuthState.error("User data is null");a
-  //     }
-  //   } catch (e) {
-  //     state = AuthState.error(e.toString());
-  //   }
-  // }
+      state = AuthState.authenticated(authResponse: authResponse);
+      state = state.copyWith(isSuccess: true);
+    } catch (e) {
+      state = AuthState.error(e.toString());
+    }
+  }
 
   Future<void> signUpUser() async {
     try {
       state = const AuthState.loading();
 
       final userModel = UserModel(
-        firstName: firstNameController.text,
-        lastName: lastNameController.text,
-        email: emailController.text,
-        password: passwordController.text,
-        contactNumber: int.tryParse(contactNumberController.text) ??
-            0, // Ensuring integer conversion
-        gender: genderController.text,
-        city: cityController.text,
-        street: streetController.text,
-        district: districtController.text,
-        role: Role(roleName: roleController.text),
-      );
+          firstName: firstNameController.text,
+          lastName: lastNameController.text,
+          email: emailController.text,
+          password: passwordController.text,
+          contactNumber: int.tryParse(contactNumberController.text) ??
+              0, // Ensuring integer conversion
+          gender: state.gender ?? "Not specfied",
+          city: cityController.text,
+          street: streetController.text,
+          district: districtController.text,
+          role: "USER");
 
       final userData = await signUpUserUseCase.execute(userModel);
       final user = UserModel.fromJson(userData);
 
-      state = AuthState.authenticated(user);
+      state = AuthState.authenticated(user: user, isSuccess: true);
     } catch (error) {
       state = AuthState.error(error.toString());
+    }
+  }
+
+  Future<void> verifyEmail(String email, String verificationCode) async {
+    try {
+      state = const AuthState.loading();
+
+      final result = await verifyEmailUseCase.execute(email, verificationCode);
+      if (result) {
+        state = const AuthState.otpVerified(isSuccess: true);
+      } else {
+        state = AuthState.error('OTP verification failed');
+      }
+    } catch (error) {
+      throw Exception('OTP verification failed: ${error.toString()}');
     }
   }
 
@@ -158,5 +143,6 @@ final authProvider = StateNotifierProvider<AuthNotifier, AuthState>(
     loginUseCase: LoginUseCase(authRepository: sl()),
     signUpUserUseCase: SignUpUserUseCase(authRepository: sl()),
     sharedPref: sl(),
+    verifyEmailUseCase: sl(),
   ),
 );

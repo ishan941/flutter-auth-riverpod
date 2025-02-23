@@ -16,40 +16,67 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$AuthState {
-  String? get gender => throw _privateConstructorUsedError;
+  String? get gender => throw _privateConstructorUsedError; // Add gender here
   bool get rememberMe => throw _privateConstructorUsedError;
+  bool get isSuccess => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>(
-    TResult Function(String? gender, bool rememberMe) $default, {
-    required TResult Function(String? gender, bool rememberMe) idle,
-    required TResult Function(String? gender, bool rememberMe) loading,
-    required TResult Function(UserModel user, String? gender, bool rememberMe)
+    TResult Function(String? gender, bool rememberMe, bool isSuccess)
+        $default, {
+    required TResult Function(String? gender, bool rememberMe, bool isSuccess)
+        idle,
+    required TResult Function(String? gender, bool rememberMe, bool isSuccess)
+        loading,
+    required TResult Function(
+            UserModel? user,
+            AuthenticationResponse? authResponse,
+            String? gender,
+            bool rememberMe,
+            bool isSuccess)
         authenticated,
-    required TResult Function(String? gender, bool rememberMe) unauthenticated,
-    required TResult Function(String message, String? gender, bool rememberMe)
+    required TResult Function(String? gender, bool rememberMe, bool isSuccess)
+        unauthenticated,
+    required TResult Function(
+            String message, String? gender, bool rememberMe, bool isSuccess)
         error,
+    required TResult Function(String? gender, bool rememberMe, bool isSuccess)
+        otpVerified,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>(
-    TResult? Function(String? gender, bool rememberMe)? $default, {
-    TResult? Function(String? gender, bool rememberMe)? idle,
-    TResult? Function(String? gender, bool rememberMe)? loading,
-    TResult? Function(UserModel user, String? gender, bool rememberMe)?
+    TResult? Function(String? gender, bool rememberMe, bool isSuccess)?
+        $default, {
+    TResult? Function(String? gender, bool rememberMe, bool isSuccess)? idle,
+    TResult? Function(String? gender, bool rememberMe, bool isSuccess)? loading,
+    TResult? Function(UserModel? user, AuthenticationResponse? authResponse,
+            String? gender, bool rememberMe, bool isSuccess)?
         authenticated,
-    TResult? Function(String? gender, bool rememberMe)? unauthenticated,
-    TResult? Function(String message, String? gender, bool rememberMe)? error,
+    TResult? Function(String? gender, bool rememberMe, bool isSuccess)?
+        unauthenticated,
+    TResult? Function(
+            String message, String? gender, bool rememberMe, bool isSuccess)?
+        error,
+    TResult? Function(String? gender, bool rememberMe, bool isSuccess)?
+        otpVerified,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>(
-    TResult Function(String? gender, bool rememberMe)? $default, {
-    TResult Function(String? gender, bool rememberMe)? idle,
-    TResult Function(String? gender, bool rememberMe)? loading,
-    TResult Function(UserModel user, String? gender, bool rememberMe)?
+    TResult Function(String? gender, bool rememberMe, bool isSuccess)?
+        $default, {
+    TResult Function(String? gender, bool rememberMe, bool isSuccess)? idle,
+    TResult Function(String? gender, bool rememberMe, bool isSuccess)? loading,
+    TResult Function(UserModel? user, AuthenticationResponse? authResponse,
+            String? gender, bool rememberMe, bool isSuccess)?
         authenticated,
-    TResult Function(String? gender, bool rememberMe)? unauthenticated,
-    TResult Function(String message, String? gender, bool rememberMe)? error,
+    TResult Function(String? gender, bool rememberMe, bool isSuccess)?
+        unauthenticated,
+    TResult Function(
+            String message, String? gender, bool rememberMe, bool isSuccess)?
+        error,
+    TResult Function(String? gender, bool rememberMe, bool isSuccess)?
+        otpVerified,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -61,6 +88,7 @@ mixin _$AuthState {
     required TResult Function(Authenticated value) authenticated,
     required TResult Function(Unauthenticated value) unauthenticated,
     required TResult Function(Error value) error,
+    required TResult Function(OtpVerified value) otpVerified,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -71,6 +99,7 @@ mixin _$AuthState {
     TResult? Function(Authenticated value)? authenticated,
     TResult? Function(Unauthenticated value)? unauthenticated,
     TResult? Function(Error value)? error,
+    TResult? Function(OtpVerified value)? otpVerified,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -81,6 +110,7 @@ mixin _$AuthState {
     TResult Function(Authenticated value)? authenticated,
     TResult Function(Unauthenticated value)? unauthenticated,
     TResult Function(Error value)? error,
+    TResult Function(OtpVerified value)? otpVerified,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -95,7 +125,7 @@ abstract class $AuthStateCopyWith<$Res> {
   factory $AuthStateCopyWith(AuthState value, $Res Function(AuthState) then) =
       _$AuthStateCopyWithImpl<$Res, AuthState>;
   @useResult
-  $Res call({String? gender, bool rememberMe});
+  $Res call({String? gender, bool rememberMe, bool isSuccess});
 }
 
 /// @nodoc
@@ -113,6 +143,7 @@ class _$AuthStateCopyWithImpl<$Res, $Val extends AuthState>
   $Res call({
     Object? gender = freezed,
     Object? rememberMe = null,
+    Object? isSuccess = null,
   }) {
     return _then(_value.copyWith(
       gender: freezed == gender
@@ -122,6 +153,10 @@ class _$AuthStateCopyWithImpl<$Res, $Val extends AuthState>
       rememberMe: null == rememberMe
           ? _value.rememberMe
           : rememberMe // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isSuccess: null == isSuccess
+          ? _value.isSuccess
+          : isSuccess // ignore: cast_nullable_to_non_nullable
               as bool,
     ) as $Val);
   }
@@ -135,7 +170,7 @@ abstract class _$$AuthStateImplCopyWith<$Res>
       __$$AuthStateImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String? gender, bool rememberMe});
+  $Res call({String? gender, bool rememberMe, bool isSuccess});
 }
 
 /// @nodoc
@@ -151,6 +186,7 @@ class __$$AuthStateImplCopyWithImpl<$Res>
   $Res call({
     Object? gender = freezed,
     Object? rememberMe = null,
+    Object? isSuccess = null,
   }) {
     return _then(_$AuthStateImpl(
       gender: freezed == gender
@@ -161,6 +197,10 @@ class __$$AuthStateImplCopyWithImpl<$Res>
           ? _value.rememberMe
           : rememberMe // ignore: cast_nullable_to_non_nullable
               as bool,
+      isSuccess: null == isSuccess
+          ? _value.isSuccess
+          : isSuccess // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -168,17 +208,22 @@ class __$$AuthStateImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$AuthStateImpl implements _AuthState {
-  const _$AuthStateImpl({this.gender, this.rememberMe = false});
+  const _$AuthStateImpl(
+      {this.gender, this.rememberMe = false, this.isSuccess = false});
 
   @override
   final String? gender;
+// Add gender here
   @override
   @JsonKey()
   final bool rememberMe;
+  @override
+  @JsonKey()
+  final bool isSuccess;
 
   @override
   String toString() {
-    return 'AuthState(gender: $gender, rememberMe: $rememberMe)';
+    return 'AuthState(gender: $gender, rememberMe: $rememberMe, isSuccess: $isSuccess)';
   }
 
   @override
@@ -188,11 +233,13 @@ class _$AuthStateImpl implements _AuthState {
             other is _$AuthStateImpl &&
             (identical(other.gender, gender) || other.gender == gender) &&
             (identical(other.rememberMe, rememberMe) ||
-                other.rememberMe == rememberMe));
+                other.rememberMe == rememberMe) &&
+            (identical(other.isSuccess, isSuccess) ||
+                other.isSuccess == isSuccess));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, gender, rememberMe);
+  int get hashCode => Object.hash(runtimeType, gender, rememberMe, isSuccess);
 
   @JsonKey(ignore: true)
   @override
@@ -203,46 +250,72 @@ class _$AuthStateImpl implements _AuthState {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>(
-    TResult Function(String? gender, bool rememberMe) $default, {
-    required TResult Function(String? gender, bool rememberMe) idle,
-    required TResult Function(String? gender, bool rememberMe) loading,
-    required TResult Function(UserModel user, String? gender, bool rememberMe)
+    TResult Function(String? gender, bool rememberMe, bool isSuccess)
+        $default, {
+    required TResult Function(String? gender, bool rememberMe, bool isSuccess)
+        idle,
+    required TResult Function(String? gender, bool rememberMe, bool isSuccess)
+        loading,
+    required TResult Function(
+            UserModel? user,
+            AuthenticationResponse? authResponse,
+            String? gender,
+            bool rememberMe,
+            bool isSuccess)
         authenticated,
-    required TResult Function(String? gender, bool rememberMe) unauthenticated,
-    required TResult Function(String message, String? gender, bool rememberMe)
+    required TResult Function(String? gender, bool rememberMe, bool isSuccess)
+        unauthenticated,
+    required TResult Function(
+            String message, String? gender, bool rememberMe, bool isSuccess)
         error,
+    required TResult Function(String? gender, bool rememberMe, bool isSuccess)
+        otpVerified,
   }) {
-    return $default(gender, rememberMe);
+    return $default(gender, rememberMe, isSuccess);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>(
-    TResult? Function(String? gender, bool rememberMe)? $default, {
-    TResult? Function(String? gender, bool rememberMe)? idle,
-    TResult? Function(String? gender, bool rememberMe)? loading,
-    TResult? Function(UserModel user, String? gender, bool rememberMe)?
+    TResult? Function(String? gender, bool rememberMe, bool isSuccess)?
+        $default, {
+    TResult? Function(String? gender, bool rememberMe, bool isSuccess)? idle,
+    TResult? Function(String? gender, bool rememberMe, bool isSuccess)? loading,
+    TResult? Function(UserModel? user, AuthenticationResponse? authResponse,
+            String? gender, bool rememberMe, bool isSuccess)?
         authenticated,
-    TResult? Function(String? gender, bool rememberMe)? unauthenticated,
-    TResult? Function(String message, String? gender, bool rememberMe)? error,
+    TResult? Function(String? gender, bool rememberMe, bool isSuccess)?
+        unauthenticated,
+    TResult? Function(
+            String message, String? gender, bool rememberMe, bool isSuccess)?
+        error,
+    TResult? Function(String? gender, bool rememberMe, bool isSuccess)?
+        otpVerified,
   }) {
-    return $default?.call(gender, rememberMe);
+    return $default?.call(gender, rememberMe, isSuccess);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>(
-    TResult Function(String? gender, bool rememberMe)? $default, {
-    TResult Function(String? gender, bool rememberMe)? idle,
-    TResult Function(String? gender, bool rememberMe)? loading,
-    TResult Function(UserModel user, String? gender, bool rememberMe)?
+    TResult Function(String? gender, bool rememberMe, bool isSuccess)?
+        $default, {
+    TResult Function(String? gender, bool rememberMe, bool isSuccess)? idle,
+    TResult Function(String? gender, bool rememberMe, bool isSuccess)? loading,
+    TResult Function(UserModel? user, AuthenticationResponse? authResponse,
+            String? gender, bool rememberMe, bool isSuccess)?
         authenticated,
-    TResult Function(String? gender, bool rememberMe)? unauthenticated,
-    TResult Function(String message, String? gender, bool rememberMe)? error,
+    TResult Function(String? gender, bool rememberMe, bool isSuccess)?
+        unauthenticated,
+    TResult Function(
+            String message, String? gender, bool rememberMe, bool isSuccess)?
+        error,
+    TResult Function(String? gender, bool rememberMe, bool isSuccess)?
+        otpVerified,
     required TResult orElse(),
   }) {
     if ($default != null) {
-      return $default(gender, rememberMe);
+      return $default(gender, rememberMe, isSuccess);
     }
     return orElse();
   }
@@ -256,6 +329,7 @@ class _$AuthStateImpl implements _AuthState {
     required TResult Function(Authenticated value) authenticated,
     required TResult Function(Unauthenticated value) unauthenticated,
     required TResult Function(Error value) error,
+    required TResult Function(OtpVerified value) otpVerified,
   }) {
     return $default(this);
   }
@@ -269,6 +343,7 @@ class _$AuthStateImpl implements _AuthState {
     TResult? Function(Authenticated value)? authenticated,
     TResult? Function(Unauthenticated value)? unauthenticated,
     TResult? Function(Error value)? error,
+    TResult? Function(OtpVerified value)? otpVerified,
   }) {
     return $default?.call(this);
   }
@@ -282,6 +357,7 @@ class _$AuthStateImpl implements _AuthState {
     TResult Function(Authenticated value)? authenticated,
     TResult Function(Unauthenticated value)? unauthenticated,
     TResult Function(Error value)? error,
+    TResult Function(OtpVerified value)? otpVerified,
     required TResult orElse(),
   }) {
     if ($default != null) {
@@ -292,13 +368,17 @@ class _$AuthStateImpl implements _AuthState {
 }
 
 abstract class _AuthState implements AuthState {
-  const factory _AuthState({final String? gender, final bool rememberMe}) =
-      _$AuthStateImpl;
+  const factory _AuthState(
+      {final String? gender,
+      final bool rememberMe,
+      final bool isSuccess}) = _$AuthStateImpl;
 
   @override
   String? get gender;
-  @override
+  @override // Add gender here
   bool get rememberMe;
+  @override
+  bool get isSuccess;
   @override
   @JsonKey(ignore: true)
   _$$AuthStateImplCopyWith<_$AuthStateImpl> get copyWith =>
@@ -312,7 +392,7 @@ abstract class _$$IdleImplCopyWith<$Res> implements $AuthStateCopyWith<$Res> {
       __$$IdleImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String? gender, bool rememberMe});
+  $Res call({String? gender, bool rememberMe, bool isSuccess});
 }
 
 /// @nodoc
@@ -327,6 +407,7 @@ class __$$IdleImplCopyWithImpl<$Res>
   $Res call({
     Object? gender = freezed,
     Object? rememberMe = null,
+    Object? isSuccess = null,
   }) {
     return _then(_$IdleImpl(
       gender: freezed == gender
@@ -337,6 +418,10 @@ class __$$IdleImplCopyWithImpl<$Res>
           ? _value.rememberMe
           : rememberMe // ignore: cast_nullable_to_non_nullable
               as bool,
+      isSuccess: null == isSuccess
+          ? _value.isSuccess
+          : isSuccess // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -344,17 +429,22 @@ class __$$IdleImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$IdleImpl implements Idle {
-  const _$IdleImpl({this.gender, this.rememberMe = false});
+  const _$IdleImpl(
+      {this.gender, this.rememberMe = false, this.isSuccess = false});
 
   @override
   final String? gender;
+// Add gender here
   @override
   @JsonKey()
   final bool rememberMe;
+  @override
+  @JsonKey()
+  final bool isSuccess;
 
   @override
   String toString() {
-    return 'AuthState.idle(gender: $gender, rememberMe: $rememberMe)';
+    return 'AuthState.idle(gender: $gender, rememberMe: $rememberMe, isSuccess: $isSuccess)';
   }
 
   @override
@@ -364,11 +454,13 @@ class _$IdleImpl implements Idle {
             other is _$IdleImpl &&
             (identical(other.gender, gender) || other.gender == gender) &&
             (identical(other.rememberMe, rememberMe) ||
-                other.rememberMe == rememberMe));
+                other.rememberMe == rememberMe) &&
+            (identical(other.isSuccess, isSuccess) ||
+                other.isSuccess == isSuccess));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, gender, rememberMe);
+  int get hashCode => Object.hash(runtimeType, gender, rememberMe, isSuccess);
 
   @JsonKey(ignore: true)
   @override
@@ -379,46 +471,72 @@ class _$IdleImpl implements Idle {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>(
-    TResult Function(String? gender, bool rememberMe) $default, {
-    required TResult Function(String? gender, bool rememberMe) idle,
-    required TResult Function(String? gender, bool rememberMe) loading,
-    required TResult Function(UserModel user, String? gender, bool rememberMe)
+    TResult Function(String? gender, bool rememberMe, bool isSuccess)
+        $default, {
+    required TResult Function(String? gender, bool rememberMe, bool isSuccess)
+        idle,
+    required TResult Function(String? gender, bool rememberMe, bool isSuccess)
+        loading,
+    required TResult Function(
+            UserModel? user,
+            AuthenticationResponse? authResponse,
+            String? gender,
+            bool rememberMe,
+            bool isSuccess)
         authenticated,
-    required TResult Function(String? gender, bool rememberMe) unauthenticated,
-    required TResult Function(String message, String? gender, bool rememberMe)
+    required TResult Function(String? gender, bool rememberMe, bool isSuccess)
+        unauthenticated,
+    required TResult Function(
+            String message, String? gender, bool rememberMe, bool isSuccess)
         error,
+    required TResult Function(String? gender, bool rememberMe, bool isSuccess)
+        otpVerified,
   }) {
-    return idle(gender, rememberMe);
+    return idle(gender, rememberMe, isSuccess);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>(
-    TResult? Function(String? gender, bool rememberMe)? $default, {
-    TResult? Function(String? gender, bool rememberMe)? idle,
-    TResult? Function(String? gender, bool rememberMe)? loading,
-    TResult? Function(UserModel user, String? gender, bool rememberMe)?
+    TResult? Function(String? gender, bool rememberMe, bool isSuccess)?
+        $default, {
+    TResult? Function(String? gender, bool rememberMe, bool isSuccess)? idle,
+    TResult? Function(String? gender, bool rememberMe, bool isSuccess)? loading,
+    TResult? Function(UserModel? user, AuthenticationResponse? authResponse,
+            String? gender, bool rememberMe, bool isSuccess)?
         authenticated,
-    TResult? Function(String? gender, bool rememberMe)? unauthenticated,
-    TResult? Function(String message, String? gender, bool rememberMe)? error,
+    TResult? Function(String? gender, bool rememberMe, bool isSuccess)?
+        unauthenticated,
+    TResult? Function(
+            String message, String? gender, bool rememberMe, bool isSuccess)?
+        error,
+    TResult? Function(String? gender, bool rememberMe, bool isSuccess)?
+        otpVerified,
   }) {
-    return idle?.call(gender, rememberMe);
+    return idle?.call(gender, rememberMe, isSuccess);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>(
-    TResult Function(String? gender, bool rememberMe)? $default, {
-    TResult Function(String? gender, bool rememberMe)? idle,
-    TResult Function(String? gender, bool rememberMe)? loading,
-    TResult Function(UserModel user, String? gender, bool rememberMe)?
+    TResult Function(String? gender, bool rememberMe, bool isSuccess)?
+        $default, {
+    TResult Function(String? gender, bool rememberMe, bool isSuccess)? idle,
+    TResult Function(String? gender, bool rememberMe, bool isSuccess)? loading,
+    TResult Function(UserModel? user, AuthenticationResponse? authResponse,
+            String? gender, bool rememberMe, bool isSuccess)?
         authenticated,
-    TResult Function(String? gender, bool rememberMe)? unauthenticated,
-    TResult Function(String message, String? gender, bool rememberMe)? error,
+    TResult Function(String? gender, bool rememberMe, bool isSuccess)?
+        unauthenticated,
+    TResult Function(
+            String message, String? gender, bool rememberMe, bool isSuccess)?
+        error,
+    TResult Function(String? gender, bool rememberMe, bool isSuccess)?
+        otpVerified,
     required TResult orElse(),
   }) {
     if (idle != null) {
-      return idle(gender, rememberMe);
+      return idle(gender, rememberMe, isSuccess);
     }
     return orElse();
   }
@@ -432,6 +550,7 @@ class _$IdleImpl implements Idle {
     required TResult Function(Authenticated value) authenticated,
     required TResult Function(Unauthenticated value) unauthenticated,
     required TResult Function(Error value) error,
+    required TResult Function(OtpVerified value) otpVerified,
   }) {
     return idle(this);
   }
@@ -445,6 +564,7 @@ class _$IdleImpl implements Idle {
     TResult? Function(Authenticated value)? authenticated,
     TResult? Function(Unauthenticated value)? unauthenticated,
     TResult? Function(Error value)? error,
+    TResult? Function(OtpVerified value)? otpVerified,
   }) {
     return idle?.call(this);
   }
@@ -458,6 +578,7 @@ class _$IdleImpl implements Idle {
     TResult Function(Authenticated value)? authenticated,
     TResult Function(Unauthenticated value)? unauthenticated,
     TResult Function(Error value)? error,
+    TResult Function(OtpVerified value)? otpVerified,
     required TResult orElse(),
   }) {
     if (idle != null) {
@@ -468,13 +589,17 @@ class _$IdleImpl implements Idle {
 }
 
 abstract class Idle implements AuthState {
-  const factory Idle({final String? gender, final bool rememberMe}) =
-      _$IdleImpl;
+  const factory Idle(
+      {final String? gender,
+      final bool rememberMe,
+      final bool isSuccess}) = _$IdleImpl;
 
   @override
   String? get gender;
-  @override
+  @override // Add gender here
   bool get rememberMe;
+  @override
+  bool get isSuccess;
   @override
   @JsonKey(ignore: true)
   _$$IdleImplCopyWith<_$IdleImpl> get copyWith =>
@@ -489,7 +614,7 @@ abstract class _$$LoadingImplCopyWith<$Res>
       __$$LoadingImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String? gender, bool rememberMe});
+  $Res call({String? gender, bool rememberMe, bool isSuccess});
 }
 
 /// @nodoc
@@ -505,6 +630,7 @@ class __$$LoadingImplCopyWithImpl<$Res>
   $Res call({
     Object? gender = freezed,
     Object? rememberMe = null,
+    Object? isSuccess = null,
   }) {
     return _then(_$LoadingImpl(
       gender: freezed == gender
@@ -515,6 +641,10 @@ class __$$LoadingImplCopyWithImpl<$Res>
           ? _value.rememberMe
           : rememberMe // ignore: cast_nullable_to_non_nullable
               as bool,
+      isSuccess: null == isSuccess
+          ? _value.isSuccess
+          : isSuccess // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -522,17 +652,22 @@ class __$$LoadingImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$LoadingImpl implements Loading {
-  const _$LoadingImpl({this.gender, this.rememberMe = false});
+  const _$LoadingImpl(
+      {this.gender, this.rememberMe = false, this.isSuccess = false});
 
   @override
   final String? gender;
+// Add gender here
   @override
   @JsonKey()
   final bool rememberMe;
+  @override
+  @JsonKey()
+  final bool isSuccess;
 
   @override
   String toString() {
-    return 'AuthState.loading(gender: $gender, rememberMe: $rememberMe)';
+    return 'AuthState.loading(gender: $gender, rememberMe: $rememberMe, isSuccess: $isSuccess)';
   }
 
   @override
@@ -542,11 +677,13 @@ class _$LoadingImpl implements Loading {
             other is _$LoadingImpl &&
             (identical(other.gender, gender) || other.gender == gender) &&
             (identical(other.rememberMe, rememberMe) ||
-                other.rememberMe == rememberMe));
+                other.rememberMe == rememberMe) &&
+            (identical(other.isSuccess, isSuccess) ||
+                other.isSuccess == isSuccess));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, gender, rememberMe);
+  int get hashCode => Object.hash(runtimeType, gender, rememberMe, isSuccess);
 
   @JsonKey(ignore: true)
   @override
@@ -557,46 +694,72 @@ class _$LoadingImpl implements Loading {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>(
-    TResult Function(String? gender, bool rememberMe) $default, {
-    required TResult Function(String? gender, bool rememberMe) idle,
-    required TResult Function(String? gender, bool rememberMe) loading,
-    required TResult Function(UserModel user, String? gender, bool rememberMe)
+    TResult Function(String? gender, bool rememberMe, bool isSuccess)
+        $default, {
+    required TResult Function(String? gender, bool rememberMe, bool isSuccess)
+        idle,
+    required TResult Function(String? gender, bool rememberMe, bool isSuccess)
+        loading,
+    required TResult Function(
+            UserModel? user,
+            AuthenticationResponse? authResponse,
+            String? gender,
+            bool rememberMe,
+            bool isSuccess)
         authenticated,
-    required TResult Function(String? gender, bool rememberMe) unauthenticated,
-    required TResult Function(String message, String? gender, bool rememberMe)
+    required TResult Function(String? gender, bool rememberMe, bool isSuccess)
+        unauthenticated,
+    required TResult Function(
+            String message, String? gender, bool rememberMe, bool isSuccess)
         error,
+    required TResult Function(String? gender, bool rememberMe, bool isSuccess)
+        otpVerified,
   }) {
-    return loading(gender, rememberMe);
+    return loading(gender, rememberMe, isSuccess);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>(
-    TResult? Function(String? gender, bool rememberMe)? $default, {
-    TResult? Function(String? gender, bool rememberMe)? idle,
-    TResult? Function(String? gender, bool rememberMe)? loading,
-    TResult? Function(UserModel user, String? gender, bool rememberMe)?
+    TResult? Function(String? gender, bool rememberMe, bool isSuccess)?
+        $default, {
+    TResult? Function(String? gender, bool rememberMe, bool isSuccess)? idle,
+    TResult? Function(String? gender, bool rememberMe, bool isSuccess)? loading,
+    TResult? Function(UserModel? user, AuthenticationResponse? authResponse,
+            String? gender, bool rememberMe, bool isSuccess)?
         authenticated,
-    TResult? Function(String? gender, bool rememberMe)? unauthenticated,
-    TResult? Function(String message, String? gender, bool rememberMe)? error,
+    TResult? Function(String? gender, bool rememberMe, bool isSuccess)?
+        unauthenticated,
+    TResult? Function(
+            String message, String? gender, bool rememberMe, bool isSuccess)?
+        error,
+    TResult? Function(String? gender, bool rememberMe, bool isSuccess)?
+        otpVerified,
   }) {
-    return loading?.call(gender, rememberMe);
+    return loading?.call(gender, rememberMe, isSuccess);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>(
-    TResult Function(String? gender, bool rememberMe)? $default, {
-    TResult Function(String? gender, bool rememberMe)? idle,
-    TResult Function(String? gender, bool rememberMe)? loading,
-    TResult Function(UserModel user, String? gender, bool rememberMe)?
+    TResult Function(String? gender, bool rememberMe, bool isSuccess)?
+        $default, {
+    TResult Function(String? gender, bool rememberMe, bool isSuccess)? idle,
+    TResult Function(String? gender, bool rememberMe, bool isSuccess)? loading,
+    TResult Function(UserModel? user, AuthenticationResponse? authResponse,
+            String? gender, bool rememberMe, bool isSuccess)?
         authenticated,
-    TResult Function(String? gender, bool rememberMe)? unauthenticated,
-    TResult Function(String message, String? gender, bool rememberMe)? error,
+    TResult Function(String? gender, bool rememberMe, bool isSuccess)?
+        unauthenticated,
+    TResult Function(
+            String message, String? gender, bool rememberMe, bool isSuccess)?
+        error,
+    TResult Function(String? gender, bool rememberMe, bool isSuccess)?
+        otpVerified,
     required TResult orElse(),
   }) {
     if (loading != null) {
-      return loading(gender, rememberMe);
+      return loading(gender, rememberMe, isSuccess);
     }
     return orElse();
   }
@@ -610,6 +773,7 @@ class _$LoadingImpl implements Loading {
     required TResult Function(Authenticated value) authenticated,
     required TResult Function(Unauthenticated value) unauthenticated,
     required TResult Function(Error value) error,
+    required TResult Function(OtpVerified value) otpVerified,
   }) {
     return loading(this);
   }
@@ -623,6 +787,7 @@ class _$LoadingImpl implements Loading {
     TResult? Function(Authenticated value)? authenticated,
     TResult? Function(Unauthenticated value)? unauthenticated,
     TResult? Function(Error value)? error,
+    TResult? Function(OtpVerified value)? otpVerified,
   }) {
     return loading?.call(this);
   }
@@ -636,6 +801,7 @@ class _$LoadingImpl implements Loading {
     TResult Function(Authenticated value)? authenticated,
     TResult Function(Unauthenticated value)? unauthenticated,
     TResult Function(Error value)? error,
+    TResult Function(OtpVerified value)? otpVerified,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -646,13 +812,17 @@ class _$LoadingImpl implements Loading {
 }
 
 abstract class Loading implements AuthState {
-  const factory Loading({final String? gender, final bool rememberMe}) =
-      _$LoadingImpl;
+  const factory Loading(
+      {final String? gender,
+      final bool rememberMe,
+      final bool isSuccess}) = _$LoadingImpl;
 
   @override
   String? get gender;
-  @override
+  @override // Add gender here
   bool get rememberMe;
+  @override
+  bool get isSuccess;
   @override
   @JsonKey(ignore: true)
   _$$LoadingImplCopyWith<_$LoadingImpl> get copyWith =>
@@ -667,9 +837,15 @@ abstract class _$$AuthenticatedImplCopyWith<$Res>
       __$$AuthenticatedImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({UserModel user, String? gender, bool rememberMe});
+  $Res call(
+      {UserModel? user,
+      AuthenticationResponse? authResponse,
+      String? gender,
+      bool rememberMe,
+      bool isSuccess});
 
-  $UserModelCopyWith<$Res> get user;
+  $UserModelCopyWith<$Res>? get user;
+  $AuthenticationResponseCopyWith<$Res>? get authResponse;
 }
 
 /// @nodoc
@@ -683,15 +859,21 @@ class __$$AuthenticatedImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? user = null,
+    Object? user = freezed,
+    Object? authResponse = freezed,
     Object? gender = freezed,
     Object? rememberMe = null,
+    Object? isSuccess = null,
   }) {
     return _then(_$AuthenticatedImpl(
-      null == user
+      user: freezed == user
           ? _value.user
           : user // ignore: cast_nullable_to_non_nullable
-              as UserModel,
+              as UserModel?,
+      authResponse: freezed == authResponse
+          ? _value.authResponse
+          : authResponse // ignore: cast_nullable_to_non_nullable
+              as AuthenticationResponse?,
       gender: freezed == gender
           ? _value.gender
           : gender // ignore: cast_nullable_to_non_nullable
@@ -700,14 +882,34 @@ class __$$AuthenticatedImplCopyWithImpl<$Res>
           ? _value.rememberMe
           : rememberMe // ignore: cast_nullable_to_non_nullable
               as bool,
+      isSuccess: null == isSuccess
+          ? _value.isSuccess
+          : isSuccess // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 
   @override
   @pragma('vm:prefer-inline')
-  $UserModelCopyWith<$Res> get user {
-    return $UserModelCopyWith<$Res>(_value.user, (value) {
+  $UserModelCopyWith<$Res>? get user {
+    if (_value.user == null) {
+      return null;
+    }
+
+    return $UserModelCopyWith<$Res>(_value.user!, (value) {
       return _then(_value.copyWith(user: value));
+    });
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $AuthenticationResponseCopyWith<$Res>? get authResponse {
+    if (_value.authResponse == null) {
+      return null;
+    }
+
+    return $AuthenticationResponseCopyWith<$Res>(_value.authResponse!, (value) {
+      return _then(_value.copyWith(authResponse: value));
     });
   }
 }
@@ -715,19 +917,30 @@ class __$$AuthenticatedImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$AuthenticatedImpl implements Authenticated {
-  const _$AuthenticatedImpl(this.user, {this.gender, this.rememberMe = false});
+  const _$AuthenticatedImpl(
+      {this.user,
+      this.authResponse,
+      this.gender,
+      this.rememberMe = false,
+      this.isSuccess = false});
 
   @override
-  final UserModel user;
+  final UserModel? user;
+  @override
+  final AuthenticationResponse? authResponse;
   @override
   final String? gender;
+// Add gender here
   @override
   @JsonKey()
   final bool rememberMe;
+  @override
+  @JsonKey()
+  final bool isSuccess;
 
   @override
   String toString() {
-    return 'AuthState.authenticated(user: $user, gender: $gender, rememberMe: $rememberMe)';
+    return 'AuthState.authenticated(user: $user, authResponse: $authResponse, gender: $gender, rememberMe: $rememberMe, isSuccess: $isSuccess)';
   }
 
   @override
@@ -736,13 +949,18 @@ class _$AuthenticatedImpl implements Authenticated {
         (other.runtimeType == runtimeType &&
             other is _$AuthenticatedImpl &&
             (identical(other.user, user) || other.user == user) &&
+            (identical(other.authResponse, authResponse) ||
+                other.authResponse == authResponse) &&
             (identical(other.gender, gender) || other.gender == gender) &&
             (identical(other.rememberMe, rememberMe) ||
-                other.rememberMe == rememberMe));
+                other.rememberMe == rememberMe) &&
+            (identical(other.isSuccess, isSuccess) ||
+                other.isSuccess == isSuccess));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, user, gender, rememberMe);
+  int get hashCode => Object.hash(
+      runtimeType, user, authResponse, gender, rememberMe, isSuccess);
 
   @JsonKey(ignore: true)
   @override
@@ -753,46 +971,73 @@ class _$AuthenticatedImpl implements Authenticated {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>(
-    TResult Function(String? gender, bool rememberMe) $default, {
-    required TResult Function(String? gender, bool rememberMe) idle,
-    required TResult Function(String? gender, bool rememberMe) loading,
-    required TResult Function(UserModel user, String? gender, bool rememberMe)
+    TResult Function(String? gender, bool rememberMe, bool isSuccess)
+        $default, {
+    required TResult Function(String? gender, bool rememberMe, bool isSuccess)
+        idle,
+    required TResult Function(String? gender, bool rememberMe, bool isSuccess)
+        loading,
+    required TResult Function(
+            UserModel? user,
+            AuthenticationResponse? authResponse,
+            String? gender,
+            bool rememberMe,
+            bool isSuccess)
         authenticated,
-    required TResult Function(String? gender, bool rememberMe) unauthenticated,
-    required TResult Function(String message, String? gender, bool rememberMe)
+    required TResult Function(String? gender, bool rememberMe, bool isSuccess)
+        unauthenticated,
+    required TResult Function(
+            String message, String? gender, bool rememberMe, bool isSuccess)
         error,
+    required TResult Function(String? gender, bool rememberMe, bool isSuccess)
+        otpVerified,
   }) {
-    return authenticated(user, gender, rememberMe);
+    return authenticated(user, authResponse, gender, rememberMe, isSuccess);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>(
-    TResult? Function(String? gender, bool rememberMe)? $default, {
-    TResult? Function(String? gender, bool rememberMe)? idle,
-    TResult? Function(String? gender, bool rememberMe)? loading,
-    TResult? Function(UserModel user, String? gender, bool rememberMe)?
+    TResult? Function(String? gender, bool rememberMe, bool isSuccess)?
+        $default, {
+    TResult? Function(String? gender, bool rememberMe, bool isSuccess)? idle,
+    TResult? Function(String? gender, bool rememberMe, bool isSuccess)? loading,
+    TResult? Function(UserModel? user, AuthenticationResponse? authResponse,
+            String? gender, bool rememberMe, bool isSuccess)?
         authenticated,
-    TResult? Function(String? gender, bool rememberMe)? unauthenticated,
-    TResult? Function(String message, String? gender, bool rememberMe)? error,
+    TResult? Function(String? gender, bool rememberMe, bool isSuccess)?
+        unauthenticated,
+    TResult? Function(
+            String message, String? gender, bool rememberMe, bool isSuccess)?
+        error,
+    TResult? Function(String? gender, bool rememberMe, bool isSuccess)?
+        otpVerified,
   }) {
-    return authenticated?.call(user, gender, rememberMe);
+    return authenticated?.call(
+        user, authResponse, gender, rememberMe, isSuccess);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>(
-    TResult Function(String? gender, bool rememberMe)? $default, {
-    TResult Function(String? gender, bool rememberMe)? idle,
-    TResult Function(String? gender, bool rememberMe)? loading,
-    TResult Function(UserModel user, String? gender, bool rememberMe)?
+    TResult Function(String? gender, bool rememberMe, bool isSuccess)?
+        $default, {
+    TResult Function(String? gender, bool rememberMe, bool isSuccess)? idle,
+    TResult Function(String? gender, bool rememberMe, bool isSuccess)? loading,
+    TResult Function(UserModel? user, AuthenticationResponse? authResponse,
+            String? gender, bool rememberMe, bool isSuccess)?
         authenticated,
-    TResult Function(String? gender, bool rememberMe)? unauthenticated,
-    TResult Function(String message, String? gender, bool rememberMe)? error,
+    TResult Function(String? gender, bool rememberMe, bool isSuccess)?
+        unauthenticated,
+    TResult Function(
+            String message, String? gender, bool rememberMe, bool isSuccess)?
+        error,
+    TResult Function(String? gender, bool rememberMe, bool isSuccess)?
+        otpVerified,
     required TResult orElse(),
   }) {
     if (authenticated != null) {
-      return authenticated(user, gender, rememberMe);
+      return authenticated(user, authResponse, gender, rememberMe, isSuccess);
     }
     return orElse();
   }
@@ -806,6 +1051,7 @@ class _$AuthenticatedImpl implements Authenticated {
     required TResult Function(Authenticated value) authenticated,
     required TResult Function(Unauthenticated value) unauthenticated,
     required TResult Function(Error value) error,
+    required TResult Function(OtpVerified value) otpVerified,
   }) {
     return authenticated(this);
   }
@@ -819,6 +1065,7 @@ class _$AuthenticatedImpl implements Authenticated {
     TResult? Function(Authenticated value)? authenticated,
     TResult? Function(Unauthenticated value)? unauthenticated,
     TResult? Function(Error value)? error,
+    TResult? Function(OtpVerified value)? otpVerified,
   }) {
     return authenticated?.call(this);
   }
@@ -832,6 +1079,7 @@ class _$AuthenticatedImpl implements Authenticated {
     TResult Function(Authenticated value)? authenticated,
     TResult Function(Unauthenticated value)? unauthenticated,
     TResult Function(Error value)? error,
+    TResult Function(OtpVerified value)? otpVerified,
     required TResult orElse(),
   }) {
     if (authenticated != null) {
@@ -842,14 +1090,21 @@ class _$AuthenticatedImpl implements Authenticated {
 }
 
 abstract class Authenticated implements AuthState {
-  const factory Authenticated(final UserModel user,
-      {final String? gender, final bool rememberMe}) = _$AuthenticatedImpl;
+  const factory Authenticated(
+      {final UserModel? user,
+      final AuthenticationResponse? authResponse,
+      final String? gender,
+      final bool rememberMe,
+      final bool isSuccess}) = _$AuthenticatedImpl;
 
-  UserModel get user;
+  UserModel? get user;
+  AuthenticationResponse? get authResponse;
   @override
   String? get gender;
-  @override
+  @override // Add gender here
   bool get rememberMe;
+  @override
+  bool get isSuccess;
   @override
   @JsonKey(ignore: true)
   _$$AuthenticatedImplCopyWith<_$AuthenticatedImpl> get copyWith =>
@@ -864,7 +1119,7 @@ abstract class _$$UnauthenticatedImplCopyWith<$Res>
       __$$UnauthenticatedImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String? gender, bool rememberMe});
+  $Res call({String? gender, bool rememberMe, bool isSuccess});
 }
 
 /// @nodoc
@@ -880,6 +1135,7 @@ class __$$UnauthenticatedImplCopyWithImpl<$Res>
   $Res call({
     Object? gender = freezed,
     Object? rememberMe = null,
+    Object? isSuccess = null,
   }) {
     return _then(_$UnauthenticatedImpl(
       gender: freezed == gender
@@ -890,6 +1146,10 @@ class __$$UnauthenticatedImplCopyWithImpl<$Res>
           ? _value.rememberMe
           : rememberMe // ignore: cast_nullable_to_non_nullable
               as bool,
+      isSuccess: null == isSuccess
+          ? _value.isSuccess
+          : isSuccess // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -897,17 +1157,22 @@ class __$$UnauthenticatedImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$UnauthenticatedImpl implements Unauthenticated {
-  const _$UnauthenticatedImpl({this.gender, this.rememberMe = false});
+  const _$UnauthenticatedImpl(
+      {this.gender, this.rememberMe = false, this.isSuccess = false});
 
   @override
   final String? gender;
+// Add gender here
   @override
   @JsonKey()
   final bool rememberMe;
+  @override
+  @JsonKey()
+  final bool isSuccess;
 
   @override
   String toString() {
-    return 'AuthState.unauthenticated(gender: $gender, rememberMe: $rememberMe)';
+    return 'AuthState.unauthenticated(gender: $gender, rememberMe: $rememberMe, isSuccess: $isSuccess)';
   }
 
   @override
@@ -917,11 +1182,13 @@ class _$UnauthenticatedImpl implements Unauthenticated {
             other is _$UnauthenticatedImpl &&
             (identical(other.gender, gender) || other.gender == gender) &&
             (identical(other.rememberMe, rememberMe) ||
-                other.rememberMe == rememberMe));
+                other.rememberMe == rememberMe) &&
+            (identical(other.isSuccess, isSuccess) ||
+                other.isSuccess == isSuccess));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, gender, rememberMe);
+  int get hashCode => Object.hash(runtimeType, gender, rememberMe, isSuccess);
 
   @JsonKey(ignore: true)
   @override
@@ -933,46 +1200,72 @@ class _$UnauthenticatedImpl implements Unauthenticated {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>(
-    TResult Function(String? gender, bool rememberMe) $default, {
-    required TResult Function(String? gender, bool rememberMe) idle,
-    required TResult Function(String? gender, bool rememberMe) loading,
-    required TResult Function(UserModel user, String? gender, bool rememberMe)
+    TResult Function(String? gender, bool rememberMe, bool isSuccess)
+        $default, {
+    required TResult Function(String? gender, bool rememberMe, bool isSuccess)
+        idle,
+    required TResult Function(String? gender, bool rememberMe, bool isSuccess)
+        loading,
+    required TResult Function(
+            UserModel? user,
+            AuthenticationResponse? authResponse,
+            String? gender,
+            bool rememberMe,
+            bool isSuccess)
         authenticated,
-    required TResult Function(String? gender, bool rememberMe) unauthenticated,
-    required TResult Function(String message, String? gender, bool rememberMe)
+    required TResult Function(String? gender, bool rememberMe, bool isSuccess)
+        unauthenticated,
+    required TResult Function(
+            String message, String? gender, bool rememberMe, bool isSuccess)
         error,
+    required TResult Function(String? gender, bool rememberMe, bool isSuccess)
+        otpVerified,
   }) {
-    return unauthenticated(gender, rememberMe);
+    return unauthenticated(gender, rememberMe, isSuccess);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>(
-    TResult? Function(String? gender, bool rememberMe)? $default, {
-    TResult? Function(String? gender, bool rememberMe)? idle,
-    TResult? Function(String? gender, bool rememberMe)? loading,
-    TResult? Function(UserModel user, String? gender, bool rememberMe)?
+    TResult? Function(String? gender, bool rememberMe, bool isSuccess)?
+        $default, {
+    TResult? Function(String? gender, bool rememberMe, bool isSuccess)? idle,
+    TResult? Function(String? gender, bool rememberMe, bool isSuccess)? loading,
+    TResult? Function(UserModel? user, AuthenticationResponse? authResponse,
+            String? gender, bool rememberMe, bool isSuccess)?
         authenticated,
-    TResult? Function(String? gender, bool rememberMe)? unauthenticated,
-    TResult? Function(String message, String? gender, bool rememberMe)? error,
+    TResult? Function(String? gender, bool rememberMe, bool isSuccess)?
+        unauthenticated,
+    TResult? Function(
+            String message, String? gender, bool rememberMe, bool isSuccess)?
+        error,
+    TResult? Function(String? gender, bool rememberMe, bool isSuccess)?
+        otpVerified,
   }) {
-    return unauthenticated?.call(gender, rememberMe);
+    return unauthenticated?.call(gender, rememberMe, isSuccess);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>(
-    TResult Function(String? gender, bool rememberMe)? $default, {
-    TResult Function(String? gender, bool rememberMe)? idle,
-    TResult Function(String? gender, bool rememberMe)? loading,
-    TResult Function(UserModel user, String? gender, bool rememberMe)?
+    TResult Function(String? gender, bool rememberMe, bool isSuccess)?
+        $default, {
+    TResult Function(String? gender, bool rememberMe, bool isSuccess)? idle,
+    TResult Function(String? gender, bool rememberMe, bool isSuccess)? loading,
+    TResult Function(UserModel? user, AuthenticationResponse? authResponse,
+            String? gender, bool rememberMe, bool isSuccess)?
         authenticated,
-    TResult Function(String? gender, bool rememberMe)? unauthenticated,
-    TResult Function(String message, String? gender, bool rememberMe)? error,
+    TResult Function(String? gender, bool rememberMe, bool isSuccess)?
+        unauthenticated,
+    TResult Function(
+            String message, String? gender, bool rememberMe, bool isSuccess)?
+        error,
+    TResult Function(String? gender, bool rememberMe, bool isSuccess)?
+        otpVerified,
     required TResult orElse(),
   }) {
     if (unauthenticated != null) {
-      return unauthenticated(gender, rememberMe);
+      return unauthenticated(gender, rememberMe, isSuccess);
     }
     return orElse();
   }
@@ -986,6 +1279,7 @@ class _$UnauthenticatedImpl implements Unauthenticated {
     required TResult Function(Authenticated value) authenticated,
     required TResult Function(Unauthenticated value) unauthenticated,
     required TResult Function(Error value) error,
+    required TResult Function(OtpVerified value) otpVerified,
   }) {
     return unauthenticated(this);
   }
@@ -999,6 +1293,7 @@ class _$UnauthenticatedImpl implements Unauthenticated {
     TResult? Function(Authenticated value)? authenticated,
     TResult? Function(Unauthenticated value)? unauthenticated,
     TResult? Function(Error value)? error,
+    TResult? Function(OtpVerified value)? otpVerified,
   }) {
     return unauthenticated?.call(this);
   }
@@ -1012,6 +1307,7 @@ class _$UnauthenticatedImpl implements Unauthenticated {
     TResult Function(Authenticated value)? authenticated,
     TResult Function(Unauthenticated value)? unauthenticated,
     TResult Function(Error value)? error,
+    TResult Function(OtpVerified value)? otpVerified,
     required TResult orElse(),
   }) {
     if (unauthenticated != null) {
@@ -1022,13 +1318,17 @@ class _$UnauthenticatedImpl implements Unauthenticated {
 }
 
 abstract class Unauthenticated implements AuthState {
-  const factory Unauthenticated({final String? gender, final bool rememberMe}) =
-      _$UnauthenticatedImpl;
+  const factory Unauthenticated(
+      {final String? gender,
+      final bool rememberMe,
+      final bool isSuccess}) = _$UnauthenticatedImpl;
 
   @override
   String? get gender;
-  @override
+  @override // Add gender here
   bool get rememberMe;
+  @override
+  bool get isSuccess;
   @override
   @JsonKey(ignore: true)
   _$$UnauthenticatedImplCopyWith<_$UnauthenticatedImpl> get copyWith =>
@@ -1042,7 +1342,7 @@ abstract class _$$ErrorImplCopyWith<$Res> implements $AuthStateCopyWith<$Res> {
       __$$ErrorImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String message, String? gender, bool rememberMe});
+  $Res call({String message, String? gender, bool rememberMe, bool isSuccess});
 }
 
 /// @nodoc
@@ -1059,6 +1359,7 @@ class __$$ErrorImplCopyWithImpl<$Res>
     Object? message = null,
     Object? gender = freezed,
     Object? rememberMe = null,
+    Object? isSuccess = null,
   }) {
     return _then(_$ErrorImpl(
       null == message
@@ -1073,6 +1374,10 @@ class __$$ErrorImplCopyWithImpl<$Res>
           ? _value.rememberMe
           : rememberMe // ignore: cast_nullable_to_non_nullable
               as bool,
+      isSuccess: null == isSuccess
+          ? _value.isSuccess
+          : isSuccess // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -1080,19 +1385,24 @@ class __$$ErrorImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$ErrorImpl implements Error {
-  const _$ErrorImpl(this.message, {this.gender, this.rememberMe = false});
+  const _$ErrorImpl(this.message,
+      {this.gender, this.rememberMe = false, this.isSuccess = false});
 
   @override
   final String message;
   @override
   final String? gender;
+// Add gender here
   @override
   @JsonKey()
   final bool rememberMe;
+  @override
+  @JsonKey()
+  final bool isSuccess;
 
   @override
   String toString() {
-    return 'AuthState.error(message: $message, gender: $gender, rememberMe: $rememberMe)';
+    return 'AuthState.error(message: $message, gender: $gender, rememberMe: $rememberMe, isSuccess: $isSuccess)';
   }
 
   @override
@@ -1103,11 +1413,14 @@ class _$ErrorImpl implements Error {
             (identical(other.message, message) || other.message == message) &&
             (identical(other.gender, gender) || other.gender == gender) &&
             (identical(other.rememberMe, rememberMe) ||
-                other.rememberMe == rememberMe));
+                other.rememberMe == rememberMe) &&
+            (identical(other.isSuccess, isSuccess) ||
+                other.isSuccess == isSuccess));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, message, gender, rememberMe);
+  int get hashCode =>
+      Object.hash(runtimeType, message, gender, rememberMe, isSuccess);
 
   @JsonKey(ignore: true)
   @override
@@ -1118,46 +1431,72 @@ class _$ErrorImpl implements Error {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>(
-    TResult Function(String? gender, bool rememberMe) $default, {
-    required TResult Function(String? gender, bool rememberMe) idle,
-    required TResult Function(String? gender, bool rememberMe) loading,
-    required TResult Function(UserModel user, String? gender, bool rememberMe)
+    TResult Function(String? gender, bool rememberMe, bool isSuccess)
+        $default, {
+    required TResult Function(String? gender, bool rememberMe, bool isSuccess)
+        idle,
+    required TResult Function(String? gender, bool rememberMe, bool isSuccess)
+        loading,
+    required TResult Function(
+            UserModel? user,
+            AuthenticationResponse? authResponse,
+            String? gender,
+            bool rememberMe,
+            bool isSuccess)
         authenticated,
-    required TResult Function(String? gender, bool rememberMe) unauthenticated,
-    required TResult Function(String message, String? gender, bool rememberMe)
+    required TResult Function(String? gender, bool rememberMe, bool isSuccess)
+        unauthenticated,
+    required TResult Function(
+            String message, String? gender, bool rememberMe, bool isSuccess)
         error,
+    required TResult Function(String? gender, bool rememberMe, bool isSuccess)
+        otpVerified,
   }) {
-    return error(message, gender, rememberMe);
+    return error(message, gender, rememberMe, isSuccess);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>(
-    TResult? Function(String? gender, bool rememberMe)? $default, {
-    TResult? Function(String? gender, bool rememberMe)? idle,
-    TResult? Function(String? gender, bool rememberMe)? loading,
-    TResult? Function(UserModel user, String? gender, bool rememberMe)?
+    TResult? Function(String? gender, bool rememberMe, bool isSuccess)?
+        $default, {
+    TResult? Function(String? gender, bool rememberMe, bool isSuccess)? idle,
+    TResult? Function(String? gender, bool rememberMe, bool isSuccess)? loading,
+    TResult? Function(UserModel? user, AuthenticationResponse? authResponse,
+            String? gender, bool rememberMe, bool isSuccess)?
         authenticated,
-    TResult? Function(String? gender, bool rememberMe)? unauthenticated,
-    TResult? Function(String message, String? gender, bool rememberMe)? error,
+    TResult? Function(String? gender, bool rememberMe, bool isSuccess)?
+        unauthenticated,
+    TResult? Function(
+            String message, String? gender, bool rememberMe, bool isSuccess)?
+        error,
+    TResult? Function(String? gender, bool rememberMe, bool isSuccess)?
+        otpVerified,
   }) {
-    return error?.call(message, gender, rememberMe);
+    return error?.call(message, gender, rememberMe, isSuccess);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>(
-    TResult Function(String? gender, bool rememberMe)? $default, {
-    TResult Function(String? gender, bool rememberMe)? idle,
-    TResult Function(String? gender, bool rememberMe)? loading,
-    TResult Function(UserModel user, String? gender, bool rememberMe)?
+    TResult Function(String? gender, bool rememberMe, bool isSuccess)?
+        $default, {
+    TResult Function(String? gender, bool rememberMe, bool isSuccess)? idle,
+    TResult Function(String? gender, bool rememberMe, bool isSuccess)? loading,
+    TResult Function(UserModel? user, AuthenticationResponse? authResponse,
+            String? gender, bool rememberMe, bool isSuccess)?
         authenticated,
-    TResult Function(String? gender, bool rememberMe)? unauthenticated,
-    TResult Function(String message, String? gender, bool rememberMe)? error,
+    TResult Function(String? gender, bool rememberMe, bool isSuccess)?
+        unauthenticated,
+    TResult Function(
+            String message, String? gender, bool rememberMe, bool isSuccess)?
+        error,
+    TResult Function(String? gender, bool rememberMe, bool isSuccess)?
+        otpVerified,
     required TResult orElse(),
   }) {
     if (error != null) {
-      return error(message, gender, rememberMe);
+      return error(message, gender, rememberMe, isSuccess);
     }
     return orElse();
   }
@@ -1171,6 +1510,7 @@ class _$ErrorImpl implements Error {
     required TResult Function(Authenticated value) authenticated,
     required TResult Function(Unauthenticated value) unauthenticated,
     required TResult Function(Error value) error,
+    required TResult Function(OtpVerified value) otpVerified,
   }) {
     return error(this);
   }
@@ -1184,6 +1524,7 @@ class _$ErrorImpl implements Error {
     TResult? Function(Authenticated value)? authenticated,
     TResult? Function(Unauthenticated value)? unauthenticated,
     TResult? Function(Error value)? error,
+    TResult? Function(OtpVerified value)? otpVerified,
   }) {
     return error?.call(this);
   }
@@ -1197,6 +1538,7 @@ class _$ErrorImpl implements Error {
     TResult Function(Authenticated value)? authenticated,
     TResult Function(Unauthenticated value)? unauthenticated,
     TResult Function(Error value)? error,
+    TResult Function(OtpVerified value)? otpVerified,
     required TResult orElse(),
   }) {
     if (error != null) {
@@ -1208,15 +1550,242 @@ class _$ErrorImpl implements Error {
 
 abstract class Error implements AuthState {
   const factory Error(final String message,
-      {final String? gender, final bool rememberMe}) = _$ErrorImpl;
+      {final String? gender,
+      final bool rememberMe,
+      final bool isSuccess}) = _$ErrorImpl;
 
   String get message;
   @override
   String? get gender;
-  @override
+  @override // Add gender here
   bool get rememberMe;
+  @override
+  bool get isSuccess;
   @override
   @JsonKey(ignore: true)
   _$$ErrorImplCopyWith<_$ErrorImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$OtpVerifiedImplCopyWith<$Res>
+    implements $AuthStateCopyWith<$Res> {
+  factory _$$OtpVerifiedImplCopyWith(
+          _$OtpVerifiedImpl value, $Res Function(_$OtpVerifiedImpl) then) =
+      __$$OtpVerifiedImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({String? gender, bool rememberMe, bool isSuccess});
+}
+
+/// @nodoc
+class __$$OtpVerifiedImplCopyWithImpl<$Res>
+    extends _$AuthStateCopyWithImpl<$Res, _$OtpVerifiedImpl>
+    implements _$$OtpVerifiedImplCopyWith<$Res> {
+  __$$OtpVerifiedImplCopyWithImpl(
+      _$OtpVerifiedImpl _value, $Res Function(_$OtpVerifiedImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? gender = freezed,
+    Object? rememberMe = null,
+    Object? isSuccess = null,
+  }) {
+    return _then(_$OtpVerifiedImpl(
+      gender: freezed == gender
+          ? _value.gender
+          : gender // ignore: cast_nullable_to_non_nullable
+              as String?,
+      rememberMe: null == rememberMe
+          ? _value.rememberMe
+          : rememberMe // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isSuccess: null == isSuccess
+          ? _value.isSuccess
+          : isSuccess // ignore: cast_nullable_to_non_nullable
+              as bool,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$OtpVerifiedImpl implements OtpVerified {
+  const _$OtpVerifiedImpl(
+      {this.gender, this.rememberMe = false, this.isSuccess = false});
+
+  @override
+  final String? gender;
+// Add gender here
+  @override
+  @JsonKey()
+  final bool rememberMe;
+  @override
+  @JsonKey()
+  final bool isSuccess;
+
+  @override
+  String toString() {
+    return 'AuthState.otpVerified(gender: $gender, rememberMe: $rememberMe, isSuccess: $isSuccess)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$OtpVerifiedImpl &&
+            (identical(other.gender, gender) || other.gender == gender) &&
+            (identical(other.rememberMe, rememberMe) ||
+                other.rememberMe == rememberMe) &&
+            (identical(other.isSuccess, isSuccess) ||
+                other.isSuccess == isSuccess));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, gender, rememberMe, isSuccess);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$OtpVerifiedImplCopyWith<_$OtpVerifiedImpl> get copyWith =>
+      __$$OtpVerifiedImplCopyWithImpl<_$OtpVerifiedImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>(
+    TResult Function(String? gender, bool rememberMe, bool isSuccess)
+        $default, {
+    required TResult Function(String? gender, bool rememberMe, bool isSuccess)
+        idle,
+    required TResult Function(String? gender, bool rememberMe, bool isSuccess)
+        loading,
+    required TResult Function(
+            UserModel? user,
+            AuthenticationResponse? authResponse,
+            String? gender,
+            bool rememberMe,
+            bool isSuccess)
+        authenticated,
+    required TResult Function(String? gender, bool rememberMe, bool isSuccess)
+        unauthenticated,
+    required TResult Function(
+            String message, String? gender, bool rememberMe, bool isSuccess)
+        error,
+    required TResult Function(String? gender, bool rememberMe, bool isSuccess)
+        otpVerified,
+  }) {
+    return otpVerified(gender, rememberMe, isSuccess);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>(
+    TResult? Function(String? gender, bool rememberMe, bool isSuccess)?
+        $default, {
+    TResult? Function(String? gender, bool rememberMe, bool isSuccess)? idle,
+    TResult? Function(String? gender, bool rememberMe, bool isSuccess)? loading,
+    TResult? Function(UserModel? user, AuthenticationResponse? authResponse,
+            String? gender, bool rememberMe, bool isSuccess)?
+        authenticated,
+    TResult? Function(String? gender, bool rememberMe, bool isSuccess)?
+        unauthenticated,
+    TResult? Function(
+            String message, String? gender, bool rememberMe, bool isSuccess)?
+        error,
+    TResult? Function(String? gender, bool rememberMe, bool isSuccess)?
+        otpVerified,
+  }) {
+    return otpVerified?.call(gender, rememberMe, isSuccess);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function(String? gender, bool rememberMe, bool isSuccess)?
+        $default, {
+    TResult Function(String? gender, bool rememberMe, bool isSuccess)? idle,
+    TResult Function(String? gender, bool rememberMe, bool isSuccess)? loading,
+    TResult Function(UserModel? user, AuthenticationResponse? authResponse,
+            String? gender, bool rememberMe, bool isSuccess)?
+        authenticated,
+    TResult Function(String? gender, bool rememberMe, bool isSuccess)?
+        unauthenticated,
+    TResult Function(
+            String message, String? gender, bool rememberMe, bool isSuccess)?
+        error,
+    TResult Function(String? gender, bool rememberMe, bool isSuccess)?
+        otpVerified,
+    required TResult orElse(),
+  }) {
+    if (otpVerified != null) {
+      return otpVerified(gender, rememberMe, isSuccess);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>(
+    TResult Function(_AuthState value) $default, {
+    required TResult Function(Idle value) idle,
+    required TResult Function(Loading value) loading,
+    required TResult Function(Authenticated value) authenticated,
+    required TResult Function(Unauthenticated value) unauthenticated,
+    required TResult Function(Error value) error,
+    required TResult Function(OtpVerified value) otpVerified,
+  }) {
+    return otpVerified(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>(
+    TResult? Function(_AuthState value)? $default, {
+    TResult? Function(Idle value)? idle,
+    TResult? Function(Loading value)? loading,
+    TResult? Function(Authenticated value)? authenticated,
+    TResult? Function(Unauthenticated value)? unauthenticated,
+    TResult? Function(Error value)? error,
+    TResult? Function(OtpVerified value)? otpVerified,
+  }) {
+    return otpVerified?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(_AuthState value)? $default, {
+    TResult Function(Idle value)? idle,
+    TResult Function(Loading value)? loading,
+    TResult Function(Authenticated value)? authenticated,
+    TResult Function(Unauthenticated value)? unauthenticated,
+    TResult Function(Error value)? error,
+    TResult Function(OtpVerified value)? otpVerified,
+    required TResult orElse(),
+  }) {
+    if (otpVerified != null) {
+      return otpVerified(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class OtpVerified implements AuthState {
+  const factory OtpVerified(
+      {final String? gender,
+      final bool rememberMe,
+      final bool isSuccess}) = _$OtpVerifiedImpl;
+
+  @override
+  String? get gender;
+  @override // Add gender here
+  bool get rememberMe;
+  @override
+  bool get isSuccess;
+  @override
+  @JsonKey(ignore: true)
+  _$$OtpVerifiedImplCopyWith<_$OtpVerifiedImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

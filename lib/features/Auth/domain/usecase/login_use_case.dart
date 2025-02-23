@@ -6,9 +6,9 @@ class LoginUseCase {
 
   LoginUseCase({required this.authRepository});
 
-  // Future<Map<String, dynamic>> execute(String email, String password) {
-  //   return authRepository.login(email, password);
-  // }
+  Future<AuthenticationResponse> execute(AuthenticationRequest authentication) {
+    return authRepository.login(authentication);
+  }
 }
 
 class SignUpUserUseCase {
@@ -16,5 +16,15 @@ class SignUpUserUseCase {
   SignUpUserUseCase({required this.authRepository});
   Future<Map<String, dynamic>> execute(UserModel userModel) {
     return authRepository.signUpUser(userModel);
+  }
+}
+
+class VerifyEmailUseCase {
+  final AuthRepository authRepository;
+
+  VerifyEmailUseCase({required this.authRepository});
+
+  Future<bool> execute(String email, String verificationCode) async {
+    return await authRepository.verifyOtp(email, verificationCode);
   }
 }

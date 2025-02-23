@@ -2,12 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:nepstayapp/core/nef_custom/nef_app_bar.dart';
 import 'package:nepstayapp/core/nef_custom/nef_elevated_button.dart';
-import 'package:nepstayapp/core/nef_custom/nef_nav_bar.dart';
 import 'package:nepstayapp/core/nef_custom/nef_padding.dart';
 import 'package:nepstayapp/core/nef_custom/nef_text_form_field.dart';
 import 'package:nepstayapp/core/utils/nef_spacing.dart';
 import 'package:nepstayapp/core/utils/string_util.dart';
-import 'package:nepstayapp/features/Auth/data/model/auth_state/auth_state.dart';
 import 'package:nepstayapp/features/Auth/presentation/pages/sign_up_page.dart';
 import 'package:nepstayapp/features/Auth/presentation/provider/auth_notifier.dart';
 
@@ -35,48 +33,50 @@ class _SetPasswordState extends ConsumerState<SetPassword> {
       ),
       body: GestureDetector(
         onTap: () => FocusScope.of(context).unfocus(),
-        child: NefPadding(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              const SizedBox(height: NefSpacing.spacing4),
-              NefTextFormField(
-                  labelText: enterYourPasswordStr,
-                  controller: _passwordController,
-                  obscureText: true,
-                  focusNode: _passwordFocusNode,
-                  suffixIcon: Icons.visibility_off_outlined),
-              NefTextFormField(
-                  labelText: confimPassword,
-                  controller: _passwordController,
-                  obscureText: true,
-                  focusNode: _passwordFocusNode,
-                  suffixIcon: Icons.visibility_off_outlined),
-              Text("Atleast 1 number or a special character"),
-              const SizedBox(height: NefSpacing.spacing4),
-              NefElevatedButton(
-                text: "Register",
-                onPressed: _handleSignIn,
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  const Text('Don\'t have an account?'),
-                  TextButton(
-                    onPressed: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => const SignUpPage()));
-                    },
-                    child: const Text(
-                      signUpStr,
-                      style: TextStyle(color: Colors.blue),
+        child: Form(
+          child: NefPadding(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                const SizedBox(height: NefSpacing.spacing4),
+                NefTextFormField(
+                    labelText: enterYourPasswordStr,
+                    controller: _passwordController,
+                    obscureText: true,
+                    focusNode: _passwordFocusNode,
+                    suffixIcon: Icons.visibility_off_outlined),
+                NefTextFormField(
+                    labelText: confimPassword,
+                    controller: _passwordController,
+                    obscureText: true,
+                    focusNode: _passwordFocusNode,
+                    suffixIcon: Icons.visibility_off_outlined),
+                Text("Atleast 1 number or a special character"),
+                const SizedBox(height: NefSpacing.spacing4),
+                NefElevatedButton(
+                  text: "Register",
+                  onPressed: _handleSignIn,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    const Text('Don\'t have an account?'),
+                    TextButton(
+                      onPressed: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => const SignUpPage()));
+                      },
+                      child: const Text(
+                        signUpStr,
+                        style: TextStyle(color: Colors.blue),
+                      ),
                     ),
-                  ),
-                ],
-              ),
-            ],
+                  ],
+                ),
+              ],
+            ),
           ),
         ),
       ),

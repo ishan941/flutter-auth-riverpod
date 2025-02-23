@@ -11,7 +11,7 @@ import 'package:nepstayapp/core/utils/nef_spacing.dart';
 import 'package:nepstayapp/core/utils/rid_dropdown.dart';
 import 'package:nepstayapp/features/Auth/presentation/pages/login_page.dart';
 import 'package:nepstayapp/features/Auth/presentation/pages/upload_profile.dart';
-import 'package:nepstayapp/features/Auth/presentation/pages/verify.dart';
+import 'package:nepstayapp/features/Auth/presentation/pages/verify_email.dart';
 import 'package:nepstayapp/features/Auth/presentation/provider/auth_notifier.dart';
 
 class SignUpPage extends ConsumerStatefulWidget {
@@ -62,7 +62,7 @@ class _SignUpPageState extends ConsumerState<SignUpPage> {
       );
       Navigator.pushReplacement(
         context,
-        MaterialPageRoute(builder: (context) => OTPVerificationScreen()),
+        MaterialPageRoute(builder: (context) => VerifyEmaiPage()),
       );
     } catch (error) {
       ScaffoldMessenger.of(context).showSnackBar(

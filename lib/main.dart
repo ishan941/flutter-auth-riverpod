@@ -1,9 +1,11 @@
+import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:hive_flutter/adapters.dart';
 import 'package:nepstayapp/features/initialPage/splash_screen.dart';
-import 'package:nepstayapp/features/initialPage/welcome.dart';
+import 'package:nepstayapp/firebase_options.dart';
 
 import 'injection_container.dart' as di;
 
@@ -13,9 +15,13 @@ void main() async {
   await Hive.initFlutter();
 
   // Hive.registerAdapter(UserAdapter());
-  // await Firebase.initializeApp(
-  //   options: DefaultFirebaseOptions.currentPlatform,
-  // );
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
+  // Get FCM token
+  String? fcmToken = await FirebaseMessaging.instance.getToken();
+  print("FCM Token: $fcmToken"); // Debugging
+
   SystemChrome.setPreferredOrientations([
     DeviceOrientation.portraitUp,
     DeviceOrientation.portraitDown,

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:nepstayapp/core/utils/color_util.dart';
+import 'package:nepstayapp/core/utils/nef_spacing.dart';
 // import 'package:rms_flutter/core/utils/color_util.dart';
 
 class ThemeHelper {
@@ -101,15 +102,19 @@ class ThemeHelper {
         captionBold: TextStyle(
             fontSize: 9, color: Colors.black, fontWeight: FontWeight.w700),
       ),
-      textSelectionTheme:
-          const TextSelectionThemeData(cursorColor: Colors.black),
+      textSelectionTheme: TextSelectionThemeData(
+          cursorColor: primaryColor,
+          selectionColor: primaryColor.withOpacity(0.3),
+          selectionHandleColor: primaryColor),
       snackBarTheme: const SnackBarThemeData(
           contentTextStyle: TextStyle(color: Colors.black)),
       elevatedButtonTheme: ElevatedButtonThemeData(
           style: ButtonStyle(
         textStyle: WidgetStateProperty.all<TextStyle>(
           const TextStyle(
-              fontSize: 16, color: Colors.white, fontWeight: FontWeight.w300),
+              fontSize: NefSpacing.spacing4,
+              color: Colors.white,
+              fontWeight: FontWeight.w300),
         ),
         backgroundColor: WidgetStateProperty.all<Color>(whiteColor),
         elevation: WidgetStateProperty.all<double>(4.0),

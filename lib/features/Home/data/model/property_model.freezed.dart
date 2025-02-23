@@ -523,15 +523,17 @@ PropertyDetailModel _$PropertyDetailModelFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$PropertyDetailModel {
-  String? get id => throw _privateConstructorUsedError;
-  String? get title => throw _privateConstructorUsedError;
-  String? get description => throw _privateConstructorUsedError;
-  int? get pricePerNight => throw _privateConstructorUsedError;
+  String get id => throw _privateConstructorUsedError;
+  String get title => throw _privateConstructorUsedError;
+  String get description => throw _privateConstructorUsedError;
+  @JsonKey(name: 'price_per_night')
+  int get pricePerNight => throw _privateConstructorUsedError;
+  @JsonKey(name: 'image_url')
   String? get imageUrl => throw _privateConstructorUsedError;
-  int? get bedrooms => throw _privateConstructorUsedError;
-  int? get bathrooms => throw _privateConstructorUsedError;
-  int? get guests => throw _privateConstructorUsedError;
-  Landlord? get landlord => throw _privateConstructorUsedError;
+  int get bedrooms => throw _privateConstructorUsedError;
+  int get bathrooms => throw _privateConstructorUsedError;
+  int get guests => throw _privateConstructorUsedError;
+  Landlord get landlord => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -546,17 +548,17 @@ abstract class $PropertyDetailModelCopyWith<$Res> {
       _$PropertyDetailModelCopyWithImpl<$Res, PropertyDetailModel>;
   @useResult
   $Res call(
-      {String? id,
-      String? title,
-      String? description,
-      int? pricePerNight,
-      String? imageUrl,
-      int? bedrooms,
-      int? bathrooms,
-      int? guests,
-      Landlord? landlord});
+      {String id,
+      String title,
+      String description,
+      @JsonKey(name: 'price_per_night') int pricePerNight,
+      @JsonKey(name: 'image_url') String? imageUrl,
+      int bedrooms,
+      int bathrooms,
+      int guests,
+      Landlord landlord});
 
-  $LandlordCopyWith<$Res>? get landlord;
+  $LandlordCopyWith<$Res> get landlord;
 }
 
 /// @nodoc
@@ -572,64 +574,60 @@ class _$PropertyDetailModelCopyWithImpl<$Res, $Val extends PropertyDetailModel>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = freezed,
-    Object? title = freezed,
-    Object? description = freezed,
-    Object? pricePerNight = freezed,
+    Object? id = null,
+    Object? title = null,
+    Object? description = null,
+    Object? pricePerNight = null,
     Object? imageUrl = freezed,
-    Object? bedrooms = freezed,
-    Object? bathrooms = freezed,
-    Object? guests = freezed,
-    Object? landlord = freezed,
+    Object? bedrooms = null,
+    Object? bathrooms = null,
+    Object? guests = null,
+    Object? landlord = null,
   }) {
     return _then(_value.copyWith(
-      id: freezed == id
+      id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as String?,
-      title: freezed == title
+              as String,
+      title: null == title
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
-              as String?,
-      description: freezed == description
+              as String,
+      description: null == description
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
-              as String?,
-      pricePerNight: freezed == pricePerNight
+              as String,
+      pricePerNight: null == pricePerNight
           ? _value.pricePerNight
           : pricePerNight // ignore: cast_nullable_to_non_nullable
-              as int?,
+              as int,
       imageUrl: freezed == imageUrl
           ? _value.imageUrl
           : imageUrl // ignore: cast_nullable_to_non_nullable
               as String?,
-      bedrooms: freezed == bedrooms
+      bedrooms: null == bedrooms
           ? _value.bedrooms
           : bedrooms // ignore: cast_nullable_to_non_nullable
-              as int?,
-      bathrooms: freezed == bathrooms
+              as int,
+      bathrooms: null == bathrooms
           ? _value.bathrooms
           : bathrooms // ignore: cast_nullable_to_non_nullable
-              as int?,
-      guests: freezed == guests
+              as int,
+      guests: null == guests
           ? _value.guests
           : guests // ignore: cast_nullable_to_non_nullable
-              as int?,
-      landlord: freezed == landlord
+              as int,
+      landlord: null == landlord
           ? _value.landlord
           : landlord // ignore: cast_nullable_to_non_nullable
-              as Landlord?,
+              as Landlord,
     ) as $Val);
   }
 
   @override
   @pragma('vm:prefer-inline')
-  $LandlordCopyWith<$Res>? get landlord {
-    if (_value.landlord == null) {
-      return null;
-    }
-
-    return $LandlordCopyWith<$Res>(_value.landlord!, (value) {
+  $LandlordCopyWith<$Res> get landlord {
+    return $LandlordCopyWith<$Res>(_value.landlord, (value) {
       return _then(_value.copyWith(landlord: value) as $Val);
     });
   }
@@ -644,18 +642,18 @@ abstract class _$$PropertyDetailModelImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {String? id,
-      String? title,
-      String? description,
-      int? pricePerNight,
-      String? imageUrl,
-      int? bedrooms,
-      int? bathrooms,
-      int? guests,
-      Landlord? landlord});
+      {String id,
+      String title,
+      String description,
+      @JsonKey(name: 'price_per_night') int pricePerNight,
+      @JsonKey(name: 'image_url') String? imageUrl,
+      int bedrooms,
+      int bathrooms,
+      int guests,
+      Landlord landlord});
 
   @override
-  $LandlordCopyWith<$Res>? get landlord;
+  $LandlordCopyWith<$Res> get landlord;
 }
 
 /// @nodoc
@@ -669,53 +667,53 @@ class __$$PropertyDetailModelImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = freezed,
-    Object? title = freezed,
-    Object? description = freezed,
-    Object? pricePerNight = freezed,
+    Object? id = null,
+    Object? title = null,
+    Object? description = null,
+    Object? pricePerNight = null,
     Object? imageUrl = freezed,
-    Object? bedrooms = freezed,
-    Object? bathrooms = freezed,
-    Object? guests = freezed,
-    Object? landlord = freezed,
+    Object? bedrooms = null,
+    Object? bathrooms = null,
+    Object? guests = null,
+    Object? landlord = null,
   }) {
     return _then(_$PropertyDetailModelImpl(
-      id: freezed == id
+      id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as String?,
-      title: freezed == title
+              as String,
+      title: null == title
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
-              as String?,
-      description: freezed == description
+              as String,
+      description: null == description
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
-              as String?,
-      pricePerNight: freezed == pricePerNight
+              as String,
+      pricePerNight: null == pricePerNight
           ? _value.pricePerNight
           : pricePerNight // ignore: cast_nullable_to_non_nullable
-              as int?,
+              as int,
       imageUrl: freezed == imageUrl
           ? _value.imageUrl
           : imageUrl // ignore: cast_nullable_to_non_nullable
               as String?,
-      bedrooms: freezed == bedrooms
+      bedrooms: null == bedrooms
           ? _value.bedrooms
           : bedrooms // ignore: cast_nullable_to_non_nullable
-              as int?,
-      bathrooms: freezed == bathrooms
+              as int,
+      bathrooms: null == bathrooms
           ? _value.bathrooms
           : bathrooms // ignore: cast_nullable_to_non_nullable
-              as int?,
-      guests: freezed == guests
+              as int,
+      guests: null == guests
           ? _value.guests
           : guests // ignore: cast_nullable_to_non_nullable
-              as int?,
-      landlord: freezed == landlord
+              as int,
+      landlord: null == landlord
           ? _value.landlord
           : landlord // ignore: cast_nullable_to_non_nullable
-              as Landlord?,
+              as Landlord,
     ));
   }
 }
@@ -724,37 +722,39 @@ class __$$PropertyDetailModelImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$PropertyDetailModelImpl implements _PropertyDetailModel {
   const _$PropertyDetailModelImpl(
-      {this.id,
-      this.title,
-      this.description,
-      this.pricePerNight,
-      this.imageUrl,
-      this.bedrooms,
-      this.bathrooms,
-      this.guests,
-      this.landlord});
+      {required this.id,
+      required this.title,
+      required this.description,
+      @JsonKey(name: 'price_per_night') required this.pricePerNight,
+      @JsonKey(name: 'image_url') this.imageUrl,
+      required this.bedrooms,
+      required this.bathrooms,
+      required this.guests,
+      required this.landlord});
 
   factory _$PropertyDetailModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$PropertyDetailModelImplFromJson(json);
 
   @override
-  final String? id;
+  final String id;
   @override
-  final String? title;
+  final String title;
   @override
-  final String? description;
+  final String description;
   @override
-  final int? pricePerNight;
+  @JsonKey(name: 'price_per_night')
+  final int pricePerNight;
   @override
+  @JsonKey(name: 'image_url')
   final String? imageUrl;
   @override
-  final int? bedrooms;
+  final int bedrooms;
   @override
-  final int? bathrooms;
+  final int bathrooms;
   @override
-  final int? guests;
+  final int guests;
   @override
-  final Landlord? landlord;
+  final Landlord landlord;
 
   @override
   String toString() {
@@ -805,37 +805,39 @@ class _$PropertyDetailModelImpl implements _PropertyDetailModel {
 
 abstract class _PropertyDetailModel implements PropertyDetailModel {
   const factory _PropertyDetailModel(
-      {final String? id,
-      final String? title,
-      final String? description,
-      final int? pricePerNight,
-      final String? imageUrl,
-      final int? bedrooms,
-      final int? bathrooms,
-      final int? guests,
-      final Landlord? landlord}) = _$PropertyDetailModelImpl;
+      {required final String id,
+      required final String title,
+      required final String description,
+      @JsonKey(name: 'price_per_night') required final int pricePerNight,
+      @JsonKey(name: 'image_url') final String? imageUrl,
+      required final int bedrooms,
+      required final int bathrooms,
+      required final int guests,
+      required final Landlord landlord}) = _$PropertyDetailModelImpl;
 
   factory _PropertyDetailModel.fromJson(Map<String, dynamic> json) =
       _$PropertyDetailModelImpl.fromJson;
 
   @override
-  String? get id;
+  String get id;
   @override
-  String? get title;
+  String get title;
   @override
-  String? get description;
+  String get description;
   @override
-  int? get pricePerNight;
+  @JsonKey(name: 'price_per_night')
+  int get pricePerNight;
   @override
+  @JsonKey(name: 'image_url')
   String? get imageUrl;
   @override
-  int? get bedrooms;
+  int get bedrooms;
   @override
-  int? get bathrooms;
+  int get bathrooms;
   @override
-  int? get guests;
+  int get guests;
   @override
-  Landlord? get landlord;
+  Landlord get landlord;
   @override
   @JsonKey(ignore: true)
   _$$PropertyDetailModelImplCopyWith<_$PropertyDetailModelImpl> get copyWith =>
@@ -849,8 +851,9 @@ Landlord _$LandlordFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$Landlord {
   String get id => throw _privateConstructorUsedError;
-  String? get name => throw _privateConstructorUsedError;
-  String? get avatarUrl => throw _privateConstructorUsedError;
+  String get name => throw _privateConstructorUsedError;
+  @JsonKey(name: 'avatar_url')
+  String get avatarUrl => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -863,7 +866,8 @@ abstract class $LandlordCopyWith<$Res> {
   factory $LandlordCopyWith(Landlord value, $Res Function(Landlord) then) =
       _$LandlordCopyWithImpl<$Res, Landlord>;
   @useResult
-  $Res call({String id, String? name, String? avatarUrl});
+  $Res call(
+      {String id, String name, @JsonKey(name: 'avatar_url') String avatarUrl});
 }
 
 /// @nodoc
@@ -880,22 +884,22 @@ class _$LandlordCopyWithImpl<$Res, $Val extends Landlord>
   @override
   $Res call({
     Object? id = null,
-    Object? name = freezed,
-    Object? avatarUrl = freezed,
+    Object? name = null,
+    Object? avatarUrl = null,
   }) {
     return _then(_value.copyWith(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String,
-      name: freezed == name
+      name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
-              as String?,
-      avatarUrl: freezed == avatarUrl
+              as String,
+      avatarUrl: null == avatarUrl
           ? _value.avatarUrl
           : avatarUrl // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
     ) as $Val);
   }
 }
@@ -908,7 +912,8 @@ abstract class _$$LandlordImplCopyWith<$Res>
       __$$LandlordImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String id, String? name, String? avatarUrl});
+  $Res call(
+      {String id, String name, @JsonKey(name: 'avatar_url') String avatarUrl});
 }
 
 /// @nodoc
@@ -923,22 +928,22 @@ class __$$LandlordImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? id = null,
-    Object? name = freezed,
-    Object? avatarUrl = freezed,
+    Object? name = null,
+    Object? avatarUrl = null,
   }) {
     return _then(_$LandlordImpl(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String,
-      name: freezed == name
+      name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
-              as String?,
-      avatarUrl: freezed == avatarUrl
+              as String,
+      avatarUrl: null == avatarUrl
           ? _value.avatarUrl
           : avatarUrl // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
     ));
   }
 }
@@ -946,7 +951,10 @@ class __$$LandlordImplCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$LandlordImpl implements _Landlord {
-  const _$LandlordImpl({required this.id, this.name, this.avatarUrl});
+  const _$LandlordImpl(
+      {required this.id,
+      required this.name,
+      @JsonKey(name: 'avatar_url') required this.avatarUrl});
 
   factory _$LandlordImpl.fromJson(Map<String, dynamic> json) =>
       _$$LandlordImplFromJson(json);
@@ -954,9 +962,10 @@ class _$LandlordImpl implements _Landlord {
   @override
   final String id;
   @override
-  final String? name;
+  final String name;
   @override
-  final String? avatarUrl;
+  @JsonKey(name: 'avatar_url')
+  final String avatarUrl;
 
   @override
   String toString() {
@@ -994,9 +1003,10 @@ class _$LandlordImpl implements _Landlord {
 
 abstract class _Landlord implements Landlord {
   const factory _Landlord(
-      {required final String id,
-      final String? name,
-      final String? avatarUrl}) = _$LandlordImpl;
+          {required final String id,
+          required final String name,
+          @JsonKey(name: 'avatar_url') required final String avatarUrl}) =
+      _$LandlordImpl;
 
   factory _Landlord.fromJson(Map<String, dynamic> json) =
       _$LandlordImpl.fromJson;
@@ -1004,9 +1014,10 @@ abstract class _Landlord implements Landlord {
   @override
   String get id;
   @override
-  String? get name;
+  String get name;
   @override
-  String? get avatarUrl;
+  @JsonKey(name: 'avatar_url')
+  String get avatarUrl;
   @override
   @JsonKey(ignore: true)
   _$$LandlordImplCopyWith<_$LandlordImpl> get copyWith =>

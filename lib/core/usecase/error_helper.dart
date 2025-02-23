@@ -1,15 +1,14 @@
 import 'dart:convert';
 import 'package:nepstayapp/core/error/failure.dart';
-import 'package:nepstayapp/core/utils/info_helper.dart';
 import 'package:nepstayapp/core/utils/string_util.dart';
 
 class ErrorHelper {
   static String? checkErrorResponse(Failure failure) {
     String? errorMsg;
     if (failure is NetworkFailure) {
-      errorMsg = pleaseCheckInternetStr;
+      errorMsg = networkErrorStr;
     } else if (failure.errorCode == 404) {
-      errorMsg = urlNotFound;
+      errorMsg = dataNotFoundStr;
     } else if (failure is ServerFailure) {
       try {
         if (failure.message is Map &&

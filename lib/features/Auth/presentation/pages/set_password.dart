@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:nepstayapp/core/nef_custom/nef_app_bar.dart';
 import 'package:nepstayapp/core/nef_custom/nef_elevated_button.dart';
-import 'package:nepstayapp/core/nef_custom/nef_nav_bar.dart';
 import 'package:nepstayapp/core/nef_custom/nef_padding.dart';
 import 'package:nepstayapp/core/nef_custom/nef_text_form_field.dart';
 import 'package:nepstayapp/core/utils/nef_spacing.dart';
@@ -10,14 +9,14 @@ import 'package:nepstayapp/core/utils/string_util.dart';
 import 'package:nepstayapp/features/Auth/presentation/pages/sign_up_page.dart';
 import 'package:nepstayapp/features/Auth/presentation/provider/auth_notifier.dart';
 
-class LoginPage extends ConsumerStatefulWidget {
-  const LoginPage({super.key});
+class SetPassword extends ConsumerStatefulWidget {
+  const SetPassword({super.key});
 
   @override
-  ConsumerState<LoginPage> createState() => _LoginPageState();
+  ConsumerState<SetPassword> createState() => _SetPasswordState();
 }
 
-class _LoginPageState extends ConsumerState<LoginPage> {
+class _SetPasswordState extends ConsumerState<SetPassword> {
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
   final FocusNode _emailFocusNode = FocusNode();
@@ -34,39 +33,28 @@ class _LoginPageState extends ConsumerState<LoginPage> {
       ),
       body: GestureDetector(
         onTap: () => FocusScope.of(context).unfocus(),
-        child: SingleChildScrollView(
+        child: Form(
           child: NefPadding(
             child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                SizedBox(
-                    height: 150,
-                    child: Image.asset("assets/images/Splash.png")),
                 const SizedBox(height: NefSpacing.spacing4),
                 NefTextFormField(
-                  labelText: enterYourEmailStr,
-                  controller: authNotifier.emailController,
-                  focusNode: _emailFocusNode,
-                ),
-                NefTextFormField(
                     labelText: enterYourPasswordStr,
-                    controller: authNotifier.passwordController,
+                    controller: _passwordController,
                     obscureText: true,
                     focusNode: _passwordFocusNode,
                     suffixIcon: Icons.visibility_off_outlined),
-                Row(
-                  children: [
-                    Checkbox(
-                        value: authState.rememberMe,
-                        onChanged: (bool? value) {
-                          // authNotifier.toggleRememberMe(value ?? false);
-                        }),
-                    const Text("Remember Me"),
-                  ],
-                ),
-                const SizedBox(height: NefSpacing.spacing2),
+                NefTextFormField(
+                    labelText: confimPassword,
+                    controller: _passwordController,
+                    obscureText: true,
+                    focusNode: _passwordFocusNode,
+                    suffixIcon: Icons.visibility_off_outlined),
+                Text("Atleast 1 number or a special character"),
+                const SizedBox(height: NefSpacing.spacing4),
                 NefElevatedButton(
-                  text: "Sign In",
+                  text: "Register",
                   onPressed: _handleSignIn,
                 ),
                 Row(
@@ -96,27 +84,26 @@ class _LoginPageState extends ConsumerState<LoginPage> {
   }
 
   void _handleSignIn() async {
-    await ref.read(authProvider.notifier).login();
+    // final email = _emailController.text.trim();
+    // final password = _passwordController.text;
 
-    final authState = ref.read(authProvider);
+    // if (email.isEmpty || password.isEmpty) {
+    //   _showError(context, 'Please fill in both fields.');
+    //   return;
+    // }
 
-    if (authState.isSuccess) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(
-          content:
-              Text('Login successful!', style: TextStyle(color: Colors.green)),
-        ),
-      );
+    // await ref.read(authProvider.notifier).login(email, password);
+    // final authState = ref.read(authProvider);
 
-      // // Navigate to the next screen
-      // Navigator.pushAndRemoveUntil(
-      //   context,
-      //   MaterialPageRoute(builder: (context) => const NefNavBar()),
-      //   (Route<dynamic> route) => false,
-      // );
-    } else if (authState is Error) {
-      _showError(context, "Sorry!");
-    }
+    // if (authState is Authenticated) {
+    //   // InfoHelper.showSuccessToast(context, "successfully login");
+    //   Navigator.pushAndRemoveUntil(
+    //       context,
+    //       (MaterialPageRoute(builder: (context) => NefNavBar())),
+    //       (Route<dynamic> route) => false);
+    // } else if (authState is Error) {
+    //   // InfoHelper.showSuccessToast(context, "Failed login");
+    // }
   }
 
   void _showError(BuildContext context, String message) {

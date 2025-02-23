@@ -40,7 +40,7 @@ class PropertyRepositoryImpl extends BaseRepository
       }
     } else {
       return const Left(NetworkFailure(
-          noInternetConnection, HttpStatus.networkAuthenticationRequired));
+          noInternetConnectionStr, HttpStatus.networkAuthenticationRequired));
     }
   }
 
@@ -63,7 +63,7 @@ class PropertyRepositoryImpl extends BaseRepository
       }
     } else {
       return const Left(NetworkFailure(
-          noInternetConnection, HttpStatus.networkAuthenticationRequired));
+          noInternetConnectionStr, HttpStatus.networkAuthenticationRequired));
     }
   }
 }

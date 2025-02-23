@@ -9,7 +9,7 @@ class NefPadding extends StatelessWidget {
   static const EdgeInsets horizontalPadding =
       EdgeInsets.symmetric(horizontal: 16);
   static const EdgeInsets verticalPadding = EdgeInsets.symmetric(vertical: 16);
-  static const EdgeInsets bottomPadding = EdgeInsets.only(bottom: 16);
+  static const EdgeInsets bottomPadding = EdgeInsets.only(bottom: 20);
 
   const NefPadding({
     Key? key,

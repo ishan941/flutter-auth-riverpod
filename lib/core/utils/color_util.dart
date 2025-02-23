@@ -2,13 +2,13 @@ import 'package:flutter/material.dart';
 
 class ColorUtil {
   // Base Colors
-  static const Color primaryColor = Color(0xFF0982FB);
+  static const Color primaryColor = Color(0xFF3996D9);
   static const Color primaryColor2 = Color(0xff509AC3);
   static const Color secondaryColor = Color(0xffE5EFF4);
 }
 
 // Neutral Colors
-const Color primaryColor = Color(0xFF0982FB);
+const Color primaryColor = Color(0xFF3996D9);
 const Color primaryColor2 = Color(0xff509AC3);
 const Color secondaryColor = Color(0xffE5EFF4);
 const Color neutral50 = Color(0xFFF5F5F5);

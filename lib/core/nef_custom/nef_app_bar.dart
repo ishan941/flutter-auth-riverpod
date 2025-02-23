@@ -9,43 +9,52 @@ class NefAppBar extends StatelessWidget implements PreferredSizeWidget {
   final Color backgroundColor;
   final List<Widget>? actions;
   final bool showBackButton;
+  final bool showBackText;
 
   final VoidCallback? onFilterPressed;
   final VoidCallback? onDownloadPressed;
   final VoidCallback? onProfilePressed;
   final VoidCallback? onBackButtonPressed;
   int? count;
-  NefAppBar({
-    Key? key,
-    required this.title,
-    this.count,
-    this.backgroundColor = Colors.blue,
-    this.actions,
-    this.onDownloadPressed,
-    this.showBackButton = true,
-    this.onFilterPressed,
-    this.onBackButtonPressed,
-    this.onProfilePressed,
-  }) : super(key: key);
+  NefAppBar(
+      {Key? key,
+      required this.title,
+      this.count,
+      this.backgroundColor = Colors.blue,
+      this.actions,
+      this.onDownloadPressed,
+      this.showBackButton = true,
+      this.onFilterPressed,
+      this.onBackButtonPressed,
+      this.onProfilePressed,
+      this.showBackText = false})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return AppBar(
       centerTitle: true,
       title: Text(title, style: const TextStyle(color: whiteColor)),
-      backgroundColor: primaryColor,
+      // backgroundColor: whiteColor,
       automaticallyImplyLeading: false,
+      leadingWidth: 100,
       leading: showBackButton
-          ? IconButton(
-              icon: const Icon(
-                Icons.arrow_back_ios_new_rounded,
-                color: Colors.white,
-                size: NefSpacing.spacing5,
-              ),
-              onPressed: onBackButtonPressed ??
-                  () {
-                    Navigator.of(context).pop();
-                  },
+          ? Row(
+              children: [
+                IconButton(
+                  icon: const Icon(
+                    Icons.arrow_back_ios_new_rounded,
+                    color: Colors.black,
+                    size: NefSpacing.spacing5,
+                  ),
+                  onPressed: onBackButtonPressed ??
+                      () {
+                        Navigator.of(context).pop();
+                      },
+                ),
+                const Text("Back",
+                    style: TextStyle(fontSize: 20, color: Colors.black))
+              ],
             )
           : null,
       actions: [

@@ -85,6 +85,8 @@ void registerUseCases() {
       () => LoginUseCase(authRepository: sl()));
   sl.registerLazySingleton<SignUpUserUseCase>(
       () => SignUpUserUseCase(authRepository: sl()));
+  sl.registerLazySingleton<VerifyEmailUseCase>(
+      () => VerifyEmailUseCase(authRepository: sl()));
 
   //Delete Usecase
 }
@@ -96,6 +98,7 @@ void registerNotifier() {
         loginUseCase: sl(),
         signUpUserUseCase: sl(),
         sharedPref: sl(),
+        verifyEmailUseCase: sl(),
       ));
   sl.registerFactory(() => PropertyNotifier(getPropertyUseCase: sl()));
   sl.registerFactory(

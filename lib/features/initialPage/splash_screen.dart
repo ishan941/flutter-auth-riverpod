@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:nepstayapp/core/nef_custom/nef_nav_bar.dart';
 import 'package:nepstayapp/core/utils/color_util.dart';
 import 'package:nepstayapp/core/utils/nef_spacing.dart';
-
 import 'package:nepstayapp/core/utils/shared_preference.dart';
 import 'package:nepstayapp/features/initialPage/onboarding.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -16,8 +16,6 @@ class SplashScreen extends StatefulWidget {
 class _SplashScreenState extends State<SplashScreen>
     with SingleTickerProviderStateMixin {
   SharedPref? sharedPref;
-  String version = 'Version 1.0.0'; // Example version
-
   late AnimationController _controller;
   late Animation<double> _fadeAnimation;
 
@@ -26,7 +24,6 @@ class _SplashScreenState extends State<SplashScreen>
     super.initState();
     _initializeApp();
 
-    // Animation Setup
     _controller = AnimationController(
       vsync: this,
       duration: const Duration(seconds: 3),
@@ -37,43 +34,39 @@ class _SplashScreenState extends State<SplashScreen>
       curve: Curves.easeIn,
     );
 
-    // Start the animation
     _controller.forward();
   }
 
   Future<void> _initializeApp() async {
-    Future.delayed(const Duration(seconds: 3), () {
-      _initializeSharedPrefs();
-      _checkLoginStatus();
-    });
-  }
-
-  Future<void> _initializeSharedPrefs() async {
     final prefs = await SharedPreferences.getInstance();
     sharedPref = SharedPref(sp: prefs);
-    _checkLoginStatus();
-  }
 
-  Future<void> _checkLoginStatus() async {
-    if (sharedPref == null) return;
     bool isLoggedIn = await _isUserLoggedIn();
+
     Future.delayed(const Duration(seconds: 2), () {
       if (isLoggedIn) {
-        // Navigate to Home or Dashboard
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(builder: (context) => NefNavBar()),
+        );
       } else {
-        // Navigate to Onboarding or Login
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(builder: (context) => OnboardingScreen()),
+        );
       }
-      Navigator.pushAndRemoveUntil(
-        context,
-        MaterialPageRoute(builder: (context) => OnboardingScreen()),
-        (Route<dynamic> route) => false, // This removes all previous routes
-      );
     });
   }
 
   Future<bool> _isUserLoggedIn() async {
-    String token = sharedPref!.readStringValFrmPreference('accessTokenKey');
-    bool rememberMe = sharedPref!.readBoolValFrmPreference('remember_me');
+    if (sharedPref == null) return false;
+
+    String token = sharedPref!.readStringValFrmPreference(accessTokenKey);
+    bool rememberMe = sharedPref!.readBoolValFrmPreference("remember_me");
+
+    print("Token from SharedPreferences: $token"); // Debugging
+    print("Remember Me: $rememberMe");
+
     return token.isNotEmpty && rememberMe;
   }
 
@@ -94,25 +87,13 @@ class _SplashScreenState extends State<SplashScreen>
             color: primaryColor,
           ),
           SafeArea(
-            child: Container(
-              color: Colors.white,
-              child: Stack(
-                children: [
-                  Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Center(
-                        child: FadeTransition(
-                          opacity: _fadeAnimation,
-                          child: Image.asset(
-                            "assets/images/Splash.png",
-                            width: NefSpacing.spacing50,
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                ],
+            child: Center(
+              child: FadeTransition(
+                opacity: _fadeAnimation,
+                child: Image.asset(
+                  "assets/images/Splash.png",
+                  width: NefSpacing.spacing50,
+                ),
               ),
             ),
           ),

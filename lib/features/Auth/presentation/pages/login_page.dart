@@ -59,7 +59,7 @@ class _LoginPageState extends ConsumerState<LoginPage> {
                     Checkbox(
                         value: authState.rememberMe,
                         onChanged: (bool? value) {
-                          // authNotifier.toggleRememberMe(value ?? false);
+                          authNotifier.toggleRememberMe(value ?? false);
                         }),
                     const Text("Remember Me"),
                   ],
@@ -108,12 +108,12 @@ class _LoginPageState extends ConsumerState<LoginPage> {
         ),
       );
 
-      // // Navigate to the next screen
-      // Navigator.pushAndRemoveUntil(
-      //   context,
-      //   MaterialPageRoute(builder: (context) => const NefNavBar()),
-      //   (Route<dynamic> route) => false,
-      // );
+      // Navigate to the next screen
+      Navigator.pushAndRemoveUntil(
+        context,
+        MaterialPageRoute(builder: (context) => const NefNavBar()),
+        (Route<dynamic> route) => false,
+      );
     } else if (authState is Error) {
       _showError(context, "Sorry!");
     }

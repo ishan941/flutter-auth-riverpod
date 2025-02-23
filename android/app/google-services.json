@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "242422080119",
+    "project_id": "ridenepa-dd565",
+    "storage_bucket": "ridenepa-dd565.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:242422080119:android:a32183861bbf872aa65c72",
+        "android_client_info": {
+          "package_name": "com.ridenepa.app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC7yH72sWqD4_0h0Bkkv_nLeN9sJoYdwaU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

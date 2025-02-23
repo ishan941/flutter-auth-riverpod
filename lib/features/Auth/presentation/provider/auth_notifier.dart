@@ -1,3 +1,6 @@
+import 'dart:io';
+
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:nepstayapp/core/utils/shared_preference.dart';
@@ -45,17 +48,51 @@ class AuthNotifier extends StateNotifier<AuthState> {
     return 'An unexpected error occurred.';
   }
 
+  // Future<void> getDeviceInfo() async {
+  //   if (Platform.isAndroid) {
+  //     state = state.copyWith(deviceType: "android");
+  //   } else if (Platform.isIOS) {
+  //     state = state.copyWith(deviceType: "ios");
+  //   }
+  // }
+
+  // Future<void> getFCMToken() async {
+  //   final messaging = FirebaseMessaging.instance;
+  //   String? firebaseToken;
+  //   if (Platform.isIOS) {
+  //     firebaseToken = await messaging.getAPNSToken();
+  //   } else if (Platform.isAndroid) {
+  //     firebaseToken = await messaging.getToken();
+  //   }
+  //   if (firebaseToken != null) {
+  //     state = state.copyWith(deviceToken: firebaseToken);
+  //     await login(firebaseToken);
+  //   }
+  // }
+
   Future<void> login() async {
     state = const AuthState.loading();
-
+    // Get FCM Token
+    String? fcmToken = await FirebaseMessaging.instance.getToken();
+    print("Generated FCM Token: $fcmToken");
     AuthenticationRequest authenticationRequest = AuthenticationRequest(
-        email: emailController.text, password: passwordController.text);
+        email: emailController.text,
+        password: passwordController.text,
+        fcmToken: fcmToken ?? "");
 
     try {
       final authResponse = await loginUseCase.execute(authenticationRequest);
-
+      // Save tokens in shared preferences
+      await sharedPref.saveDataToPreference(
+          accessTokenKey, authResponse.accessToken);
+      await sharedPref.saveDataToPreference(
+          refreshTokenKey, authResponse.refreshToken);
       state = AuthState.loading(rememberMe: state.rememberMe);
-
+      if (state.rememberMe) {
+        await sharedPref.saveDataToPreference("email", emailController.text);
+        await sharedPref.saveDataToPreference(
+            "password", passwordController.text);
+      }
       state = AuthState.authenticated(authResponse: authResponse);
       state = state.copyWith(isSuccess: true);
     } catch (e) {
@@ -124,18 +161,20 @@ class AuthNotifier extends StateNotifier<AuthState> {
     print('User data cleared from Hive.');
   }
 
-  // void toggleRememberMe(bool value) async {
-  //   await sharedPref.saveDataToPreference('remember_me', value);
-  //   state = state.when(
+  Future<void> _loadRememberMe() async {
+    bool rememberMe = sharedPref.readBoolValFrmPreference('remember_me');
+    if (rememberMe) {
+      emailController.text = sharedPref.readStringValFrmPreference('email');
+      passwordController.text =
+          sharedPref.readStringValFrmPreference('password');
+    }
+    state = state.copyWith(rememberMe: rememberMe);
+  }
 
-  //     idle: (_) => AuthState.idle(rememberMe: value),
-  //     loading: (_) => AuthState.loading(rememberMe: value),
-  //     authenticated: (user, _) =>
-  //         AuthState.authenticated(user, rememberMe: value),
-  //     unauthenticated: (_) => AuthState.unauthenticated(rememberMe: value),
-  //     error: (message, _) => AuthState.error(message, rememberMe: value),
-  //   );
-  // }
+  void toggleRememberMe(bool value) async {
+    await sharedPref.saveDataToPreference('remember_me', value);
+    state = state.copyWith(rememberMe: value);
+  }
 }
 
 final authProvider = StateNotifierProvider<AuthNotifier, AuthState>(

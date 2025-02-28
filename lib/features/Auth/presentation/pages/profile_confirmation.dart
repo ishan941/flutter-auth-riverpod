@@ -3,8 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:nepstayapp/core/nef_custom/nef_app_bar.dart';
 import 'package:nepstayapp/core/nef_custom/nef_elevated_button.dart';
 import 'package:nepstayapp/core/nef_custom/nef_padding.dart';
-import 'package:nepstayapp/core/utils/info_helper.dart';
-import 'package:nepstayapp/features/Auth/data/model/auth_state/auth_state.dart';
+
 import 'package:nepstayapp/features/Auth/presentation/pages/verify_email.dart';
 
 import 'package:nepstayapp/features/Auth/presentation/provider/auth_notifier.dart';

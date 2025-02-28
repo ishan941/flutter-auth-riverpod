@@ -30,7 +30,7 @@ class AuthRepositoryImpl implements AuthRepository {
   Future<bool> verifyOtp(String email, String verificationCode) async {
     try {
       final result = await authDataSource.verifyOtp(email, verificationCode);
-      return result; // Assuming the API returns a boolean indicating success
+      return result;
     } catch (error) {
       throw Exception('OTP verification failed');
     }
@@ -47,6 +47,16 @@ class AuthRepositoryImpl implements AuthRepository {
     } catch (e) {
       print("Error in login: $e");
       throw Exception('Failed to log in. Please try again later.');
+    }
+  }
+
+  @override
+  Future<bool> sendOtpToEmailRepo(String email) async {
+    try {
+      final result = await authDataSource.verifyEmail(email);
+      return result;
+    } catch (error) {
+      throw Exception('OTP verification failed $error');
     }
   }
 }

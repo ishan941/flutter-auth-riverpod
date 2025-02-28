@@ -84,7 +84,7 @@ class _NefNavBarState extends ConsumerState<NefNavBar> {
                   ),
                 ),
               ),
-              label: "profileStr",
+              label: "Profile",
             ),
           ],
           currentIndex: _selectedIndex,

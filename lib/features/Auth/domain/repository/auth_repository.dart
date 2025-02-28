@@ -5,4 +5,5 @@ abstract class AuthRepository {
       AuthenticationRequest authenticationRequest);
   Future<Map<String, dynamic>> signUpUser(UserModel userModel);
   Future<bool> verifyOtp(String email, String verificationCode);
+  Future<bool> sendOtpToEmailRepo(String email);
 }

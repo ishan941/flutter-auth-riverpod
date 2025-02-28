@@ -8,7 +8,10 @@ import 'package:nepstayapp/core/nef_custom/nef_text_form_field.dart';
 import 'package:nepstayapp/core/utils/info_helper.dart';
 import 'package:nepstayapp/core/utils/nef_spacing.dart';
 import 'package:nepstayapp/core/utils/string_util.dart';
+import 'package:nepstayapp/features/Auth/presentation/pages/forgot_password/enter_email_page.dart';
+import 'package:nepstayapp/features/Auth/presentation/pages/forgot_password/forgot_password.dart';
 import 'package:nepstayapp/features/Auth/presentation/pages/sign_up_page.dart';
+import 'package:nepstayapp/features/Auth/presentation/pages/verify_email.dart';
 import 'package:nepstayapp/features/Auth/presentation/provider/auth_notifier.dart';
 
 class LoginPage extends ConsumerStatefulWidget {
@@ -59,6 +62,14 @@ class _LoginPageState extends ConsumerState<LoginPage> {
                     obscureText: true,
                     focusNode: _passwordFocusNode,
                     suffixIcon: Icons.visibility_off_outlined),
+                InkWell(
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => EnterEmailPage()));
+                    },
+                    child: Text("Forgot password ?")),
                 Row(
                   children: [
                     Checkbox(

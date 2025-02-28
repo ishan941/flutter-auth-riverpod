@@ -16,6 +16,7 @@ class AuthNotifier extends StateNotifier<AuthState> {
   final LoginUseCase loginUseCase;
   final SignUpUserUseCase signUpUserUseCase;
   final VerifyEmailUseCase verifyEmailUseCase;
+  final SendOtpTpEmailUseCase sendOtpTpEmailUseCase;
   final SharedPref sharedPref;
 
   final TextEditingController firstNameController = TextEditingController();
@@ -39,6 +40,7 @@ class AuthNotifier extends StateNotifier<AuthState> {
     required this.signUpUserUseCase,
     required this.loginUseCase,
     required this.sharedPref,
+    required this.sendOtpTpEmailUseCase,
   }) : super(const AuthState.idle());
 
   String _mapErrorToMessage(String error) {
@@ -155,6 +157,21 @@ class AuthNotifier extends StateNotifier<AuthState> {
     }
   }
 
+  Future<void> sendOtpToEmail() async {
+    try {
+      state = const AuthState.loading();
+
+      final result = await sendOtpTpEmailUseCase.execute(emailController.text);
+      if (result) {
+        state = const AuthState.otpVerified(isSuccess: true);
+      } else {
+        state = AuthState.error('OTP verification failed');
+      }
+    } catch (error) {
+      state = AuthState.error(error.toString());
+    }
+  }
+
   Future<void> fetchUser() async {
     final userHiveService = UserHiveService();
     final user = await userHiveService.getUserFromHive();
@@ -197,5 +214,6 @@ final authProvider = StateNotifierProvider<AuthNotifier, AuthState>(
     signUpUserUseCase: SignUpUserUseCase(authRepository: sl()),
     sharedPref: sl(),
     verifyEmailUseCase: sl(),
+    sendOtpTpEmailUseCase: sl(),
   ),
 );

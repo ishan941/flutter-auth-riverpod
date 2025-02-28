@@ -5,6 +5,7 @@ import 'package:nepstayapp/core/nef_custom/nef_elevated_button.dart';
 import 'package:nepstayapp/core/nef_custom/nef_nav_bar.dart';
 import 'package:nepstayapp/core/nef_custom/nef_padding.dart';
 import 'package:nepstayapp/core/nef_custom/nef_text_form_field.dart';
+import 'package:nepstayapp/core/utils/info_helper.dart';
 import 'package:nepstayapp/core/utils/nef_spacing.dart';
 import 'package:nepstayapp/core/utils/string_util.dart';
 import 'package:nepstayapp/features/Auth/presentation/pages/sign_up_page.dart';
@@ -101,28 +102,14 @@ class _LoginPageState extends ConsumerState<LoginPage> {
     final authState = ref.read(authProvider);
 
     if (authState.isSuccess) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(
-          content:
-              Text('Login successful!', style: TextStyle(color: Colors.green)),
-        ),
-      );
-
-      // Navigate to the next screen
+      InfoHelper.showSuccessToast(context, "Successfully login!");
       Navigator.pushAndRemoveUntil(
         context,
         MaterialPageRoute(builder: (context) => const NefNavBar()),
         (Route<dynamic> route) => false,
       );
-    } else if (authState is Error) {
-      _showError(context, "Sorry!");
+    } else {
+      InfoHelper.showErrorToast(context, "Failed to login!");
     }
-  }
-
-  void _showError(BuildContext context, String message) {
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(
-          content: Text(message, style: const TextStyle(color: Colors.red))),
-    );
   }
 }

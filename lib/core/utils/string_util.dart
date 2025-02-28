@@ -18,6 +18,11 @@ const String passwordChangedSuccessfullyStr = "Password changed successfully";
 const String passwordStr = "Password";
 const String confimPassword = "Confirm Password";
 
+//Credit
+const String noStr = "No";
+const String yesStr = 'Yes';
+const String areYouSureStr = "Are you sure ?";
+
 // Form Fields
 const String nameStr = "Name";
 const String emailStr = "Email";
@@ -39,6 +44,7 @@ const String genderErrorStr = "Please select your gender";
 const String phoneErrorStr = "Please enter a valid phone number";
 const String invalidEmailErrorStr = "Invalid email format";
 const String passwordMismatchErrorStr = "Passwords do not match";
+const String enterValidCredentialsStr = "Please enter valid Credentials";
 
 // Success and Confirmation
 const String registrationSuccessStr = "Registration successful";

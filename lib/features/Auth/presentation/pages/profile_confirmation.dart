@@ -3,6 +3,8 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:nepstayapp/core/nef_custom/nef_app_bar.dart';
 import 'package:nepstayapp/core/nef_custom/nef_elevated_button.dart';
 import 'package:nepstayapp/core/nef_custom/nef_padding.dart';
+import 'package:nepstayapp/core/utils/info_helper.dart';
+import 'package:nepstayapp/features/Auth/data/model/auth_state/auth_state.dart';
 import 'package:nepstayapp/features/Auth/presentation/pages/verify_email.dart';
 
 import 'package:nepstayapp/features/Auth/presentation/provider/auth_notifier.dart';
@@ -96,17 +98,27 @@ class _ProfileConfirmationState extends ConsumerState<ProfileConfirmation> {
                     width: 10,
                   ),
                   Expanded(
-                      child: RidElevatedButton(
-                          text: submitStr,
-                          onPressed: () {
-                            authNotifier.signUpUser();
-                            if (authState.isSuccess) {
-                              Navigator.push(
-                                  context,
-                                  (MaterialPageRoute(
-                                      builder: (context) => VerifyEmaiPage())));
-                            }
-                          })),
+                    child: RidElevatedButton(
+                      text: submitStr,
+                      onPressed: () {
+                        authNotifier.signUpUser();
+
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => VerifyEmaiPage()),
+                        );
+                        // } else if (authState is Error) {
+                        //   final errorState = authState as Error;
+                        //   InfoHelper.showErrorToast(
+                        //       context, errorState.message);
+                        // } else {
+                        //   InfoHelper.showErrorToast(context,
+                        //       "Failed! Please check your info once again");
+                        // }
+                      },
+                    ),
+                  ),
                 ],
               )
             ],

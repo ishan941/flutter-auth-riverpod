@@ -87,13 +87,22 @@ class _SplashScreenState extends State<SplashScreen>
             color: primaryColor,
           ),
           SafeArea(
-            child: Center(
-              child: FadeTransition(
-                opacity: _fadeAnimation,
-                child: Image.asset(
-                  "assets/images/Splash.png",
-                  width: NefSpacing.spacing50,
-                ),
+            child: Container(
+              color: Colors.white,
+              child: Stack(
+                children: [
+                  Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Center(
+                        child: Image.asset(
+                          "assets/images/Splash.png",
+                          width: NefSpacing.spacing50,
+                        ),
+                      ),
+                    ],
+                  ),
+                ],
               ),
             ),
           ),

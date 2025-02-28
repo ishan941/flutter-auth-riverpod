@@ -3,7 +3,9 @@ import 'package:flutter_otp_text_field/flutter_otp_text_field.dart';
 import 'package:nepstayapp/core/nef_custom/nef_elevated_button.dart';
 import 'package:nepstayapp/core/nef_custom/nef_typography_helper.dart';
 import 'package:nepstayapp/core/utils/color_util.dart';
+import 'package:nepstayapp/core/utils/info_helper.dart';
 import 'package:nepstayapp/core/utils/string_util.dart';
+import 'package:nepstayapp/features/Auth/presentation/pages/login_page.dart';
 import 'package:nepstayapp/features/Auth/presentation/pages/set_password.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:nepstayapp/features/Auth/presentation/provider/auth_notifier.dart';
@@ -60,8 +62,11 @@ class _VerifyEmaiPageState extends ConsumerState<VerifyEmaiPage> {
                   final verificationSuccess = authState.isSuccess;
 
                   if (verificationSuccess) {
+                    InfoHelper.showSuccessToast(context,
+                        "Congratulations! Your Account has been Created");
+
                     Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => SetPassword()));
+                        MaterialPageRoute(builder: (context) => LoginPage()));
                   } else {
                     // Show a dialog or a message indicating failure
                     showDialog(

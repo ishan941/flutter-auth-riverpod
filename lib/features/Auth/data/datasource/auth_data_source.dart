@@ -12,6 +12,7 @@ abstract class AuthDataSource {
       AuthenticationRequest authenticationRequest);
   Future<Map<String, dynamic>> signUpUser(UserModel userM);
   Future<bool> verifyOtp(String email, String verificationCode);
+  Future<bool> verifyEmail(String email);
 }
 
 class AuthDataSourceImpl implements AuthDataSource {
@@ -66,11 +67,34 @@ class AuthDataSourceImpl implements AuthDataSource {
       );
 
       if (response.statusCode == 200) {
-        return response.data == true;
-      } else {
-        throw Exception(
-            'Failed to verify OTP. Server returned: ${response.statusCode}');
+        final responseData = response.data;
+        if (responseData is Map<String, dynamic> &&
+            responseData["StatusCode"] == 200) {
+          return true;
+        }
       }
+      throw Exception(
+          'Failed to verify OTP. Server returned: ${response.statusCode}');
+    } catch (e) {
+      throw Exception('Failed to verify OTP: ${e.toString()}');
+    }
+  }
+
+  @override
+  Future<bool> verifyEmail(String email) async {
+    try {
+      final Response response = await dioHttp.post(
+        url: "${Api.baseUrl}${Api.sendOtpinEmailApi}$email",
+      );
+      if (response.statusCode == 200) {
+        final responseData = response.data;
+        if (responseData is Map<String, dynamic> &&
+            responseData["StatusCode"] == 200) {
+          return true;
+        }
+      }
+      throw Exception(
+          'Failed to verify OTP. Server returned: ${response.statusCode}');
     } catch (e) {
       throw Exception('Failed to verify OTP: ${e.toString()}');
     }

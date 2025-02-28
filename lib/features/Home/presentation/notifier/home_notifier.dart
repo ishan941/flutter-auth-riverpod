@@ -2,7 +2,6 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:nepstayapp/core/error/failure.dart';
 import 'package:nepstayapp/core/usecase/usecase.dart';
 import 'package:nepstayapp/features/Home/data/model/property_model.dart';
-import 'package:nepstayapp/features/Home/domain/usecase/get_property_details_use_case.dart';
 import 'package:nepstayapp/features/Home/domain/usecase/get_property_use_case.dart';
 
 import 'package:nepstayapp/injection_container.dart';

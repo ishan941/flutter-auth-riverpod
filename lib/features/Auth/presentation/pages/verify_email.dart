@@ -5,13 +5,14 @@ import 'package:nepstayapp/core/nef_custom/nef_typography_helper.dart';
 import 'package:nepstayapp/core/utils/color_util.dart';
 import 'package:nepstayapp/core/utils/info_helper.dart';
 import 'package:nepstayapp/core/utils/string_util.dart';
+import 'package:nepstayapp/features/Auth/presentation/pages/forgot_password/forgot_password.dart';
 import 'package:nepstayapp/features/Auth/presentation/pages/login_page.dart';
-import 'package:nepstayapp/features/Auth/presentation/pages/set_password.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:nepstayapp/features/Auth/presentation/provider/auth_notifier.dart';
 
 class VerifyEmaiPage extends ConsumerStatefulWidget {
-  const VerifyEmaiPage({super.key});
+  bool? isPasswordChange;
+  VerifyEmaiPage({super.key, this.isPasswordChange = false});
 
   @override
   ConsumerState<VerifyEmaiPage> createState() => _VerifyEmaiPageState();
@@ -62,11 +63,20 @@ class _VerifyEmaiPageState extends ConsumerState<VerifyEmaiPage> {
                   final verificationSuccess = authState.isSuccess;
 
                   if (verificationSuccess) {
-                    InfoHelper.showSuccessToast(context,
-                        "Congratulations! Your Account has been Created");
-
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => LoginPage()));
+                    widget.isPasswordChange!
+                        ? InfoHelper.showSuccessToast(
+                            context, "Please enter you new password")
+                        : InfoHelper.showSuccessToast(context,
+                            "Congratulations! Your Account has been Created");
+                    widget.isPasswordChange!
+                        ? Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => ForgotPassword()))
+                        : Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => LoginPage()));
                   } else {
                     // Show a dialog or a message indicating failure
                     showDialog(

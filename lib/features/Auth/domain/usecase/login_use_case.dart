@@ -28,3 +28,13 @@ class VerifyEmailUseCase {
     return await authRepository.verifyOtp(email, verificationCode);
   }
 }
+
+class SendOtpTpEmailUseCase {
+  final AuthRepository authRepository;
+
+  SendOtpTpEmailUseCase({required this.authRepository});
+
+  Future<bool> execute(String email) async {
+    return await authRepository.sendOtpToEmailRepo(email);
+  }
+}

@@ -12,6 +12,7 @@ class Api {
   static const String verifyEmailApi = 'api/v1/auth-service/verifyEmail';
   static const String sendOtpinEmailApi =
       'api/v1/auth-service/SendOtpForPassword/';
+  static const String changePasswordApi = "api/v1/auth-service/changePassword/";
 
   static const String getUserByIdApi = 'api/user/';
   static const String updateUserByIdApi = 'api/user/update/';

@@ -62,14 +62,19 @@ class _LoginPageState extends ConsumerState<LoginPage> {
                     obscureText: true,
                     focusNode: _passwordFocusNode,
                     suffixIcon: Icons.visibility_off_outlined),
-                InkWell(
-                    onTap: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => EnterEmailPage()));
-                    },
-                    child: Text("Forgot password ?")),
+                Row(
+                  children: [
+                    Spacer(),
+                    InkWell(
+                        onTap: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => EnterEmailPage()));
+                        },
+                        child: Text("Forgot password ?")),
+                  ],
+                ),
                 Row(
                   children: [
                     Checkbox(

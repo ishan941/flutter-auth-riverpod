@@ -17,7 +17,6 @@ import 'package:nepstayapp/features/Home/domain/repository/property_repository.d
 import 'package:nepstayapp/features/Home/domain/usecase/get_property_details_use_case.dart';
 import 'package:nepstayapp/features/Home/domain/usecase/get_property_use_case.dart';
 import 'package:nepstayapp/features/Home/presentation/notifier/home_notifier.dart';
-import 'package:nepstayapp/features/Property/notifier/home_detail_notifier.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 final sl = GetIt.instance;
@@ -101,8 +100,6 @@ void registerNotifier() {
         verifyEmailUseCase: sl(),
       ));
   sl.registerFactory(() => PropertyNotifier(getPropertyUseCase: sl()));
-  sl.registerFactory(
-      () => PropertyDetailNotifier(getPropertyDetailUseCase: sl()));
 }
 
 Future<void> init() async {

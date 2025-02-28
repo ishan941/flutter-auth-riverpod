@@ -1,8 +1,10 @@
 import 'dart:io';
 
+import 'package:dio/dio.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:nepstayapp/core/error/exception_error.dart';
 import 'package:nepstayapp/core/utils/shared_preference.dart';
 import 'package:nepstayapp/features/Auth/data/model/auth_model/user_model.dart';
 import 'package:nepstayapp/features/Auth/data/model/auth_state/auth_state.dart';
@@ -109,9 +111,8 @@ class AuthNotifier extends StateNotifier<AuthState> {
           lastName: lastNameController.text,
           email: emailController.text,
           password: passwordController.text,
-          contactNumber: int.tryParse(contactNumberController.text) ??
-              0, // Ensuring integer conversion
-          gender: state.gender ?? "Not specfied",
+          contactNumber: int.tryParse(contactNumberController.text) ?? 0,
+          gender: state.gender ?? "Not specified",
           city: cityController.text,
           street: streetController.text,
           district: districtController.text,
@@ -122,7 +123,20 @@ class AuthNotifier extends StateNotifier<AuthState> {
 
       state = AuthState.authenticated(user: user, isSuccess: true);
     } catch (error) {
-      state = AuthState.error(error.toString());
+      // Extract meaningful error message
+      String errorMessage = "An unexpected error occurred"; // Default message
+
+      if (error is DioException) {
+        if (error.response != null && error.response?.data is Map) {
+          errorMessage = error.response?.data['message'] ?? errorMessage;
+        } else {
+          errorMessage = error.message ?? errorMessage;
+        }
+      } else if (error is ServerException) {
+        errorMessage = error.message ?? errorMessage;
+      }
+
+      state = AuthState.error(errorMessage);
     }
   }
 

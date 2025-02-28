@@ -32,6 +32,7 @@ class _LoginPageState extends ConsumerState<LoginPage> {
     return Scaffold(
       appBar: NefAppBar(
         title: "",
+        showBackButton: false,
       ),
       body: GestureDetector(
         onTap: () => FocusScope.of(context).unfocus(),
@@ -40,6 +41,9 @@ class _LoginPageState extends ConsumerState<LoginPage> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
+                const SizedBox(
+                  height: 80,
+                ),
                 SizedBox(
                     height: 150,
                     child: Image.asset("assets/images/Splash.png")),

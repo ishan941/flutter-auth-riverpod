@@ -76,6 +76,6 @@ class _MyAppState extends State<MyApp> {
         // home: SliverAppBarExample()
         // home: SignUpScreen());
         // home: WelcomePage());
-        home: ForgotPassword());
+        home: SplashScreen());
   }
 }

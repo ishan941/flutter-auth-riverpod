@@ -46,13 +46,15 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
           const SizedBox(height: NefSpacing.spacing22),
           Text(
             text,
-            style: Theme.of(context).textTheme.headline3SemiBold,
+            // style: Theme.of(context).textTheme.headline3SemiBold,
             textAlign: textAlign,
           ),
           const SizedBox(height: NefSpacing.spacing5),
-          Text(description,
-              textAlign: textAlign,
-              style: Theme.of(context).textTheme.subheadingRegular),
+          Text(
+            description,
+            textAlign: textAlign,
+            // style: Theme.of(context).textTheme.subheadingRegular
+          ),
         ],
       ),
     );
@@ -121,10 +123,12 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                                   RouteGenerator.navigateToPageWithoutStack(
                                       context, Routes.loginPageRouter);
                                 },
-                                child: Text(skipStr,
-                                    style: Theme.of(context)
-                                        .textTheme
-                                        .subheadingRegular),
+                                child: Text(
+                                  skipStr,
+                                  // style: Theme.of(context)
+                                  //     .textTheme
+                                  //     .subheadingRegular
+                                ),
                               ),
                               Container(
                                 decoration: BoxDecoration(

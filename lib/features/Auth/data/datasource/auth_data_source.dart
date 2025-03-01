@@ -116,7 +116,7 @@ class AuthDataSourceImpl implements AuthDataSource {
   Future<bool> changePasswordDataSource(
       String email, String newPassword) async {
     try {
-      final Response response = await dioHttp.post(
+      final Response response = await dioHttp.patch(
           url: "${Api.baseUrl}${Api.changePasswordApi}$email",
           data: {"password": newPassword, "repeatPassword": newPassword});
       if (response.statusCode == 200) {

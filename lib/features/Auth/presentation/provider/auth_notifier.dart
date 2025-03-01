@@ -23,6 +23,7 @@ class AuthNotifier extends StateNotifier<AuthState> {
   final TextEditingController lastNameController = TextEditingController();
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
+  final TextEditingController newPasswordController = TextEditingController();
   final TextEditingController contactNumberController = TextEditingController();
   final TextEditingController genderController = TextEditingController();
   final TextEditingController cityController = TextEditingController();
@@ -74,36 +75,8 @@ class AuthNotifier extends StateNotifier<AuthState> {
   //   }
   // }
 
-  Future<void> login() async {
-    state = const AuthState.loading();
-    // Get FCM Token
-    String? fcmToken = await FirebaseMessaging.instance.getToken();
-    print("Generated FCM Token: $fcmToken");
-    AuthenticationRequest authenticationRequest = AuthenticationRequest(
-        email: emailController.text,
-        password: passwordController.text,
-        fcmToken: fcmToken ?? "");
-
-    try {
-      final authResponse = await loginUseCase.execute(authenticationRequest);
-      // Save tokens in shared preferences
-      await sharedPref.saveDataToPreference(
-          accessTokenKey, authResponse.accessToken);
-      await sharedPref.saveDataToPreference(
-          refreshTokenKey, authResponse.refreshToken);
-      state = AuthState.loading(rememberMe: state.rememberMe);
-      if (state.rememberMe) {
-        await sharedPref.saveDataToPreference("email", emailController.text);
-        await sharedPref.saveDataToPreference(
-            "password", passwordController.text);
-      }
-      state = AuthState.authenticated(authResponse: authResponse);
-      state = state.copyWith(isSuccess: true);
-    } catch (e) {
-      state = AuthState.error(e.toString());
-    }
-  }
-
+  //
+// Signup user
   Future<void> signUpUser() async {
     try {
       state = const AuthState.loading();
@@ -142,6 +115,40 @@ class AuthNotifier extends StateNotifier<AuthState> {
     }
   }
 
+//
+// login user
+  Future<void> login() async {
+    state = const AuthState.loading();
+    // Get FCM Token
+    String? fcmToken = await FirebaseMessaging.instance.getToken();
+    print("Generated FCM Token: $fcmToken");
+    AuthenticationRequest authenticationRequest = AuthenticationRequest(
+        email: emailController.text,
+        password: passwordController.text,
+        fcmToken: fcmToken ?? "");
+
+    try {
+      final authResponse = await loginUseCase.execute(authenticationRequest);
+      // Save tokens in shared preferences
+      await sharedPref.saveDataToPreference(
+          accessTokenKey, authResponse.accessToken);
+      await sharedPref.saveDataToPreference(
+          refreshTokenKey, authResponse.refreshToken);
+      state = AuthState.loading(rememberMe: state.rememberMe);
+      if (state.rememberMe) {
+        await sharedPref.saveDataToPreference("email", emailController.text);
+        await sharedPref.saveDataToPreference(
+            "password", passwordController.text);
+      }
+      state = AuthState.authenticated(authResponse: authResponse);
+      state = state.copyWith(isSuccess: true);
+    } catch (e) {
+      state = AuthState.error(e.toString());
+    }
+  }
+
+//
+// verify email
   Future<void> verifyEmail(String email, String verificationCode) async {
     try {
       state = const AuthState.loading();
@@ -157,6 +164,8 @@ class AuthNotifier extends StateNotifier<AuthState> {
     }
   }
 
+//
+// Send otp to email
   Future<void> sendOtpToEmail() async {
     try {
       state = const AuthState.loading();
@@ -165,11 +174,46 @@ class AuthNotifier extends StateNotifier<AuthState> {
       if (result) {
         state = const AuthState.otpVerified(isSuccess: true);
       } else {
-        state = AuthState.error('OTP verification failed');
+        state = const AuthState.error('OTP verification failed');
       }
     } catch (error) {
       state = AuthState.error(error.toString());
     }
+  }
+
+//
+// Change password
+  Future<void> changePassword() async {
+    try {
+      state = const AuthState.loading();
+      final result = await sendOtpTpEmailUseCase.changePassword(
+          emailController.text, newPasswordController.text);
+      if (result) {
+        state = const AuthState.changePassword(isPasswordChange: true);
+      } else {
+        state = const AuthState.error('failed to change password');
+      }
+      // final result
+    } catch (e) {
+      state = AuthState.error(e.toString());
+    }
+  }
+
+//
+// Log out
+  Future<void> logout() async {
+    state = AuthState.loading(rememberMe: state.rememberMe);
+
+    final userHiveService = UserHiveService();
+    await sharedPref.clearPreferenceData();
+    await userHiveService.clearUserData();
+    state = AuthState.unauthenticated(rememberMe: state.rememberMe);
+    print('User data cleared from Hive.');
+  }
+
+  void toggleRememberMe(bool value) async {
+    await sharedPref.saveDataToPreference('remember_me', value);
+    state = state.copyWith(rememberMe: value);
   }
 
   Future<void> fetchUser() async {
@@ -182,17 +226,7 @@ class AuthNotifier extends StateNotifier<AuthState> {
     }
   }
 
-  Future<void> logout() async {
-    state = AuthState.loading(rememberMe: state.rememberMe);
-
-    final userHiveService = UserHiveService();
-    await sharedPref.clearPreferenceData();
-    await userHiveService.clearUserData();
-    state = AuthState.unauthenticated(rememberMe: state.rememberMe);
-    print('User data cleared from Hive.');
-  }
-
-  Future<void> _loadRememberMe() async {
+  Future<void> loadRememberMe() async {
     bool rememberMe = sharedPref.readBoolValFrmPreference('remember_me');
     if (rememberMe) {
       emailController.text = sharedPref.readStringValFrmPreference('email');
@@ -200,11 +234,6 @@ class AuthNotifier extends StateNotifier<AuthState> {
           sharedPref.readStringValFrmPreference('password');
     }
     state = state.copyWith(rememberMe: rememberMe);
-  }
-
-  void toggleRememberMe(bool value) async {
-    await sharedPref.saveDataToPreference('remember_me', value);
-    state = state.copyWith(rememberMe: value);
   }
 }
 

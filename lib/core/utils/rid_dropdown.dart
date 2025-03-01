@@ -26,10 +26,10 @@ class RidDropdown extends StatelessWidget {
       value: isValueInItems ? value : null,
       hint: Text(
         hintText,
-        style: Theme.of(context)
-            .textTheme
-            .subheadingRegular
-            ?.copyWith(color: grey300),
+        // style: Theme.of(context)
+        //     .textTheme
+        //     .subheadingRegular
+        //     ?.copyWith(color: grey300),
       ),
       decoration: InputDecoration(
         contentPadding: EdgeInsets.symmetric(horizontal: NefSpacing.spacing4),
@@ -56,7 +56,7 @@ class RidDropdown extends StatelessWidget {
           value: item,
           child: Text(
             item,
-            style: Theme.of(context).textTheme.subheadingRegular,
+            // style: Theme.of(context).textTheme.subheadingRegular,
           ),
         );
       }).toList(),
@@ -101,10 +101,10 @@ class NefDropdownGenderField extends StatelessWidget {
             value: isValueInItems ? value : null,
             hint: Text(
               hintText,
-              style: Theme.of(context)
-                  .textTheme
-                  .captionRegular
-                  ?.copyWith(color: grey300),
+              // style: Theme.of(context)
+              //     .textTheme
+              //     .captionRegular
+              //     ?.copyWith(color: grey300),
             ),
             isExpanded: true,
             onChanged: onChanged,
@@ -113,7 +113,7 @@ class NefDropdownGenderField extends StatelessWidget {
                 value: gender,
                 child: Text(
                   gender,
-                  style: Theme.of(context).textTheme.subheadingRegular,
+                  // style: Theme.of(context).textTheme.subheadingRegular,
                 ),
               );
             }).toList(),

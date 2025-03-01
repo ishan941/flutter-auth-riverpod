@@ -5,6 +5,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:hive_flutter/adapters.dart';
 import 'package:nepstayapp/core/utils/theme_helper.dart';
+import 'package:nepstayapp/features/Auth/presentation/pages/forgot_password/forgot_password.dart';
 import 'package:nepstayapp/features/initialPage/splash_screen.dart';
 import 'package:nepstayapp/firebase_options.dart';
 

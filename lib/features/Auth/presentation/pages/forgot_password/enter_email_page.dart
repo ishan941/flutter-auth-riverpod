@@ -15,7 +15,7 @@ class EnterEmailPage extends ConsumerStatefulWidget {
 }
 
 class _EnterEmailPageState extends ConsumerState<EnterEmailPage> {
-  final _formKey = GlobalKey<FormState>(); // Form key to manage the validation
+  final _formKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {

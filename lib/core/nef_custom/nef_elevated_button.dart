@@ -122,18 +122,22 @@ class NefElevationBackButton extends StatelessWidget {
                 isForm! ? Navigator.pop(context) : null;
               },
           child: isTextCenter!
-              ? Text(text,
-                  style: Theme.of(context)
-                      .textTheme
-                      .subheadingRegular
-                      ?.copyWith(color: primary700))
+              ? Text(
+                  text,
+                  // style: Theme.of(context)
+                  //     .textTheme
+                  //     .subheadingRegular
+                  //     ?.copyWith(color: primary700)
+                )
               : Align(
                   alignment: AlignmentDirectional.centerStart,
-                  child: Text(text,
-                      style: Theme.of(context)
-                          .textTheme
-                          .subheadingRegular
-                          ?.copyWith(color: primary700)),
+                  child: Text(
+                    text,
+                    // style: Theme.of(context)
+                    //     .textTheme
+                    //     .subheadingRegular
+                    //     ?.copyWith(color: primary700)
+                  ),
                 )),
     );
   }

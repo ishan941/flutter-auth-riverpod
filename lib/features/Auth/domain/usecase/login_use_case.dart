@@ -1,5 +1,7 @@
 import 'package:nepstayapp/features/Auth/data/model/auth_model/user_model.dart';
 import 'package:nepstayapp/features/Auth/domain/repository/auth_repository.dart';
+//
+// Login Use Case
 
 class LoginUseCase {
   final AuthRepository authRepository;
@@ -11,6 +13,8 @@ class LoginUseCase {
   }
 }
 
+//
+// Sign up
 class SignUpUserUseCase {
   final AuthRepository authRepository;
   SignUpUserUseCase({required this.authRepository});
@@ -19,6 +23,8 @@ class SignUpUserUseCase {
   }
 }
 
+//
+// Verify email
 class VerifyEmailUseCase {
   final AuthRepository authRepository;
 
@@ -29,6 +35,8 @@ class VerifyEmailUseCase {
   }
 }
 
+//
+// Send otp to email
 class SendOtpTpEmailUseCase {
   final AuthRepository authRepository;
 
@@ -37,4 +45,19 @@ class SendOtpTpEmailUseCase {
   Future<bool> execute(String email) async {
     return await authRepository.sendOtpToEmailRepo(email);
   }
+
+  Future<bool> changePassword(String email, String newPassword) async {
+    return await authRepository.changePasswordRepo(email, newPassword);
+  }
 }
+
+// //
+// // chnage password
+// class ChangePasswordUseCase {
+//   final AuthRepository authRepository;
+//   ChangePasswordUseCase({required this.authRepository});
+
+//   Future<bool> changePassword(String email) async {
+//     return await authRepository.changePasswordRepo(email);
+//   }
+// }

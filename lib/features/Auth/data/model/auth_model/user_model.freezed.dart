@@ -964,11 +964,6 @@ abstract class _AuthenticationRequest implements AuthenticationRequest {
       get copyWith => throw _privateConstructorUsedError;
 }
 
-AuthenticationResponse _$AuthenticationResponseFromJson(
-    Map<String, dynamic> json) {
-  return _AuthenticationResponse.fromJson(json);
-}
-
 /// @nodoc
 mixin _$AuthenticationResponse {
   String get accessToken => throw _privateConstructorUsedError;
@@ -976,7 +971,6 @@ mixin _$AuthenticationResponse {
   String get role => throw _privateConstructorUsedError;
   String? get imageUrl => throw _privateConstructorUsedError;
 
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $AuthenticationResponseCopyWith<AuthenticationResponse> get copyWith =>
       throw _privateConstructorUsedError;
@@ -1085,16 +1079,13 @@ class __$$AuthenticationResponseImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-@JsonSerializable()
+
 class _$AuthenticationResponseImpl implements _AuthenticationResponse {
   const _$AuthenticationResponseImpl(
       {required this.accessToken,
       required this.refreshToken,
       required this.role,
       this.imageUrl});
-
-  factory _$AuthenticationResponseImpl.fromJson(Map<String, dynamic> json) =>
-      _$$AuthenticationResponseImplFromJson(json);
 
   @override
   final String accessToken;
@@ -1124,7 +1115,6 @@ class _$AuthenticationResponseImpl implements _AuthenticationResponse {
                 other.imageUrl == imageUrl));
   }
 
-  @JsonKey(ignore: true)
   @override
   int get hashCode =>
       Object.hash(runtimeType, accessToken, refreshToken, role, imageUrl);
@@ -1135,13 +1125,6 @@ class _$AuthenticationResponseImpl implements _AuthenticationResponse {
   _$$AuthenticationResponseImplCopyWith<_$AuthenticationResponseImpl>
       get copyWith => __$$AuthenticationResponseImplCopyWithImpl<
           _$AuthenticationResponseImpl>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$AuthenticationResponseImplToJson(
-      this,
-    );
-  }
 }
 
 abstract class _AuthenticationResponse implements AuthenticationResponse {
@@ -1150,9 +1133,6 @@ abstract class _AuthenticationResponse implements AuthenticationResponse {
       required final String refreshToken,
       required final String role,
       final String? imageUrl}) = _$AuthenticationResponseImpl;
-
-  factory _AuthenticationResponse.fromJson(Map<String, dynamic> json) =
-      _$AuthenticationResponseImpl.fromJson;
 
   @override
   String get accessToken;

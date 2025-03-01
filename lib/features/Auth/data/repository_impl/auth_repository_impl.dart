@@ -11,7 +11,8 @@ class AuthRepositoryImpl implements AuthRepository {
     required this.authDataSource,
     required this.networkInfo,
   });
-
+//
+// Signup
   @override
   Future<Map<String, dynamic>> signUpUser(UserModel userMode) async {
     if (!await networkInfo.isConnected) {
@@ -26,6 +27,8 @@ class AuthRepositoryImpl implements AuthRepository {
     }
   }
 
+//
+// verify otp
   @override
   Future<bool> verifyOtp(String email, String verificationCode) async {
     try {
@@ -36,6 +39,8 @@ class AuthRepositoryImpl implements AuthRepository {
     }
   }
 
+//
+// login
   @override
   Future<AuthenticationResponse> login(
       AuthenticationRequest authenticationRequest) async {
@@ -50,6 +55,8 @@ class AuthRepositoryImpl implements AuthRepository {
     }
   }
 
+//
+// send otp email
   @override
   Future<bool> sendOtpToEmailRepo(String email) async {
     try {
@@ -57,6 +64,19 @@ class AuthRepositoryImpl implements AuthRepository {
       return result;
     } catch (error) {
       throw Exception('OTP verification failed $error');
+    }
+  }
+
+//
+// Change password
+  @override
+  Future<bool> changePasswordRepo(String email, String newPassword) async {
+    try {
+      final result =
+          await authDataSource.changePasswordDataSource(email, newPassword);
+      return result;
+    } catch (e) {
+      throw Exception("Failed to change password: $e");
     }
   }
 }

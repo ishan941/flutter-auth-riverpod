@@ -195,11 +195,13 @@ class NefGradientElevatedButton extends StatelessWidget {
 class NefForwardButton extends StatelessWidget {
   final VoidCallback onPressed;
   final String label;
+  final IconData icon; // Add icon parameter
 
   const NefForwardButton({
     super.key,
     required this.onPressed,
     required this.label,
+    required this.icon, // Make icon required
   });
 
   @override
@@ -216,14 +218,27 @@ class NefForwardButton extends StatelessWidget {
       child: Container(
         color: Colors.white70,
         width: MediaQuery.of(context).size.width,
-        height: NefSpacing.spacing13,
+        height: 50,
         child: Row(
           children: [
-            Text(label, style: NefTypographyHelper.bodyLgBold),
-            Spacer(),
             Icon(
+              icon,
+              color: Colors.black,
+              size: 25,
+            ), // Display the provided icon
+            const SizedBox(width: 10), // Add spacing between icon and text
+            Text(
+              label,
+              style: const TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.black), // Adjust text style
+            ),
+            const Spacer(),
+            const Icon(
               Icons.arrow_forward_ios_rounded,
-              color: grey400,
+              color: Colors.grey,
+              size: 18,
             )
           ],
         ),

@@ -3,20 +3,16 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:nepstayapp/core/nef_custom/nef_app_bar.dart';
 import 'package:nepstayapp/core/nef_custom/nef_elevated_button.dart';
 import 'package:nepstayapp/core/nef_custom/nef_padding.dart';
-import 'package:nepstayapp/features/Auth/presentation/pages/login_page.dart';
 import 'package:nepstayapp/features/Auth/presentation/provider/auth_notifier.dart';
-import 'package:nepstayapp/features/profile/edit_profile.dart';
-import 'package:nepstayapp/features/profile/verify_kyc.dart';
-import 'package:nepstayapp/features/profile/view_profile.dart';
 
-class ProfilePage extends ConsumerStatefulWidget {
-  const ProfilePage({super.key});
+class EditProfile extends ConsumerStatefulWidget {
+  const EditProfile({super.key});
 
   @override
-  ConsumerState<ProfilePage> createState() => _ProfilePageState();
+  ConsumerState<EditProfile> createState() => _EditProfileState();
 }
 
-class _ProfilePageState extends ConsumerState<ProfilePage> {
+class _EditProfileState extends ConsumerState<EditProfile> {
   @override
   Widget build(BuildContext context) {
     final authNotifier = ref.watch(authProvider.notifier);
@@ -32,9 +28,9 @@ class _ProfilePageState extends ConsumerState<ProfilePage> {
         '${ref.watch(authProvider.notifier).firstNameController.text} '
                 '${ref.watch(authProvider.notifier).lastNameController.text}'
             .trim();
-
     return Scaffold(
-      appBar: NefAppBar(title: "title"),
+      appBar: RidAppBar(
+          showBackButton: true, showBackText: true, title: "Edit Profile"),
       body: SingleChildScrollView(
         child: NefPadding(
           child: Column(
@@ -49,7 +45,6 @@ class _ProfilePageState extends ConsumerState<ProfilePage> {
                   backgroundColor: Colors.grey,
                 ),
               ),
-              const Text("Profile"),
               const SizedBox(height: 20),
               NefElevationBackButton(
                   isForm: false,
@@ -85,35 +80,6 @@ class _ProfilePageState extends ConsumerState<ProfilePage> {
                 height: 10,
               ),
               const Divider(),
-              NefForwardButton(
-                  onPressed: () {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => EditProfile()));
-                  },
-                  label: "Edit profile"),
-              NefForwardButton(
-                  onPressed: () {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => ViewProfile()));
-                  },
-                  label: "View Profile"),
-              NefForwardButton(
-                  onPressed: () {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => VerifyKyc()));
-                  },
-                  label: "verify kyc"),
-              const Divider(),
-              NefElevationBackButton(
-                  text: "Logout",
-                  onPressed: () {
-                    authNotifier.logout();
-                    Navigator.pushAndRemoveUntil(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => const LoginPage()),
-                        (Route<dynamic> route) => false);
-                  }),
             ],
           ),
         ),

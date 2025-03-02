@@ -21,7 +21,7 @@ class UserModel with _$UserModel {
     @Default(false) bool isEmailVerified,
     String? role,
     String? roleName,
-    ImageModel? image,
+    List<ImageModel>? images,
   }) = _UserModel;
 
   factory UserModel.fromJson(Map<String, dynamic> json) =>
@@ -41,7 +41,10 @@ class Role with _$Role {
 class ImageModel with _$ImageModel {
   const factory ImageModel({
     int? id,
-    String? url,
+    @JsonKey(name: 'imageUrl')
+    String? url, // Fixed: Mapped API field 'imageUrl'
+    String? publicId,
+    String? imageType,
   }) = _ImageModel;
 
   factory ImageModel.fromJson(Map<String, dynamic> json) =>

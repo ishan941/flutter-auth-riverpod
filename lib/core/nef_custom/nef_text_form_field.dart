@@ -135,3 +135,95 @@ class NefSearchTextForm extends StatelessWidget {
     );
   }
 }
+
+class RidTextFormField extends StatelessWidget {
+  final String? labelText;
+  final String? hintText;
+  final IconData? prefixIcon;
+  final IconData? suffixIcon;
+  final bool obscureText;
+  final TextInputType? keyboardType;
+  final TextEditingController? controller;
+  final String? Function(String?)? validator;
+  final void Function(String)? onChanged;
+  final String? initialValue;
+  final String? title; // New: Title for RichText
+  final String? value; // New: Value for RichText
+
+  const RidTextFormField({
+    Key? key,
+    this.labelText,
+    this.hintText,
+    this.prefixIcon,
+    this.suffixIcon,
+    this.obscureText = false,
+    this.keyboardType,
+    this.controller,
+    this.validator,
+    this.onChanged,
+    this.initialValue,
+    this.title,
+    this.value,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: NefPadding.bottomPadding,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          // ✅ RichText for title + value
+          if (title != null && value != null)
+            RichText(
+              text: TextSpan(
+                children: [
+                  TextSpan(
+                    text: "$title: ",
+                    style: const TextStyle(
+                      color: Colors.black,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  TextSpan(
+                    text: value,
+                    style: const TextStyle(
+                      color: Colors.black,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          const SizedBox(height: 8), // Space between text and field
+
+          // ✅ TextFormField below
+          TextFormField(
+            controller: controller,
+            obscureText: obscureText,
+            keyboardType: keyboardType,
+            onChanged: onChanged,
+            validator: validator,
+            initialValue: initialValue,
+            decoration: InputDecoration(
+              labelText: labelText,
+              hintText: hintText,
+              prefixIcon: prefixIcon != null ? Icon(prefixIcon) : null,
+              suffixIcon: suffixIcon != null ? Icon(suffixIcon) : null,
+              border: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(NefSpacing.spacing2),
+              ),
+              focusedBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(NefSpacing.spacing2),
+                borderSide: const BorderSide(color: Colors.blue),
+              ),
+              enabledBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(NefSpacing.spacing2),
+                borderSide: const BorderSide(color: Colors.grey),
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}

@@ -4,7 +4,7 @@ import 'package:nepstayapp/core/utils/color_util.dart';
 import 'package:nepstayapp/core/utils/nef_spacing.dart';
 import 'package:nepstayapp/features/Home/presentation/pages/home_page.dart';
 import 'package:nepstayapp/features/Inbox/inbox_page.dart';
-import 'package:nepstayapp/features/profile/profile_page.dart';
+import 'package:nepstayapp/features/profile/presentation/screens/profile_page.dart';
 
 class NefNavBar extends ConsumerStatefulWidget {
   final int selectedIndex;

@@ -43,7 +43,6 @@ class AuthDataSourceImpl implements AuthDataSource {
         );
       }
     } catch (e) {
-      print('Error during login: $e');
       rethrow;
     }
   }

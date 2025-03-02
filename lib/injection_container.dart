@@ -17,6 +17,12 @@ import 'package:nepstayapp/features/Home/domain/repository/property_repository.d
 import 'package:nepstayapp/features/Home/domain/usecase/get_property_details_use_case.dart';
 import 'package:nepstayapp/features/Home/domain/usecase/get_property_use_case.dart';
 import 'package:nepstayapp/features/Home/presentation/notifier/home_notifier.dart';
+import 'package:nepstayapp/features/profile/data/datasource_impl/profile_datasource.dart';
+import 'package:nepstayapp/features/profile/data/repo_impl/profile_repository_impl.dart';
+import 'package:nepstayapp/features/profile/domain/repository/profile_repository.dart';
+import 'package:nepstayapp/features/profile/domain/usecase/get_use_case/get_profile_usecase.dart';
+import 'package:nepstayapp/features/profile/domain/usecase/post_use_case/post_update_use_case.dart';
+import 'package:nepstayapp/features/profile/presentation/notifier/profile_notifier.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 final sl = GetIt.instance;
@@ -51,8 +57,8 @@ void registerDataSource() {
       () => AuthDataSourceImpl(dioHttp: sl(), userHiveService: sl()));
   sl.registerLazySingleton<PropertyDataSource>(
       () => PropertyDataSourceImpl(dioHttp: sl()));
-  // sl.registerLazySingleton<UserDataSource>(
-  //     () => UserDataSourceImpl(dioHttp: sl()));
+  sl.registerLazySingleton<ProfileDatasource>(
+      () => ProfileDataSouceImpl(dioHttp: sl()));
   // sl.registerLazySingleton<ListingDataSource>(
   //     () => ListingDataSourceImpl(dioHttp: sl()));
 }
@@ -69,6 +75,11 @@ void registerRepository() {
         networkInfo: sl(),
         tService: sl(),
       ));
+  sl.registerLazySingleton<ProfileRepository>(() => ProfileRepositoryImpl(
+        networkInfo: sl(),
+        tService: sl(),
+        profileDatasource: sl(),
+      ));
 }
 
 //
@@ -79,6 +90,8 @@ void registerUseCases() {
       () => GetPropertyUseCase(propertyRepository: sl()));
   sl.registerLazySingleton<GetPropertyDetailUseCase>(
       () => GetPropertyDetailUseCase(propertyRepository: sl()));
+  sl.registerLazySingleton<GetProfileUsecase>(
+      () => GetProfileUsecase(profileRepository: sl()));
   //Post usecase
   sl.registerLazySingleton<LoginUseCase>(
       () => LoginUseCase(authRepository: sl()));
@@ -88,6 +101,8 @@ void registerUseCases() {
       () => VerifyEmailUseCase(authRepository: sl()));
   sl.registerLazySingleton<SendOtpTpEmailUseCase>(
       () => SendOtpTpEmailUseCase(authRepository: sl()));
+  sl.registerLazySingleton<PostUpdateUseCase>(
+      () => PostUpdateUseCase(profileRepository: sl()));
 
   //Delete Usecase
 }
@@ -103,6 +118,8 @@ void registerNotifier() {
         sendOtpTpEmailUseCase: sl(),
       ));
   sl.registerFactory(() => PropertyNotifier(getPropertyUseCase: sl()));
+  sl.registerFactory(
+      () => ProfileNotifier(getProfileUsecase: sl(), postUpdateUseCase: sl()));
 }
 
 Future<void> init() async {

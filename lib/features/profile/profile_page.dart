@@ -5,6 +5,9 @@ import 'package:nepstayapp/core/nef_custom/nef_elevated_button.dart';
 import 'package:nepstayapp/core/nef_custom/nef_padding.dart';
 import 'package:nepstayapp/features/Auth/presentation/pages/login_page.dart';
 import 'package:nepstayapp/features/Auth/presentation/provider/auth_notifier.dart';
+import 'package:nepstayapp/features/profile/edit_profile.dart';
+import 'package:nepstayapp/features/profile/verify_kyc.dart';
+import 'package:nepstayapp/features/profile/view_profile.dart';
 
 class ProfilePage extends ConsumerStatefulWidget {
   const ProfilePage({super.key});
@@ -81,6 +84,26 @@ class _ProfilePageState extends ConsumerState<ProfilePage> {
               const SizedBox(
                 height: 10,
               ),
+              const Divider(),
+              NefForwardButton(
+                  onPressed: () {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => EditProfile()));
+                  },
+                  label: "Edit profile"),
+              NefForwardButton(
+                  onPressed: () {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => ViewProfile()));
+                  },
+                  label: "View Profile"),
+              NefForwardButton(
+                  onPressed: () {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => VerifyKyc()));
+                  },
+                  label: "verify kyc"),
+              const Divider(),
               NefElevationBackButton(
                   text: "Logout",
                   onPressed: () {

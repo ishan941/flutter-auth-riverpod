@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:nepstayapp/core/nef_custom/nef_padding.dart';
+import 'package:nepstayapp/core/nef_custom/nef_typography_helper.dart';
 import 'package:nepstayapp/core/utils/color_util.dart';
 import 'package:nepstayapp/core/utils/nef_spacing.dart';
 
@@ -185,6 +186,46 @@ class NefGradientElevatedButton extends StatelessWidget {
               style: const TextStyle(color: Colors.white, fontSize: 16),
             ),
           ),
+        ),
+      ),
+    );
+  }
+}
+
+class NefForwardButton extends StatelessWidget {
+  final VoidCallback onPressed;
+  final String label;
+
+  const NefForwardButton({
+    super.key,
+    required this.onPressed,
+    required this.label,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return ElevatedButton(
+      onPressed: onPressed,
+      style: ButtonStyle(
+        backgroundColor: WidgetStateProperty.all(Colors.transparent),
+        elevation: WidgetStateProperty.all(5),
+        shadowColor: WidgetStateProperty.all(Colors.transparent),
+        padding:
+            WidgetStateProperty.all(EdgeInsets.zero), // Remove internal padding
+      ),
+      child: Container(
+        color: Colors.white70,
+        width: MediaQuery.of(context).size.width,
+        height: NefSpacing.spacing13,
+        child: Row(
+          children: [
+            Text(label, style: NefTypographyHelper.bodyLgBold),
+            Spacer(),
+            Icon(
+              Icons.arrow_forward_ios_rounded,
+              color: grey400,
+            )
+          ],
         ),
       ),
     );

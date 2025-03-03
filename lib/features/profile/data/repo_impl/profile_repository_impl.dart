@@ -18,7 +18,7 @@ class ProfileRepositoryImpl extends BaseRepository
   }) : super(tokenService: tService);
 
   @override
-  Future<UserDetails> getUserDetails(int userId) async {
+  Future<UserDetails> getUserDetails() async {
     if (!await networkInfo.isConnected) {
       throw Exception("No internet connection");
     }
@@ -30,7 +30,7 @@ class ProfileRepositoryImpl extends BaseRepository
   }
 
   @override
-  Future<bool> updateUserDetails(int userId, UserDetails userDeatils) async {
+  Future<bool> updateUserDetails(UserDetails userDeatils) async {
     if (!await networkInfo.isConnected) {
       throw Exception("No internet connection");
     }

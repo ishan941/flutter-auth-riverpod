@@ -5,7 +5,7 @@ class PostUpdateUseCase {
   final ProfileRepository profileRepository;
 
   PostUpdateUseCase({required this.profileRepository});
-  Future<bool> call(int userId, UserDetails user) async {
-    return await profileRepository.updateUserDetails(userId, user);
+  Future<bool> call(UserDetails user) async {
+    return await profileRepository.updateUserDetails(user);
   }
 }

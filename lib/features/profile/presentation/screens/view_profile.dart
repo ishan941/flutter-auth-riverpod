@@ -48,7 +48,7 @@ class _ViewProfileState extends ConsumerState<ViewProfile> {
                   children: [
                     Text(user.roleName!),
                     SizedBox(width: 10),
-                    user.verified == true
+                    user.verified
                         ? Icon(
                             Icons.verified,
                             color: primaryColor,

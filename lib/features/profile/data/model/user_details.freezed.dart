@@ -1173,7 +1173,7 @@ class __$$UserDetailsLoadedImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$UserDetailsLoadedImpl implements UserDetailsLoaded {
-  const _$UserDetailsLoadedImpl({this.user, this.isSuccess});
+  const _$UserDetailsLoadedImpl({required this.user, this.isSuccess});
 
   @override
   final UserDetails? user;
@@ -1282,7 +1282,7 @@ class _$UserDetailsLoadedImpl implements UserDetailsLoaded {
 
 abstract class UserDetailsLoaded implements UserDetailsState {
   const factory UserDetailsLoaded(
-      {final UserDetails? user,
+      {required final UserDetails? user,
       final bool? isSuccess}) = _$UserDetailsLoadedImpl;
 
   UserDetails? get user;

@@ -116,6 +116,7 @@ void registerNotifier() {
         sharedPref: sl(),
         verifyEmailUseCase: sl(),
         sendOtpTpEmailUseCase: sl(),
+        service: sl(),
       ));
   sl.registerFactory(() => PropertyNotifier(getPropertyUseCase: sl()));
   sl.registerFactory(

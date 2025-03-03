@@ -5,6 +5,7 @@ import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:nepstayapp/core/error/exception_error.dart';
+import 'package:nepstayapp/core/token_service/services/token_service.dart';
 import 'package:nepstayapp/core/utils/shared_preference.dart';
 import 'package:nepstayapp/features/Auth/data/model/auth_model/user_model.dart';
 import 'package:nepstayapp/features/Auth/data/model/auth_state/auth_state.dart';
@@ -18,6 +19,7 @@ class AuthNotifier extends StateNotifier<AuthState> {
   final VerifyEmailUseCase verifyEmailUseCase;
   final SendOtpTpEmailUseCase sendOtpTpEmailUseCase;
   final SharedPref sharedPref;
+  final TokenService service;
 
   final TextEditingController firstNameController = TextEditingController();
   final TextEditingController lastNameController = TextEditingController();
@@ -37,6 +39,7 @@ class AuthNotifier extends StateNotifier<AuthState> {
   }
 
   AuthNotifier({
+    required this.service,
     required this.verifyEmailUseCase,
     required this.signUpUserUseCase,
     required this.loginUseCase,
@@ -129,11 +132,12 @@ class AuthNotifier extends StateNotifier<AuthState> {
 
     try {
       final authResponse = await loginUseCase.execute(authenticationRequest);
-      // Save tokens in shared preferences
       await sharedPref.saveDataToPreference(
           accessTokenKey, authResponse.accessToken);
       await sharedPref.saveDataToPreference(
           refreshTokenKey, authResponse.refreshToken);
+      await sharedPref.saveDataToPreference(userIdKey, authResponse.userId);
+      service.updateUserId(authResponse.userId);
       state = AuthState.loading(rememberMe: state.rememberMe);
       if (state.rememberMe) {
         await sharedPref.saveDataToPreference("email", emailController.text);
@@ -244,5 +248,6 @@ final authProvider = StateNotifierProvider<AuthNotifier, AuthState>(
     sharedPref: sl(),
     verifyEmailUseCase: sl(),
     sendOtpTpEmailUseCase: sl(),
+    service: sl(),
   ),
 );

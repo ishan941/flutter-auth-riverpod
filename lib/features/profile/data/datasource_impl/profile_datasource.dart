@@ -1,9 +1,12 @@
 import 'dart:io';
 
 import 'package:dio/dio.dart';
+import 'package:flutter/material.dart';
 import 'package:nepstayapp/core/api_const.dart';
+import 'package:nepstayapp/core/error/dio_client.dart';
 import 'package:nepstayapp/core/error/exception_error.dart';
 import 'package:nepstayapp/core/utils/dio_http.dart';
+import 'package:nepstayapp/features/Auth/presentation/pages/login_page.dart';
 import 'package:nepstayapp/features/profile/data/model/user_details.dart';
 
 abstract class ProfileDatasource {
@@ -15,23 +18,38 @@ abstract class ProfileDatasource {
 class ProfileDataSouceImpl implements ProfileDatasource {
   final DioHttp dioHttp;
   ProfileDataSouceImpl({required this.dioHttp});
+
   @override
   Future<UserDetails> getUserDetails(String token, int id) async {
     try {
       Response response = await dioHttp.get(
-          url: "${Api.baseUrl}${Api.getUserByIdApi}$id", token: token);
+        url: "${Api.baseUrl}${Api.getUserByIdApi}$id",
+        token: token,
+      );
+
+      if (response.statusCode == 403 || response.statusCode == 401) {
+        _handleTokenExpired();
+        return Future.error("Unauthorized"); // Stop execution
+      }
 
       if (response.statusCode == HttpStatus.ok ||
           response.statusCode == HttpStatus.created) {
-        final userData = response.data['Data']; // Extract the correct part
+        final userData = response.data['Data'];
         return UserDetails.fromJson(userData);
       } else {
         throw ServerException(
             response.statusMessage ?? 'Unknown error', response.statusCode);
       }
-    } catch (e) {
-      print('Error during fetch User: $e');
-
+    } on DioException catch (e) {
+      if (e.response?.statusCode == 403 || e.response?.statusCode == 401) {
+        Future.delayed(Duration.zero, () {
+          navigatorKey.currentState?.pushAndRemoveUntil(
+            MaterialPageRoute(builder: (_) => const LoginPage()),
+            (route) => false,
+          );
+        });
+        return Future.error("Unauthorized"); // Stop execution
+      }
       rethrow;
     }
   }
@@ -59,5 +77,16 @@ class ProfileDataSouceImpl implements ProfileDatasource {
     } catch (e) {
       throw Exception('Failed to verify OTP: ${e.toString()}');
     }
+  }
+
+  void _handleTokenExpired() {
+    print("Token expired! Redirecting to login...");
+
+    Future.delayed(Duration.zero, () {
+      navigatorKey.currentState?.pushAndRemoveUntil(
+        MaterialPageRoute(builder: (_) => const LoginPage()),
+        (route) => false,
+      );
+    });
   }
 }

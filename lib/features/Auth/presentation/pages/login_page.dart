@@ -33,10 +33,6 @@ class _LoginPageState extends ConsumerState<LoginPage> {
     final authNotifier = ref.watch(authProvider.notifier);
 
     return Scaffold(
-      appBar: NefAppBar(
-        title: "",
-        showBackButton: false,
-      ),
       body: GestureDetector(
         onTap: () => FocusScope.of(context).unfocus(),
         child: SingleChildScrollView(
@@ -45,7 +41,7 @@ class _LoginPageState extends ConsumerState<LoginPage> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 const SizedBox(
-                  height: 80,
+                  height: 100,
                 ),
                 SizedBox(
                     height: 150,

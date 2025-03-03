@@ -14,7 +14,7 @@ class ProfileNotifier extends StateNotifier<UserDetailsState> {
   Future<void> getUserDetails(int userId) async {
     try {
       state = const UserDetailsState.loading();
-      final data = await getProfileUsecase.call(userId);
+      final data = await getProfileUsecase.call();
 
       // Debugging: Print data
       print("Fetched User Data: $data");
@@ -30,11 +30,10 @@ class ProfileNotifier extends StateNotifier<UserDetailsState> {
     }
   }
 
-  Future<void> updateUserDetails(int userId, UserDetails user) async {
+  Future<void> updateUserDetails(UserDetails user) async {
     try {
       state = const UserDetailsState.loading();
-      final isSuccess =
-          await postUpdateUseCase.call(userId, user); // Expecting bool
+      final isSuccess = await postUpdateUseCase.call(user); // Expecting bool
 
       // Debugging: Print data
       print("Update success: $isSuccess");

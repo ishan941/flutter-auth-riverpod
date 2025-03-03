@@ -5,7 +5,7 @@ class GetProfileUsecase {
   final ProfileRepository profileRepository;
 
   GetProfileUsecase({required this.profileRepository});
-  Future<UserDetails> call(int userId) async {
-    return await profileRepository.getUserDetails(userId);
+  Future<UserDetails> call() async {
+    return await profileRepository.getUserDetails();
   }
 }

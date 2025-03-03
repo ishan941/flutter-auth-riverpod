@@ -69,16 +69,17 @@ class AuthenticationResponse with _$AuthenticationResponse {
     required String accessToken,
     required String refreshToken,
     required String role,
+    required int userId,
     String? imageUrl,
   }) = _AuthenticationResponse;
 
   factory AuthenticationResponse.fromJson(Map<String, dynamic> json) {
     return _AuthenticationResponse(
-      accessToken: json['AccessToken'] as String? ?? '',
-      refreshToken: json['RefreshToken'] as String? ?? '',
-      role: json['role'] as String? ?? '',
-      imageUrl: json['imageUrl'] as String?,
-    );
+        accessToken: json['AccessToken'] as String? ?? '',
+        refreshToken: json['RefreshToken'] as String? ?? '',
+        role: json['role'] as String? ?? '',
+        imageUrl: json['imageUrl'] as String?,
+        userId: json['userId'] as int);
   }
 }
 

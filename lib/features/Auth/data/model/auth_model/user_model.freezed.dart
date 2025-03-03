@@ -1014,6 +1014,7 @@ mixin _$AuthenticationResponse {
   String get accessToken => throw _privateConstructorUsedError;
   String get refreshToken => throw _privateConstructorUsedError;
   String get role => throw _privateConstructorUsedError;
+  int get userId => throw _privateConstructorUsedError;
   String? get imageUrl => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -1028,7 +1029,11 @@ abstract class $AuthenticationResponseCopyWith<$Res> {
       _$AuthenticationResponseCopyWithImpl<$Res, AuthenticationResponse>;
   @useResult
   $Res call(
-      {String accessToken, String refreshToken, String role, String? imageUrl});
+      {String accessToken,
+      String refreshToken,
+      String role,
+      int userId,
+      String? imageUrl});
 }
 
 /// @nodoc
@@ -1048,6 +1053,7 @@ class _$AuthenticationResponseCopyWithImpl<$Res,
     Object? accessToken = null,
     Object? refreshToken = null,
     Object? role = null,
+    Object? userId = null,
     Object? imageUrl = freezed,
   }) {
     return _then(_value.copyWith(
@@ -1063,6 +1069,10 @@ class _$AuthenticationResponseCopyWithImpl<$Res,
           ? _value.role
           : role // ignore: cast_nullable_to_non_nullable
               as String,
+      userId: null == userId
+          ? _value.userId
+          : userId // ignore: cast_nullable_to_non_nullable
+              as int,
       imageUrl: freezed == imageUrl
           ? _value.imageUrl
           : imageUrl // ignore: cast_nullable_to_non_nullable
@@ -1081,7 +1091,11 @@ abstract class _$$AuthenticationResponseImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {String accessToken, String refreshToken, String role, String? imageUrl});
+      {String accessToken,
+      String refreshToken,
+      String role,
+      int userId,
+      String? imageUrl});
 }
 
 /// @nodoc
@@ -1100,6 +1114,7 @@ class __$$AuthenticationResponseImplCopyWithImpl<$Res>
     Object? accessToken = null,
     Object? refreshToken = null,
     Object? role = null,
+    Object? userId = null,
     Object? imageUrl = freezed,
   }) {
     return _then(_$AuthenticationResponseImpl(
@@ -1115,6 +1130,10 @@ class __$$AuthenticationResponseImplCopyWithImpl<$Res>
           ? _value.role
           : role // ignore: cast_nullable_to_non_nullable
               as String,
+      userId: null == userId
+          ? _value.userId
+          : userId // ignore: cast_nullable_to_non_nullable
+              as int,
       imageUrl: freezed == imageUrl
           ? _value.imageUrl
           : imageUrl // ignore: cast_nullable_to_non_nullable
@@ -1130,6 +1149,7 @@ class _$AuthenticationResponseImpl implements _AuthenticationResponse {
       {required this.accessToken,
       required this.refreshToken,
       required this.role,
+      required this.userId,
       this.imageUrl});
 
   @override
@@ -1139,11 +1159,13 @@ class _$AuthenticationResponseImpl implements _AuthenticationResponse {
   @override
   final String role;
   @override
+  final int userId;
+  @override
   final String? imageUrl;
 
   @override
   String toString() {
-    return 'AuthenticationResponse(accessToken: $accessToken, refreshToken: $refreshToken, role: $role, imageUrl: $imageUrl)';
+    return 'AuthenticationResponse(accessToken: $accessToken, refreshToken: $refreshToken, role: $role, userId: $userId, imageUrl: $imageUrl)';
   }
 
   @override
@@ -1156,13 +1178,14 @@ class _$AuthenticationResponseImpl implements _AuthenticationResponse {
             (identical(other.refreshToken, refreshToken) ||
                 other.refreshToken == refreshToken) &&
             (identical(other.role, role) || other.role == role) &&
+            (identical(other.userId, userId) || other.userId == userId) &&
             (identical(other.imageUrl, imageUrl) ||
                 other.imageUrl == imageUrl));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, accessToken, refreshToken, role, imageUrl);
+  int get hashCode => Object.hash(
+      runtimeType, accessToken, refreshToken, role, userId, imageUrl);
 
   @JsonKey(ignore: true)
   @override
@@ -1177,6 +1200,7 @@ abstract class _AuthenticationResponse implements AuthenticationResponse {
       {required final String accessToken,
       required final String refreshToken,
       required final String role,
+      required final int userId,
       final String? imageUrl}) = _$AuthenticationResponseImpl;
 
   @override
@@ -1185,6 +1209,8 @@ abstract class _AuthenticationResponse implements AuthenticationResponse {
   String get refreshToken;
   @override
   String get role;
+  @override
+  int get userId;
   @override
   String? get imageUrl;
   @override

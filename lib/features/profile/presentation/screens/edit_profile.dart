@@ -4,8 +4,6 @@ import 'package:nepstayapp/core/nef_custom/nef_app_bar.dart';
 import 'package:nepstayapp/core/nef_custom/nef_elevated_button.dart';
 import 'package:nepstayapp/core/nef_custom/nef_padding.dart';
 import 'package:nepstayapp/core/nef_custom/nef_text_form_field.dart';
-import 'package:nepstayapp/core/utils/info_helper.dart';
-import 'package:nepstayapp/features/Auth/presentation/provider/auth_notifier.dart';
 import 'package:nepstayapp/features/profile/data/model/user_details.dart';
 import 'package:nepstayapp/features/profile/presentation/notifier/profile_notifier.dart';
 
@@ -122,7 +120,7 @@ class _EditProfileState extends ConsumerState<EditProfile> {
                   NefElevatedButton(
                       text: "Update Profile",
                       onPressed: () {
-                        profileNotifier.updateUserDetails(1, userDetails);
+                        profileNotifier.updateUserDetails(userDetails);
                       })
                 ],
               );

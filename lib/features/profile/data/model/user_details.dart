@@ -59,4 +59,6 @@ class UserDetailsState with _$UserDetailsState {
   const factory UserDetailsState.loaded(
       {required UserDetails? user, bool? isSuccess}) = UserDetailsLoaded;
   const factory UserDetailsState.error(String message) = UserDetailsError;
+  const factory UserDetailsState.success({bool? isSuccess}) =
+      UserDetailsSuccess;
 }

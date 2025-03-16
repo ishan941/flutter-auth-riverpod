@@ -89,7 +89,7 @@ class _ProfilePageState extends ConsumerState<ProfilePage> {
                                 style: NefTypography.button,
                               ),
                               const SizedBox(width: 10),
-                              user.verified == false
+                              user.verified
                                   ? const Icon(
                                       Icons.verified,
                                       color: whiteColor,
@@ -108,6 +108,9 @@ class _ProfilePageState extends ConsumerState<ProfilePage> {
                       );
                     },
                     error: (message) => Center(child: Text(message)),
+                    success: (bool? isSuccess) {
+                      return SizedBox();
+                    },
                   ),
                   SizedBox(
                     width: 200,
@@ -118,7 +121,7 @@ class _ProfilePageState extends ConsumerState<ProfilePage> {
                           Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => EditProfile()));
+                                  builder: (context) => const EditProfile()));
                         }),
                   ),
                   const SizedBox(
@@ -134,7 +137,7 @@ class _ProfilePageState extends ConsumerState<ProfilePage> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(
+                    const Text(
                       "PERSIONAL INFO",
                       style: NefTypographyHelper.bodyLgMedium,
                     ),
@@ -151,7 +154,7 @@ class _ProfilePageState extends ConsumerState<ProfilePage> {
                     Divider(),
                     profileState.maybeWhen(
                         loaded: (user, isSuccess) {
-                          return user?.verified == false
+                          return user?.verified == true
                               ? NefForwardButton(
                                   onPressed: () {
                                     Navigator.push(

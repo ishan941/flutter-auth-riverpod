@@ -123,6 +123,9 @@ class _ViewProfileState extends ConsumerState<ViewProfile> {
           );
         },
         error: (message) => Center(child: Text(message)),
+        success: (bool? isSuccess) {
+          return const SizedBox();
+        },
       ),
     ); // Your UI here
   }

@@ -33,9 +33,9 @@ class _ViewProfileState extends ConsumerState<ViewProfile> {
                     backgroundImage:
                         user!.images.isNotEmpty && user.images.first.url != null
                             ? NetworkImage(
-                                user.images.first.url!) // Load from network
+                                user.images.first.url!) 
                             : const AssetImage("assets/images/IMG_4610.jpg")
-                                as ImageProvider, // Fallback image
+                                as ImageProvider,
                     radius: 50,
                     backgroundColor: Colors.grey,
                   ),
@@ -123,6 +123,9 @@ class _ViewProfileState extends ConsumerState<ViewProfile> {
           );
         },
         error: (message) => Center(child: Text(message)),
+        success: (bool? isSuccess) {
+          return const SizedBox();
+        },
       ),
     ); // Your UI here
   }

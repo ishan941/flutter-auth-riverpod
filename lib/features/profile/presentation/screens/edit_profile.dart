@@ -125,6 +125,9 @@ class _EditProfileState extends ConsumerState<EditProfile> {
                 ],
               );
             },
+            success: (bool? isSuccess) {
+              return SizedBox();
+            },
           ),
         ),
       ),

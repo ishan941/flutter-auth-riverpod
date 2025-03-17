@@ -828,6 +828,7 @@ mixin _$UserDetailsState {
     required TResult Function() loading,
     required TResult Function(UserDetails? user, bool? isSuccess) loaded,
     required TResult Function(String message) error,
+    required TResult Function(bool? isSuccess) success,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -836,6 +837,7 @@ mixin _$UserDetailsState {
     TResult? Function()? loading,
     TResult? Function(UserDetails? user, bool? isSuccess)? loaded,
     TResult? Function(String message)? error,
+    TResult? Function(bool? isSuccess)? success,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -844,6 +846,7 @@ mixin _$UserDetailsState {
     TResult Function()? loading,
     TResult Function(UserDetails? user, bool? isSuccess)? loaded,
     TResult Function(String message)? error,
+    TResult Function(bool? isSuccess)? success,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -853,6 +856,7 @@ mixin _$UserDetailsState {
     required TResult Function(UserDetailsLoading value) loading,
     required TResult Function(UserDetailsLoaded value) loaded,
     required TResult Function(UserDetailsError value) error,
+    required TResult Function(UserDetailsSuccess value) success,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -861,6 +865,7 @@ mixin _$UserDetailsState {
     TResult? Function(UserDetailsLoading value)? loading,
     TResult? Function(UserDetailsLoaded value)? loaded,
     TResult? Function(UserDetailsError value)? error,
+    TResult? Function(UserDetailsSuccess value)? success,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -869,6 +874,7 @@ mixin _$UserDetailsState {
     TResult Function(UserDetailsLoading value)? loading,
     TResult Function(UserDetailsLoaded value)? loaded,
     TResult Function(UserDetailsError value)? error,
+    TResult Function(UserDetailsSuccess value)? success,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -934,6 +940,7 @@ class _$UserDetailsInitialImpl implements UserDetailsInitial {
     required TResult Function() loading,
     required TResult Function(UserDetails? user, bool? isSuccess) loaded,
     required TResult Function(String message) error,
+    required TResult Function(bool? isSuccess) success,
   }) {
     return initial();
   }
@@ -945,6 +952,7 @@ class _$UserDetailsInitialImpl implements UserDetailsInitial {
     TResult? Function()? loading,
     TResult? Function(UserDetails? user, bool? isSuccess)? loaded,
     TResult? Function(String message)? error,
+    TResult? Function(bool? isSuccess)? success,
   }) {
     return initial?.call();
   }
@@ -956,6 +964,7 @@ class _$UserDetailsInitialImpl implements UserDetailsInitial {
     TResult Function()? loading,
     TResult Function(UserDetails? user, bool? isSuccess)? loaded,
     TResult Function(String message)? error,
+    TResult Function(bool? isSuccess)? success,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -971,6 +980,7 @@ class _$UserDetailsInitialImpl implements UserDetailsInitial {
     required TResult Function(UserDetailsLoading value) loading,
     required TResult Function(UserDetailsLoaded value) loaded,
     required TResult Function(UserDetailsError value) error,
+    required TResult Function(UserDetailsSuccess value) success,
   }) {
     return initial(this);
   }
@@ -982,6 +992,7 @@ class _$UserDetailsInitialImpl implements UserDetailsInitial {
     TResult? Function(UserDetailsLoading value)? loading,
     TResult? Function(UserDetailsLoaded value)? loaded,
     TResult? Function(UserDetailsError value)? error,
+    TResult? Function(UserDetailsSuccess value)? success,
   }) {
     return initial?.call(this);
   }
@@ -993,6 +1004,7 @@ class _$UserDetailsInitialImpl implements UserDetailsInitial {
     TResult Function(UserDetailsLoading value)? loading,
     TResult Function(UserDetailsLoaded value)? loaded,
     TResult Function(UserDetailsError value)? error,
+    TResult Function(UserDetailsSuccess value)? success,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -1048,6 +1060,7 @@ class _$UserDetailsLoadingImpl implements UserDetailsLoading {
     required TResult Function() loading,
     required TResult Function(UserDetails? user, bool? isSuccess) loaded,
     required TResult Function(String message) error,
+    required TResult Function(bool? isSuccess) success,
   }) {
     return loading();
   }
@@ -1059,6 +1072,7 @@ class _$UserDetailsLoadingImpl implements UserDetailsLoading {
     TResult? Function()? loading,
     TResult? Function(UserDetails? user, bool? isSuccess)? loaded,
     TResult? Function(String message)? error,
+    TResult? Function(bool? isSuccess)? success,
   }) {
     return loading?.call();
   }
@@ -1070,6 +1084,7 @@ class _$UserDetailsLoadingImpl implements UserDetailsLoading {
     TResult Function()? loading,
     TResult Function(UserDetails? user, bool? isSuccess)? loaded,
     TResult Function(String message)? error,
+    TResult Function(bool? isSuccess)? success,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -1085,6 +1100,7 @@ class _$UserDetailsLoadingImpl implements UserDetailsLoading {
     required TResult Function(UserDetailsLoading value) loading,
     required TResult Function(UserDetailsLoaded value) loaded,
     required TResult Function(UserDetailsError value) error,
+    required TResult Function(UserDetailsSuccess value) success,
   }) {
     return loading(this);
   }
@@ -1096,6 +1112,7 @@ class _$UserDetailsLoadingImpl implements UserDetailsLoading {
     TResult? Function(UserDetailsLoading value)? loading,
     TResult? Function(UserDetailsLoaded value)? loaded,
     TResult? Function(UserDetailsError value)? error,
+    TResult? Function(UserDetailsSuccess value)? success,
   }) {
     return loading?.call(this);
   }
@@ -1107,6 +1124,7 @@ class _$UserDetailsLoadingImpl implements UserDetailsLoading {
     TResult Function(UserDetailsLoading value)? loading,
     TResult Function(UserDetailsLoaded value)? loaded,
     TResult Function(UserDetailsError value)? error,
+    TResult Function(UserDetailsSuccess value)? success,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -1212,6 +1230,7 @@ class _$UserDetailsLoadedImpl implements UserDetailsLoaded {
     required TResult Function() loading,
     required TResult Function(UserDetails? user, bool? isSuccess) loaded,
     required TResult Function(String message) error,
+    required TResult Function(bool? isSuccess) success,
   }) {
     return loaded(user, isSuccess);
   }
@@ -1223,6 +1242,7 @@ class _$UserDetailsLoadedImpl implements UserDetailsLoaded {
     TResult? Function()? loading,
     TResult? Function(UserDetails? user, bool? isSuccess)? loaded,
     TResult? Function(String message)? error,
+    TResult? Function(bool? isSuccess)? success,
   }) {
     return loaded?.call(user, isSuccess);
   }
@@ -1234,6 +1254,7 @@ class _$UserDetailsLoadedImpl implements UserDetailsLoaded {
     TResult Function()? loading,
     TResult Function(UserDetails? user, bool? isSuccess)? loaded,
     TResult Function(String message)? error,
+    TResult Function(bool? isSuccess)? success,
     required TResult orElse(),
   }) {
     if (loaded != null) {
@@ -1249,6 +1270,7 @@ class _$UserDetailsLoadedImpl implements UserDetailsLoaded {
     required TResult Function(UserDetailsLoading value) loading,
     required TResult Function(UserDetailsLoaded value) loaded,
     required TResult Function(UserDetailsError value) error,
+    required TResult Function(UserDetailsSuccess value) success,
   }) {
     return loaded(this);
   }
@@ -1260,6 +1282,7 @@ class _$UserDetailsLoadedImpl implements UserDetailsLoaded {
     TResult? Function(UserDetailsLoading value)? loading,
     TResult? Function(UserDetailsLoaded value)? loaded,
     TResult? Function(UserDetailsError value)? error,
+    TResult? Function(UserDetailsSuccess value)? success,
   }) {
     return loaded?.call(this);
   }
@@ -1271,6 +1294,7 @@ class _$UserDetailsLoadedImpl implements UserDetailsLoaded {
     TResult Function(UserDetailsLoading value)? loading,
     TResult Function(UserDetailsLoaded value)? loaded,
     TResult Function(UserDetailsError value)? error,
+    TResult Function(UserDetailsSuccess value)? success,
     required TResult orElse(),
   }) {
     if (loaded != null) {
@@ -1361,6 +1385,7 @@ class _$UserDetailsErrorImpl implements UserDetailsError {
     required TResult Function() loading,
     required TResult Function(UserDetails? user, bool? isSuccess) loaded,
     required TResult Function(String message) error,
+    required TResult Function(bool? isSuccess) success,
   }) {
     return error(message);
   }
@@ -1372,6 +1397,7 @@ class _$UserDetailsErrorImpl implements UserDetailsError {
     TResult? Function()? loading,
     TResult? Function(UserDetails? user, bool? isSuccess)? loaded,
     TResult? Function(String message)? error,
+    TResult? Function(bool? isSuccess)? success,
   }) {
     return error?.call(message);
   }
@@ -1383,6 +1409,7 @@ class _$UserDetailsErrorImpl implements UserDetailsError {
     TResult Function()? loading,
     TResult Function(UserDetails? user, bool? isSuccess)? loaded,
     TResult Function(String message)? error,
+    TResult Function(bool? isSuccess)? success,
     required TResult orElse(),
   }) {
     if (error != null) {
@@ -1398,6 +1425,7 @@ class _$UserDetailsErrorImpl implements UserDetailsError {
     required TResult Function(UserDetailsLoading value) loading,
     required TResult Function(UserDetailsLoaded value) loaded,
     required TResult Function(UserDetailsError value) error,
+    required TResult Function(UserDetailsSuccess value) success,
   }) {
     return error(this);
   }
@@ -1409,6 +1437,7 @@ class _$UserDetailsErrorImpl implements UserDetailsError {
     TResult? Function(UserDetailsLoading value)? loading,
     TResult? Function(UserDetailsLoaded value)? loaded,
     TResult? Function(UserDetailsError value)? error,
+    TResult? Function(UserDetailsSuccess value)? success,
   }) {
     return error?.call(this);
   }
@@ -1420,6 +1449,7 @@ class _$UserDetailsErrorImpl implements UserDetailsError {
     TResult Function(UserDetailsLoading value)? loading,
     TResult Function(UserDetailsLoaded value)? loaded,
     TResult Function(UserDetailsError value)? error,
+    TResult Function(UserDetailsSuccess value)? success,
     required TResult orElse(),
   }) {
     if (error != null) {
@@ -1435,5 +1465,159 @@ abstract class UserDetailsError implements UserDetailsState {
   String get message;
   @JsonKey(ignore: true)
   _$$UserDetailsErrorImplCopyWith<_$UserDetailsErrorImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$UserDetailsSuccessImplCopyWith<$Res> {
+  factory _$$UserDetailsSuccessImplCopyWith(_$UserDetailsSuccessImpl value,
+          $Res Function(_$UserDetailsSuccessImpl) then) =
+      __$$UserDetailsSuccessImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({bool? isSuccess});
+}
+
+/// @nodoc
+class __$$UserDetailsSuccessImplCopyWithImpl<$Res>
+    extends _$UserDetailsStateCopyWithImpl<$Res, _$UserDetailsSuccessImpl>
+    implements _$$UserDetailsSuccessImplCopyWith<$Res> {
+  __$$UserDetailsSuccessImplCopyWithImpl(_$UserDetailsSuccessImpl _value,
+      $Res Function(_$UserDetailsSuccessImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? isSuccess = freezed,
+  }) {
+    return _then(_$UserDetailsSuccessImpl(
+      isSuccess: freezed == isSuccess
+          ? _value.isSuccess
+          : isSuccess // ignore: cast_nullable_to_non_nullable
+              as bool?,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$UserDetailsSuccessImpl implements UserDetailsSuccess {
+  const _$UserDetailsSuccessImpl({this.isSuccess});
+
+  @override
+  final bool? isSuccess;
+
+  @override
+  String toString() {
+    return 'UserDetailsState.success(isSuccess: $isSuccess)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$UserDetailsSuccessImpl &&
+            (identical(other.isSuccess, isSuccess) ||
+                other.isSuccess == isSuccess));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, isSuccess);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$UserDetailsSuccessImplCopyWith<_$UserDetailsSuccessImpl> get copyWith =>
+      __$$UserDetailsSuccessImplCopyWithImpl<_$UserDetailsSuccessImpl>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function(UserDetails? user, bool? isSuccess) loaded,
+    required TResult Function(String message) error,
+    required TResult Function(bool? isSuccess) success,
+  }) {
+    return success(isSuccess);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? loading,
+    TResult? Function(UserDetails? user, bool? isSuccess)? loaded,
+    TResult? Function(String message)? error,
+    TResult? Function(bool? isSuccess)? success,
+  }) {
+    return success?.call(isSuccess);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(UserDetails? user, bool? isSuccess)? loaded,
+    TResult Function(String message)? error,
+    TResult Function(bool? isSuccess)? success,
+    required TResult orElse(),
+  }) {
+    if (success != null) {
+      return success(isSuccess);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(UserDetailsInitial value) initial,
+    required TResult Function(UserDetailsLoading value) loading,
+    required TResult Function(UserDetailsLoaded value) loaded,
+    required TResult Function(UserDetailsError value) error,
+    required TResult Function(UserDetailsSuccess value) success,
+  }) {
+    return success(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(UserDetailsInitial value)? initial,
+    TResult? Function(UserDetailsLoading value)? loading,
+    TResult? Function(UserDetailsLoaded value)? loaded,
+    TResult? Function(UserDetailsError value)? error,
+    TResult? Function(UserDetailsSuccess value)? success,
+  }) {
+    return success?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(UserDetailsInitial value)? initial,
+    TResult Function(UserDetailsLoading value)? loading,
+    TResult Function(UserDetailsLoaded value)? loaded,
+    TResult Function(UserDetailsError value)? error,
+    TResult Function(UserDetailsSuccess value)? success,
+    required TResult orElse(),
+  }) {
+    if (success != null) {
+      return success(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class UserDetailsSuccess implements UserDetailsState {
+  const factory UserDetailsSuccess({final bool? isSuccess}) =
+      _$UserDetailsSuccessImpl;
+
+  bool? get isSuccess;
+  @JsonKey(ignore: true)
+  _$$UserDetailsSuccessImplCopyWith<_$UserDetailsSuccessImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

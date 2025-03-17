@@ -22,6 +22,7 @@ import 'package:nepstayapp/features/profile/data/repo_impl/profile_repository_im
 import 'package:nepstayapp/features/profile/domain/repository/profile_repository.dart';
 import 'package:nepstayapp/features/profile/domain/usecase/get_use_case/get_profile_usecase.dart';
 import 'package:nepstayapp/features/profile/domain/usecase/post_use_case/post_update_use_case.dart';
+import 'package:nepstayapp/features/profile/domain/usecase/post_use_case/verify_use_case.dart';
 import 'package:nepstayapp/features/profile/presentation/notifier/profile_notifier.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -103,6 +104,8 @@ void registerUseCases() {
       () => SendOtpTpEmailUseCase(authRepository: sl()));
   sl.registerLazySingleton<PostUpdateUseCase>(
       () => PostUpdateUseCase(profileRepository: sl()));
+  sl.registerLazySingleton<VerifyUseCase>(
+      () => VerifyUseCase(profilerepo: sl()));
 
   //Delete Usecase
 }
@@ -119,8 +122,8 @@ void registerNotifier() {
         service: sl(),
       ));
   sl.registerFactory(() => PropertyNotifier(getPropertyUseCase: sl()));
-  sl.registerFactory(
-      () => ProfileNotifier(getProfileUsecase: sl(), postUpdateUseCase: sl()));
+  sl.registerFactory(() => ProfileNotifier(
+      getProfileUsecase: sl(), postUpdateUseCase: sl(), verifyUseCase: sl()));
 }
 
 Future<void> init() async {

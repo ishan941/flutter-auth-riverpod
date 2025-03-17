@@ -1,12 +1,12 @@
 class Api {
-//
-// local
+  //
+  // local
   // static const String baseUrl = 'https://d4b9-27-34-73-171.ngrok-free.app/';
 
   //
   // Prod
   // static const String baseUrl = "https://381b-27-34-73-161.ngrok-free.app/";
-  static const String baseUrl = "https://c880-27-34-73-246.ngrok-free.app/";
+  static const String baseUrl = "https://f51d-27-34-73-187.ngrok-free.app/";
   static const String loginApi = 'api/v1/auth-service/authenticate';
   static const String signUpUserApi = 'api/v1/auth-service/register';
   static const String verifyEmailApi = 'api/v1/auth-service/verifyEmail';
@@ -15,9 +15,10 @@ class Api {
   static const String changePasswordApi = "api/v1/auth-service/changePassword/";
   static const String getUserByIdApi = "api/v1/editController/getUser/";
   static const String updateUserDetails = "api/v1/editController/updateUser/";
+  static const String verifyKycApi = "api/v1/driver/driverKyc";
 
-//
-// Properties
+  //
+  // Properties
   // static const String getUserByIdApi = 'api/user/';
   static const String updateUserByIdApi = 'api/user/update/';
   static const String getPropertiesApi = 'api/properties/';

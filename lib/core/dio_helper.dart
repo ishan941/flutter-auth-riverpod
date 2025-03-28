@@ -3,8 +3,6 @@ import 'dart:convert';
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
 import 'package:nepstayapp/core/api_const.dart';
-import 'package:nepstayapp/core/utils/info_helper.dart';
-import 'package:nepstayapp/core/utils/string_util.dart';
 
 Dio dio = Dio(
   BaseOptions(

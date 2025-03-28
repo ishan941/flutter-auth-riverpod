@@ -1,3 +1,6 @@
+import 'dart:io';
+
+import 'package:file_picker/file_picker.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'user_details.freezed.dart';
@@ -16,9 +19,8 @@ class UserDetails with _$UserDetails {
     String? city,
     String? street,
     String? district,
-    @JsonKey(name: 'fcmtoken') String? fcmToken,
+    String? fcmToken,
     String? verificationCode,
-    @JsonKey(fromJson: _dateTimeFromJson, toJson: _dateTimeToJson)
     DateTime? verificationCodeExpiresAt,
     @Default(false) bool emailVerified,
     @Default(false) bool verified,
@@ -43,7 +45,7 @@ String? _dateTimeToJson(DateTime? date) => date?.toIso8601String();
 class ImageModel with _$ImageModel {
   const factory ImageModel({
     int? id,
-    @JsonKey(name: 'imageUrl') String? url,
+    String? imageUrl,
     String? publicId,
     String? imageType,
   }) = _ImageModel;
@@ -54,11 +56,21 @@ class ImageModel with _$ImageModel {
 
 @freezed
 class UserDetailsState with _$UserDetailsState {
-  const factory UserDetailsState.initial() = UserDetailsInitial;
-  const factory UserDetailsState.loading() = UserDetailsLoading;
+  const factory UserDetailsState.initial(
+      {String? imageUrl, PlatformFile? image}) = UserDetailsInitial;
+  const factory UserDetailsState.loading(
+      {String? imageUrl, PlatformFile? image}) = UserDetailsLoading;
   const factory UserDetailsState.loaded(
-      {required UserDetails? user, bool? isSuccess}) = UserDetailsLoaded;
-  const factory UserDetailsState.error(String message) = UserDetailsError;
-  const factory UserDetailsState.success({bool? isSuccess}) =
-      UserDetailsSuccess;
+      {UserDetails? user,
+      bool? isSuccess,
+      String? imageUrl,
+      PlatformFile? image}) = UserDetailsLoaded;
+  const factory UserDetailsState.error(
+      {String? message,
+      String? imageUrl,
+      PlatformFile? image}) = UserDetailsError;
+  const factory UserDetailsState.success(
+      {bool? isSuccess,
+      String? imageUrl,
+      PlatformFile? image}) = UserDetailsSuccess;
 }

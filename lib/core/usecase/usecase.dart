@@ -19,3 +19,7 @@ class Params extends Equatable {
   @override
   List<Object> get props => [token];
 }
+
+abstract class UseCase1<Type, Params> {
+  Future<Either<Failure, Type>> call(Params params);
+}

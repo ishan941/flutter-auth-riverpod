@@ -1,5 +1,3 @@
-import 'dart:io';
-
 import 'package:dio/dio.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
@@ -20,7 +18,6 @@ class AuthNotifier extends StateNotifier<AuthState> {
   final SendOtpTpEmailUseCase sendOtpTpEmailUseCase;
   final SharedPref sharedPref;
   final TokenService service;
-
   final TextEditingController firstNameController = TextEditingController();
   final TextEditingController lastNameController = TextEditingController();
   final TextEditingController emailController = TextEditingController();
@@ -46,15 +43,6 @@ class AuthNotifier extends StateNotifier<AuthState> {
     required this.sharedPref,
     required this.sendOtpTpEmailUseCase,
   }) : super(const AuthState.idle());
-
-  String _mapErrorToMessage(String error) {
-    if (error.contains('401')) {
-      return 'Invalid credentials. Please try again.';
-    } else if (error.contains('Network')) {
-      return 'Network error. Check your connection.';
-    }
-    return 'An unexpected error occurred.';
-  }
 
   // Future<void> getDeviceInfo() async {
   //   if (Platform.isAndroid) {
@@ -101,7 +89,6 @@ class AuthNotifier extends StateNotifier<AuthState> {
 
       state = AuthState.authenticated(user: user, isSuccess: true);
     } catch (error) {
-      // Extract meaningful error message
       String errorMessage = "An unexpected error occurred"; // Default message
 
       if (error is DioException) {
@@ -118,13 +105,11 @@ class AuthNotifier extends StateNotifier<AuthState> {
     }
   }
 
-//
 // login user
   Future<void> login() async {
     state = const AuthState.loading();
     // Get FCM Token
     String? fcmToken = await FirebaseMessaging.instance.getToken();
-    print("Generated FCM Token: $fcmToken");
     AuthenticationRequest authenticationRequest = AuthenticationRequest(
         email: emailController.text,
         password: passwordController.text,
@@ -138,6 +123,7 @@ class AuthNotifier extends StateNotifier<AuthState> {
           refreshTokenKey, authResponse.refreshToken);
       await sharedPref.saveDataToPreference(userIdKey, authResponse.userId);
       service.updateUserId(authResponse.userId);
+      service.updateAccessToken(authResponse.accessToken);
       state = AuthState.loading(rememberMe: state.rememberMe);
       if (state.rememberMe) {
         await sharedPref.saveDataToPreference("email", emailController.text);
@@ -151,7 +137,6 @@ class AuthNotifier extends StateNotifier<AuthState> {
     }
   }
 
-//
 // verify email
   Future<void> verifyEmail(String email, String verificationCode) async {
     try {
@@ -161,14 +146,13 @@ class AuthNotifier extends StateNotifier<AuthState> {
       if (result) {
         state = const AuthState.otpVerified(isSuccess: true);
       } else {
-        state = AuthState.error('OTP verification failed');
+        state = const AuthState.error('OTP verification failed');
       }
     } catch (error) {
       throw Exception('OTP verification failed: ${error.toString()}');
     }
   }
 
-//
 // Send otp to email
   Future<void> sendOtpToEmail() async {
     try {
@@ -185,7 +169,6 @@ class AuthNotifier extends StateNotifier<AuthState> {
     }
   }
 
-//
 // Change password
   Future<void> changePassword() async {
     try {
@@ -203,7 +186,6 @@ class AuthNotifier extends StateNotifier<AuthState> {
     }
   }
 
-//
 // Log out
   Future<void> logout() async {
     state = AuthState.loading(rememberMe: state.rememberMe);
@@ -212,7 +194,6 @@ class AuthNotifier extends StateNotifier<AuthState> {
     await sharedPref.clearPreferenceData();
     await userHiveService.clearUserData();
     state = AuthState.unauthenticated(rememberMe: state.rememberMe);
-    print('User data cleared from Hive.');
   }
 
   void toggleRememberMe(bool value) async {
@@ -224,10 +205,7 @@ class AuthNotifier extends StateNotifier<AuthState> {
     final userHiveService = UserHiveService();
     final user = await userHiveService.getUserFromHive();
     if (user != null) {
-      print('User: ${user.username}, Email: ${user.email}');
-    } else {
-      print('No user data found in Hive.');
-    }
+    } else {}
   }
 
   Future<void> loadRememberMe() async {

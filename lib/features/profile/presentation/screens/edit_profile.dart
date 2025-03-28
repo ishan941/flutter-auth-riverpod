@@ -4,6 +4,7 @@ import 'package:nepstayapp/core/nef_custom/nef_app_bar.dart';
 import 'package:nepstayapp/core/nef_custom/nef_elevated_button.dart';
 import 'package:nepstayapp/core/nef_custom/nef_padding.dart';
 import 'package:nepstayapp/core/nef_custom/nef_text_form_field.dart';
+import 'package:nepstayapp/core/utils/color_util.dart';
 import 'package:nepstayapp/features/profile/data/model/user_details.dart';
 import 'package:nepstayapp/features/profile/presentation/notifier/profile_notifier.dart';
 
@@ -34,12 +35,12 @@ class _EditProfileState extends ConsumerState<EditProfile> {
           showBackButton: true, showBackText: true, title: "Edit Profile"),
       body: SingleChildScrollView(
         child: NefPadding(
-          child: profileState.when(
-            error: (message) => SizedBox(),
-            initial: () => SizedBox(),
-            loading: () => CircularProgressIndicator(),
-            loaded: (user, __) {
-              // Initialize controllers with user data if empty
+          child: profileState.maybeMap(
+            error: (value) => const SizedBox(),
+            initial: (value) => const SizedBox(),
+            loading: (value) => const CircularProgressIndicator(),
+            loaded: (value) {
+              final user = value.user;
               firstNameController.text = (firstNameController.text.isNotEmpty
                       ? firstNameController.text
                       : user!.firstName) ??
@@ -84,14 +85,49 @@ class _EditProfileState extends ConsumerState<EditProfile> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  const Align(
-                    alignment: Alignment.center,
-                    child: CircleAvatar(
-                      backgroundImage: AssetImage("assets/images/IMG_4610.jpg"),
-                      radius: 50,
-                      backgroundColor: Colors.grey,
+                  InkWell(
+                    onTap: () async {
+                      profileNotifier.pickImage();
+                    },
+                    child: Align(
+                      alignment: Alignment.center,
+                      child: CircleAvatar(
+                        backgroundImage: (user!.images.isEmpty &&
+                                user.images.length == 0)
+                            ? const AssetImage("assets/images/IMG_4610.jpg")
+                                as ImageProvider
+                            : NetworkImage(user.images.first.imageUrl ?? ""),
+                        radius: 50,
+                        backgroundColor: Colors.grey,
+                      ),
                     ),
                   ),
+                  user.images.isEmpty
+                      ? InkWell(
+                          onTap: () async {
+                            await profileNotifier.pickImageForUpload();
+                          },
+                          child: Padding(
+                            padding: const EdgeInsets.only(top: 10),
+                            child: Center(
+                              child: Container(
+                                decoration: BoxDecoration(
+                                    shape: BoxShape.rectangle,
+                                    border: Border.all(color: primaryColor)),
+                                child: const Padding(
+                                  padding: EdgeInsets.all(8.0),
+                                  child: Text(
+                                    "Upload Image",
+                                    style: TextStyle(
+                                        color: primaryColor,
+                                        fontWeight: FontWeight.bold),
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ),
+                        )
+                      : const SizedBox(),
                   const SizedBox(height: 20),
                   const Text("First name"),
                   const SizedBox(height: 5),
@@ -125,8 +161,8 @@ class _EditProfileState extends ConsumerState<EditProfile> {
                 ],
               );
             },
-            success: (bool? isSuccess) {
-              return SizedBox();
+            orElse: () {
+              return const SizedBox();
             },
           ),
         ),

@@ -34,19 +34,13 @@ class PropertyDataSourceImpl extends PropertyDataSource {
   @override
   Future<PropertyDetailModel> fetchPropertiesDetails(String? uid) async {
     final Response response =
-        await dioHttp.get(url: Api.baseUrl + Api.getPropertiesApi + '$uid');
+        await dioHttp.get(url: '${Api.baseUrl}${Api.getPropertiesApi}$uid');
     if (response.statusCode == HttpStatus.ok ||
         response.statusCode == HttpStatus.created) {
       final responseData = response.data;
-      print("Raw JSON: ${responseData}");
 
-      print("Price per night: ${responseData['price_per_night']}");
-      print("Image URL: ${responseData['image_url']}");
       PropertyDetailModel propertyDetails =
           PropertyDetailModel.fromJson(responseData);
-      print("Property Details: ${propertyDetails}");
-      print("Price per night: ${propertyDetails.pricePerNight}");
-      print("Image URL: ${propertyDetails.imageUrl}");
       return propertyDetails;
     } else {
       throw ServerException(response.statusMessage, response.statusCode);

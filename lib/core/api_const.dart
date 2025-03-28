@@ -1,12 +1,5 @@
 class Api {
-  //
-  // local
-  // static const String baseUrl = 'https://d4b9-27-34-73-171.ngrok-free.app/';
-
-  //
-  // Prod
-  // static const String baseUrl = "https://381b-27-34-73-161.ngrok-free.app/";
-  static const String baseUrl = "https://f51d-27-34-73-187.ngrok-free.app/";
+  static const String baseUrl = "https://d884-113-199-224-242.ngrok-free.app/";
   static const String loginApi = 'api/v1/auth-service/authenticate';
   static const String signUpUserApi = 'api/v1/auth-service/register';
   static const String verifyEmailApi = 'api/v1/auth-service/verifyEmail';
@@ -17,9 +10,6 @@ class Api {
   static const String updateUserDetails = "api/v1/editController/updateUser/";
   static const String verifyKycApi = "api/v1/driver/driverKyc";
 
-  //
-  // Properties
-  // static const String getUserByIdApi = 'api/user/';
   static const String updateUserByIdApi = 'api/user/update/';
   static const String getPropertiesApi = 'api/properties/';
 
@@ -27,4 +17,5 @@ class Api {
       "api/user/delete/6751b78dcf11202c584e7582";
   static const String getListings = "api/listing/get";
   static const String getUserListings = "api/user/listings/";
+  static const String uploadProfileImageApi = "api/v1/uploadImage/save";
 }

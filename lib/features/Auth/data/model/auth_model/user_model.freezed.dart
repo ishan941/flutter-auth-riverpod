@@ -630,9 +630,7 @@ ImageModel _$ImageModelFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$ImageModel {
   int? get id => throw _privateConstructorUsedError;
-  @JsonKey(name: 'imageUrl')
-  String? get url =>
-      throw _privateConstructorUsedError; // Fixed: Mapped API field 'imageUrl'
+  String? get url => throw _privateConstructorUsedError;
   String? get publicId => throw _privateConstructorUsedError;
   String? get imageType => throw _privateConstructorUsedError;
 
@@ -648,11 +646,7 @@ abstract class $ImageModelCopyWith<$Res> {
           ImageModel value, $Res Function(ImageModel) then) =
       _$ImageModelCopyWithImpl<$Res, ImageModel>;
   @useResult
-  $Res call(
-      {int? id,
-      @JsonKey(name: 'imageUrl') String? url,
-      String? publicId,
-      String? imageType});
+  $Res call({int? id, String? url, String? publicId, String? imageType});
 }
 
 /// @nodoc
@@ -702,11 +696,7 @@ abstract class _$$ImageModelImplCopyWith<$Res>
       __$$ImageModelImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {int? id,
-      @JsonKey(name: 'imageUrl') String? url,
-      String? publicId,
-      String? imageType});
+  $Res call({int? id, String? url, String? publicId, String? imageType});
 }
 
 /// @nodoc
@@ -749,11 +739,7 @@ class __$$ImageModelImplCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$ImageModelImpl implements _ImageModel {
-  const _$ImageModelImpl(
-      {this.id,
-      @JsonKey(name: 'imageUrl') this.url,
-      this.publicId,
-      this.imageType});
+  const _$ImageModelImpl({this.id, this.url, this.publicId, this.imageType});
 
   factory _$ImageModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$ImageModelImplFromJson(json);
@@ -761,9 +747,7 @@ class _$ImageModelImpl implements _ImageModel {
   @override
   final int? id;
   @override
-  @JsonKey(name: 'imageUrl')
   final String? url;
-// Fixed: Mapped API field 'imageUrl'
   @override
   final String? publicId;
   @override
@@ -808,7 +792,7 @@ class _$ImageModelImpl implements _ImageModel {
 abstract class _ImageModel implements ImageModel {
   const factory _ImageModel(
       {final int? id,
-      @JsonKey(name: 'imageUrl') final String? url,
+      final String? url,
       final String? publicId,
       final String? imageType}) = _$ImageModelImpl;
 
@@ -818,9 +802,8 @@ abstract class _ImageModel implements ImageModel {
   @override
   int? get id;
   @override
-  @JsonKey(name: 'imageUrl')
   String? get url;
-  @override // Fixed: Mapped API field 'imageUrl'
+  @override
   String? get publicId;
   @override
   String? get imageType;

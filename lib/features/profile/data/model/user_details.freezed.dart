@@ -30,10 +30,8 @@ mixin _$UserDetails {
   String? get city => throw _privateConstructorUsedError;
   String? get street => throw _privateConstructorUsedError;
   String? get district => throw _privateConstructorUsedError;
-  @JsonKey(name: 'fcmtoken')
   String? get fcmToken => throw _privateConstructorUsedError;
   String? get verificationCode => throw _privateConstructorUsedError;
-  @JsonKey(fromJson: _dateTimeFromJson, toJson: _dateTimeToJson)
   DateTime? get verificationCodeExpiresAt => throw _privateConstructorUsedError;
   bool get emailVerified => throw _privateConstructorUsedError;
   bool get verified => throw _privateConstructorUsedError;
@@ -67,9 +65,8 @@ abstract class $UserDetailsCopyWith<$Res> {
       String? city,
       String? street,
       String? district,
-      @JsonKey(name: 'fcmtoken') String? fcmToken,
+      String? fcmToken,
       String? verificationCode,
-      @JsonKey(fromJson: _dateTimeFromJson, toJson: _dateTimeToJson)
       DateTime? verificationCodeExpiresAt,
       bool emailVerified,
       bool verified,
@@ -224,9 +221,8 @@ abstract class _$$UserDetailsImplCopyWith<$Res>
       String? city,
       String? street,
       String? district,
-      @JsonKey(name: 'fcmtoken') String? fcmToken,
+      String? fcmToken,
       String? verificationCode,
-      @JsonKey(fromJson: _dateTimeFromJson, toJson: _dateTimeToJson)
       DateTime? verificationCodeExpiresAt,
       bool emailVerified,
       bool verified,
@@ -374,9 +370,8 @@ class _$UserDetailsImpl implements _UserDetails {
       this.city,
       this.street,
       this.district,
-      @JsonKey(name: 'fcmtoken') this.fcmToken,
+      this.fcmToken,
       this.verificationCode,
-      @JsonKey(fromJson: _dateTimeFromJson, toJson: _dateTimeToJson)
       this.verificationCodeExpiresAt,
       this.emailVerified = false,
       this.verified = false,
@@ -412,12 +407,10 @@ class _$UserDetailsImpl implements _UserDetails {
   @override
   final String? district;
   @override
-  @JsonKey(name: 'fcmtoken')
   final String? fcmToken;
   @override
   final String? verificationCode;
   @override
-  @JsonKey(fromJson: _dateTimeFromJson, toJson: _dateTimeToJson)
   final DateTime? verificationCodeExpiresAt;
   @override
   @JsonKey()
@@ -549,9 +542,8 @@ abstract class _UserDetails implements UserDetails {
       final String? city,
       final String? street,
       final String? district,
-      @JsonKey(name: 'fcmtoken') final String? fcmToken,
+      final String? fcmToken,
       final String? verificationCode,
-      @JsonKey(fromJson: _dateTimeFromJson, toJson: _dateTimeToJson)
       final DateTime? verificationCodeExpiresAt,
       final bool emailVerified,
       final bool verified,
@@ -586,12 +578,10 @@ abstract class _UserDetails implements UserDetails {
   @override
   String? get district;
   @override
-  @JsonKey(name: 'fcmtoken')
   String? get fcmToken;
   @override
   String? get verificationCode;
   @override
-  @JsonKey(fromJson: _dateTimeFromJson, toJson: _dateTimeToJson)
   DateTime? get verificationCodeExpiresAt;
   @override
   bool get emailVerified;
@@ -622,8 +612,7 @@ ImageModel _$ImageModelFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$ImageModel {
   int? get id => throw _privateConstructorUsedError;
-  @JsonKey(name: 'imageUrl')
-  String? get url => throw _privateConstructorUsedError;
+  String? get imageUrl => throw _privateConstructorUsedError;
   String? get publicId => throw _privateConstructorUsedError;
   String? get imageType => throw _privateConstructorUsedError;
 
@@ -639,11 +628,7 @@ abstract class $ImageModelCopyWith<$Res> {
           ImageModel value, $Res Function(ImageModel) then) =
       _$ImageModelCopyWithImpl<$Res, ImageModel>;
   @useResult
-  $Res call(
-      {int? id,
-      @JsonKey(name: 'imageUrl') String? url,
-      String? publicId,
-      String? imageType});
+  $Res call({int? id, String? imageUrl, String? publicId, String? imageType});
 }
 
 /// @nodoc
@@ -660,7 +645,7 @@ class _$ImageModelCopyWithImpl<$Res, $Val extends ImageModel>
   @override
   $Res call({
     Object? id = freezed,
-    Object? url = freezed,
+    Object? imageUrl = freezed,
     Object? publicId = freezed,
     Object? imageType = freezed,
   }) {
@@ -669,9 +654,9 @@ class _$ImageModelCopyWithImpl<$Res, $Val extends ImageModel>
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as int?,
-      url: freezed == url
-          ? _value.url
-          : url // ignore: cast_nullable_to_non_nullable
+      imageUrl: freezed == imageUrl
+          ? _value.imageUrl
+          : imageUrl // ignore: cast_nullable_to_non_nullable
               as String?,
       publicId: freezed == publicId
           ? _value.publicId
@@ -693,11 +678,7 @@ abstract class _$$ImageModelImplCopyWith<$Res>
       __$$ImageModelImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {int? id,
-      @JsonKey(name: 'imageUrl') String? url,
-      String? publicId,
-      String? imageType});
+  $Res call({int? id, String? imageUrl, String? publicId, String? imageType});
 }
 
 /// @nodoc
@@ -712,7 +693,7 @@ class __$$ImageModelImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? id = freezed,
-    Object? url = freezed,
+    Object? imageUrl = freezed,
     Object? publicId = freezed,
     Object? imageType = freezed,
   }) {
@@ -721,9 +702,9 @@ class __$$ImageModelImplCopyWithImpl<$Res>
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as int?,
-      url: freezed == url
-          ? _value.url
-          : url // ignore: cast_nullable_to_non_nullable
+      imageUrl: freezed == imageUrl
+          ? _value.imageUrl
+          : imageUrl // ignore: cast_nullable_to_non_nullable
               as String?,
       publicId: freezed == publicId
           ? _value.publicId
@@ -741,10 +722,7 @@ class __$$ImageModelImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$ImageModelImpl implements _ImageModel {
   const _$ImageModelImpl(
-      {this.id,
-      @JsonKey(name: 'imageUrl') this.url,
-      this.publicId,
-      this.imageType});
+      {this.id, this.imageUrl, this.publicId, this.imageType});
 
   factory _$ImageModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$ImageModelImplFromJson(json);
@@ -752,8 +730,7 @@ class _$ImageModelImpl implements _ImageModel {
   @override
   final int? id;
   @override
-  @JsonKey(name: 'imageUrl')
-  final String? url;
+  final String? imageUrl;
   @override
   final String? publicId;
   @override
@@ -761,7 +738,7 @@ class _$ImageModelImpl implements _ImageModel {
 
   @override
   String toString() {
-    return 'ImageModel(id: $id, url: $url, publicId: $publicId, imageType: $imageType)';
+    return 'ImageModel(id: $id, imageUrl: $imageUrl, publicId: $publicId, imageType: $imageType)';
   }
 
   @override
@@ -770,7 +747,8 @@ class _$ImageModelImpl implements _ImageModel {
         (other.runtimeType == runtimeType &&
             other is _$ImageModelImpl &&
             (identical(other.id, id) || other.id == id) &&
-            (identical(other.url, url) || other.url == url) &&
+            (identical(other.imageUrl, imageUrl) ||
+                other.imageUrl == imageUrl) &&
             (identical(other.publicId, publicId) ||
                 other.publicId == publicId) &&
             (identical(other.imageType, imageType) ||
@@ -779,7 +757,8 @@ class _$ImageModelImpl implements _ImageModel {
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, id, url, publicId, imageType);
+  int get hashCode =>
+      Object.hash(runtimeType, id, imageUrl, publicId, imageType);
 
   @JsonKey(ignore: true)
   @override
@@ -798,7 +777,7 @@ class _$ImageModelImpl implements _ImageModel {
 abstract class _ImageModel implements ImageModel {
   const factory _ImageModel(
       {final int? id,
-      @JsonKey(name: 'imageUrl') final String? url,
+      final String? imageUrl,
       final String? publicId,
       final String? imageType}) = _$ImageModelImpl;
 
@@ -808,8 +787,7 @@ abstract class _ImageModel implements ImageModel {
   @override
   int? get id;
   @override
-  @JsonKey(name: 'imageUrl')
-  String? get url;
+  String? get imageUrl;
   @override
   String? get publicId;
   @override
@@ -822,31 +800,47 @@ abstract class _ImageModel implements ImageModel {
 
 /// @nodoc
 mixin _$UserDetailsState {
+  String? get imageUrl => throw _privateConstructorUsedError;
+  PlatformFile? get image => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function() loading,
-    required TResult Function(UserDetails? user, bool? isSuccess) loaded,
-    required TResult Function(String message) error,
-    required TResult Function(bool? isSuccess) success,
+    required TResult Function(String? imageUrl, PlatformFile? image) initial,
+    required TResult Function(String? imageUrl, PlatformFile? image) loading,
+    required TResult Function(UserDetails? user, bool? isSuccess,
+            String? imageUrl, PlatformFile? image)
+        loaded,
+    required TResult Function(
+            String? message, String? imageUrl, PlatformFile? image)
+        error,
+    required TResult Function(
+            bool? isSuccess, String? imageUrl, PlatformFile? image)
+        success,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-    TResult? Function()? loading,
-    TResult? Function(UserDetails? user, bool? isSuccess)? loaded,
-    TResult? Function(String message)? error,
-    TResult? Function(bool? isSuccess)? success,
+    TResult? Function(String? imageUrl, PlatformFile? image)? initial,
+    TResult? Function(String? imageUrl, PlatformFile? image)? loading,
+    TResult? Function(UserDetails? user, bool? isSuccess, String? imageUrl,
+            PlatformFile? image)?
+        loaded,
+    TResult? Function(String? message, String? imageUrl, PlatformFile? image)?
+        error,
+    TResult? Function(bool? isSuccess, String? imageUrl, PlatformFile? image)?
+        success,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? loading,
-    TResult Function(UserDetails? user, bool? isSuccess)? loaded,
-    TResult Function(String message)? error,
-    TResult Function(bool? isSuccess)? success,
+    TResult Function(String? imageUrl, PlatformFile? image)? initial,
+    TResult Function(String? imageUrl, PlatformFile? image)? loading,
+    TResult Function(UserDetails? user, bool? isSuccess, String? imageUrl,
+            PlatformFile? image)?
+        loaded,
+    TResult Function(String? message, String? imageUrl, PlatformFile? image)?
+        error,
+    TResult Function(bool? isSuccess, String? imageUrl, PlatformFile? image)?
+        success,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -878,6 +872,10 @@ mixin _$UserDetailsState {
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
+
+  @JsonKey(ignore: true)
+  $UserDetailsStateCopyWith<UserDetailsState> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -885,6 +883,8 @@ abstract class $UserDetailsStateCopyWith<$Res> {
   factory $UserDetailsStateCopyWith(
           UserDetailsState value, $Res Function(UserDetailsState) then) =
       _$UserDetailsStateCopyWithImpl<$Res, UserDetailsState>;
+  @useResult
+  $Res call({String? imageUrl, PlatformFile? image});
 }
 
 /// @nodoc
@@ -896,13 +896,35 @@ class _$UserDetailsStateCopyWithImpl<$Res, $Val extends UserDetailsState>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? imageUrl = freezed,
+    Object? image = freezed,
+  }) {
+    return _then(_value.copyWith(
+      imageUrl: freezed == imageUrl
+          ? _value.imageUrl
+          : imageUrl // ignore: cast_nullable_to_non_nullable
+              as String?,
+      image: freezed == image
+          ? _value.image
+          : image // ignore: cast_nullable_to_non_nullable
+              as PlatformFile?,
+    ) as $Val);
+  }
 }
 
 /// @nodoc
-abstract class _$$UserDetailsInitialImplCopyWith<$Res> {
+abstract class _$$UserDetailsInitialImplCopyWith<$Res>
+    implements $UserDetailsStateCopyWith<$Res> {
   factory _$$UserDetailsInitialImplCopyWith(_$UserDetailsInitialImpl value,
           $Res Function(_$UserDetailsInitialImpl) then) =
       __$$UserDetailsInitialImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({String? imageUrl, PlatformFile? image});
 }
 
 /// @nodoc
@@ -912,63 +934,111 @@ class __$$UserDetailsInitialImplCopyWithImpl<$Res>
   __$$UserDetailsInitialImplCopyWithImpl(_$UserDetailsInitialImpl _value,
       $Res Function(_$UserDetailsInitialImpl) _then)
       : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? imageUrl = freezed,
+    Object? image = freezed,
+  }) {
+    return _then(_$UserDetailsInitialImpl(
+      imageUrl: freezed == imageUrl
+          ? _value.imageUrl
+          : imageUrl // ignore: cast_nullable_to_non_nullable
+              as String?,
+      image: freezed == image
+          ? _value.image
+          : image // ignore: cast_nullable_to_non_nullable
+              as PlatformFile?,
+    ));
+  }
 }
 
 /// @nodoc
 
 class _$UserDetailsInitialImpl implements UserDetailsInitial {
-  const _$UserDetailsInitialImpl();
+  const _$UserDetailsInitialImpl({this.imageUrl, this.image});
+
+  @override
+  final String? imageUrl;
+  @override
+  final PlatformFile? image;
 
   @override
   String toString() {
-    return 'UserDetailsState.initial()';
+    return 'UserDetailsState.initial(imageUrl: $imageUrl, image: $image)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$UserDetailsInitialImpl);
+        (other.runtimeType == runtimeType &&
+            other is _$UserDetailsInitialImpl &&
+            (identical(other.imageUrl, imageUrl) ||
+                other.imageUrl == imageUrl) &&
+            (identical(other.image, image) || other.image == image));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, imageUrl, image);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$UserDetailsInitialImplCopyWith<_$UserDetailsInitialImpl> get copyWith =>
+      __$$UserDetailsInitialImplCopyWithImpl<_$UserDetailsInitialImpl>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function() loading,
-    required TResult Function(UserDetails? user, bool? isSuccess) loaded,
-    required TResult Function(String message) error,
-    required TResult Function(bool? isSuccess) success,
+    required TResult Function(String? imageUrl, PlatformFile? image) initial,
+    required TResult Function(String? imageUrl, PlatformFile? image) loading,
+    required TResult Function(UserDetails? user, bool? isSuccess,
+            String? imageUrl, PlatformFile? image)
+        loaded,
+    required TResult Function(
+            String? message, String? imageUrl, PlatformFile? image)
+        error,
+    required TResult Function(
+            bool? isSuccess, String? imageUrl, PlatformFile? image)
+        success,
   }) {
-    return initial();
+    return initial(imageUrl, image);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-    TResult? Function()? loading,
-    TResult? Function(UserDetails? user, bool? isSuccess)? loaded,
-    TResult? Function(String message)? error,
-    TResult? Function(bool? isSuccess)? success,
+    TResult? Function(String? imageUrl, PlatformFile? image)? initial,
+    TResult? Function(String? imageUrl, PlatformFile? image)? loading,
+    TResult? Function(UserDetails? user, bool? isSuccess, String? imageUrl,
+            PlatformFile? image)?
+        loaded,
+    TResult? Function(String? message, String? imageUrl, PlatformFile? image)?
+        error,
+    TResult? Function(bool? isSuccess, String? imageUrl, PlatformFile? image)?
+        success,
   }) {
-    return initial?.call();
+    return initial?.call(imageUrl, image);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? loading,
-    TResult Function(UserDetails? user, bool? isSuccess)? loaded,
-    TResult Function(String message)? error,
-    TResult Function(bool? isSuccess)? success,
+    TResult Function(String? imageUrl, PlatformFile? image)? initial,
+    TResult Function(String? imageUrl, PlatformFile? image)? loading,
+    TResult Function(UserDetails? user, bool? isSuccess, String? imageUrl,
+            PlatformFile? image)?
+        loaded,
+    TResult Function(String? message, String? imageUrl, PlatformFile? image)?
+        error,
+    TResult Function(bool? isSuccess, String? imageUrl, PlatformFile? image)?
+        success,
     required TResult orElse(),
   }) {
     if (initial != null) {
-      return initial();
+      return initial(imageUrl, image);
     }
     return orElse();
   }
@@ -1015,14 +1085,29 @@ class _$UserDetailsInitialImpl implements UserDetailsInitial {
 }
 
 abstract class UserDetailsInitial implements UserDetailsState {
-  const factory UserDetailsInitial() = _$UserDetailsInitialImpl;
+  const factory UserDetailsInitial(
+      {final String? imageUrl,
+      final PlatformFile? image}) = _$UserDetailsInitialImpl;
+
+  @override
+  String? get imageUrl;
+  @override
+  PlatformFile? get image;
+  @override
+  @JsonKey(ignore: true)
+  _$$UserDetailsInitialImplCopyWith<_$UserDetailsInitialImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$UserDetailsLoadingImplCopyWith<$Res> {
+abstract class _$$UserDetailsLoadingImplCopyWith<$Res>
+    implements $UserDetailsStateCopyWith<$Res> {
   factory _$$UserDetailsLoadingImplCopyWith(_$UserDetailsLoadingImpl value,
           $Res Function(_$UserDetailsLoadingImpl) then) =
       __$$UserDetailsLoadingImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({String? imageUrl, PlatformFile? image});
 }
 
 /// @nodoc
@@ -1032,63 +1117,111 @@ class __$$UserDetailsLoadingImplCopyWithImpl<$Res>
   __$$UserDetailsLoadingImplCopyWithImpl(_$UserDetailsLoadingImpl _value,
       $Res Function(_$UserDetailsLoadingImpl) _then)
       : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? imageUrl = freezed,
+    Object? image = freezed,
+  }) {
+    return _then(_$UserDetailsLoadingImpl(
+      imageUrl: freezed == imageUrl
+          ? _value.imageUrl
+          : imageUrl // ignore: cast_nullable_to_non_nullable
+              as String?,
+      image: freezed == image
+          ? _value.image
+          : image // ignore: cast_nullable_to_non_nullable
+              as PlatformFile?,
+    ));
+  }
 }
 
 /// @nodoc
 
 class _$UserDetailsLoadingImpl implements UserDetailsLoading {
-  const _$UserDetailsLoadingImpl();
+  const _$UserDetailsLoadingImpl({this.imageUrl, this.image});
+
+  @override
+  final String? imageUrl;
+  @override
+  final PlatformFile? image;
 
   @override
   String toString() {
-    return 'UserDetailsState.loading()';
+    return 'UserDetailsState.loading(imageUrl: $imageUrl, image: $image)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$UserDetailsLoadingImpl);
+        (other.runtimeType == runtimeType &&
+            other is _$UserDetailsLoadingImpl &&
+            (identical(other.imageUrl, imageUrl) ||
+                other.imageUrl == imageUrl) &&
+            (identical(other.image, image) || other.image == image));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, imageUrl, image);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$UserDetailsLoadingImplCopyWith<_$UserDetailsLoadingImpl> get copyWith =>
+      __$$UserDetailsLoadingImplCopyWithImpl<_$UserDetailsLoadingImpl>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function() loading,
-    required TResult Function(UserDetails? user, bool? isSuccess) loaded,
-    required TResult Function(String message) error,
-    required TResult Function(bool? isSuccess) success,
+    required TResult Function(String? imageUrl, PlatformFile? image) initial,
+    required TResult Function(String? imageUrl, PlatformFile? image) loading,
+    required TResult Function(UserDetails? user, bool? isSuccess,
+            String? imageUrl, PlatformFile? image)
+        loaded,
+    required TResult Function(
+            String? message, String? imageUrl, PlatformFile? image)
+        error,
+    required TResult Function(
+            bool? isSuccess, String? imageUrl, PlatformFile? image)
+        success,
   }) {
-    return loading();
+    return loading(imageUrl, image);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-    TResult? Function()? loading,
-    TResult? Function(UserDetails? user, bool? isSuccess)? loaded,
-    TResult? Function(String message)? error,
-    TResult? Function(bool? isSuccess)? success,
+    TResult? Function(String? imageUrl, PlatformFile? image)? initial,
+    TResult? Function(String? imageUrl, PlatformFile? image)? loading,
+    TResult? Function(UserDetails? user, bool? isSuccess, String? imageUrl,
+            PlatformFile? image)?
+        loaded,
+    TResult? Function(String? message, String? imageUrl, PlatformFile? image)?
+        error,
+    TResult? Function(bool? isSuccess, String? imageUrl, PlatformFile? image)?
+        success,
   }) {
-    return loading?.call();
+    return loading?.call(imageUrl, image);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? loading,
-    TResult Function(UserDetails? user, bool? isSuccess)? loaded,
-    TResult Function(String message)? error,
-    TResult Function(bool? isSuccess)? success,
+    TResult Function(String? imageUrl, PlatformFile? image)? initial,
+    TResult Function(String? imageUrl, PlatformFile? image)? loading,
+    TResult Function(UserDetails? user, bool? isSuccess, String? imageUrl,
+            PlatformFile? image)?
+        loaded,
+    TResult Function(String? message, String? imageUrl, PlatformFile? image)?
+        error,
+    TResult Function(bool? isSuccess, String? imageUrl, PlatformFile? image)?
+        success,
     required TResult orElse(),
   }) {
     if (loading != null) {
-      return loading();
+      return loading(imageUrl, image);
     }
     return orElse();
   }
@@ -1135,16 +1268,33 @@ class _$UserDetailsLoadingImpl implements UserDetailsLoading {
 }
 
 abstract class UserDetailsLoading implements UserDetailsState {
-  const factory UserDetailsLoading() = _$UserDetailsLoadingImpl;
+  const factory UserDetailsLoading(
+      {final String? imageUrl,
+      final PlatformFile? image}) = _$UserDetailsLoadingImpl;
+
+  @override
+  String? get imageUrl;
+  @override
+  PlatformFile? get image;
+  @override
+  @JsonKey(ignore: true)
+  _$$UserDetailsLoadingImplCopyWith<_$UserDetailsLoadingImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$UserDetailsLoadedImplCopyWith<$Res> {
+abstract class _$$UserDetailsLoadedImplCopyWith<$Res>
+    implements $UserDetailsStateCopyWith<$Res> {
   factory _$$UserDetailsLoadedImplCopyWith(_$UserDetailsLoadedImpl value,
           $Res Function(_$UserDetailsLoadedImpl) then) =
       __$$UserDetailsLoadedImplCopyWithImpl<$Res>;
+  @override
   @useResult
-  $Res call({UserDetails? user, bool? isSuccess});
+  $Res call(
+      {UserDetails? user,
+      bool? isSuccess,
+      String? imageUrl,
+      PlatformFile? image});
 
   $UserDetailsCopyWith<$Res>? get user;
 }
@@ -1162,6 +1312,8 @@ class __$$UserDetailsLoadedImplCopyWithImpl<$Res>
   $Res call({
     Object? user = freezed,
     Object? isSuccess = freezed,
+    Object? imageUrl = freezed,
+    Object? image = freezed,
   }) {
     return _then(_$UserDetailsLoadedImpl(
       user: freezed == user
@@ -1172,6 +1324,14 @@ class __$$UserDetailsLoadedImplCopyWithImpl<$Res>
           ? _value.isSuccess
           : isSuccess // ignore: cast_nullable_to_non_nullable
               as bool?,
+      imageUrl: freezed == imageUrl
+          ? _value.imageUrl
+          : imageUrl // ignore: cast_nullable_to_non_nullable
+              as String?,
+      image: freezed == image
+          ? _value.image
+          : image // ignore: cast_nullable_to_non_nullable
+              as PlatformFile?,
     ));
   }
 
@@ -1191,16 +1351,21 @@ class __$$UserDetailsLoadedImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$UserDetailsLoadedImpl implements UserDetailsLoaded {
-  const _$UserDetailsLoadedImpl({required this.user, this.isSuccess});
+  const _$UserDetailsLoadedImpl(
+      {this.user, this.isSuccess, this.imageUrl, this.image});
 
   @override
   final UserDetails? user;
   @override
   final bool? isSuccess;
+  @override
+  final String? imageUrl;
+  @override
+  final PlatformFile? image;
 
   @override
   String toString() {
-    return 'UserDetailsState.loaded(user: $user, isSuccess: $isSuccess)';
+    return 'UserDetailsState.loaded(user: $user, isSuccess: $isSuccess, imageUrl: $imageUrl, image: $image)';
   }
 
   @override
@@ -1210,11 +1375,15 @@ class _$UserDetailsLoadedImpl implements UserDetailsLoaded {
             other is _$UserDetailsLoadedImpl &&
             (identical(other.user, user) || other.user == user) &&
             (identical(other.isSuccess, isSuccess) ||
-                other.isSuccess == isSuccess));
+                other.isSuccess == isSuccess) &&
+            (identical(other.imageUrl, imageUrl) ||
+                other.imageUrl == imageUrl) &&
+            (identical(other.image, image) || other.image == image));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, user, isSuccess);
+  int get hashCode =>
+      Object.hash(runtimeType, user, isSuccess, imageUrl, image);
 
   @JsonKey(ignore: true)
   @override
@@ -1226,39 +1395,53 @@ class _$UserDetailsLoadedImpl implements UserDetailsLoaded {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function() loading,
-    required TResult Function(UserDetails? user, bool? isSuccess) loaded,
-    required TResult Function(String message) error,
-    required TResult Function(bool? isSuccess) success,
+    required TResult Function(String? imageUrl, PlatformFile? image) initial,
+    required TResult Function(String? imageUrl, PlatformFile? image) loading,
+    required TResult Function(UserDetails? user, bool? isSuccess,
+            String? imageUrl, PlatformFile? image)
+        loaded,
+    required TResult Function(
+            String? message, String? imageUrl, PlatformFile? image)
+        error,
+    required TResult Function(
+            bool? isSuccess, String? imageUrl, PlatformFile? image)
+        success,
   }) {
-    return loaded(user, isSuccess);
+    return loaded(user, isSuccess, imageUrl, image);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-    TResult? Function()? loading,
-    TResult? Function(UserDetails? user, bool? isSuccess)? loaded,
-    TResult? Function(String message)? error,
-    TResult? Function(bool? isSuccess)? success,
+    TResult? Function(String? imageUrl, PlatformFile? image)? initial,
+    TResult? Function(String? imageUrl, PlatformFile? image)? loading,
+    TResult? Function(UserDetails? user, bool? isSuccess, String? imageUrl,
+            PlatformFile? image)?
+        loaded,
+    TResult? Function(String? message, String? imageUrl, PlatformFile? image)?
+        error,
+    TResult? Function(bool? isSuccess, String? imageUrl, PlatformFile? image)?
+        success,
   }) {
-    return loaded?.call(user, isSuccess);
+    return loaded?.call(user, isSuccess, imageUrl, image);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? loading,
-    TResult Function(UserDetails? user, bool? isSuccess)? loaded,
-    TResult Function(String message)? error,
-    TResult Function(bool? isSuccess)? success,
+    TResult Function(String? imageUrl, PlatformFile? image)? initial,
+    TResult Function(String? imageUrl, PlatformFile? image)? loading,
+    TResult Function(UserDetails? user, bool? isSuccess, String? imageUrl,
+            PlatformFile? image)?
+        loaded,
+    TResult Function(String? message, String? imageUrl, PlatformFile? image)?
+        error,
+    TResult Function(bool? isSuccess, String? imageUrl, PlatformFile? image)?
+        success,
     required TResult orElse(),
   }) {
     if (loaded != null) {
-      return loaded(user, isSuccess);
+      return loaded(user, isSuccess, imageUrl, image);
     }
     return orElse();
   }
@@ -1306,23 +1489,32 @@ class _$UserDetailsLoadedImpl implements UserDetailsLoaded {
 
 abstract class UserDetailsLoaded implements UserDetailsState {
   const factory UserDetailsLoaded(
-      {required final UserDetails? user,
-      final bool? isSuccess}) = _$UserDetailsLoadedImpl;
+      {final UserDetails? user,
+      final bool? isSuccess,
+      final String? imageUrl,
+      final PlatformFile? image}) = _$UserDetailsLoadedImpl;
 
   UserDetails? get user;
   bool? get isSuccess;
+  @override
+  String? get imageUrl;
+  @override
+  PlatformFile? get image;
+  @override
   @JsonKey(ignore: true)
   _$$UserDetailsLoadedImplCopyWith<_$UserDetailsLoadedImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$UserDetailsErrorImplCopyWith<$Res> {
+abstract class _$$UserDetailsErrorImplCopyWith<$Res>
+    implements $UserDetailsStateCopyWith<$Res> {
   factory _$$UserDetailsErrorImplCopyWith(_$UserDetailsErrorImpl value,
           $Res Function(_$UserDetailsErrorImpl) then) =
       __$$UserDetailsErrorImplCopyWithImpl<$Res>;
+  @override
   @useResult
-  $Res call({String message});
+  $Res call({String? message, String? imageUrl, PlatformFile? image});
 }
 
 /// @nodoc
@@ -1336,13 +1528,23 @@ class __$$UserDetailsErrorImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? message = null,
+    Object? message = freezed,
+    Object? imageUrl = freezed,
+    Object? image = freezed,
   }) {
     return _then(_$UserDetailsErrorImpl(
-      null == message
+      message: freezed == message
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
+      imageUrl: freezed == imageUrl
+          ? _value.imageUrl
+          : imageUrl // ignore: cast_nullable_to_non_nullable
+              as String?,
+      image: freezed == image
+          ? _value.image
+          : image // ignore: cast_nullable_to_non_nullable
+              as PlatformFile?,
     ));
   }
 }
@@ -1350,14 +1552,18 @@ class __$$UserDetailsErrorImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$UserDetailsErrorImpl implements UserDetailsError {
-  const _$UserDetailsErrorImpl(this.message);
+  const _$UserDetailsErrorImpl({this.message, this.imageUrl, this.image});
 
   @override
-  final String message;
+  final String? message;
+  @override
+  final String? imageUrl;
+  @override
+  final PlatformFile? image;
 
   @override
   String toString() {
-    return 'UserDetailsState.error(message: $message)';
+    return 'UserDetailsState.error(message: $message, imageUrl: $imageUrl, image: $image)';
   }
 
   @override
@@ -1365,11 +1571,14 @@ class _$UserDetailsErrorImpl implements UserDetailsError {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$UserDetailsErrorImpl &&
-            (identical(other.message, message) || other.message == message));
+            (identical(other.message, message) || other.message == message) &&
+            (identical(other.imageUrl, imageUrl) ||
+                other.imageUrl == imageUrl) &&
+            (identical(other.image, image) || other.image == image));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, message);
+  int get hashCode => Object.hash(runtimeType, message, imageUrl, image);
 
   @JsonKey(ignore: true)
   @override
@@ -1381,39 +1590,53 @@ class _$UserDetailsErrorImpl implements UserDetailsError {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function() loading,
-    required TResult Function(UserDetails? user, bool? isSuccess) loaded,
-    required TResult Function(String message) error,
-    required TResult Function(bool? isSuccess) success,
+    required TResult Function(String? imageUrl, PlatformFile? image) initial,
+    required TResult Function(String? imageUrl, PlatformFile? image) loading,
+    required TResult Function(UserDetails? user, bool? isSuccess,
+            String? imageUrl, PlatformFile? image)
+        loaded,
+    required TResult Function(
+            String? message, String? imageUrl, PlatformFile? image)
+        error,
+    required TResult Function(
+            bool? isSuccess, String? imageUrl, PlatformFile? image)
+        success,
   }) {
-    return error(message);
+    return error(message, imageUrl, image);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-    TResult? Function()? loading,
-    TResult? Function(UserDetails? user, bool? isSuccess)? loaded,
-    TResult? Function(String message)? error,
-    TResult? Function(bool? isSuccess)? success,
+    TResult? Function(String? imageUrl, PlatformFile? image)? initial,
+    TResult? Function(String? imageUrl, PlatformFile? image)? loading,
+    TResult? Function(UserDetails? user, bool? isSuccess, String? imageUrl,
+            PlatformFile? image)?
+        loaded,
+    TResult? Function(String? message, String? imageUrl, PlatformFile? image)?
+        error,
+    TResult? Function(bool? isSuccess, String? imageUrl, PlatformFile? image)?
+        success,
   }) {
-    return error?.call(message);
+    return error?.call(message, imageUrl, image);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? loading,
-    TResult Function(UserDetails? user, bool? isSuccess)? loaded,
-    TResult Function(String message)? error,
-    TResult Function(bool? isSuccess)? success,
+    TResult Function(String? imageUrl, PlatformFile? image)? initial,
+    TResult Function(String? imageUrl, PlatformFile? image)? loading,
+    TResult Function(UserDetails? user, bool? isSuccess, String? imageUrl,
+            PlatformFile? image)?
+        loaded,
+    TResult Function(String? message, String? imageUrl, PlatformFile? image)?
+        error,
+    TResult Function(bool? isSuccess, String? imageUrl, PlatformFile? image)?
+        success,
     required TResult orElse(),
   }) {
     if (error != null) {
-      return error(message);
+      return error(message, imageUrl, image);
     }
     return orElse();
   }
@@ -1460,21 +1683,31 @@ class _$UserDetailsErrorImpl implements UserDetailsError {
 }
 
 abstract class UserDetailsError implements UserDetailsState {
-  const factory UserDetailsError(final String message) = _$UserDetailsErrorImpl;
+  const factory UserDetailsError(
+      {final String? message,
+      final String? imageUrl,
+      final PlatformFile? image}) = _$UserDetailsErrorImpl;
 
-  String get message;
+  String? get message;
+  @override
+  String? get imageUrl;
+  @override
+  PlatformFile? get image;
+  @override
   @JsonKey(ignore: true)
   _$$UserDetailsErrorImplCopyWith<_$UserDetailsErrorImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$UserDetailsSuccessImplCopyWith<$Res> {
+abstract class _$$UserDetailsSuccessImplCopyWith<$Res>
+    implements $UserDetailsStateCopyWith<$Res> {
   factory _$$UserDetailsSuccessImplCopyWith(_$UserDetailsSuccessImpl value,
           $Res Function(_$UserDetailsSuccessImpl) then) =
       __$$UserDetailsSuccessImplCopyWithImpl<$Res>;
+  @override
   @useResult
-  $Res call({bool? isSuccess});
+  $Res call({bool? isSuccess, String? imageUrl, PlatformFile? image});
 }
 
 /// @nodoc
@@ -1489,12 +1722,22 @@ class __$$UserDetailsSuccessImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? isSuccess = freezed,
+    Object? imageUrl = freezed,
+    Object? image = freezed,
   }) {
     return _then(_$UserDetailsSuccessImpl(
       isSuccess: freezed == isSuccess
           ? _value.isSuccess
           : isSuccess // ignore: cast_nullable_to_non_nullable
               as bool?,
+      imageUrl: freezed == imageUrl
+          ? _value.imageUrl
+          : imageUrl // ignore: cast_nullable_to_non_nullable
+              as String?,
+      image: freezed == image
+          ? _value.image
+          : image // ignore: cast_nullable_to_non_nullable
+              as PlatformFile?,
     ));
   }
 }
@@ -1502,14 +1745,18 @@ class __$$UserDetailsSuccessImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$UserDetailsSuccessImpl implements UserDetailsSuccess {
-  const _$UserDetailsSuccessImpl({this.isSuccess});
+  const _$UserDetailsSuccessImpl({this.isSuccess, this.imageUrl, this.image});
 
   @override
   final bool? isSuccess;
+  @override
+  final String? imageUrl;
+  @override
+  final PlatformFile? image;
 
   @override
   String toString() {
-    return 'UserDetailsState.success(isSuccess: $isSuccess)';
+    return 'UserDetailsState.success(isSuccess: $isSuccess, imageUrl: $imageUrl, image: $image)';
   }
 
   @override
@@ -1518,11 +1765,14 @@ class _$UserDetailsSuccessImpl implements UserDetailsSuccess {
         (other.runtimeType == runtimeType &&
             other is _$UserDetailsSuccessImpl &&
             (identical(other.isSuccess, isSuccess) ||
-                other.isSuccess == isSuccess));
+                other.isSuccess == isSuccess) &&
+            (identical(other.imageUrl, imageUrl) ||
+                other.imageUrl == imageUrl) &&
+            (identical(other.image, image) || other.image == image));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, isSuccess);
+  int get hashCode => Object.hash(runtimeType, isSuccess, imageUrl, image);
 
   @JsonKey(ignore: true)
   @override
@@ -1534,39 +1784,53 @@ class _$UserDetailsSuccessImpl implements UserDetailsSuccess {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function() loading,
-    required TResult Function(UserDetails? user, bool? isSuccess) loaded,
-    required TResult Function(String message) error,
-    required TResult Function(bool? isSuccess) success,
+    required TResult Function(String? imageUrl, PlatformFile? image) initial,
+    required TResult Function(String? imageUrl, PlatformFile? image) loading,
+    required TResult Function(UserDetails? user, bool? isSuccess,
+            String? imageUrl, PlatformFile? image)
+        loaded,
+    required TResult Function(
+            String? message, String? imageUrl, PlatformFile? image)
+        error,
+    required TResult Function(
+            bool? isSuccess, String? imageUrl, PlatformFile? image)
+        success,
   }) {
-    return success(isSuccess);
+    return success(isSuccess, imageUrl, image);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-    TResult? Function()? loading,
-    TResult? Function(UserDetails? user, bool? isSuccess)? loaded,
-    TResult? Function(String message)? error,
-    TResult? Function(bool? isSuccess)? success,
+    TResult? Function(String? imageUrl, PlatformFile? image)? initial,
+    TResult? Function(String? imageUrl, PlatformFile? image)? loading,
+    TResult? Function(UserDetails? user, bool? isSuccess, String? imageUrl,
+            PlatformFile? image)?
+        loaded,
+    TResult? Function(String? message, String? imageUrl, PlatformFile? image)?
+        error,
+    TResult? Function(bool? isSuccess, String? imageUrl, PlatformFile? image)?
+        success,
   }) {
-    return success?.call(isSuccess);
+    return success?.call(isSuccess, imageUrl, image);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? loading,
-    TResult Function(UserDetails? user, bool? isSuccess)? loaded,
-    TResult Function(String message)? error,
-    TResult Function(bool? isSuccess)? success,
+    TResult Function(String? imageUrl, PlatformFile? image)? initial,
+    TResult Function(String? imageUrl, PlatformFile? image)? loading,
+    TResult Function(UserDetails? user, bool? isSuccess, String? imageUrl,
+            PlatformFile? image)?
+        loaded,
+    TResult Function(String? message, String? imageUrl, PlatformFile? image)?
+        error,
+    TResult Function(bool? isSuccess, String? imageUrl, PlatformFile? image)?
+        success,
     required TResult orElse(),
   }) {
     if (success != null) {
-      return success(isSuccess);
+      return success(isSuccess, imageUrl, image);
     }
     return orElse();
   }
@@ -1613,10 +1877,17 @@ class _$UserDetailsSuccessImpl implements UserDetailsSuccess {
 }
 
 abstract class UserDetailsSuccess implements UserDetailsState {
-  const factory UserDetailsSuccess({final bool? isSuccess}) =
-      _$UserDetailsSuccessImpl;
+  const factory UserDetailsSuccess(
+      {final bool? isSuccess,
+      final String? imageUrl,
+      final PlatformFile? image}) = _$UserDetailsSuccessImpl;
 
   bool? get isSuccess;
+  @override
+  String? get imageUrl;
+  @override
+  PlatformFile? get image;
+  @override
   @JsonKey(ignore: true)
   _$$UserDetailsSuccessImplCopyWith<_$UserDetailsSuccessImpl> get copyWith =>
       throw _privateConstructorUsedError;

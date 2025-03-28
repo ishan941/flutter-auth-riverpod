@@ -123,7 +123,10 @@ void registerNotifier() {
       ));
   sl.registerFactory(() => PropertyNotifier(getPropertyUseCase: sl()));
   sl.registerFactory(() => ProfileNotifier(
-      getProfileUsecase: sl(), postUpdateUseCase: sl(), verifyUseCase: sl()));
+      profileRepository: sl(),
+      getProfileUsecase: sl(),
+      postUpdateUseCase: sl(),
+      verifyUseCase: sl()));
 }
 
 Future<void> init() async {

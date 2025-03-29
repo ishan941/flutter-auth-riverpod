@@ -43,6 +43,7 @@ class ProfileNotifier extends StateNotifier<UserDetailsState> {
       final isSuccess = await postUpdateUseCase.call(user);
 
       if (isSuccess) {
+        await getUserDetails();
         state = UserDetailsState.loaded(user: user, isSuccess: true);
       } else {
         state = UserDetailsState.loaded(user: user, isSuccess: false);
@@ -113,9 +114,7 @@ class ProfileNotifier extends StateNotifier<UserDetailsState> {
       File file = File(image.path);
       String base64String = await convertFileToBase64(file);
       state = state.copyWith(imageUrl: base64String);
-    } else {
-      print("No image selected");
-    }
+    } else {}
   }
 
   Future<String> convertFileToBase64(File file) async {

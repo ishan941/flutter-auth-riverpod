@@ -73,13 +73,6 @@ class _EditProfileState extends ConsumerState<EditProfile> {
                       ? cityController.text
                       : user?.city) ??
                   "";
-              UserDetails userDetails = UserDetails(
-                  firstName: firstNameController.text,
-                  lastName: lastNameController.text,
-                  gender: genderController.text,
-                  city: cityController.text,
-                  district: districtController.text,
-                  street: streetController.text);
 
               return Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -93,7 +86,7 @@ class _EditProfileState extends ConsumerState<EditProfile> {
                       alignment: Alignment.center,
                       child: CircleAvatar(
                         backgroundImage: (user!.images.isEmpty &&
-                                user.images.length == 0)
+                                user.images.isEmpty)
                             ? const AssetImage("assets/images/IMG_4610.jpg")
                                 as ImageProvider
                             : NetworkImage(user.images.first.imageUrl ?? ""),
@@ -156,6 +149,20 @@ class _EditProfileState extends ConsumerState<EditProfile> {
                   NefElevatedButton(
                       text: "Update Profile",
                       onPressed: () {
+                        UserDetails userDetails = UserDetails(
+                            firstName: firstNameController.text,
+                            lastName: lastNameController.text,
+                            gender: genderController.text,
+                            city: cityController.text,
+                            district: districtController.text,
+                            images: [
+                              ImageModel(
+                                  imageUrl: profileState.imageUrl,
+                                  publicId: user.images.first.publicId,
+                                  id: user.images.first.id,
+                                  imageType: user.images.first.imageType)
+                            ],
+                            street: streetController.text);
                         profileNotifier.updateUserDetails(userDetails);
                       })
                 ],

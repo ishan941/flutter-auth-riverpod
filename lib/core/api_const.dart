@@ -1,5 +1,5 @@
 class Api {
-  static const String baseUrl = "https://d884-113-199-224-242.ngrok-free.app/";
+  static const String baseUrl = "https://e3e9-113-199-224-35.ngrok-free.app/";
   static const String loginApi = 'api/v1/auth-service/authenticate';
   static const String signUpUserApi = 'api/v1/auth-service/register';
   static const String verifyEmailApi = 'api/v1/auth-service/verifyEmail';

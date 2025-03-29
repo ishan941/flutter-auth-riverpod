@@ -1,4 +1,6 @@
 import 'package:dio/dio.dart';
+import 'package:nepstayapp/core/api_const.dart';
+import 'package:nepstayapp/core/error/exception_error.dart';
 
 class DioHttp {
   final Dio dio;
@@ -41,11 +43,23 @@ class DioHttp {
     });
   }
 
-  post({String? url, Map? data, Map? query, String? token}) async {
-    dio.options.headers['content-Type'] = 'application/json';
-    if (token != null) {
+  post({
+    String? url,
+    Map? data,
+    Map? query,
+    String? token,
+    FormData? formData,
+  }) async {
+    if (data?['file'] != null) {
+      dio.options.headers['Accept'] = '*/*';
+      dio.options.headers['content-Type'] = 'multipart/form-data';
+    } else {
+      dio.options.headers['content-Type'] = 'application/json';
+    }
+    if (token != null && token.isNotEmpty) {
       dio.options.headers["Authorization"] = "Bearer $token";
     }
+
     if (data != null && query != null) {
       return dio.post(url!,
           data: data, queryParameters: query as Map<String, dynamic>?);
@@ -53,6 +67,8 @@ class DioHttp {
       return dio.post(url!, data: data);
     } else if (query != null) {
       return dio.post(url!, queryParameters: query as Map<String, dynamic>?);
+    } else if (formData != null) {
+      return dio.post(url!, data: formData);
     } else {
       return dio.post(url!, data: data);
     }

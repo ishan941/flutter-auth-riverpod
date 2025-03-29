@@ -34,6 +34,10 @@ class SharedPref {
   }
 
   clearPreferenceData() async {
+    await sp.remove(accessTokenKey);
+    print(sp.get(accessTokenKey));
+    await sp.remove(refreshTokenKey);
+    await sp.remove(userIdKey);
     await sp.clear();
   }
 }

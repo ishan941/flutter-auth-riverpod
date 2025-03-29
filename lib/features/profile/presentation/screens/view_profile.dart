@@ -3,7 +3,6 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:nepstayapp/core/nef_custom/nef_app_bar.dart';
 import 'package:nepstayapp/core/nef_custom/nef_elevated_button.dart';
 import 'package:nepstayapp/core/nef_custom/nef_padding.dart';
-import 'package:nepstayapp/core/nef_custom/nef_typography.dart';
 import 'package:nepstayapp/core/utils/color_util.dart';
 import 'package:nepstayapp/features/profile/presentation/notifier/profile_notifier.dart';
 
@@ -20,22 +19,22 @@ class _ViewProfileState extends ConsumerState<ViewProfile> {
     final userDetails = ref.read(profileProvider);
     return Scaffold(
       appBar: RidAppBar(title: "Profile"),
-      body: userDetails.when(
-        initial: () => const Center(child: Text("No Data")),
-        loading: () => const Center(child: CircularProgressIndicator()),
-        loaded: (user, isSuccess) {
+      body: userDetails.maybeMap(
+        initial: (value) => const Center(child: Text("No Data")),
+        loading: (value) => const Center(child: CircularProgressIndicator()),
+        loaded: (value) {
+          final user = value.user;
           return NefPadding(
             child: Column(
               children: [
                 Align(
                   alignment: Alignment.center,
                   child: CircleAvatar(
-                    backgroundImage:
-                        user!.images.isNotEmpty && user.images.first.url != null
-                            ? NetworkImage(
-                                user.images.first.url!) 
-                            : const AssetImage("assets/images/IMG_4610.jpg")
-                                as ImageProvider,
+                    backgroundImage: user!.images.isNotEmpty &&
+                            user.images.first.imageUrl != null
+                        ? NetworkImage(user.images.first.imageUrl!)
+                        : const AssetImage("assets/images/IMG_4610.jpg")
+                            as ImageProvider,
                     radius: 50,
                     backgroundColor: Colors.grey,
                   ),
@@ -47,16 +46,16 @@ class _ViewProfileState extends ConsumerState<ViewProfile> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text(user.roleName!),
-                    SizedBox(width: 10),
+                    const SizedBox(width: 10),
                     user.verified
-                        ? Icon(
+                        ? const Icon(
                             Icons.verified,
                             color: primaryColor,
                           )
-                        : SizedBox()
+                        : const SizedBox()
                   ],
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 20,
                 ),
                 NefElevationBackButton(
@@ -66,7 +65,7 @@ class _ViewProfileState extends ConsumerState<ViewProfile> {
                   profileSubtitle: "${user.firstName} ${user.lastName}",
                   text: '',
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 10,
                 ),
                 NefElevationBackButton(
@@ -122,11 +121,11 @@ class _ViewProfileState extends ConsumerState<ViewProfile> {
             ),
           );
         },
-        error: (message) => Center(child: Text(message)),
-        success: (bool? isSuccess) {
+        error: (message) => Center(child: Text(message.message.toString())),
+        orElse: () {
           return const SizedBox();
         },
       ),
-    ); // Your UI here
+    );
   }
 }

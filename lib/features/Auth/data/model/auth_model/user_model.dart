@@ -41,8 +41,7 @@ class Role with _$Role {
 class ImageModel with _$ImageModel {
   const factory ImageModel({
     int? id,
-    @JsonKey(name: 'imageUrl')
-    String? url, // Fixed: Mapped API field 'imageUrl'
+    String? url,
     String? publicId,
     String? imageType,
   }) = _ImageModel;

@@ -25,13 +25,13 @@ class _ProfilePageState extends ConsumerState<ProfilePage> {
   @override
   void initState() {
     super.initState();
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      fetch();
+    WidgetsBinding.instance.addPostFrameCallback((_) async {
+      await fetch();
     });
   }
 
-  void fetch() {
-    ref.read(profileProvider.notifier).getUserDetails(1);
+  Future<void> fetch() async {
+    await ref.read(profileProvider.notifier).getUserDetails();
   }
 
   @override
@@ -53,23 +53,23 @@ class _ProfilePageState extends ConsumerState<ProfilePage> {
               color: primaryColor,
               child: Column(
                 children: [
-                  profileState.when(
-                    initial: () => const Center(child: Text("No Data")),
-                    loading: () =>
+                  profileState.maybeMap(
+                    initial: (value) => const Center(child: Text("No Data")),
+                    loading: (value) =>
                         const Center(child: CircularProgressIndicator()),
-                    loaded: (user, __) {
+                    loaded: (value) {
+                      final user = value.user;
                       return Column(
                         children: [
                           Align(
                             alignment: Alignment.center,
                             child: CircleAvatar(
                               backgroundImage: user!.images.isNotEmpty &&
-                                      user.images.first.url != null
-                                  ? NetworkImage(user
-                                      .images.first.url!) // Load from network
+                                      user.images.first.imageUrl != null
+                                  ? NetworkImage(user.images.first.imageUrl!)
                                   : const AssetImage(
                                           "assets/images/IMG_4610.jpg")
-                                      as ImageProvider, // Fallback image
+                                      as ImageProvider,
                               radius: 50,
                               backgroundColor: Colors.grey,
                             ),
@@ -107,8 +107,9 @@ class _ProfilePageState extends ConsumerState<ProfilePage> {
                         ],
                       );
                     },
-                    error: (message) => Center(child: Text(message)),
-                    success: (bool? isSuccess) {
+                    error: (value) =>
+                        Center(child: Text(value.message.toString())),
+                    orElse: () {
                       return SizedBox();
                     },
                   ),
@@ -146,22 +147,22 @@ class _ProfilePageState extends ConsumerState<ProfilePage> {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => ViewProfile()));
+                                builder: (context) => const ViewProfile()));
                       },
                       label: "My Account",
                       icon: Icons.person_outline_sharp,
                     ),
-                    Divider(),
-                    profileState.maybeWhen(
-                        loaded: (user, isSuccess) {
-                          return user?.verified == true
+                    const Divider(),
+                    profileState.maybeMap(
+                        loaded: (value) {
+                          return value.user?.verified == true
                               ? NefForwardButton(
                                   onPressed: () {
                                     Navigator.push(
                                         context,
                                         MaterialPageRoute(
                                             builder: (context) =>
-                                                KycDetailPage()));
+                                                const KycDetailPage()));
                                   },
                                   label: "Kyc details",
                                   icon: Icons.verified_user_outlined,
@@ -171,28 +172,32 @@ class _ProfilePageState extends ConsumerState<ProfilePage> {
                                     Navigator.push(
                                         context,
                                         MaterialPageRoute(
-                                            builder: (context) => VerifyKyc()));
+                                            builder: (context) =>
+                                                const VerifyKyc()));
                                   },
                                   label: "verify kyc",
                                   icon: Icons.verified_user_outlined,
                                 );
                         },
-                        orElse: () => SizedBox()),
-                    Divider(),
+                        orElse: () => const SizedBox()),
+                    const Divider(),
                   ],
                 ),
               ),
             ),
-            NefElevationBackButton(
-                text: "Logout",
-                onPressed: () {
-                  authNotifier.logout();
-                  Navigator.pushAndRemoveUntil(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => const LoginPage()),
-                      (Route<dynamic> route) => false);
-                }),
+            Padding(
+              padding: const EdgeInsets.all(10),
+              child: NefElevationBackButton(
+                  text: "Logout",
+                  onPressed: () {
+                    authNotifier.logout();
+                    Navigator.pushAndRemoveUntil(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const LoginPage()),
+                        (Route<dynamic> route) => false);
+                  }),
+            ),
           ],
         ),
       ),

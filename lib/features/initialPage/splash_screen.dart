@@ -3,7 +3,7 @@ import 'package:nepstayapp/core/nef_custom/nef_nav_bar.dart';
 import 'package:nepstayapp/core/utils/color_util.dart';
 import 'package:nepstayapp/core/utils/nef_spacing.dart';
 import 'package:nepstayapp/core/utils/shared_preference.dart';
-import 'package:nepstayapp/features/initialPage/onboarding.dart';
+import 'package:nepstayapp/features/Auth/presentation/pages/login_page.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -17,7 +17,6 @@ class _SplashScreenState extends State<SplashScreen>
     with SingleTickerProviderStateMixin {
   SharedPref? sharedPref;
   late AnimationController _controller;
-  late Animation<double> _fadeAnimation;
 
   @override
   void initState() {
@@ -27,11 +26,6 @@ class _SplashScreenState extends State<SplashScreen>
     _controller = AnimationController(
       vsync: this,
       duration: const Duration(seconds: 3),
-    );
-
-    _fadeAnimation = CurvedAnimation(
-      parent: _controller,
-      curve: Curves.easeIn,
     );
 
     _controller.forward();
@@ -47,12 +41,12 @@ class _SplashScreenState extends State<SplashScreen>
       if (isLoggedIn) {
         Navigator.pushReplacement(
           context,
-          MaterialPageRoute(builder: (context) => NefNavBar()),
+          MaterialPageRoute(builder: (context) => const NefNavBar()),
         );
       } else {
         Navigator.pushReplacement(
           context,
-          MaterialPageRoute(builder: (context) => OnboardingScreen()),
+          MaterialPageRoute(builder: (context) => const LoginPage()),
         );
       }
     });
@@ -62,12 +56,8 @@ class _SplashScreenState extends State<SplashScreen>
     if (sharedPref == null) return false;
 
     String token = sharedPref!.readStringValFrmPreference(accessTokenKey);
-    bool rememberMe = sharedPref!.readBoolValFrmPreference("remember_me");
 
-    print("Token from SharedPreferences: $token"); // Debugging
-    print("Remember Me: $rememberMe");
-
-    return token.isNotEmpty && rememberMe;
+    return token.isNotEmpty;
   }
 
   @override

@@ -8,6 +8,7 @@ import 'package:nepstayapp/core/error/exception_error.dart';
 import 'package:nepstayapp/core/utils/dio_http.dart';
 import 'package:nepstayapp/features/Auth/presentation/pages/login_page.dart';
 import 'package:nepstayapp/features/profile/data/model/kyc/kyc_model.dart';
+import 'package:nepstayapp/features/profile/data/model/profile_model.dart';
 import 'package:nepstayapp/features/profile/data/model/user_details.dart';
 
 abstract class ProfileDatasource {
@@ -15,6 +16,7 @@ abstract class ProfileDatasource {
   Future<bool> updateUserDetails(
       String token, int userId, UserDetails userDetails);
   Future<bool> verifyKyc(KycModel kycModel);
+  Future<ImageModel> uploadImage(UploadImageModel image, String? token);
 }
 
 class ProfileDataSouceImpl implements ProfileDatasource {
@@ -31,7 +33,7 @@ class ProfileDataSouceImpl implements ProfileDatasource {
 
       if (response.statusCode == 403 || response.statusCode == 401) {
         _handleTokenExpired();
-        return Future.error("Unauthorized"); // Stop execution
+        return Future.error("Unauthorized");
       }
 
       if (response.statusCode == HttpStatus.ok ||
@@ -50,7 +52,7 @@ class ProfileDataSouceImpl implements ProfileDatasource {
             (route) => false,
           );
         });
-        return Future.error("Unauthorized"); // Stop execution
+        return Future.error("Unauthorized");
       }
       rethrow;
     }
@@ -112,5 +114,50 @@ class ProfileDataSouceImpl implements ProfileDatasource {
         (route) => false,
       );
     });
+  }
+
+  @override
+  Future<ImageModel> uploadImage(
+      UploadImageModel imageData, String? token) async {
+    try {
+      if (imageData.image!.path == null) {
+        throw Exception('No valid image path available');
+      }
+
+      final file = File(imageData.image!.path!);
+      if (!await file.exists()) {
+        throw Exception('Image file does not exist');
+      }
+
+      FormData formData = FormData.fromMap({
+        'imageUrl': await MultipartFile.fromFile(
+          imageData.image!.path!,
+          filename: imageData.image!.name,
+        ),
+        'imageType': imageData.profileType,
+      });
+
+      final Response response = await dioHttp.post(
+        url: Api.baseUrl + Api.uploadProfileImageApi,
+        token: token,
+        formData: formData,
+      );
+
+      if (response.statusCode == 200 || response.statusCode == 201) {
+        return ImageModel.fromJson(response.data);
+      } else {
+        throw ServerException(
+          response.statusMessage ?? "Upload failed",
+          response.statusCode ?? 500,
+        );
+      }
+    } on DioException catch (e) {
+      throw ServerException(
+        e.response?.statusMessage ?? "Network error",
+        e.response?.statusCode ?? 500,
+      );
+    } catch (e) {
+      throw Exception('Upload failed: ${e.toString()}');
+    }
   }
 }

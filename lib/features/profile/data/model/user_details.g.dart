@@ -18,10 +18,11 @@ _$UserDetailsImpl _$$UserDetailsImplFromJson(Map<String, dynamic> json) =>
       city: json['city'] as String?,
       street: json['street'] as String?,
       district: json['district'] as String?,
-      fcmToken: json['fcmtoken'] as String?,
+      fcmToken: json['fcmToken'] as String?,
       verificationCode: json['verificationCode'] as String?,
-      verificationCodeExpiresAt:
-          _dateTimeFromJson(json['verificationCodeExpiresAt'] as String?),
+      verificationCodeExpiresAt: json['verificationCodeExpiresAt'] == null
+          ? null
+          : DateTime.parse(json['verificationCodeExpiresAt'] as String),
       emailVerified: json['emailVerified'] as bool? ?? false,
       verified: json['verified'] as bool? ?? false,
       accountNonExpired: json['accountNonExpired'] as bool? ?? true,
@@ -47,10 +48,10 @@ Map<String, dynamic> _$$UserDetailsImplToJson(_$UserDetailsImpl instance) =>
       'city': instance.city,
       'street': instance.street,
       'district': instance.district,
-      'fcmtoken': instance.fcmToken,
+      'fcmToken': instance.fcmToken,
       'verificationCode': instance.verificationCode,
       'verificationCodeExpiresAt':
-          _dateTimeToJson(instance.verificationCodeExpiresAt),
+          instance.verificationCodeExpiresAt?.toIso8601String(),
       'emailVerified': instance.emailVerified,
       'verified': instance.verified,
       'accountNonExpired': instance.accountNonExpired,
@@ -64,7 +65,7 @@ Map<String, dynamic> _$$UserDetailsImplToJson(_$UserDetailsImpl instance) =>
 _$ImageModelImpl _$$ImageModelImplFromJson(Map<String, dynamic> json) =>
     _$ImageModelImpl(
       id: (json['id'] as num?)?.toInt(),
-      url: json['imageUrl'] as String?,
+      imageUrl: json['imageUrl'] as String?,
       publicId: json['publicId'] as String?,
       imageType: json['imageType'] as String?,
     );
@@ -72,7 +73,7 @@ _$ImageModelImpl _$$ImageModelImplFromJson(Map<String, dynamic> json) =>
 Map<String, dynamic> _$$ImageModelImplToJson(_$ImageModelImpl instance) =>
     <String, dynamic>{
       'id': instance.id,
-      'imageUrl': instance.url,
+      'imageUrl': instance.imageUrl,
       'publicId': instance.publicId,
       'imageType': instance.imageType,
     };

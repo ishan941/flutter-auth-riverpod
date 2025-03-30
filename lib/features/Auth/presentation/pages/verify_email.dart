@@ -24,7 +24,7 @@ class _VerifyEmaiPageState extends ConsumerState<VerifyEmaiPage> {
     final authNotifier = ref.watch(authProvider.notifier);
     return Scaffold(
       appBar: AppBar(
-        title: Text(phoneVerificationStr),
+        title: const Text(phoneVerificationStr),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -46,7 +46,7 @@ class _VerifyEmaiPageState extends ConsumerState<VerifyEmaiPage> {
               const SizedBox(height: 20),
               OtpTextField(
                 numberOfFields: 6,
-                borderColor: Color(0xFF512DA8),
+                borderColor: const Color(0xFF512DA8),
                 showFieldAsBox: true,
                 onCodeChanged: (String code) {},
                 onSubmit: (String verificationCode) {

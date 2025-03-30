@@ -97,9 +97,10 @@ class ProfileNotifier extends StateNotifier<UserDetailsState> {
           image: UploadImageModel(image: state.image, profileType: "profile"));
       response.fold((failure) {
         state = UserDetailsState.error(message: failure.message.toString());
-      }, (data) {
-        getUserDetails();
+      }, (data) async {
+        await getUserDetails();
         state = UserDetailsState.loaded(user: userDetails);
+        resetAll();
       });
     } catch (e) {
       throw Exception('Failed to pick image: ${e.toString()}');
@@ -112,8 +113,10 @@ class ProfileNotifier extends StateNotifier<UserDetailsState> {
 
     if (image != null) {
       File file = File(image.path);
+
       String base64String = await convertFileToBase64(file);
-      state = state.copyWith(imageUrl: base64String);
+
+      state = state.copyWith(imageUrl: base64String, file: file);
     } else {}
   }
 
@@ -124,6 +127,10 @@ class ProfileNotifier extends StateNotifier<UserDetailsState> {
     String? mimeType = lookupMimeType(file.path) ?? "application/octet-stream";
 
     return "data:$mimeType;base64,$base64String";
+  }
+
+  void resetAll() {
+    state = state.copyWith(file: null, image: null, imageUrl: null);
   }
 }
 

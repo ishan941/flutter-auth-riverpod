@@ -802,44 +802,55 @@ abstract class _ImageModel implements ImageModel {
 mixin _$UserDetailsState {
   String? get imageUrl => throw _privateConstructorUsedError;
   PlatformFile? get image => throw _privateConstructorUsedError;
+  File? get file => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String? imageUrl, PlatformFile? image) initial,
-    required TResult Function(String? imageUrl, PlatformFile? image) loading,
+    required TResult Function(String? imageUrl, PlatformFile? image, File? file)
+        initial,
+    required TResult Function(String? imageUrl, PlatformFile? image, File? file)
+        loading,
     required TResult Function(UserDetails? user, bool? isSuccess,
-            String? imageUrl, PlatformFile? image)
+            String? imageUrl, File? file, PlatformFile? image)
         loaded,
     required TResult Function(
-            String? message, String? imageUrl, PlatformFile? image)
+            String? message, File? file, String? imageUrl, PlatformFile? image)
         error,
     required TResult Function(
-            bool? isSuccess, String? imageUrl, PlatformFile? image)
+            bool? isSuccess, String? imageUrl, File? file, PlatformFile? image)
         success,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String? imageUrl, PlatformFile? image)? initial,
-    TResult? Function(String? imageUrl, PlatformFile? image)? loading,
+    TResult? Function(String? imageUrl, PlatformFile? image, File? file)?
+        initial,
+    TResult? Function(String? imageUrl, PlatformFile? image, File? file)?
+        loading,
     TResult? Function(UserDetails? user, bool? isSuccess, String? imageUrl,
-            PlatformFile? image)?
+            File? file, PlatformFile? image)?
         loaded,
-    TResult? Function(String? message, String? imageUrl, PlatformFile? image)?
+    TResult? Function(
+            String? message, File? file, String? imageUrl, PlatformFile? image)?
         error,
-    TResult? Function(bool? isSuccess, String? imageUrl, PlatformFile? image)?
+    TResult? Function(
+            bool? isSuccess, String? imageUrl, File? file, PlatformFile? image)?
         success,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String? imageUrl, PlatformFile? image)? initial,
-    TResult Function(String? imageUrl, PlatformFile? image)? loading,
+    TResult Function(String? imageUrl, PlatformFile? image, File? file)?
+        initial,
+    TResult Function(String? imageUrl, PlatformFile? image, File? file)?
+        loading,
     TResult Function(UserDetails? user, bool? isSuccess, String? imageUrl,
-            PlatformFile? image)?
+            File? file, PlatformFile? image)?
         loaded,
-    TResult Function(String? message, String? imageUrl, PlatformFile? image)?
+    TResult Function(
+            String? message, File? file, String? imageUrl, PlatformFile? image)?
         error,
-    TResult Function(bool? isSuccess, String? imageUrl, PlatformFile? image)?
+    TResult Function(
+            bool? isSuccess, String? imageUrl, File? file, PlatformFile? image)?
         success,
     required TResult orElse(),
   }) =>
@@ -884,7 +895,7 @@ abstract class $UserDetailsStateCopyWith<$Res> {
           UserDetailsState value, $Res Function(UserDetailsState) then) =
       _$UserDetailsStateCopyWithImpl<$Res, UserDetailsState>;
   @useResult
-  $Res call({String? imageUrl, PlatformFile? image});
+  $Res call({String? imageUrl, PlatformFile? image, File? file});
 }
 
 /// @nodoc
@@ -902,6 +913,7 @@ class _$UserDetailsStateCopyWithImpl<$Res, $Val extends UserDetailsState>
   $Res call({
     Object? imageUrl = freezed,
     Object? image = freezed,
+    Object? file = freezed,
   }) {
     return _then(_value.copyWith(
       imageUrl: freezed == imageUrl
@@ -912,6 +924,10 @@ class _$UserDetailsStateCopyWithImpl<$Res, $Val extends UserDetailsState>
           ? _value.image
           : image // ignore: cast_nullable_to_non_nullable
               as PlatformFile?,
+      file: freezed == file
+          ? _value.file
+          : file // ignore: cast_nullable_to_non_nullable
+              as File?,
     ) as $Val);
   }
 }
@@ -924,7 +940,7 @@ abstract class _$$UserDetailsInitialImplCopyWith<$Res>
       __$$UserDetailsInitialImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String? imageUrl, PlatformFile? image});
+  $Res call({String? imageUrl, PlatformFile? image, File? file});
 }
 
 /// @nodoc
@@ -940,6 +956,7 @@ class __$$UserDetailsInitialImplCopyWithImpl<$Res>
   $Res call({
     Object? imageUrl = freezed,
     Object? image = freezed,
+    Object? file = freezed,
   }) {
     return _then(_$UserDetailsInitialImpl(
       imageUrl: freezed == imageUrl
@@ -950,6 +967,10 @@ class __$$UserDetailsInitialImplCopyWithImpl<$Res>
           ? _value.image
           : image // ignore: cast_nullable_to_non_nullable
               as PlatformFile?,
+      file: freezed == file
+          ? _value.file
+          : file // ignore: cast_nullable_to_non_nullable
+              as File?,
     ));
   }
 }
@@ -957,16 +978,18 @@ class __$$UserDetailsInitialImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$UserDetailsInitialImpl implements UserDetailsInitial {
-  const _$UserDetailsInitialImpl({this.imageUrl, this.image});
+  const _$UserDetailsInitialImpl({this.imageUrl, this.image, this.file});
 
   @override
   final String? imageUrl;
   @override
   final PlatformFile? image;
+  @override
+  final File? file;
 
   @override
   String toString() {
-    return 'UserDetailsState.initial(imageUrl: $imageUrl, image: $image)';
+    return 'UserDetailsState.initial(imageUrl: $imageUrl, image: $image, file: $file)';
   }
 
   @override
@@ -976,11 +999,12 @@ class _$UserDetailsInitialImpl implements UserDetailsInitial {
             other is _$UserDetailsInitialImpl &&
             (identical(other.imageUrl, imageUrl) ||
                 other.imageUrl == imageUrl) &&
-            (identical(other.image, image) || other.image == image));
+            (identical(other.image, image) || other.image == image) &&
+            (identical(other.file, file) || other.file == file));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, imageUrl, image);
+  int get hashCode => Object.hash(runtimeType, imageUrl, image, file);
 
   @JsonKey(ignore: true)
   @override
@@ -992,53 +1016,63 @@ class _$UserDetailsInitialImpl implements UserDetailsInitial {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String? imageUrl, PlatformFile? image) initial,
-    required TResult Function(String? imageUrl, PlatformFile? image) loading,
+    required TResult Function(String? imageUrl, PlatformFile? image, File? file)
+        initial,
+    required TResult Function(String? imageUrl, PlatformFile? image, File? file)
+        loading,
     required TResult Function(UserDetails? user, bool? isSuccess,
-            String? imageUrl, PlatformFile? image)
+            String? imageUrl, File? file, PlatformFile? image)
         loaded,
     required TResult Function(
-            String? message, String? imageUrl, PlatformFile? image)
+            String? message, File? file, String? imageUrl, PlatformFile? image)
         error,
     required TResult Function(
-            bool? isSuccess, String? imageUrl, PlatformFile? image)
+            bool? isSuccess, String? imageUrl, File? file, PlatformFile? image)
         success,
   }) {
-    return initial(imageUrl, image);
+    return initial(imageUrl, image, file);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String? imageUrl, PlatformFile? image)? initial,
-    TResult? Function(String? imageUrl, PlatformFile? image)? loading,
+    TResult? Function(String? imageUrl, PlatformFile? image, File? file)?
+        initial,
+    TResult? Function(String? imageUrl, PlatformFile? image, File? file)?
+        loading,
     TResult? Function(UserDetails? user, bool? isSuccess, String? imageUrl,
-            PlatformFile? image)?
+            File? file, PlatformFile? image)?
         loaded,
-    TResult? Function(String? message, String? imageUrl, PlatformFile? image)?
+    TResult? Function(
+            String? message, File? file, String? imageUrl, PlatformFile? image)?
         error,
-    TResult? Function(bool? isSuccess, String? imageUrl, PlatformFile? image)?
+    TResult? Function(
+            bool? isSuccess, String? imageUrl, File? file, PlatformFile? image)?
         success,
   }) {
-    return initial?.call(imageUrl, image);
+    return initial?.call(imageUrl, image, file);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String? imageUrl, PlatformFile? image)? initial,
-    TResult Function(String? imageUrl, PlatformFile? image)? loading,
+    TResult Function(String? imageUrl, PlatformFile? image, File? file)?
+        initial,
+    TResult Function(String? imageUrl, PlatformFile? image, File? file)?
+        loading,
     TResult Function(UserDetails? user, bool? isSuccess, String? imageUrl,
-            PlatformFile? image)?
+            File? file, PlatformFile? image)?
         loaded,
-    TResult Function(String? message, String? imageUrl, PlatformFile? image)?
+    TResult Function(
+            String? message, File? file, String? imageUrl, PlatformFile? image)?
         error,
-    TResult Function(bool? isSuccess, String? imageUrl, PlatformFile? image)?
+    TResult Function(
+            bool? isSuccess, String? imageUrl, File? file, PlatformFile? image)?
         success,
     required TResult orElse(),
   }) {
     if (initial != null) {
-      return initial(imageUrl, image);
+      return initial(imageUrl, image, file);
     }
     return orElse();
   }
@@ -1087,12 +1121,15 @@ class _$UserDetailsInitialImpl implements UserDetailsInitial {
 abstract class UserDetailsInitial implements UserDetailsState {
   const factory UserDetailsInitial(
       {final String? imageUrl,
-      final PlatformFile? image}) = _$UserDetailsInitialImpl;
+      final PlatformFile? image,
+      final File? file}) = _$UserDetailsInitialImpl;
 
   @override
   String? get imageUrl;
   @override
   PlatformFile? get image;
+  @override
+  File? get file;
   @override
   @JsonKey(ignore: true)
   _$$UserDetailsInitialImplCopyWith<_$UserDetailsInitialImpl> get copyWith =>
@@ -1107,7 +1144,7 @@ abstract class _$$UserDetailsLoadingImplCopyWith<$Res>
       __$$UserDetailsLoadingImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String? imageUrl, PlatformFile? image});
+  $Res call({String? imageUrl, PlatformFile? image, File? file});
 }
 
 /// @nodoc
@@ -1123,6 +1160,7 @@ class __$$UserDetailsLoadingImplCopyWithImpl<$Res>
   $Res call({
     Object? imageUrl = freezed,
     Object? image = freezed,
+    Object? file = freezed,
   }) {
     return _then(_$UserDetailsLoadingImpl(
       imageUrl: freezed == imageUrl
@@ -1133,6 +1171,10 @@ class __$$UserDetailsLoadingImplCopyWithImpl<$Res>
           ? _value.image
           : image // ignore: cast_nullable_to_non_nullable
               as PlatformFile?,
+      file: freezed == file
+          ? _value.file
+          : file // ignore: cast_nullable_to_non_nullable
+              as File?,
     ));
   }
 }
@@ -1140,16 +1182,18 @@ class __$$UserDetailsLoadingImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$UserDetailsLoadingImpl implements UserDetailsLoading {
-  const _$UserDetailsLoadingImpl({this.imageUrl, this.image});
+  const _$UserDetailsLoadingImpl({this.imageUrl, this.image, this.file});
 
   @override
   final String? imageUrl;
   @override
   final PlatformFile? image;
+  @override
+  final File? file;
 
   @override
   String toString() {
-    return 'UserDetailsState.loading(imageUrl: $imageUrl, image: $image)';
+    return 'UserDetailsState.loading(imageUrl: $imageUrl, image: $image, file: $file)';
   }
 
   @override
@@ -1159,11 +1203,12 @@ class _$UserDetailsLoadingImpl implements UserDetailsLoading {
             other is _$UserDetailsLoadingImpl &&
             (identical(other.imageUrl, imageUrl) ||
                 other.imageUrl == imageUrl) &&
-            (identical(other.image, image) || other.image == image));
+            (identical(other.image, image) || other.image == image) &&
+            (identical(other.file, file) || other.file == file));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, imageUrl, image);
+  int get hashCode => Object.hash(runtimeType, imageUrl, image, file);
 
   @JsonKey(ignore: true)
   @override
@@ -1175,53 +1220,63 @@ class _$UserDetailsLoadingImpl implements UserDetailsLoading {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String? imageUrl, PlatformFile? image) initial,
-    required TResult Function(String? imageUrl, PlatformFile? image) loading,
+    required TResult Function(String? imageUrl, PlatformFile? image, File? file)
+        initial,
+    required TResult Function(String? imageUrl, PlatformFile? image, File? file)
+        loading,
     required TResult Function(UserDetails? user, bool? isSuccess,
-            String? imageUrl, PlatformFile? image)
+            String? imageUrl, File? file, PlatformFile? image)
         loaded,
     required TResult Function(
-            String? message, String? imageUrl, PlatformFile? image)
+            String? message, File? file, String? imageUrl, PlatformFile? image)
         error,
     required TResult Function(
-            bool? isSuccess, String? imageUrl, PlatformFile? image)
+            bool? isSuccess, String? imageUrl, File? file, PlatformFile? image)
         success,
   }) {
-    return loading(imageUrl, image);
+    return loading(imageUrl, image, file);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String? imageUrl, PlatformFile? image)? initial,
-    TResult? Function(String? imageUrl, PlatformFile? image)? loading,
+    TResult? Function(String? imageUrl, PlatformFile? image, File? file)?
+        initial,
+    TResult? Function(String? imageUrl, PlatformFile? image, File? file)?
+        loading,
     TResult? Function(UserDetails? user, bool? isSuccess, String? imageUrl,
-            PlatformFile? image)?
+            File? file, PlatformFile? image)?
         loaded,
-    TResult? Function(String? message, String? imageUrl, PlatformFile? image)?
+    TResult? Function(
+            String? message, File? file, String? imageUrl, PlatformFile? image)?
         error,
-    TResult? Function(bool? isSuccess, String? imageUrl, PlatformFile? image)?
+    TResult? Function(
+            bool? isSuccess, String? imageUrl, File? file, PlatformFile? image)?
         success,
   }) {
-    return loading?.call(imageUrl, image);
+    return loading?.call(imageUrl, image, file);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String? imageUrl, PlatformFile? image)? initial,
-    TResult Function(String? imageUrl, PlatformFile? image)? loading,
+    TResult Function(String? imageUrl, PlatformFile? image, File? file)?
+        initial,
+    TResult Function(String? imageUrl, PlatformFile? image, File? file)?
+        loading,
     TResult Function(UserDetails? user, bool? isSuccess, String? imageUrl,
-            PlatformFile? image)?
+            File? file, PlatformFile? image)?
         loaded,
-    TResult Function(String? message, String? imageUrl, PlatformFile? image)?
+    TResult Function(
+            String? message, File? file, String? imageUrl, PlatformFile? image)?
         error,
-    TResult Function(bool? isSuccess, String? imageUrl, PlatformFile? image)?
+    TResult Function(
+            bool? isSuccess, String? imageUrl, File? file, PlatformFile? image)?
         success,
     required TResult orElse(),
   }) {
     if (loading != null) {
-      return loading(imageUrl, image);
+      return loading(imageUrl, image, file);
     }
     return orElse();
   }
@@ -1270,12 +1325,15 @@ class _$UserDetailsLoadingImpl implements UserDetailsLoading {
 abstract class UserDetailsLoading implements UserDetailsState {
   const factory UserDetailsLoading(
       {final String? imageUrl,
-      final PlatformFile? image}) = _$UserDetailsLoadingImpl;
+      final PlatformFile? image,
+      final File? file}) = _$UserDetailsLoadingImpl;
 
   @override
   String? get imageUrl;
   @override
   PlatformFile? get image;
+  @override
+  File? get file;
   @override
   @JsonKey(ignore: true)
   _$$UserDetailsLoadingImplCopyWith<_$UserDetailsLoadingImpl> get copyWith =>
@@ -1294,6 +1352,7 @@ abstract class _$$UserDetailsLoadedImplCopyWith<$Res>
       {UserDetails? user,
       bool? isSuccess,
       String? imageUrl,
+      File? file,
       PlatformFile? image});
 
   $UserDetailsCopyWith<$Res>? get user;
@@ -1313,6 +1372,7 @@ class __$$UserDetailsLoadedImplCopyWithImpl<$Res>
     Object? user = freezed,
     Object? isSuccess = freezed,
     Object? imageUrl = freezed,
+    Object? file = freezed,
     Object? image = freezed,
   }) {
     return _then(_$UserDetailsLoadedImpl(
@@ -1328,6 +1388,10 @@ class __$$UserDetailsLoadedImplCopyWithImpl<$Res>
           ? _value.imageUrl
           : imageUrl // ignore: cast_nullable_to_non_nullable
               as String?,
+      file: freezed == file
+          ? _value.file
+          : file // ignore: cast_nullable_to_non_nullable
+              as File?,
       image: freezed == image
           ? _value.image
           : image // ignore: cast_nullable_to_non_nullable
@@ -1352,7 +1416,7 @@ class __$$UserDetailsLoadedImplCopyWithImpl<$Res>
 
 class _$UserDetailsLoadedImpl implements UserDetailsLoaded {
   const _$UserDetailsLoadedImpl(
-      {this.user, this.isSuccess, this.imageUrl, this.image});
+      {this.user, this.isSuccess, this.imageUrl, this.file, this.image});
 
   @override
   final UserDetails? user;
@@ -1361,11 +1425,13 @@ class _$UserDetailsLoadedImpl implements UserDetailsLoaded {
   @override
   final String? imageUrl;
   @override
+  final File? file;
+  @override
   final PlatformFile? image;
 
   @override
   String toString() {
-    return 'UserDetailsState.loaded(user: $user, isSuccess: $isSuccess, imageUrl: $imageUrl, image: $image)';
+    return 'UserDetailsState.loaded(user: $user, isSuccess: $isSuccess, imageUrl: $imageUrl, file: $file, image: $image)';
   }
 
   @override
@@ -1378,12 +1444,13 @@ class _$UserDetailsLoadedImpl implements UserDetailsLoaded {
                 other.isSuccess == isSuccess) &&
             (identical(other.imageUrl, imageUrl) ||
                 other.imageUrl == imageUrl) &&
+            (identical(other.file, file) || other.file == file) &&
             (identical(other.image, image) || other.image == image));
   }
 
   @override
   int get hashCode =>
-      Object.hash(runtimeType, user, isSuccess, imageUrl, image);
+      Object.hash(runtimeType, user, isSuccess, imageUrl, file, image);
 
   @JsonKey(ignore: true)
   @override
@@ -1395,53 +1462,63 @@ class _$UserDetailsLoadedImpl implements UserDetailsLoaded {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String? imageUrl, PlatformFile? image) initial,
-    required TResult Function(String? imageUrl, PlatformFile? image) loading,
+    required TResult Function(String? imageUrl, PlatformFile? image, File? file)
+        initial,
+    required TResult Function(String? imageUrl, PlatformFile? image, File? file)
+        loading,
     required TResult Function(UserDetails? user, bool? isSuccess,
-            String? imageUrl, PlatformFile? image)
+            String? imageUrl, File? file, PlatformFile? image)
         loaded,
     required TResult Function(
-            String? message, String? imageUrl, PlatformFile? image)
+            String? message, File? file, String? imageUrl, PlatformFile? image)
         error,
     required TResult Function(
-            bool? isSuccess, String? imageUrl, PlatformFile? image)
+            bool? isSuccess, String? imageUrl, File? file, PlatformFile? image)
         success,
   }) {
-    return loaded(user, isSuccess, imageUrl, image);
+    return loaded(user, isSuccess, imageUrl, file, image);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String? imageUrl, PlatformFile? image)? initial,
-    TResult? Function(String? imageUrl, PlatformFile? image)? loading,
+    TResult? Function(String? imageUrl, PlatformFile? image, File? file)?
+        initial,
+    TResult? Function(String? imageUrl, PlatformFile? image, File? file)?
+        loading,
     TResult? Function(UserDetails? user, bool? isSuccess, String? imageUrl,
-            PlatformFile? image)?
+            File? file, PlatformFile? image)?
         loaded,
-    TResult? Function(String? message, String? imageUrl, PlatformFile? image)?
+    TResult? Function(
+            String? message, File? file, String? imageUrl, PlatformFile? image)?
         error,
-    TResult? Function(bool? isSuccess, String? imageUrl, PlatformFile? image)?
+    TResult? Function(
+            bool? isSuccess, String? imageUrl, File? file, PlatformFile? image)?
         success,
   }) {
-    return loaded?.call(user, isSuccess, imageUrl, image);
+    return loaded?.call(user, isSuccess, imageUrl, file, image);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String? imageUrl, PlatformFile? image)? initial,
-    TResult Function(String? imageUrl, PlatformFile? image)? loading,
+    TResult Function(String? imageUrl, PlatformFile? image, File? file)?
+        initial,
+    TResult Function(String? imageUrl, PlatformFile? image, File? file)?
+        loading,
     TResult Function(UserDetails? user, bool? isSuccess, String? imageUrl,
-            PlatformFile? image)?
+            File? file, PlatformFile? image)?
         loaded,
-    TResult Function(String? message, String? imageUrl, PlatformFile? image)?
+    TResult Function(
+            String? message, File? file, String? imageUrl, PlatformFile? image)?
         error,
-    TResult Function(bool? isSuccess, String? imageUrl, PlatformFile? image)?
+    TResult Function(
+            bool? isSuccess, String? imageUrl, File? file, PlatformFile? image)?
         success,
     required TResult orElse(),
   }) {
     if (loaded != null) {
-      return loaded(user, isSuccess, imageUrl, image);
+      return loaded(user, isSuccess, imageUrl, file, image);
     }
     return orElse();
   }
@@ -1492,12 +1569,15 @@ abstract class UserDetailsLoaded implements UserDetailsState {
       {final UserDetails? user,
       final bool? isSuccess,
       final String? imageUrl,
+      final File? file,
       final PlatformFile? image}) = _$UserDetailsLoadedImpl;
 
   UserDetails? get user;
   bool? get isSuccess;
   @override
   String? get imageUrl;
+  @override
+  File? get file;
   @override
   PlatformFile? get image;
   @override
@@ -1514,7 +1594,8 @@ abstract class _$$UserDetailsErrorImplCopyWith<$Res>
       __$$UserDetailsErrorImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String? message, String? imageUrl, PlatformFile? image});
+  $Res call(
+      {String? message, File? file, String? imageUrl, PlatformFile? image});
 }
 
 /// @nodoc
@@ -1529,6 +1610,7 @@ class __$$UserDetailsErrorImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? message = freezed,
+    Object? file = freezed,
     Object? imageUrl = freezed,
     Object? image = freezed,
   }) {
@@ -1537,6 +1619,10 @@ class __$$UserDetailsErrorImplCopyWithImpl<$Res>
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
               as String?,
+      file: freezed == file
+          ? _value.file
+          : file // ignore: cast_nullable_to_non_nullable
+              as File?,
       imageUrl: freezed == imageUrl
           ? _value.imageUrl
           : imageUrl // ignore: cast_nullable_to_non_nullable
@@ -1552,10 +1638,13 @@ class __$$UserDetailsErrorImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$UserDetailsErrorImpl implements UserDetailsError {
-  const _$UserDetailsErrorImpl({this.message, this.imageUrl, this.image});
+  const _$UserDetailsErrorImpl(
+      {this.message, this.file, this.imageUrl, this.image});
 
   @override
   final String? message;
+  @override
+  final File? file;
   @override
   final String? imageUrl;
   @override
@@ -1563,7 +1652,7 @@ class _$UserDetailsErrorImpl implements UserDetailsError {
 
   @override
   String toString() {
-    return 'UserDetailsState.error(message: $message, imageUrl: $imageUrl, image: $image)';
+    return 'UserDetailsState.error(message: $message, file: $file, imageUrl: $imageUrl, image: $image)';
   }
 
   @override
@@ -1572,13 +1661,14 @@ class _$UserDetailsErrorImpl implements UserDetailsError {
         (other.runtimeType == runtimeType &&
             other is _$UserDetailsErrorImpl &&
             (identical(other.message, message) || other.message == message) &&
+            (identical(other.file, file) || other.file == file) &&
             (identical(other.imageUrl, imageUrl) ||
                 other.imageUrl == imageUrl) &&
             (identical(other.image, image) || other.image == image));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, message, imageUrl, image);
+  int get hashCode => Object.hash(runtimeType, message, file, imageUrl, image);
 
   @JsonKey(ignore: true)
   @override
@@ -1590,53 +1680,63 @@ class _$UserDetailsErrorImpl implements UserDetailsError {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String? imageUrl, PlatformFile? image) initial,
-    required TResult Function(String? imageUrl, PlatformFile? image) loading,
+    required TResult Function(String? imageUrl, PlatformFile? image, File? file)
+        initial,
+    required TResult Function(String? imageUrl, PlatformFile? image, File? file)
+        loading,
     required TResult Function(UserDetails? user, bool? isSuccess,
-            String? imageUrl, PlatformFile? image)
+            String? imageUrl, File? file, PlatformFile? image)
         loaded,
     required TResult Function(
-            String? message, String? imageUrl, PlatformFile? image)
+            String? message, File? file, String? imageUrl, PlatformFile? image)
         error,
     required TResult Function(
-            bool? isSuccess, String? imageUrl, PlatformFile? image)
+            bool? isSuccess, String? imageUrl, File? file, PlatformFile? image)
         success,
   }) {
-    return error(message, imageUrl, image);
+    return error(message, file, imageUrl, image);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String? imageUrl, PlatformFile? image)? initial,
-    TResult? Function(String? imageUrl, PlatformFile? image)? loading,
+    TResult? Function(String? imageUrl, PlatformFile? image, File? file)?
+        initial,
+    TResult? Function(String? imageUrl, PlatformFile? image, File? file)?
+        loading,
     TResult? Function(UserDetails? user, bool? isSuccess, String? imageUrl,
-            PlatformFile? image)?
+            File? file, PlatformFile? image)?
         loaded,
-    TResult? Function(String? message, String? imageUrl, PlatformFile? image)?
+    TResult? Function(
+            String? message, File? file, String? imageUrl, PlatformFile? image)?
         error,
-    TResult? Function(bool? isSuccess, String? imageUrl, PlatformFile? image)?
+    TResult? Function(
+            bool? isSuccess, String? imageUrl, File? file, PlatformFile? image)?
         success,
   }) {
-    return error?.call(message, imageUrl, image);
+    return error?.call(message, file, imageUrl, image);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String? imageUrl, PlatformFile? image)? initial,
-    TResult Function(String? imageUrl, PlatformFile? image)? loading,
+    TResult Function(String? imageUrl, PlatformFile? image, File? file)?
+        initial,
+    TResult Function(String? imageUrl, PlatformFile? image, File? file)?
+        loading,
     TResult Function(UserDetails? user, bool? isSuccess, String? imageUrl,
-            PlatformFile? image)?
+            File? file, PlatformFile? image)?
         loaded,
-    TResult Function(String? message, String? imageUrl, PlatformFile? image)?
+    TResult Function(
+            String? message, File? file, String? imageUrl, PlatformFile? image)?
         error,
-    TResult Function(bool? isSuccess, String? imageUrl, PlatformFile? image)?
+    TResult Function(
+            bool? isSuccess, String? imageUrl, File? file, PlatformFile? image)?
         success,
     required TResult orElse(),
   }) {
     if (error != null) {
-      return error(message, imageUrl, image);
+      return error(message, file, imageUrl, image);
     }
     return orElse();
   }
@@ -1685,10 +1785,13 @@ class _$UserDetailsErrorImpl implements UserDetailsError {
 abstract class UserDetailsError implements UserDetailsState {
   const factory UserDetailsError(
       {final String? message,
+      final File? file,
       final String? imageUrl,
       final PlatformFile? image}) = _$UserDetailsErrorImpl;
 
   String? get message;
+  @override
+  File? get file;
   @override
   String? get imageUrl;
   @override
@@ -1707,7 +1810,8 @@ abstract class _$$UserDetailsSuccessImplCopyWith<$Res>
       __$$UserDetailsSuccessImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({bool? isSuccess, String? imageUrl, PlatformFile? image});
+  $Res call(
+      {bool? isSuccess, String? imageUrl, File? file, PlatformFile? image});
 }
 
 /// @nodoc
@@ -1723,6 +1827,7 @@ class __$$UserDetailsSuccessImplCopyWithImpl<$Res>
   $Res call({
     Object? isSuccess = freezed,
     Object? imageUrl = freezed,
+    Object? file = freezed,
     Object? image = freezed,
   }) {
     return _then(_$UserDetailsSuccessImpl(
@@ -1734,6 +1839,10 @@ class __$$UserDetailsSuccessImplCopyWithImpl<$Res>
           ? _value.imageUrl
           : imageUrl // ignore: cast_nullable_to_non_nullable
               as String?,
+      file: freezed == file
+          ? _value.file
+          : file // ignore: cast_nullable_to_non_nullable
+              as File?,
       image: freezed == image
           ? _value.image
           : image // ignore: cast_nullable_to_non_nullable
@@ -1745,18 +1854,21 @@ class __$$UserDetailsSuccessImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$UserDetailsSuccessImpl implements UserDetailsSuccess {
-  const _$UserDetailsSuccessImpl({this.isSuccess, this.imageUrl, this.image});
+  const _$UserDetailsSuccessImpl(
+      {this.isSuccess, this.imageUrl, this.file, this.image});
 
   @override
   final bool? isSuccess;
   @override
   final String? imageUrl;
   @override
+  final File? file;
+  @override
   final PlatformFile? image;
 
   @override
   String toString() {
-    return 'UserDetailsState.success(isSuccess: $isSuccess, imageUrl: $imageUrl, image: $image)';
+    return 'UserDetailsState.success(isSuccess: $isSuccess, imageUrl: $imageUrl, file: $file, image: $image)';
   }
 
   @override
@@ -1768,11 +1880,13 @@ class _$UserDetailsSuccessImpl implements UserDetailsSuccess {
                 other.isSuccess == isSuccess) &&
             (identical(other.imageUrl, imageUrl) ||
                 other.imageUrl == imageUrl) &&
+            (identical(other.file, file) || other.file == file) &&
             (identical(other.image, image) || other.image == image));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, isSuccess, imageUrl, image);
+  int get hashCode =>
+      Object.hash(runtimeType, isSuccess, imageUrl, file, image);
 
   @JsonKey(ignore: true)
   @override
@@ -1784,53 +1898,63 @@ class _$UserDetailsSuccessImpl implements UserDetailsSuccess {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String? imageUrl, PlatformFile? image) initial,
-    required TResult Function(String? imageUrl, PlatformFile? image) loading,
+    required TResult Function(String? imageUrl, PlatformFile? image, File? file)
+        initial,
+    required TResult Function(String? imageUrl, PlatformFile? image, File? file)
+        loading,
     required TResult Function(UserDetails? user, bool? isSuccess,
-            String? imageUrl, PlatformFile? image)
+            String? imageUrl, File? file, PlatformFile? image)
         loaded,
     required TResult Function(
-            String? message, String? imageUrl, PlatformFile? image)
+            String? message, File? file, String? imageUrl, PlatformFile? image)
         error,
     required TResult Function(
-            bool? isSuccess, String? imageUrl, PlatformFile? image)
+            bool? isSuccess, String? imageUrl, File? file, PlatformFile? image)
         success,
   }) {
-    return success(isSuccess, imageUrl, image);
+    return success(isSuccess, imageUrl, file, image);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String? imageUrl, PlatformFile? image)? initial,
-    TResult? Function(String? imageUrl, PlatformFile? image)? loading,
+    TResult? Function(String? imageUrl, PlatformFile? image, File? file)?
+        initial,
+    TResult? Function(String? imageUrl, PlatformFile? image, File? file)?
+        loading,
     TResult? Function(UserDetails? user, bool? isSuccess, String? imageUrl,
-            PlatformFile? image)?
+            File? file, PlatformFile? image)?
         loaded,
-    TResult? Function(String? message, String? imageUrl, PlatformFile? image)?
+    TResult? Function(
+            String? message, File? file, String? imageUrl, PlatformFile? image)?
         error,
-    TResult? Function(bool? isSuccess, String? imageUrl, PlatformFile? image)?
+    TResult? Function(
+            bool? isSuccess, String? imageUrl, File? file, PlatformFile? image)?
         success,
   }) {
-    return success?.call(isSuccess, imageUrl, image);
+    return success?.call(isSuccess, imageUrl, file, image);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String? imageUrl, PlatformFile? image)? initial,
-    TResult Function(String? imageUrl, PlatformFile? image)? loading,
+    TResult Function(String? imageUrl, PlatformFile? image, File? file)?
+        initial,
+    TResult Function(String? imageUrl, PlatformFile? image, File? file)?
+        loading,
     TResult Function(UserDetails? user, bool? isSuccess, String? imageUrl,
-            PlatformFile? image)?
+            File? file, PlatformFile? image)?
         loaded,
-    TResult Function(String? message, String? imageUrl, PlatformFile? image)?
+    TResult Function(
+            String? message, File? file, String? imageUrl, PlatformFile? image)?
         error,
-    TResult Function(bool? isSuccess, String? imageUrl, PlatformFile? image)?
+    TResult Function(
+            bool? isSuccess, String? imageUrl, File? file, PlatformFile? image)?
         success,
     required TResult orElse(),
   }) {
     if (success != null) {
-      return success(isSuccess, imageUrl, image);
+      return success(isSuccess, imageUrl, file, image);
     }
     return orElse();
   }
@@ -1880,11 +2004,14 @@ abstract class UserDetailsSuccess implements UserDetailsState {
   const factory UserDetailsSuccess(
       {final bool? isSuccess,
       final String? imageUrl,
+      final File? file,
       final PlatformFile? image}) = _$UserDetailsSuccessImpl;
 
   bool? get isSuccess;
   @override
   String? get imageUrl;
+  @override
+  File? get file;
   @override
   PlatformFile? get image;
   @override

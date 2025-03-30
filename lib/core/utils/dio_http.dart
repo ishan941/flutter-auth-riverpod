@@ -1,11 +1,13 @@
 import 'package:dio/dio.dart';
-import 'package:nepstayapp/core/api_const.dart';
-import 'package:nepstayapp/core/error/exception_error.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:nepstayapp/core/dio_helper.dart';
 
 class DioHttp {
   final Dio dio;
-
-  DioHttp({required this.dio});
+  final WidgetRef? ref;
+  DioHttp({required this.dio, this.ref}) {
+    dio.interceptors.add(LoggingInterceptor());
+  }
 
   delete({String? url, String? token}) async {
     if (token != null) {

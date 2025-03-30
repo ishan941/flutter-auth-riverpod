@@ -57,20 +57,23 @@ class ImageModel with _$ImageModel {
 @freezed
 class UserDetailsState with _$UserDetailsState {
   const factory UserDetailsState.initial(
-      {String? imageUrl, PlatformFile? image}) = UserDetailsInitial;
+      {String? imageUrl, PlatformFile? image, File? file}) = UserDetailsInitial;
   const factory UserDetailsState.loading(
-      {String? imageUrl, PlatformFile? image}) = UserDetailsLoading;
+      {String? imageUrl, PlatformFile? image, File? file}) = UserDetailsLoading;
   const factory UserDetailsState.loaded(
       {UserDetails? user,
       bool? isSuccess,
       String? imageUrl,
+      File? file,
       PlatformFile? image}) = UserDetailsLoaded;
   const factory UserDetailsState.error(
       {String? message,
+      File? file,
       String? imageUrl,
       PlatformFile? image}) = UserDetailsError;
   const factory UserDetailsState.success(
       {bool? isSuccess,
       String? imageUrl,
+      File? file,
       PlatformFile? image}) = UserDetailsSuccess;
 }

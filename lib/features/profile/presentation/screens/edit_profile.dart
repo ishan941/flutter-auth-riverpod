@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:nepstayapp/core/nef_custom/nef_app_bar.dart';
@@ -32,7 +34,13 @@ class _EditProfileState extends ConsumerState<EditProfile> {
 
     return Scaffold(
       appBar: RidAppBar(
-          showBackButton: true, showBackText: true, title: "Edit Profile"),
+          onBackButtonPressed: () {
+            profileNotifier.resetAll();
+            Navigator.pop(context);
+          },
+          showBackButton: true,
+          showBackText: true,
+          title: "Edit Profile"),
       body: SingleChildScrollView(
         child: NefPadding(
           child: profileState.maybeMap(
@@ -80,7 +88,7 @@ class _EditProfileState extends ConsumerState<EditProfile> {
                 children: [
                   InkWell(
                     onTap: () async {
-                      profileNotifier.pickImage();
+                      await profileNotifier.pickImage();
                     },
                     child: Align(
                       alignment: Alignment.center,
@@ -89,7 +97,10 @@ class _EditProfileState extends ConsumerState<EditProfile> {
                                 user.images.isEmpty)
                             ? const AssetImage("assets/images/IMG_4610.jpg")
                                 as ImageProvider
-                            : NetworkImage(user.images.first.imageUrl ?? ""),
+                            : (profileState.file == null)
+                                ? NetworkImage(user.images.first.imageUrl ?? "")
+                                : FileImage(File(profileState.file!.path))
+                                    as ImageProvider,
                         radius: 50,
                         backgroundColor: Colors.grey,
                       ),

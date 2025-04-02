@@ -5,6 +5,7 @@ import 'package:nepstayapp/core/networkinfo/network_info.dart';
 import 'package:nepstayapp/core/token_service/repository/base_repository.dart';
 import 'package:nepstayapp/core/token_service/services/token_service.dart';
 import 'package:nepstayapp/core/utils/string_util.dart';
+import 'package:nepstayapp/features/Auth/data/model/auth_model/user_model.dart';
 import 'package:nepstayapp/features/profile/data/datasource_impl/profile_datasource.dart';
 import 'package:nepstayapp/features/profile/data/model/kyc/kyc_model.dart';
 import 'package:nepstayapp/features/profile/data/model/profile_model.dart';
@@ -49,12 +50,12 @@ class ProfileRepositoryImpl extends BaseRepository
   }
 
   @override
-  Future<bool> verifyKycRepo(KycModel kyc) async {
+  Future<bool> verifyKycRepo(PostKYCModel kyc) async {
     if (!await networkInfo.isConnected) {
       throw Exception("No internet Connection");
     }
     try {
-      return await profileDatasource.verifyKyc(kyc);
+      return await profileDatasource.verifyKyc(kyc: kyc, token: accessToken);
     } catch (e) {
       throw Exception("Failed to submit: $e");
     }

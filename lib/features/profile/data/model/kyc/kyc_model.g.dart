@@ -30,3 +30,21 @@ Map<String, dynamic> _$$KycModelImplToJson(_$KycModelImpl instance) =>
       'isKycVerified': instance.isKycVerified,
       'status': instance.status,
     };
+
+_$PostKYCModelImpl _$$PostKYCModelImplFromJson(Map<String, dynamic> json) =>
+    _$PostKYCModelImpl(
+      vechileType: json['vechileType'] as String,
+      vechileNumber: json['vechileNumber'] as String,
+      citizenShipNumber: json['citizenShipNumber'] as String,
+      images: (json['images'] as List<dynamic>?)
+          ?.map((e) => ImageModel.fromJson(e as Map<String, dynamic>))
+          .toList(),
+    );
+
+Map<String, dynamic> _$$PostKYCModelImplToJson(_$PostKYCModelImpl instance) =>
+    <String, dynamic>{
+      'vechileType': instance.vechileType,
+      'vechileNumber': instance.vechileNumber,
+      'citizenShipNumber': instance.citizenShipNumber,
+      'images': instance.images,
+    };

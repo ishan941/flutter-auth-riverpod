@@ -2,6 +2,8 @@ import 'dart:io';
 
 import 'package:file_picker/file_picker.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:image_picker/image_picker.dart';
+import 'package:nepstayapp/features/Auth/data/model/auth_model/user_model.dart';
 
 part 'user_details.freezed.dart';
 part 'user_details.g.dart';
@@ -42,38 +44,54 @@ DateTime? _dateTimeFromJson(String? date) =>
 String? _dateTimeToJson(DateTime? date) => date?.toIso8601String();
 
 @freezed
-class ImageModel with _$ImageModel {
-  const factory ImageModel({
-    int? id,
-    String? imageUrl,
-    String? publicId,
-    String? imageType,
-  }) = _ImageModel;
-
-  factory ImageModel.fromJson(Map<String, dynamic> json) =>
-      _$ImageModelFromJson(json);
-}
-
-@freezed
 class UserDetailsState with _$UserDetailsState {
   const factory UserDetailsState.initial(
-      {String? imageUrl, PlatformFile? image, File? file}) = UserDetailsInitial;
+      {String? imageUrl,
+      PlatformFile? image,
+      File? file,
+      XFile? licenseImage,
+      XFile? vechileImage,
+      XFile? citizenshipFront,
+      XFile? citizenshipBack,
+      List<ImageModel>? imagesKyc}) = UserDetailsInitial;
   const factory UserDetailsState.loading(
-      {String? imageUrl, PlatformFile? image, File? file}) = UserDetailsLoading;
+      {String? imageUrl,
+      PlatformFile? image,
+      File? file,
+      XFile? licenseImage,
+      XFile? vechileImage,
+      XFile? citizenshipFront,
+      XFile? citizenshipBack,
+      List<ImageModel>? imagesKyc}) = UserDetailsLoading;
   const factory UserDetailsState.loaded(
       {UserDetails? user,
       bool? isSuccess,
+      XFile? licenseImage,
+      XFile? vechileImage,
+      XFile? citizenshipFront,
+      XFile? citizenshipBack,
       String? imageUrl,
       File? file,
+      List<ImageModel>? imagesKyc,
       PlatformFile? image}) = UserDetailsLoaded;
   const factory UserDetailsState.error(
       {String? message,
       File? file,
+      XFile? licenseImage,
+      XFile? vechileImage,
+      XFile? citizenshipFront,
+      XFile? citizenshipBack,
       String? imageUrl,
-      PlatformFile? image}) = UserDetailsError;
+      PlatformFile? image,
+      List<ImageModel>? imagesKyc}) = UserDetailsError;
   const factory UserDetailsState.success(
       {bool? isSuccess,
       String? imageUrl,
       File? file,
-      PlatformFile? image}) = UserDetailsSuccess;
+      XFile? licenseImage,
+      XFile? vechileImage,
+      XFile? citizenshipFront,
+      XFile? citizenshipBack,
+      PlatformFile? image,
+      List<ImageModel>? imagesKyc}) = UserDetailsSuccess;
 }

@@ -19,3 +19,16 @@ class KycModel with _$KycModel {
   factory KycModel.fromJson(Map<String, dynamic> json) =>
       _$KycModelFromJson(json);
 }
+
+@freezed
+class PostKYCModel with _$PostKYCModel {
+  factory PostKYCModel({
+    required String vechileType,
+    required String vechileNumber,
+    required String citizenShipNumber,
+    List<ImageModel>? images,
+  }) = _PostKYCModel;
+
+  factory PostKYCModel.fromJson(Map<String, dynamic> json) =>
+      _$PostKYCModelFromJson(json);
+}

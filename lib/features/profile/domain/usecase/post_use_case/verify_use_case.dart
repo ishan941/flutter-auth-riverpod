@@ -7,7 +7,7 @@ class VerifyUseCase extends UseCase<String, KycModel> {
 
   VerifyUseCase({required this.profilerepo});
 
-  Future<bool> call(KycModel kyc) async {
+  Future<bool> call(PostKYCModel kyc) async {
     return await profilerepo.verifyKycRepo(kyc);
   }
 }

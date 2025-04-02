@@ -605,252 +605,187 @@ abstract class _UserDetails implements UserDetails {
       throw _privateConstructorUsedError;
 }
 
-ImageModel _$ImageModelFromJson(Map<String, dynamic> json) {
-  return _ImageModel.fromJson(json);
-}
-
-/// @nodoc
-mixin _$ImageModel {
-  int? get id => throw _privateConstructorUsedError;
-  String? get imageUrl => throw _privateConstructorUsedError;
-  String? get publicId => throw _privateConstructorUsedError;
-  String? get imageType => throw _privateConstructorUsedError;
-
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
-  $ImageModelCopyWith<ImageModel> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class $ImageModelCopyWith<$Res> {
-  factory $ImageModelCopyWith(
-          ImageModel value, $Res Function(ImageModel) then) =
-      _$ImageModelCopyWithImpl<$Res, ImageModel>;
-  @useResult
-  $Res call({int? id, String? imageUrl, String? publicId, String? imageType});
-}
-
-/// @nodoc
-class _$ImageModelCopyWithImpl<$Res, $Val extends ImageModel>
-    implements $ImageModelCopyWith<$Res> {
-  _$ImageModelCopyWithImpl(this._value, this._then);
-
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? id = freezed,
-    Object? imageUrl = freezed,
-    Object? publicId = freezed,
-    Object? imageType = freezed,
-  }) {
-    return _then(_value.copyWith(
-      id: freezed == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as int?,
-      imageUrl: freezed == imageUrl
-          ? _value.imageUrl
-          : imageUrl // ignore: cast_nullable_to_non_nullable
-              as String?,
-      publicId: freezed == publicId
-          ? _value.publicId
-          : publicId // ignore: cast_nullable_to_non_nullable
-              as String?,
-      imageType: freezed == imageType
-          ? _value.imageType
-          : imageType // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ) as $Val);
-  }
-}
-
-/// @nodoc
-abstract class _$$ImageModelImplCopyWith<$Res>
-    implements $ImageModelCopyWith<$Res> {
-  factory _$$ImageModelImplCopyWith(
-          _$ImageModelImpl value, $Res Function(_$ImageModelImpl) then) =
-      __$$ImageModelImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call({int? id, String? imageUrl, String? publicId, String? imageType});
-}
-
-/// @nodoc
-class __$$ImageModelImplCopyWithImpl<$Res>
-    extends _$ImageModelCopyWithImpl<$Res, _$ImageModelImpl>
-    implements _$$ImageModelImplCopyWith<$Res> {
-  __$$ImageModelImplCopyWithImpl(
-      _$ImageModelImpl _value, $Res Function(_$ImageModelImpl) _then)
-      : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? id = freezed,
-    Object? imageUrl = freezed,
-    Object? publicId = freezed,
-    Object? imageType = freezed,
-  }) {
-    return _then(_$ImageModelImpl(
-      id: freezed == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as int?,
-      imageUrl: freezed == imageUrl
-          ? _value.imageUrl
-          : imageUrl // ignore: cast_nullable_to_non_nullable
-              as String?,
-      publicId: freezed == publicId
-          ? _value.publicId
-          : publicId // ignore: cast_nullable_to_non_nullable
-              as String?,
-      imageType: freezed == imageType
-          ? _value.imageType
-          : imageType // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ));
-  }
-}
-
-/// @nodoc
-@JsonSerializable()
-class _$ImageModelImpl implements _ImageModel {
-  const _$ImageModelImpl(
-      {this.id, this.imageUrl, this.publicId, this.imageType});
-
-  factory _$ImageModelImpl.fromJson(Map<String, dynamic> json) =>
-      _$$ImageModelImplFromJson(json);
-
-  @override
-  final int? id;
-  @override
-  final String? imageUrl;
-  @override
-  final String? publicId;
-  @override
-  final String? imageType;
-
-  @override
-  String toString() {
-    return 'ImageModel(id: $id, imageUrl: $imageUrl, publicId: $publicId, imageType: $imageType)';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$ImageModelImpl &&
-            (identical(other.id, id) || other.id == id) &&
-            (identical(other.imageUrl, imageUrl) ||
-                other.imageUrl == imageUrl) &&
-            (identical(other.publicId, publicId) ||
-                other.publicId == publicId) &&
-            (identical(other.imageType, imageType) ||
-                other.imageType == imageType));
-  }
-
-  @JsonKey(ignore: true)
-  @override
-  int get hashCode =>
-      Object.hash(runtimeType, id, imageUrl, publicId, imageType);
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$ImageModelImplCopyWith<_$ImageModelImpl> get copyWith =>
-      __$$ImageModelImplCopyWithImpl<_$ImageModelImpl>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$ImageModelImplToJson(
-      this,
-    );
-  }
-}
-
-abstract class _ImageModel implements ImageModel {
-  const factory _ImageModel(
-      {final int? id,
-      final String? imageUrl,
-      final String? publicId,
-      final String? imageType}) = _$ImageModelImpl;
-
-  factory _ImageModel.fromJson(Map<String, dynamic> json) =
-      _$ImageModelImpl.fromJson;
-
-  @override
-  int? get id;
-  @override
-  String? get imageUrl;
-  @override
-  String? get publicId;
-  @override
-  String? get imageType;
-  @override
-  @JsonKey(ignore: true)
-  _$$ImageModelImplCopyWith<_$ImageModelImpl> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
 /// @nodoc
 mixin _$UserDetailsState {
   String? get imageUrl => throw _privateConstructorUsedError;
   PlatformFile? get image => throw _privateConstructorUsedError;
   File? get file => throw _privateConstructorUsedError;
+  XFile? get licenseImage => throw _privateConstructorUsedError;
+  XFile? get vechileImage => throw _privateConstructorUsedError;
+  XFile? get citizenshipFront => throw _privateConstructorUsedError;
+  XFile? get citizenshipBack => throw _privateConstructorUsedError;
+  List<ImageModel>? get imagesKyc => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String? imageUrl, PlatformFile? image, File? file)
+    required TResult Function(
+            String? imageUrl,
+            PlatformFile? image,
+            File? file,
+            XFile? licenseImage,
+            XFile? vechileImage,
+            XFile? citizenshipFront,
+            XFile? citizenshipBack,
+            List<ImageModel>? imagesKyc)
         initial,
-    required TResult Function(String? imageUrl, PlatformFile? image, File? file)
+    required TResult Function(
+            String? imageUrl,
+            PlatformFile? image,
+            File? file,
+            XFile? licenseImage,
+            XFile? vechileImage,
+            XFile? citizenshipFront,
+            XFile? citizenshipBack,
+            List<ImageModel>? imagesKyc)
         loading,
-    required TResult Function(UserDetails? user, bool? isSuccess,
-            String? imageUrl, File? file, PlatformFile? image)
+    required TResult Function(
+            UserDetails? user,
+            bool? isSuccess,
+            XFile? licenseImage,
+            XFile? vechileImage,
+            XFile? citizenshipFront,
+            XFile? citizenshipBack,
+            String? imageUrl,
+            File? file,
+            List<ImageModel>? imagesKyc,
+            PlatformFile? image)
         loaded,
     required TResult Function(
-            String? message, File? file, String? imageUrl, PlatformFile? image)
+            String? message,
+            File? file,
+            XFile? licenseImage,
+            XFile? vechileImage,
+            XFile? citizenshipFront,
+            XFile? citizenshipBack,
+            String? imageUrl,
+            PlatformFile? image,
+            List<ImageModel>? imagesKyc)
         error,
     required TResult Function(
-            bool? isSuccess, String? imageUrl, File? file, PlatformFile? image)
+            bool? isSuccess,
+            String? imageUrl,
+            File? file,
+            XFile? licenseImage,
+            XFile? vechileImage,
+            XFile? citizenshipFront,
+            XFile? citizenshipBack,
+            PlatformFile? image,
+            List<ImageModel>? imagesKyc)
         success,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String? imageUrl, PlatformFile? image, File? file)?
+    TResult? Function(
+            String? imageUrl,
+            PlatformFile? image,
+            File? file,
+            XFile? licenseImage,
+            XFile? vechileImage,
+            XFile? citizenshipFront,
+            XFile? citizenshipBack,
+            List<ImageModel>? imagesKyc)?
         initial,
-    TResult? Function(String? imageUrl, PlatformFile? image, File? file)?
+    TResult? Function(
+            String? imageUrl,
+            PlatformFile? image,
+            File? file,
+            XFile? licenseImage,
+            XFile? vechileImage,
+            XFile? citizenshipFront,
+            XFile? citizenshipBack,
+            List<ImageModel>? imagesKyc)?
         loading,
-    TResult? Function(UserDetails? user, bool? isSuccess, String? imageUrl,
-            File? file, PlatformFile? image)?
+    TResult? Function(
+            UserDetails? user,
+            bool? isSuccess,
+            XFile? licenseImage,
+            XFile? vechileImage,
+            XFile? citizenshipFront,
+            XFile? citizenshipBack,
+            String? imageUrl,
+            File? file,
+            List<ImageModel>? imagesKyc,
+            PlatformFile? image)?
         loaded,
     TResult? Function(
-            String? message, File? file, String? imageUrl, PlatformFile? image)?
+            String? message,
+            File? file,
+            XFile? licenseImage,
+            XFile? vechileImage,
+            XFile? citizenshipFront,
+            XFile? citizenshipBack,
+            String? imageUrl,
+            PlatformFile? image,
+            List<ImageModel>? imagesKyc)?
         error,
     TResult? Function(
-            bool? isSuccess, String? imageUrl, File? file, PlatformFile? image)?
+            bool? isSuccess,
+            String? imageUrl,
+            File? file,
+            XFile? licenseImage,
+            XFile? vechileImage,
+            XFile? citizenshipFront,
+            XFile? citizenshipBack,
+            PlatformFile? image,
+            List<ImageModel>? imagesKyc)?
         success,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String? imageUrl, PlatformFile? image, File? file)?
+    TResult Function(
+            String? imageUrl,
+            PlatformFile? image,
+            File? file,
+            XFile? licenseImage,
+            XFile? vechileImage,
+            XFile? citizenshipFront,
+            XFile? citizenshipBack,
+            List<ImageModel>? imagesKyc)?
         initial,
-    TResult Function(String? imageUrl, PlatformFile? image, File? file)?
+    TResult Function(
+            String? imageUrl,
+            PlatformFile? image,
+            File? file,
+            XFile? licenseImage,
+            XFile? vechileImage,
+            XFile? citizenshipFront,
+            XFile? citizenshipBack,
+            List<ImageModel>? imagesKyc)?
         loading,
-    TResult Function(UserDetails? user, bool? isSuccess, String? imageUrl,
-            File? file, PlatformFile? image)?
+    TResult Function(
+            UserDetails? user,
+            bool? isSuccess,
+            XFile? licenseImage,
+            XFile? vechileImage,
+            XFile? citizenshipFront,
+            XFile? citizenshipBack,
+            String? imageUrl,
+            File? file,
+            List<ImageModel>? imagesKyc,
+            PlatformFile? image)?
         loaded,
     TResult Function(
-            String? message, File? file, String? imageUrl, PlatformFile? image)?
+            String? message,
+            File? file,
+            XFile? licenseImage,
+            XFile? vechileImage,
+            XFile? citizenshipFront,
+            XFile? citizenshipBack,
+            String? imageUrl,
+            PlatformFile? image,
+            List<ImageModel>? imagesKyc)?
         error,
     TResult Function(
-            bool? isSuccess, String? imageUrl, File? file, PlatformFile? image)?
+            bool? isSuccess,
+            String? imageUrl,
+            File? file,
+            XFile? licenseImage,
+            XFile? vechileImage,
+            XFile? citizenshipFront,
+            XFile? citizenshipBack,
+            PlatformFile? image,
+            List<ImageModel>? imagesKyc)?
         success,
     required TResult orElse(),
   }) =>
@@ -895,7 +830,15 @@ abstract class $UserDetailsStateCopyWith<$Res> {
           UserDetailsState value, $Res Function(UserDetailsState) then) =
       _$UserDetailsStateCopyWithImpl<$Res, UserDetailsState>;
   @useResult
-  $Res call({String? imageUrl, PlatformFile? image, File? file});
+  $Res call(
+      {String? imageUrl,
+      PlatformFile? image,
+      File? file,
+      XFile? licenseImage,
+      XFile? vechileImage,
+      XFile? citizenshipFront,
+      XFile? citizenshipBack,
+      List<ImageModel>? imagesKyc});
 }
 
 /// @nodoc
@@ -914,6 +857,11 @@ class _$UserDetailsStateCopyWithImpl<$Res, $Val extends UserDetailsState>
     Object? imageUrl = freezed,
     Object? image = freezed,
     Object? file = freezed,
+    Object? licenseImage = freezed,
+    Object? vechileImage = freezed,
+    Object? citizenshipFront = freezed,
+    Object? citizenshipBack = freezed,
+    Object? imagesKyc = freezed,
   }) {
     return _then(_value.copyWith(
       imageUrl: freezed == imageUrl
@@ -928,6 +876,26 @@ class _$UserDetailsStateCopyWithImpl<$Res, $Val extends UserDetailsState>
           ? _value.file
           : file // ignore: cast_nullable_to_non_nullable
               as File?,
+      licenseImage: freezed == licenseImage
+          ? _value.licenseImage
+          : licenseImage // ignore: cast_nullable_to_non_nullable
+              as XFile?,
+      vechileImage: freezed == vechileImage
+          ? _value.vechileImage
+          : vechileImage // ignore: cast_nullable_to_non_nullable
+              as XFile?,
+      citizenshipFront: freezed == citizenshipFront
+          ? _value.citizenshipFront
+          : citizenshipFront // ignore: cast_nullable_to_non_nullable
+              as XFile?,
+      citizenshipBack: freezed == citizenshipBack
+          ? _value.citizenshipBack
+          : citizenshipBack // ignore: cast_nullable_to_non_nullable
+              as XFile?,
+      imagesKyc: freezed == imagesKyc
+          ? _value.imagesKyc
+          : imagesKyc // ignore: cast_nullable_to_non_nullable
+              as List<ImageModel>?,
     ) as $Val);
   }
 }
@@ -940,7 +908,15 @@ abstract class _$$UserDetailsInitialImplCopyWith<$Res>
       __$$UserDetailsInitialImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String? imageUrl, PlatformFile? image, File? file});
+  $Res call(
+      {String? imageUrl,
+      PlatformFile? image,
+      File? file,
+      XFile? licenseImage,
+      XFile? vechileImage,
+      XFile? citizenshipFront,
+      XFile? citizenshipBack,
+      List<ImageModel>? imagesKyc});
 }
 
 /// @nodoc
@@ -957,6 +933,11 @@ class __$$UserDetailsInitialImplCopyWithImpl<$Res>
     Object? imageUrl = freezed,
     Object? image = freezed,
     Object? file = freezed,
+    Object? licenseImage = freezed,
+    Object? vechileImage = freezed,
+    Object? citizenshipFront = freezed,
+    Object? citizenshipBack = freezed,
+    Object? imagesKyc = freezed,
   }) {
     return _then(_$UserDetailsInitialImpl(
       imageUrl: freezed == imageUrl
@@ -971,6 +952,26 @@ class __$$UserDetailsInitialImplCopyWithImpl<$Res>
           ? _value.file
           : file // ignore: cast_nullable_to_non_nullable
               as File?,
+      licenseImage: freezed == licenseImage
+          ? _value.licenseImage
+          : licenseImage // ignore: cast_nullable_to_non_nullable
+              as XFile?,
+      vechileImage: freezed == vechileImage
+          ? _value.vechileImage
+          : vechileImage // ignore: cast_nullable_to_non_nullable
+              as XFile?,
+      citizenshipFront: freezed == citizenshipFront
+          ? _value.citizenshipFront
+          : citizenshipFront // ignore: cast_nullable_to_non_nullable
+              as XFile?,
+      citizenshipBack: freezed == citizenshipBack
+          ? _value.citizenshipBack
+          : citizenshipBack // ignore: cast_nullable_to_non_nullable
+              as XFile?,
+      imagesKyc: freezed == imagesKyc
+          ? _value._imagesKyc
+          : imagesKyc // ignore: cast_nullable_to_non_nullable
+              as List<ImageModel>?,
     ));
   }
 }
@@ -978,7 +979,16 @@ class __$$UserDetailsInitialImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$UserDetailsInitialImpl implements UserDetailsInitial {
-  const _$UserDetailsInitialImpl({this.imageUrl, this.image, this.file});
+  const _$UserDetailsInitialImpl(
+      {this.imageUrl,
+      this.image,
+      this.file,
+      this.licenseImage,
+      this.vechileImage,
+      this.citizenshipFront,
+      this.citizenshipBack,
+      final List<ImageModel>? imagesKyc})
+      : _imagesKyc = imagesKyc;
 
   @override
   final String? imageUrl;
@@ -986,10 +996,27 @@ class _$UserDetailsInitialImpl implements UserDetailsInitial {
   final PlatformFile? image;
   @override
   final File? file;
+  @override
+  final XFile? licenseImage;
+  @override
+  final XFile? vechileImage;
+  @override
+  final XFile? citizenshipFront;
+  @override
+  final XFile? citizenshipBack;
+  final List<ImageModel>? _imagesKyc;
+  @override
+  List<ImageModel>? get imagesKyc {
+    final value = _imagesKyc;
+    if (value == null) return null;
+    if (_imagesKyc is EqualUnmodifiableListView) return _imagesKyc;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
 
   @override
   String toString() {
-    return 'UserDetailsState.initial(imageUrl: $imageUrl, image: $image, file: $file)';
+    return 'UserDetailsState.initial(imageUrl: $imageUrl, image: $image, file: $file, licenseImage: $licenseImage, vechileImage: $vechileImage, citizenshipFront: $citizenshipFront, citizenshipBack: $citizenshipBack, imagesKyc: $imagesKyc)';
   }
 
   @override
@@ -1000,11 +1027,30 @@ class _$UserDetailsInitialImpl implements UserDetailsInitial {
             (identical(other.imageUrl, imageUrl) ||
                 other.imageUrl == imageUrl) &&
             (identical(other.image, image) || other.image == image) &&
-            (identical(other.file, file) || other.file == file));
+            (identical(other.file, file) || other.file == file) &&
+            (identical(other.licenseImage, licenseImage) ||
+                other.licenseImage == licenseImage) &&
+            (identical(other.vechileImage, vechileImage) ||
+                other.vechileImage == vechileImage) &&
+            (identical(other.citizenshipFront, citizenshipFront) ||
+                other.citizenshipFront == citizenshipFront) &&
+            (identical(other.citizenshipBack, citizenshipBack) ||
+                other.citizenshipBack == citizenshipBack) &&
+            const DeepCollectionEquality()
+                .equals(other._imagesKyc, _imagesKyc));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, imageUrl, image, file);
+  int get hashCode => Object.hash(
+      runtimeType,
+      imageUrl,
+      image,
+      file,
+      licenseImage,
+      vechileImage,
+      citizenshipFront,
+      citizenshipBack,
+      const DeepCollectionEquality().hash(_imagesKyc));
 
   @JsonKey(ignore: true)
   @override
@@ -1016,63 +1062,189 @@ class _$UserDetailsInitialImpl implements UserDetailsInitial {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String? imageUrl, PlatformFile? image, File? file)
+    required TResult Function(
+            String? imageUrl,
+            PlatformFile? image,
+            File? file,
+            XFile? licenseImage,
+            XFile? vechileImage,
+            XFile? citizenshipFront,
+            XFile? citizenshipBack,
+            List<ImageModel>? imagesKyc)
         initial,
-    required TResult Function(String? imageUrl, PlatformFile? image, File? file)
+    required TResult Function(
+            String? imageUrl,
+            PlatformFile? image,
+            File? file,
+            XFile? licenseImage,
+            XFile? vechileImage,
+            XFile? citizenshipFront,
+            XFile? citizenshipBack,
+            List<ImageModel>? imagesKyc)
         loading,
-    required TResult Function(UserDetails? user, bool? isSuccess,
-            String? imageUrl, File? file, PlatformFile? image)
+    required TResult Function(
+            UserDetails? user,
+            bool? isSuccess,
+            XFile? licenseImage,
+            XFile? vechileImage,
+            XFile? citizenshipFront,
+            XFile? citizenshipBack,
+            String? imageUrl,
+            File? file,
+            List<ImageModel>? imagesKyc,
+            PlatformFile? image)
         loaded,
     required TResult Function(
-            String? message, File? file, String? imageUrl, PlatformFile? image)
+            String? message,
+            File? file,
+            XFile? licenseImage,
+            XFile? vechileImage,
+            XFile? citizenshipFront,
+            XFile? citizenshipBack,
+            String? imageUrl,
+            PlatformFile? image,
+            List<ImageModel>? imagesKyc)
         error,
     required TResult Function(
-            bool? isSuccess, String? imageUrl, File? file, PlatformFile? image)
+            bool? isSuccess,
+            String? imageUrl,
+            File? file,
+            XFile? licenseImage,
+            XFile? vechileImage,
+            XFile? citizenshipFront,
+            XFile? citizenshipBack,
+            PlatformFile? image,
+            List<ImageModel>? imagesKyc)
         success,
   }) {
-    return initial(imageUrl, image, file);
+    return initial(imageUrl, image, file, licenseImage, vechileImage,
+        citizenshipFront, citizenshipBack, imagesKyc);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String? imageUrl, PlatformFile? image, File? file)?
+    TResult? Function(
+            String? imageUrl,
+            PlatformFile? image,
+            File? file,
+            XFile? licenseImage,
+            XFile? vechileImage,
+            XFile? citizenshipFront,
+            XFile? citizenshipBack,
+            List<ImageModel>? imagesKyc)?
         initial,
-    TResult? Function(String? imageUrl, PlatformFile? image, File? file)?
+    TResult? Function(
+            String? imageUrl,
+            PlatformFile? image,
+            File? file,
+            XFile? licenseImage,
+            XFile? vechileImage,
+            XFile? citizenshipFront,
+            XFile? citizenshipBack,
+            List<ImageModel>? imagesKyc)?
         loading,
-    TResult? Function(UserDetails? user, bool? isSuccess, String? imageUrl,
-            File? file, PlatformFile? image)?
+    TResult? Function(
+            UserDetails? user,
+            bool? isSuccess,
+            XFile? licenseImage,
+            XFile? vechileImage,
+            XFile? citizenshipFront,
+            XFile? citizenshipBack,
+            String? imageUrl,
+            File? file,
+            List<ImageModel>? imagesKyc,
+            PlatformFile? image)?
         loaded,
     TResult? Function(
-            String? message, File? file, String? imageUrl, PlatformFile? image)?
+            String? message,
+            File? file,
+            XFile? licenseImage,
+            XFile? vechileImage,
+            XFile? citizenshipFront,
+            XFile? citizenshipBack,
+            String? imageUrl,
+            PlatformFile? image,
+            List<ImageModel>? imagesKyc)?
         error,
     TResult? Function(
-            bool? isSuccess, String? imageUrl, File? file, PlatformFile? image)?
+            bool? isSuccess,
+            String? imageUrl,
+            File? file,
+            XFile? licenseImage,
+            XFile? vechileImage,
+            XFile? citizenshipFront,
+            XFile? citizenshipBack,
+            PlatformFile? image,
+            List<ImageModel>? imagesKyc)?
         success,
   }) {
-    return initial?.call(imageUrl, image, file);
+    return initial?.call(imageUrl, image, file, licenseImage, vechileImage,
+        citizenshipFront, citizenshipBack, imagesKyc);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String? imageUrl, PlatformFile? image, File? file)?
+    TResult Function(
+            String? imageUrl,
+            PlatformFile? image,
+            File? file,
+            XFile? licenseImage,
+            XFile? vechileImage,
+            XFile? citizenshipFront,
+            XFile? citizenshipBack,
+            List<ImageModel>? imagesKyc)?
         initial,
-    TResult Function(String? imageUrl, PlatformFile? image, File? file)?
+    TResult Function(
+            String? imageUrl,
+            PlatformFile? image,
+            File? file,
+            XFile? licenseImage,
+            XFile? vechileImage,
+            XFile? citizenshipFront,
+            XFile? citizenshipBack,
+            List<ImageModel>? imagesKyc)?
         loading,
-    TResult Function(UserDetails? user, bool? isSuccess, String? imageUrl,
-            File? file, PlatformFile? image)?
+    TResult Function(
+            UserDetails? user,
+            bool? isSuccess,
+            XFile? licenseImage,
+            XFile? vechileImage,
+            XFile? citizenshipFront,
+            XFile? citizenshipBack,
+            String? imageUrl,
+            File? file,
+            List<ImageModel>? imagesKyc,
+            PlatformFile? image)?
         loaded,
     TResult Function(
-            String? message, File? file, String? imageUrl, PlatformFile? image)?
+            String? message,
+            File? file,
+            XFile? licenseImage,
+            XFile? vechileImage,
+            XFile? citizenshipFront,
+            XFile? citizenshipBack,
+            String? imageUrl,
+            PlatformFile? image,
+            List<ImageModel>? imagesKyc)?
         error,
     TResult Function(
-            bool? isSuccess, String? imageUrl, File? file, PlatformFile? image)?
+            bool? isSuccess,
+            String? imageUrl,
+            File? file,
+            XFile? licenseImage,
+            XFile? vechileImage,
+            XFile? citizenshipFront,
+            XFile? citizenshipBack,
+            PlatformFile? image,
+            List<ImageModel>? imagesKyc)?
         success,
     required TResult orElse(),
   }) {
     if (initial != null) {
-      return initial(imageUrl, image, file);
+      return initial(imageUrl, image, file, licenseImage, vechileImage,
+          citizenshipFront, citizenshipBack, imagesKyc);
     }
     return orElse();
   }
@@ -1122,7 +1294,12 @@ abstract class UserDetailsInitial implements UserDetailsState {
   const factory UserDetailsInitial(
       {final String? imageUrl,
       final PlatformFile? image,
-      final File? file}) = _$UserDetailsInitialImpl;
+      final File? file,
+      final XFile? licenseImage,
+      final XFile? vechileImage,
+      final XFile? citizenshipFront,
+      final XFile? citizenshipBack,
+      final List<ImageModel>? imagesKyc}) = _$UserDetailsInitialImpl;
 
   @override
   String? get imageUrl;
@@ -1130,6 +1307,16 @@ abstract class UserDetailsInitial implements UserDetailsState {
   PlatformFile? get image;
   @override
   File? get file;
+  @override
+  XFile? get licenseImage;
+  @override
+  XFile? get vechileImage;
+  @override
+  XFile? get citizenshipFront;
+  @override
+  XFile? get citizenshipBack;
+  @override
+  List<ImageModel>? get imagesKyc;
   @override
   @JsonKey(ignore: true)
   _$$UserDetailsInitialImplCopyWith<_$UserDetailsInitialImpl> get copyWith =>
@@ -1144,7 +1331,15 @@ abstract class _$$UserDetailsLoadingImplCopyWith<$Res>
       __$$UserDetailsLoadingImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String? imageUrl, PlatformFile? image, File? file});
+  $Res call(
+      {String? imageUrl,
+      PlatformFile? image,
+      File? file,
+      XFile? licenseImage,
+      XFile? vechileImage,
+      XFile? citizenshipFront,
+      XFile? citizenshipBack,
+      List<ImageModel>? imagesKyc});
 }
 
 /// @nodoc
@@ -1161,6 +1356,11 @@ class __$$UserDetailsLoadingImplCopyWithImpl<$Res>
     Object? imageUrl = freezed,
     Object? image = freezed,
     Object? file = freezed,
+    Object? licenseImage = freezed,
+    Object? vechileImage = freezed,
+    Object? citizenshipFront = freezed,
+    Object? citizenshipBack = freezed,
+    Object? imagesKyc = freezed,
   }) {
     return _then(_$UserDetailsLoadingImpl(
       imageUrl: freezed == imageUrl
@@ -1175,6 +1375,26 @@ class __$$UserDetailsLoadingImplCopyWithImpl<$Res>
           ? _value.file
           : file // ignore: cast_nullable_to_non_nullable
               as File?,
+      licenseImage: freezed == licenseImage
+          ? _value.licenseImage
+          : licenseImage // ignore: cast_nullable_to_non_nullable
+              as XFile?,
+      vechileImage: freezed == vechileImage
+          ? _value.vechileImage
+          : vechileImage // ignore: cast_nullable_to_non_nullable
+              as XFile?,
+      citizenshipFront: freezed == citizenshipFront
+          ? _value.citizenshipFront
+          : citizenshipFront // ignore: cast_nullable_to_non_nullable
+              as XFile?,
+      citizenshipBack: freezed == citizenshipBack
+          ? _value.citizenshipBack
+          : citizenshipBack // ignore: cast_nullable_to_non_nullable
+              as XFile?,
+      imagesKyc: freezed == imagesKyc
+          ? _value._imagesKyc
+          : imagesKyc // ignore: cast_nullable_to_non_nullable
+              as List<ImageModel>?,
     ));
   }
 }
@@ -1182,7 +1402,16 @@ class __$$UserDetailsLoadingImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$UserDetailsLoadingImpl implements UserDetailsLoading {
-  const _$UserDetailsLoadingImpl({this.imageUrl, this.image, this.file});
+  const _$UserDetailsLoadingImpl(
+      {this.imageUrl,
+      this.image,
+      this.file,
+      this.licenseImage,
+      this.vechileImage,
+      this.citizenshipFront,
+      this.citizenshipBack,
+      final List<ImageModel>? imagesKyc})
+      : _imagesKyc = imagesKyc;
 
   @override
   final String? imageUrl;
@@ -1190,10 +1419,27 @@ class _$UserDetailsLoadingImpl implements UserDetailsLoading {
   final PlatformFile? image;
   @override
   final File? file;
+  @override
+  final XFile? licenseImage;
+  @override
+  final XFile? vechileImage;
+  @override
+  final XFile? citizenshipFront;
+  @override
+  final XFile? citizenshipBack;
+  final List<ImageModel>? _imagesKyc;
+  @override
+  List<ImageModel>? get imagesKyc {
+    final value = _imagesKyc;
+    if (value == null) return null;
+    if (_imagesKyc is EqualUnmodifiableListView) return _imagesKyc;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
 
   @override
   String toString() {
-    return 'UserDetailsState.loading(imageUrl: $imageUrl, image: $image, file: $file)';
+    return 'UserDetailsState.loading(imageUrl: $imageUrl, image: $image, file: $file, licenseImage: $licenseImage, vechileImage: $vechileImage, citizenshipFront: $citizenshipFront, citizenshipBack: $citizenshipBack, imagesKyc: $imagesKyc)';
   }
 
   @override
@@ -1204,11 +1450,30 @@ class _$UserDetailsLoadingImpl implements UserDetailsLoading {
             (identical(other.imageUrl, imageUrl) ||
                 other.imageUrl == imageUrl) &&
             (identical(other.image, image) || other.image == image) &&
-            (identical(other.file, file) || other.file == file));
+            (identical(other.file, file) || other.file == file) &&
+            (identical(other.licenseImage, licenseImage) ||
+                other.licenseImage == licenseImage) &&
+            (identical(other.vechileImage, vechileImage) ||
+                other.vechileImage == vechileImage) &&
+            (identical(other.citizenshipFront, citizenshipFront) ||
+                other.citizenshipFront == citizenshipFront) &&
+            (identical(other.citizenshipBack, citizenshipBack) ||
+                other.citizenshipBack == citizenshipBack) &&
+            const DeepCollectionEquality()
+                .equals(other._imagesKyc, _imagesKyc));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, imageUrl, image, file);
+  int get hashCode => Object.hash(
+      runtimeType,
+      imageUrl,
+      image,
+      file,
+      licenseImage,
+      vechileImage,
+      citizenshipFront,
+      citizenshipBack,
+      const DeepCollectionEquality().hash(_imagesKyc));
 
   @JsonKey(ignore: true)
   @override
@@ -1220,63 +1485,189 @@ class _$UserDetailsLoadingImpl implements UserDetailsLoading {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String? imageUrl, PlatformFile? image, File? file)
+    required TResult Function(
+            String? imageUrl,
+            PlatformFile? image,
+            File? file,
+            XFile? licenseImage,
+            XFile? vechileImage,
+            XFile? citizenshipFront,
+            XFile? citizenshipBack,
+            List<ImageModel>? imagesKyc)
         initial,
-    required TResult Function(String? imageUrl, PlatformFile? image, File? file)
+    required TResult Function(
+            String? imageUrl,
+            PlatformFile? image,
+            File? file,
+            XFile? licenseImage,
+            XFile? vechileImage,
+            XFile? citizenshipFront,
+            XFile? citizenshipBack,
+            List<ImageModel>? imagesKyc)
         loading,
-    required TResult Function(UserDetails? user, bool? isSuccess,
-            String? imageUrl, File? file, PlatformFile? image)
+    required TResult Function(
+            UserDetails? user,
+            bool? isSuccess,
+            XFile? licenseImage,
+            XFile? vechileImage,
+            XFile? citizenshipFront,
+            XFile? citizenshipBack,
+            String? imageUrl,
+            File? file,
+            List<ImageModel>? imagesKyc,
+            PlatformFile? image)
         loaded,
     required TResult Function(
-            String? message, File? file, String? imageUrl, PlatformFile? image)
+            String? message,
+            File? file,
+            XFile? licenseImage,
+            XFile? vechileImage,
+            XFile? citizenshipFront,
+            XFile? citizenshipBack,
+            String? imageUrl,
+            PlatformFile? image,
+            List<ImageModel>? imagesKyc)
         error,
     required TResult Function(
-            bool? isSuccess, String? imageUrl, File? file, PlatformFile? image)
+            bool? isSuccess,
+            String? imageUrl,
+            File? file,
+            XFile? licenseImage,
+            XFile? vechileImage,
+            XFile? citizenshipFront,
+            XFile? citizenshipBack,
+            PlatformFile? image,
+            List<ImageModel>? imagesKyc)
         success,
   }) {
-    return loading(imageUrl, image, file);
+    return loading(imageUrl, image, file, licenseImage, vechileImage,
+        citizenshipFront, citizenshipBack, imagesKyc);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String? imageUrl, PlatformFile? image, File? file)?
+    TResult? Function(
+            String? imageUrl,
+            PlatformFile? image,
+            File? file,
+            XFile? licenseImage,
+            XFile? vechileImage,
+            XFile? citizenshipFront,
+            XFile? citizenshipBack,
+            List<ImageModel>? imagesKyc)?
         initial,
-    TResult? Function(String? imageUrl, PlatformFile? image, File? file)?
+    TResult? Function(
+            String? imageUrl,
+            PlatformFile? image,
+            File? file,
+            XFile? licenseImage,
+            XFile? vechileImage,
+            XFile? citizenshipFront,
+            XFile? citizenshipBack,
+            List<ImageModel>? imagesKyc)?
         loading,
-    TResult? Function(UserDetails? user, bool? isSuccess, String? imageUrl,
-            File? file, PlatformFile? image)?
+    TResult? Function(
+            UserDetails? user,
+            bool? isSuccess,
+            XFile? licenseImage,
+            XFile? vechileImage,
+            XFile? citizenshipFront,
+            XFile? citizenshipBack,
+            String? imageUrl,
+            File? file,
+            List<ImageModel>? imagesKyc,
+            PlatformFile? image)?
         loaded,
     TResult? Function(
-            String? message, File? file, String? imageUrl, PlatformFile? image)?
+            String? message,
+            File? file,
+            XFile? licenseImage,
+            XFile? vechileImage,
+            XFile? citizenshipFront,
+            XFile? citizenshipBack,
+            String? imageUrl,
+            PlatformFile? image,
+            List<ImageModel>? imagesKyc)?
         error,
     TResult? Function(
-            bool? isSuccess, String? imageUrl, File? file, PlatformFile? image)?
+            bool? isSuccess,
+            String? imageUrl,
+            File? file,
+            XFile? licenseImage,
+            XFile? vechileImage,
+            XFile? citizenshipFront,
+            XFile? citizenshipBack,
+            PlatformFile? image,
+            List<ImageModel>? imagesKyc)?
         success,
   }) {
-    return loading?.call(imageUrl, image, file);
+    return loading?.call(imageUrl, image, file, licenseImage, vechileImage,
+        citizenshipFront, citizenshipBack, imagesKyc);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String? imageUrl, PlatformFile? image, File? file)?
+    TResult Function(
+            String? imageUrl,
+            PlatformFile? image,
+            File? file,
+            XFile? licenseImage,
+            XFile? vechileImage,
+            XFile? citizenshipFront,
+            XFile? citizenshipBack,
+            List<ImageModel>? imagesKyc)?
         initial,
-    TResult Function(String? imageUrl, PlatformFile? image, File? file)?
+    TResult Function(
+            String? imageUrl,
+            PlatformFile? image,
+            File? file,
+            XFile? licenseImage,
+            XFile? vechileImage,
+            XFile? citizenshipFront,
+            XFile? citizenshipBack,
+            List<ImageModel>? imagesKyc)?
         loading,
-    TResult Function(UserDetails? user, bool? isSuccess, String? imageUrl,
-            File? file, PlatformFile? image)?
+    TResult Function(
+            UserDetails? user,
+            bool? isSuccess,
+            XFile? licenseImage,
+            XFile? vechileImage,
+            XFile? citizenshipFront,
+            XFile? citizenshipBack,
+            String? imageUrl,
+            File? file,
+            List<ImageModel>? imagesKyc,
+            PlatformFile? image)?
         loaded,
     TResult Function(
-            String? message, File? file, String? imageUrl, PlatformFile? image)?
+            String? message,
+            File? file,
+            XFile? licenseImage,
+            XFile? vechileImage,
+            XFile? citizenshipFront,
+            XFile? citizenshipBack,
+            String? imageUrl,
+            PlatformFile? image,
+            List<ImageModel>? imagesKyc)?
         error,
     TResult Function(
-            bool? isSuccess, String? imageUrl, File? file, PlatformFile? image)?
+            bool? isSuccess,
+            String? imageUrl,
+            File? file,
+            XFile? licenseImage,
+            XFile? vechileImage,
+            XFile? citizenshipFront,
+            XFile? citizenshipBack,
+            PlatformFile? image,
+            List<ImageModel>? imagesKyc)?
         success,
     required TResult orElse(),
   }) {
     if (loading != null) {
-      return loading(imageUrl, image, file);
+      return loading(imageUrl, image, file, licenseImage, vechileImage,
+          citizenshipFront, citizenshipBack, imagesKyc);
     }
     return orElse();
   }
@@ -1326,7 +1717,12 @@ abstract class UserDetailsLoading implements UserDetailsState {
   const factory UserDetailsLoading(
       {final String? imageUrl,
       final PlatformFile? image,
-      final File? file}) = _$UserDetailsLoadingImpl;
+      final File? file,
+      final XFile? licenseImage,
+      final XFile? vechileImage,
+      final XFile? citizenshipFront,
+      final XFile? citizenshipBack,
+      final List<ImageModel>? imagesKyc}) = _$UserDetailsLoadingImpl;
 
   @override
   String? get imageUrl;
@@ -1334,6 +1730,16 @@ abstract class UserDetailsLoading implements UserDetailsState {
   PlatformFile? get image;
   @override
   File? get file;
+  @override
+  XFile? get licenseImage;
+  @override
+  XFile? get vechileImage;
+  @override
+  XFile? get citizenshipFront;
+  @override
+  XFile? get citizenshipBack;
+  @override
+  List<ImageModel>? get imagesKyc;
   @override
   @JsonKey(ignore: true)
   _$$UserDetailsLoadingImplCopyWith<_$UserDetailsLoadingImpl> get copyWith =>
@@ -1351,8 +1757,13 @@ abstract class _$$UserDetailsLoadedImplCopyWith<$Res>
   $Res call(
       {UserDetails? user,
       bool? isSuccess,
+      XFile? licenseImage,
+      XFile? vechileImage,
+      XFile? citizenshipFront,
+      XFile? citizenshipBack,
       String? imageUrl,
       File? file,
+      List<ImageModel>? imagesKyc,
       PlatformFile? image});
 
   $UserDetailsCopyWith<$Res>? get user;
@@ -1371,8 +1782,13 @@ class __$$UserDetailsLoadedImplCopyWithImpl<$Res>
   $Res call({
     Object? user = freezed,
     Object? isSuccess = freezed,
+    Object? licenseImage = freezed,
+    Object? vechileImage = freezed,
+    Object? citizenshipFront = freezed,
+    Object? citizenshipBack = freezed,
     Object? imageUrl = freezed,
     Object? file = freezed,
+    Object? imagesKyc = freezed,
     Object? image = freezed,
   }) {
     return _then(_$UserDetailsLoadedImpl(
@@ -1384,6 +1800,22 @@ class __$$UserDetailsLoadedImplCopyWithImpl<$Res>
           ? _value.isSuccess
           : isSuccess // ignore: cast_nullable_to_non_nullable
               as bool?,
+      licenseImage: freezed == licenseImage
+          ? _value.licenseImage
+          : licenseImage // ignore: cast_nullable_to_non_nullable
+              as XFile?,
+      vechileImage: freezed == vechileImage
+          ? _value.vechileImage
+          : vechileImage // ignore: cast_nullable_to_non_nullable
+              as XFile?,
+      citizenshipFront: freezed == citizenshipFront
+          ? _value.citizenshipFront
+          : citizenshipFront // ignore: cast_nullable_to_non_nullable
+              as XFile?,
+      citizenshipBack: freezed == citizenshipBack
+          ? _value.citizenshipBack
+          : citizenshipBack // ignore: cast_nullable_to_non_nullable
+              as XFile?,
       imageUrl: freezed == imageUrl
           ? _value.imageUrl
           : imageUrl // ignore: cast_nullable_to_non_nullable
@@ -1392,6 +1824,10 @@ class __$$UserDetailsLoadedImplCopyWithImpl<$Res>
           ? _value.file
           : file // ignore: cast_nullable_to_non_nullable
               as File?,
+      imagesKyc: freezed == imagesKyc
+          ? _value._imagesKyc
+          : imagesKyc // ignore: cast_nullable_to_non_nullable
+              as List<ImageModel>?,
       image: freezed == image
           ? _value.image
           : image // ignore: cast_nullable_to_non_nullable
@@ -1416,22 +1852,50 @@ class __$$UserDetailsLoadedImplCopyWithImpl<$Res>
 
 class _$UserDetailsLoadedImpl implements UserDetailsLoaded {
   const _$UserDetailsLoadedImpl(
-      {this.user, this.isSuccess, this.imageUrl, this.file, this.image});
+      {this.user,
+      this.isSuccess,
+      this.licenseImage,
+      this.vechileImage,
+      this.citizenshipFront,
+      this.citizenshipBack,
+      this.imageUrl,
+      this.file,
+      final List<ImageModel>? imagesKyc,
+      this.image})
+      : _imagesKyc = imagesKyc;
 
   @override
   final UserDetails? user;
   @override
   final bool? isSuccess;
   @override
+  final XFile? licenseImage;
+  @override
+  final XFile? vechileImage;
+  @override
+  final XFile? citizenshipFront;
+  @override
+  final XFile? citizenshipBack;
+  @override
   final String? imageUrl;
   @override
   final File? file;
+  final List<ImageModel>? _imagesKyc;
+  @override
+  List<ImageModel>? get imagesKyc {
+    final value = _imagesKyc;
+    if (value == null) return null;
+    if (_imagesKyc is EqualUnmodifiableListView) return _imagesKyc;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
+
   @override
   final PlatformFile? image;
 
   @override
   String toString() {
-    return 'UserDetailsState.loaded(user: $user, isSuccess: $isSuccess, imageUrl: $imageUrl, file: $file, image: $image)';
+    return 'UserDetailsState.loaded(user: $user, isSuccess: $isSuccess, licenseImage: $licenseImage, vechileImage: $vechileImage, citizenshipFront: $citizenshipFront, citizenshipBack: $citizenshipBack, imageUrl: $imageUrl, file: $file, imagesKyc: $imagesKyc, image: $image)';
   }
 
   @override
@@ -1442,15 +1906,35 @@ class _$UserDetailsLoadedImpl implements UserDetailsLoaded {
             (identical(other.user, user) || other.user == user) &&
             (identical(other.isSuccess, isSuccess) ||
                 other.isSuccess == isSuccess) &&
+            (identical(other.licenseImage, licenseImage) ||
+                other.licenseImage == licenseImage) &&
+            (identical(other.vechileImage, vechileImage) ||
+                other.vechileImage == vechileImage) &&
+            (identical(other.citizenshipFront, citizenshipFront) ||
+                other.citizenshipFront == citizenshipFront) &&
+            (identical(other.citizenshipBack, citizenshipBack) ||
+                other.citizenshipBack == citizenshipBack) &&
             (identical(other.imageUrl, imageUrl) ||
                 other.imageUrl == imageUrl) &&
             (identical(other.file, file) || other.file == file) &&
+            const DeepCollectionEquality()
+                .equals(other._imagesKyc, _imagesKyc) &&
             (identical(other.image, image) || other.image == image));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, user, isSuccess, imageUrl, file, image);
+  int get hashCode => Object.hash(
+      runtimeType,
+      user,
+      isSuccess,
+      licenseImage,
+      vechileImage,
+      citizenshipFront,
+      citizenshipBack,
+      imageUrl,
+      file,
+      const DeepCollectionEquality().hash(_imagesKyc),
+      image);
 
   @JsonKey(ignore: true)
   @override
@@ -1462,63 +1946,189 @@ class _$UserDetailsLoadedImpl implements UserDetailsLoaded {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String? imageUrl, PlatformFile? image, File? file)
+    required TResult Function(
+            String? imageUrl,
+            PlatformFile? image,
+            File? file,
+            XFile? licenseImage,
+            XFile? vechileImage,
+            XFile? citizenshipFront,
+            XFile? citizenshipBack,
+            List<ImageModel>? imagesKyc)
         initial,
-    required TResult Function(String? imageUrl, PlatformFile? image, File? file)
+    required TResult Function(
+            String? imageUrl,
+            PlatformFile? image,
+            File? file,
+            XFile? licenseImage,
+            XFile? vechileImage,
+            XFile? citizenshipFront,
+            XFile? citizenshipBack,
+            List<ImageModel>? imagesKyc)
         loading,
-    required TResult Function(UserDetails? user, bool? isSuccess,
-            String? imageUrl, File? file, PlatformFile? image)
+    required TResult Function(
+            UserDetails? user,
+            bool? isSuccess,
+            XFile? licenseImage,
+            XFile? vechileImage,
+            XFile? citizenshipFront,
+            XFile? citizenshipBack,
+            String? imageUrl,
+            File? file,
+            List<ImageModel>? imagesKyc,
+            PlatformFile? image)
         loaded,
     required TResult Function(
-            String? message, File? file, String? imageUrl, PlatformFile? image)
+            String? message,
+            File? file,
+            XFile? licenseImage,
+            XFile? vechileImage,
+            XFile? citizenshipFront,
+            XFile? citizenshipBack,
+            String? imageUrl,
+            PlatformFile? image,
+            List<ImageModel>? imagesKyc)
         error,
     required TResult Function(
-            bool? isSuccess, String? imageUrl, File? file, PlatformFile? image)
+            bool? isSuccess,
+            String? imageUrl,
+            File? file,
+            XFile? licenseImage,
+            XFile? vechileImage,
+            XFile? citizenshipFront,
+            XFile? citizenshipBack,
+            PlatformFile? image,
+            List<ImageModel>? imagesKyc)
         success,
   }) {
-    return loaded(user, isSuccess, imageUrl, file, image);
+    return loaded(user, isSuccess, licenseImage, vechileImage, citizenshipFront,
+        citizenshipBack, imageUrl, file, imagesKyc, image);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String? imageUrl, PlatformFile? image, File? file)?
+    TResult? Function(
+            String? imageUrl,
+            PlatformFile? image,
+            File? file,
+            XFile? licenseImage,
+            XFile? vechileImage,
+            XFile? citizenshipFront,
+            XFile? citizenshipBack,
+            List<ImageModel>? imagesKyc)?
         initial,
-    TResult? Function(String? imageUrl, PlatformFile? image, File? file)?
+    TResult? Function(
+            String? imageUrl,
+            PlatformFile? image,
+            File? file,
+            XFile? licenseImage,
+            XFile? vechileImage,
+            XFile? citizenshipFront,
+            XFile? citizenshipBack,
+            List<ImageModel>? imagesKyc)?
         loading,
-    TResult? Function(UserDetails? user, bool? isSuccess, String? imageUrl,
-            File? file, PlatformFile? image)?
+    TResult? Function(
+            UserDetails? user,
+            bool? isSuccess,
+            XFile? licenseImage,
+            XFile? vechileImage,
+            XFile? citizenshipFront,
+            XFile? citizenshipBack,
+            String? imageUrl,
+            File? file,
+            List<ImageModel>? imagesKyc,
+            PlatformFile? image)?
         loaded,
     TResult? Function(
-            String? message, File? file, String? imageUrl, PlatformFile? image)?
+            String? message,
+            File? file,
+            XFile? licenseImage,
+            XFile? vechileImage,
+            XFile? citizenshipFront,
+            XFile? citizenshipBack,
+            String? imageUrl,
+            PlatformFile? image,
+            List<ImageModel>? imagesKyc)?
         error,
     TResult? Function(
-            bool? isSuccess, String? imageUrl, File? file, PlatformFile? image)?
+            bool? isSuccess,
+            String? imageUrl,
+            File? file,
+            XFile? licenseImage,
+            XFile? vechileImage,
+            XFile? citizenshipFront,
+            XFile? citizenshipBack,
+            PlatformFile? image,
+            List<ImageModel>? imagesKyc)?
         success,
   }) {
-    return loaded?.call(user, isSuccess, imageUrl, file, image);
+    return loaded?.call(user, isSuccess, licenseImage, vechileImage,
+        citizenshipFront, citizenshipBack, imageUrl, file, imagesKyc, image);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String? imageUrl, PlatformFile? image, File? file)?
+    TResult Function(
+            String? imageUrl,
+            PlatformFile? image,
+            File? file,
+            XFile? licenseImage,
+            XFile? vechileImage,
+            XFile? citizenshipFront,
+            XFile? citizenshipBack,
+            List<ImageModel>? imagesKyc)?
         initial,
-    TResult Function(String? imageUrl, PlatformFile? image, File? file)?
+    TResult Function(
+            String? imageUrl,
+            PlatformFile? image,
+            File? file,
+            XFile? licenseImage,
+            XFile? vechileImage,
+            XFile? citizenshipFront,
+            XFile? citizenshipBack,
+            List<ImageModel>? imagesKyc)?
         loading,
-    TResult Function(UserDetails? user, bool? isSuccess, String? imageUrl,
-            File? file, PlatformFile? image)?
+    TResult Function(
+            UserDetails? user,
+            bool? isSuccess,
+            XFile? licenseImage,
+            XFile? vechileImage,
+            XFile? citizenshipFront,
+            XFile? citizenshipBack,
+            String? imageUrl,
+            File? file,
+            List<ImageModel>? imagesKyc,
+            PlatformFile? image)?
         loaded,
     TResult Function(
-            String? message, File? file, String? imageUrl, PlatformFile? image)?
+            String? message,
+            File? file,
+            XFile? licenseImage,
+            XFile? vechileImage,
+            XFile? citizenshipFront,
+            XFile? citizenshipBack,
+            String? imageUrl,
+            PlatformFile? image,
+            List<ImageModel>? imagesKyc)?
         error,
     TResult Function(
-            bool? isSuccess, String? imageUrl, File? file, PlatformFile? image)?
+            bool? isSuccess,
+            String? imageUrl,
+            File? file,
+            XFile? licenseImage,
+            XFile? vechileImage,
+            XFile? citizenshipFront,
+            XFile? citizenshipBack,
+            PlatformFile? image,
+            List<ImageModel>? imagesKyc)?
         success,
     required TResult orElse(),
   }) {
     if (loaded != null) {
-      return loaded(user, isSuccess, imageUrl, file, image);
+      return loaded(user, isSuccess, licenseImage, vechileImage,
+          citizenshipFront, citizenshipBack, imageUrl, file, imagesKyc, image);
     }
     return orElse();
   }
@@ -1568,16 +2178,31 @@ abstract class UserDetailsLoaded implements UserDetailsState {
   const factory UserDetailsLoaded(
       {final UserDetails? user,
       final bool? isSuccess,
+      final XFile? licenseImage,
+      final XFile? vechileImage,
+      final XFile? citizenshipFront,
+      final XFile? citizenshipBack,
       final String? imageUrl,
       final File? file,
+      final List<ImageModel>? imagesKyc,
       final PlatformFile? image}) = _$UserDetailsLoadedImpl;
 
   UserDetails? get user;
   bool? get isSuccess;
   @override
+  XFile? get licenseImage;
+  @override
+  XFile? get vechileImage;
+  @override
+  XFile? get citizenshipFront;
+  @override
+  XFile? get citizenshipBack;
+  @override
   String? get imageUrl;
   @override
   File? get file;
+  @override
+  List<ImageModel>? get imagesKyc;
   @override
   PlatformFile? get image;
   @override
@@ -1595,7 +2220,15 @@ abstract class _$$UserDetailsErrorImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {String? message, File? file, String? imageUrl, PlatformFile? image});
+      {String? message,
+      File? file,
+      XFile? licenseImage,
+      XFile? vechileImage,
+      XFile? citizenshipFront,
+      XFile? citizenshipBack,
+      String? imageUrl,
+      PlatformFile? image,
+      List<ImageModel>? imagesKyc});
 }
 
 /// @nodoc
@@ -1611,8 +2244,13 @@ class __$$UserDetailsErrorImplCopyWithImpl<$Res>
   $Res call({
     Object? message = freezed,
     Object? file = freezed,
+    Object? licenseImage = freezed,
+    Object? vechileImage = freezed,
+    Object? citizenshipFront = freezed,
+    Object? citizenshipBack = freezed,
     Object? imageUrl = freezed,
     Object? image = freezed,
+    Object? imagesKyc = freezed,
   }) {
     return _then(_$UserDetailsErrorImpl(
       message: freezed == message
@@ -1623,6 +2261,22 @@ class __$$UserDetailsErrorImplCopyWithImpl<$Res>
           ? _value.file
           : file // ignore: cast_nullable_to_non_nullable
               as File?,
+      licenseImage: freezed == licenseImage
+          ? _value.licenseImage
+          : licenseImage // ignore: cast_nullable_to_non_nullable
+              as XFile?,
+      vechileImage: freezed == vechileImage
+          ? _value.vechileImage
+          : vechileImage // ignore: cast_nullable_to_non_nullable
+              as XFile?,
+      citizenshipFront: freezed == citizenshipFront
+          ? _value.citizenshipFront
+          : citizenshipFront // ignore: cast_nullable_to_non_nullable
+              as XFile?,
+      citizenshipBack: freezed == citizenshipBack
+          ? _value.citizenshipBack
+          : citizenshipBack // ignore: cast_nullable_to_non_nullable
+              as XFile?,
       imageUrl: freezed == imageUrl
           ? _value.imageUrl
           : imageUrl // ignore: cast_nullable_to_non_nullable
@@ -1631,6 +2285,10 @@ class __$$UserDetailsErrorImplCopyWithImpl<$Res>
           ? _value.image
           : image // ignore: cast_nullable_to_non_nullable
               as PlatformFile?,
+      imagesKyc: freezed == imagesKyc
+          ? _value._imagesKyc
+          : imagesKyc // ignore: cast_nullable_to_non_nullable
+              as List<ImageModel>?,
     ));
   }
 }
@@ -1639,20 +2297,46 @@ class __$$UserDetailsErrorImplCopyWithImpl<$Res>
 
 class _$UserDetailsErrorImpl implements UserDetailsError {
   const _$UserDetailsErrorImpl(
-      {this.message, this.file, this.imageUrl, this.image});
+      {this.message,
+      this.file,
+      this.licenseImage,
+      this.vechileImage,
+      this.citizenshipFront,
+      this.citizenshipBack,
+      this.imageUrl,
+      this.image,
+      final List<ImageModel>? imagesKyc})
+      : _imagesKyc = imagesKyc;
 
   @override
   final String? message;
   @override
   final File? file;
   @override
+  final XFile? licenseImage;
+  @override
+  final XFile? vechileImage;
+  @override
+  final XFile? citizenshipFront;
+  @override
+  final XFile? citizenshipBack;
+  @override
   final String? imageUrl;
   @override
   final PlatformFile? image;
+  final List<ImageModel>? _imagesKyc;
+  @override
+  List<ImageModel>? get imagesKyc {
+    final value = _imagesKyc;
+    if (value == null) return null;
+    if (_imagesKyc is EqualUnmodifiableListView) return _imagesKyc;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
 
   @override
   String toString() {
-    return 'UserDetailsState.error(message: $message, file: $file, imageUrl: $imageUrl, image: $image)';
+    return 'UserDetailsState.error(message: $message, file: $file, licenseImage: $licenseImage, vechileImage: $vechileImage, citizenshipFront: $citizenshipFront, citizenshipBack: $citizenshipBack, imageUrl: $imageUrl, image: $image, imagesKyc: $imagesKyc)';
   }
 
   @override
@@ -1662,13 +2346,33 @@ class _$UserDetailsErrorImpl implements UserDetailsError {
             other is _$UserDetailsErrorImpl &&
             (identical(other.message, message) || other.message == message) &&
             (identical(other.file, file) || other.file == file) &&
+            (identical(other.licenseImage, licenseImage) ||
+                other.licenseImage == licenseImage) &&
+            (identical(other.vechileImage, vechileImage) ||
+                other.vechileImage == vechileImage) &&
+            (identical(other.citizenshipFront, citizenshipFront) ||
+                other.citizenshipFront == citizenshipFront) &&
+            (identical(other.citizenshipBack, citizenshipBack) ||
+                other.citizenshipBack == citizenshipBack) &&
             (identical(other.imageUrl, imageUrl) ||
                 other.imageUrl == imageUrl) &&
-            (identical(other.image, image) || other.image == image));
+            (identical(other.image, image) || other.image == image) &&
+            const DeepCollectionEquality()
+                .equals(other._imagesKyc, _imagesKyc));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, message, file, imageUrl, image);
+  int get hashCode => Object.hash(
+      runtimeType,
+      message,
+      file,
+      licenseImage,
+      vechileImage,
+      citizenshipFront,
+      citizenshipBack,
+      imageUrl,
+      image,
+      const DeepCollectionEquality().hash(_imagesKyc));
 
   @JsonKey(ignore: true)
   @override
@@ -1680,63 +2384,189 @@ class _$UserDetailsErrorImpl implements UserDetailsError {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String? imageUrl, PlatformFile? image, File? file)
+    required TResult Function(
+            String? imageUrl,
+            PlatformFile? image,
+            File? file,
+            XFile? licenseImage,
+            XFile? vechileImage,
+            XFile? citizenshipFront,
+            XFile? citizenshipBack,
+            List<ImageModel>? imagesKyc)
         initial,
-    required TResult Function(String? imageUrl, PlatformFile? image, File? file)
+    required TResult Function(
+            String? imageUrl,
+            PlatformFile? image,
+            File? file,
+            XFile? licenseImage,
+            XFile? vechileImage,
+            XFile? citizenshipFront,
+            XFile? citizenshipBack,
+            List<ImageModel>? imagesKyc)
         loading,
-    required TResult Function(UserDetails? user, bool? isSuccess,
-            String? imageUrl, File? file, PlatformFile? image)
+    required TResult Function(
+            UserDetails? user,
+            bool? isSuccess,
+            XFile? licenseImage,
+            XFile? vechileImage,
+            XFile? citizenshipFront,
+            XFile? citizenshipBack,
+            String? imageUrl,
+            File? file,
+            List<ImageModel>? imagesKyc,
+            PlatformFile? image)
         loaded,
     required TResult Function(
-            String? message, File? file, String? imageUrl, PlatformFile? image)
+            String? message,
+            File? file,
+            XFile? licenseImage,
+            XFile? vechileImage,
+            XFile? citizenshipFront,
+            XFile? citizenshipBack,
+            String? imageUrl,
+            PlatformFile? image,
+            List<ImageModel>? imagesKyc)
         error,
     required TResult Function(
-            bool? isSuccess, String? imageUrl, File? file, PlatformFile? image)
+            bool? isSuccess,
+            String? imageUrl,
+            File? file,
+            XFile? licenseImage,
+            XFile? vechileImage,
+            XFile? citizenshipFront,
+            XFile? citizenshipBack,
+            PlatformFile? image,
+            List<ImageModel>? imagesKyc)
         success,
   }) {
-    return error(message, file, imageUrl, image);
+    return error(message, file, licenseImage, vechileImage, citizenshipFront,
+        citizenshipBack, imageUrl, image, imagesKyc);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String? imageUrl, PlatformFile? image, File? file)?
+    TResult? Function(
+            String? imageUrl,
+            PlatformFile? image,
+            File? file,
+            XFile? licenseImage,
+            XFile? vechileImage,
+            XFile? citizenshipFront,
+            XFile? citizenshipBack,
+            List<ImageModel>? imagesKyc)?
         initial,
-    TResult? Function(String? imageUrl, PlatformFile? image, File? file)?
+    TResult? Function(
+            String? imageUrl,
+            PlatformFile? image,
+            File? file,
+            XFile? licenseImage,
+            XFile? vechileImage,
+            XFile? citizenshipFront,
+            XFile? citizenshipBack,
+            List<ImageModel>? imagesKyc)?
         loading,
-    TResult? Function(UserDetails? user, bool? isSuccess, String? imageUrl,
-            File? file, PlatformFile? image)?
+    TResult? Function(
+            UserDetails? user,
+            bool? isSuccess,
+            XFile? licenseImage,
+            XFile? vechileImage,
+            XFile? citizenshipFront,
+            XFile? citizenshipBack,
+            String? imageUrl,
+            File? file,
+            List<ImageModel>? imagesKyc,
+            PlatformFile? image)?
         loaded,
     TResult? Function(
-            String? message, File? file, String? imageUrl, PlatformFile? image)?
+            String? message,
+            File? file,
+            XFile? licenseImage,
+            XFile? vechileImage,
+            XFile? citizenshipFront,
+            XFile? citizenshipBack,
+            String? imageUrl,
+            PlatformFile? image,
+            List<ImageModel>? imagesKyc)?
         error,
     TResult? Function(
-            bool? isSuccess, String? imageUrl, File? file, PlatformFile? image)?
+            bool? isSuccess,
+            String? imageUrl,
+            File? file,
+            XFile? licenseImage,
+            XFile? vechileImage,
+            XFile? citizenshipFront,
+            XFile? citizenshipBack,
+            PlatformFile? image,
+            List<ImageModel>? imagesKyc)?
         success,
   }) {
-    return error?.call(message, file, imageUrl, image);
+    return error?.call(message, file, licenseImage, vechileImage,
+        citizenshipFront, citizenshipBack, imageUrl, image, imagesKyc);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String? imageUrl, PlatformFile? image, File? file)?
+    TResult Function(
+            String? imageUrl,
+            PlatformFile? image,
+            File? file,
+            XFile? licenseImage,
+            XFile? vechileImage,
+            XFile? citizenshipFront,
+            XFile? citizenshipBack,
+            List<ImageModel>? imagesKyc)?
         initial,
-    TResult Function(String? imageUrl, PlatformFile? image, File? file)?
+    TResult Function(
+            String? imageUrl,
+            PlatformFile? image,
+            File? file,
+            XFile? licenseImage,
+            XFile? vechileImage,
+            XFile? citizenshipFront,
+            XFile? citizenshipBack,
+            List<ImageModel>? imagesKyc)?
         loading,
-    TResult Function(UserDetails? user, bool? isSuccess, String? imageUrl,
-            File? file, PlatformFile? image)?
+    TResult Function(
+            UserDetails? user,
+            bool? isSuccess,
+            XFile? licenseImage,
+            XFile? vechileImage,
+            XFile? citizenshipFront,
+            XFile? citizenshipBack,
+            String? imageUrl,
+            File? file,
+            List<ImageModel>? imagesKyc,
+            PlatformFile? image)?
         loaded,
     TResult Function(
-            String? message, File? file, String? imageUrl, PlatformFile? image)?
+            String? message,
+            File? file,
+            XFile? licenseImage,
+            XFile? vechileImage,
+            XFile? citizenshipFront,
+            XFile? citizenshipBack,
+            String? imageUrl,
+            PlatformFile? image,
+            List<ImageModel>? imagesKyc)?
         error,
     TResult Function(
-            bool? isSuccess, String? imageUrl, File? file, PlatformFile? image)?
+            bool? isSuccess,
+            String? imageUrl,
+            File? file,
+            XFile? licenseImage,
+            XFile? vechileImage,
+            XFile? citizenshipFront,
+            XFile? citizenshipBack,
+            PlatformFile? image,
+            List<ImageModel>? imagesKyc)?
         success,
     required TResult orElse(),
   }) {
     if (error != null) {
-      return error(message, file, imageUrl, image);
+      return error(message, file, licenseImage, vechileImage, citizenshipFront,
+          citizenshipBack, imageUrl, image, imagesKyc);
     }
     return orElse();
   }
@@ -1786,16 +2616,31 @@ abstract class UserDetailsError implements UserDetailsState {
   const factory UserDetailsError(
       {final String? message,
       final File? file,
+      final XFile? licenseImage,
+      final XFile? vechileImage,
+      final XFile? citizenshipFront,
+      final XFile? citizenshipBack,
       final String? imageUrl,
-      final PlatformFile? image}) = _$UserDetailsErrorImpl;
+      final PlatformFile? image,
+      final List<ImageModel>? imagesKyc}) = _$UserDetailsErrorImpl;
 
   String? get message;
   @override
   File? get file;
   @override
+  XFile? get licenseImage;
+  @override
+  XFile? get vechileImage;
+  @override
+  XFile? get citizenshipFront;
+  @override
+  XFile? get citizenshipBack;
+  @override
   String? get imageUrl;
   @override
   PlatformFile? get image;
+  @override
+  List<ImageModel>? get imagesKyc;
   @override
   @JsonKey(ignore: true)
   _$$UserDetailsErrorImplCopyWith<_$UserDetailsErrorImpl> get copyWith =>
@@ -1811,7 +2656,15 @@ abstract class _$$UserDetailsSuccessImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {bool? isSuccess, String? imageUrl, File? file, PlatformFile? image});
+      {bool? isSuccess,
+      String? imageUrl,
+      File? file,
+      XFile? licenseImage,
+      XFile? vechileImage,
+      XFile? citizenshipFront,
+      XFile? citizenshipBack,
+      PlatformFile? image,
+      List<ImageModel>? imagesKyc});
 }
 
 /// @nodoc
@@ -1828,7 +2681,12 @@ class __$$UserDetailsSuccessImplCopyWithImpl<$Res>
     Object? isSuccess = freezed,
     Object? imageUrl = freezed,
     Object? file = freezed,
+    Object? licenseImage = freezed,
+    Object? vechileImage = freezed,
+    Object? citizenshipFront = freezed,
+    Object? citizenshipBack = freezed,
     Object? image = freezed,
+    Object? imagesKyc = freezed,
   }) {
     return _then(_$UserDetailsSuccessImpl(
       isSuccess: freezed == isSuccess
@@ -1843,10 +2701,30 @@ class __$$UserDetailsSuccessImplCopyWithImpl<$Res>
           ? _value.file
           : file // ignore: cast_nullable_to_non_nullable
               as File?,
+      licenseImage: freezed == licenseImage
+          ? _value.licenseImage
+          : licenseImage // ignore: cast_nullable_to_non_nullable
+              as XFile?,
+      vechileImage: freezed == vechileImage
+          ? _value.vechileImage
+          : vechileImage // ignore: cast_nullable_to_non_nullable
+              as XFile?,
+      citizenshipFront: freezed == citizenshipFront
+          ? _value.citizenshipFront
+          : citizenshipFront // ignore: cast_nullable_to_non_nullable
+              as XFile?,
+      citizenshipBack: freezed == citizenshipBack
+          ? _value.citizenshipBack
+          : citizenshipBack // ignore: cast_nullable_to_non_nullable
+              as XFile?,
       image: freezed == image
           ? _value.image
           : image // ignore: cast_nullable_to_non_nullable
               as PlatformFile?,
+      imagesKyc: freezed == imagesKyc
+          ? _value._imagesKyc
+          : imagesKyc // ignore: cast_nullable_to_non_nullable
+              as List<ImageModel>?,
     ));
   }
 }
@@ -1855,7 +2733,16 @@ class __$$UserDetailsSuccessImplCopyWithImpl<$Res>
 
 class _$UserDetailsSuccessImpl implements UserDetailsSuccess {
   const _$UserDetailsSuccessImpl(
-      {this.isSuccess, this.imageUrl, this.file, this.image});
+      {this.isSuccess,
+      this.imageUrl,
+      this.file,
+      this.licenseImage,
+      this.vechileImage,
+      this.citizenshipFront,
+      this.citizenshipBack,
+      this.image,
+      final List<ImageModel>? imagesKyc})
+      : _imagesKyc = imagesKyc;
 
   @override
   final bool? isSuccess;
@@ -1864,11 +2751,28 @@ class _$UserDetailsSuccessImpl implements UserDetailsSuccess {
   @override
   final File? file;
   @override
+  final XFile? licenseImage;
+  @override
+  final XFile? vechileImage;
+  @override
+  final XFile? citizenshipFront;
+  @override
+  final XFile? citizenshipBack;
+  @override
   final PlatformFile? image;
+  final List<ImageModel>? _imagesKyc;
+  @override
+  List<ImageModel>? get imagesKyc {
+    final value = _imagesKyc;
+    if (value == null) return null;
+    if (_imagesKyc is EqualUnmodifiableListView) return _imagesKyc;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
 
   @override
   String toString() {
-    return 'UserDetailsState.success(isSuccess: $isSuccess, imageUrl: $imageUrl, file: $file, image: $image)';
+    return 'UserDetailsState.success(isSuccess: $isSuccess, imageUrl: $imageUrl, file: $file, licenseImage: $licenseImage, vechileImage: $vechileImage, citizenshipFront: $citizenshipFront, citizenshipBack: $citizenshipBack, image: $image, imagesKyc: $imagesKyc)';
   }
 
   @override
@@ -1881,12 +2785,31 @@ class _$UserDetailsSuccessImpl implements UserDetailsSuccess {
             (identical(other.imageUrl, imageUrl) ||
                 other.imageUrl == imageUrl) &&
             (identical(other.file, file) || other.file == file) &&
-            (identical(other.image, image) || other.image == image));
+            (identical(other.licenseImage, licenseImage) ||
+                other.licenseImage == licenseImage) &&
+            (identical(other.vechileImage, vechileImage) ||
+                other.vechileImage == vechileImage) &&
+            (identical(other.citizenshipFront, citizenshipFront) ||
+                other.citizenshipFront == citizenshipFront) &&
+            (identical(other.citizenshipBack, citizenshipBack) ||
+                other.citizenshipBack == citizenshipBack) &&
+            (identical(other.image, image) || other.image == image) &&
+            const DeepCollectionEquality()
+                .equals(other._imagesKyc, _imagesKyc));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, isSuccess, imageUrl, file, image);
+  int get hashCode => Object.hash(
+      runtimeType,
+      isSuccess,
+      imageUrl,
+      file,
+      licenseImage,
+      vechileImage,
+      citizenshipFront,
+      citizenshipBack,
+      image,
+      const DeepCollectionEquality().hash(_imagesKyc));
 
   @JsonKey(ignore: true)
   @override
@@ -1898,63 +2821,189 @@ class _$UserDetailsSuccessImpl implements UserDetailsSuccess {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String? imageUrl, PlatformFile? image, File? file)
+    required TResult Function(
+            String? imageUrl,
+            PlatformFile? image,
+            File? file,
+            XFile? licenseImage,
+            XFile? vechileImage,
+            XFile? citizenshipFront,
+            XFile? citizenshipBack,
+            List<ImageModel>? imagesKyc)
         initial,
-    required TResult Function(String? imageUrl, PlatformFile? image, File? file)
+    required TResult Function(
+            String? imageUrl,
+            PlatformFile? image,
+            File? file,
+            XFile? licenseImage,
+            XFile? vechileImage,
+            XFile? citizenshipFront,
+            XFile? citizenshipBack,
+            List<ImageModel>? imagesKyc)
         loading,
-    required TResult Function(UserDetails? user, bool? isSuccess,
-            String? imageUrl, File? file, PlatformFile? image)
+    required TResult Function(
+            UserDetails? user,
+            bool? isSuccess,
+            XFile? licenseImage,
+            XFile? vechileImage,
+            XFile? citizenshipFront,
+            XFile? citizenshipBack,
+            String? imageUrl,
+            File? file,
+            List<ImageModel>? imagesKyc,
+            PlatformFile? image)
         loaded,
     required TResult Function(
-            String? message, File? file, String? imageUrl, PlatformFile? image)
+            String? message,
+            File? file,
+            XFile? licenseImage,
+            XFile? vechileImage,
+            XFile? citizenshipFront,
+            XFile? citizenshipBack,
+            String? imageUrl,
+            PlatformFile? image,
+            List<ImageModel>? imagesKyc)
         error,
     required TResult Function(
-            bool? isSuccess, String? imageUrl, File? file, PlatformFile? image)
+            bool? isSuccess,
+            String? imageUrl,
+            File? file,
+            XFile? licenseImage,
+            XFile? vechileImage,
+            XFile? citizenshipFront,
+            XFile? citizenshipBack,
+            PlatformFile? image,
+            List<ImageModel>? imagesKyc)
         success,
   }) {
-    return success(isSuccess, imageUrl, file, image);
+    return success(isSuccess, imageUrl, file, licenseImage, vechileImage,
+        citizenshipFront, citizenshipBack, image, imagesKyc);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String? imageUrl, PlatformFile? image, File? file)?
+    TResult? Function(
+            String? imageUrl,
+            PlatformFile? image,
+            File? file,
+            XFile? licenseImage,
+            XFile? vechileImage,
+            XFile? citizenshipFront,
+            XFile? citizenshipBack,
+            List<ImageModel>? imagesKyc)?
         initial,
-    TResult? Function(String? imageUrl, PlatformFile? image, File? file)?
+    TResult? Function(
+            String? imageUrl,
+            PlatformFile? image,
+            File? file,
+            XFile? licenseImage,
+            XFile? vechileImage,
+            XFile? citizenshipFront,
+            XFile? citizenshipBack,
+            List<ImageModel>? imagesKyc)?
         loading,
-    TResult? Function(UserDetails? user, bool? isSuccess, String? imageUrl,
-            File? file, PlatformFile? image)?
+    TResult? Function(
+            UserDetails? user,
+            bool? isSuccess,
+            XFile? licenseImage,
+            XFile? vechileImage,
+            XFile? citizenshipFront,
+            XFile? citizenshipBack,
+            String? imageUrl,
+            File? file,
+            List<ImageModel>? imagesKyc,
+            PlatformFile? image)?
         loaded,
     TResult? Function(
-            String? message, File? file, String? imageUrl, PlatformFile? image)?
+            String? message,
+            File? file,
+            XFile? licenseImage,
+            XFile? vechileImage,
+            XFile? citizenshipFront,
+            XFile? citizenshipBack,
+            String? imageUrl,
+            PlatformFile? image,
+            List<ImageModel>? imagesKyc)?
         error,
     TResult? Function(
-            bool? isSuccess, String? imageUrl, File? file, PlatformFile? image)?
+            bool? isSuccess,
+            String? imageUrl,
+            File? file,
+            XFile? licenseImage,
+            XFile? vechileImage,
+            XFile? citizenshipFront,
+            XFile? citizenshipBack,
+            PlatformFile? image,
+            List<ImageModel>? imagesKyc)?
         success,
   }) {
-    return success?.call(isSuccess, imageUrl, file, image);
+    return success?.call(isSuccess, imageUrl, file, licenseImage, vechileImage,
+        citizenshipFront, citizenshipBack, image, imagesKyc);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String? imageUrl, PlatformFile? image, File? file)?
+    TResult Function(
+            String? imageUrl,
+            PlatformFile? image,
+            File? file,
+            XFile? licenseImage,
+            XFile? vechileImage,
+            XFile? citizenshipFront,
+            XFile? citizenshipBack,
+            List<ImageModel>? imagesKyc)?
         initial,
-    TResult Function(String? imageUrl, PlatformFile? image, File? file)?
+    TResult Function(
+            String? imageUrl,
+            PlatformFile? image,
+            File? file,
+            XFile? licenseImage,
+            XFile? vechileImage,
+            XFile? citizenshipFront,
+            XFile? citizenshipBack,
+            List<ImageModel>? imagesKyc)?
         loading,
-    TResult Function(UserDetails? user, bool? isSuccess, String? imageUrl,
-            File? file, PlatformFile? image)?
+    TResult Function(
+            UserDetails? user,
+            bool? isSuccess,
+            XFile? licenseImage,
+            XFile? vechileImage,
+            XFile? citizenshipFront,
+            XFile? citizenshipBack,
+            String? imageUrl,
+            File? file,
+            List<ImageModel>? imagesKyc,
+            PlatformFile? image)?
         loaded,
     TResult Function(
-            String? message, File? file, String? imageUrl, PlatformFile? image)?
+            String? message,
+            File? file,
+            XFile? licenseImage,
+            XFile? vechileImage,
+            XFile? citizenshipFront,
+            XFile? citizenshipBack,
+            String? imageUrl,
+            PlatformFile? image,
+            List<ImageModel>? imagesKyc)?
         error,
     TResult Function(
-            bool? isSuccess, String? imageUrl, File? file, PlatformFile? image)?
+            bool? isSuccess,
+            String? imageUrl,
+            File? file,
+            XFile? licenseImage,
+            XFile? vechileImage,
+            XFile? citizenshipFront,
+            XFile? citizenshipBack,
+            PlatformFile? image,
+            List<ImageModel>? imagesKyc)?
         success,
     required TResult orElse(),
   }) {
     if (success != null) {
-      return success(isSuccess, imageUrl, file, image);
+      return success(isSuccess, imageUrl, file, licenseImage, vechileImage,
+          citizenshipFront, citizenshipBack, image, imagesKyc);
     }
     return orElse();
   }
@@ -2005,7 +3054,12 @@ abstract class UserDetailsSuccess implements UserDetailsState {
       {final bool? isSuccess,
       final String? imageUrl,
       final File? file,
-      final PlatformFile? image}) = _$UserDetailsSuccessImpl;
+      final XFile? licenseImage,
+      final XFile? vechileImage,
+      final XFile? citizenshipFront,
+      final XFile? citizenshipBack,
+      final PlatformFile? image,
+      final List<ImageModel>? imagesKyc}) = _$UserDetailsSuccessImpl;
 
   bool? get isSuccess;
   @override
@@ -2013,7 +3067,17 @@ abstract class UserDetailsSuccess implements UserDetailsState {
   @override
   File? get file;
   @override
+  XFile? get licenseImage;
+  @override
+  XFile? get vechileImage;
+  @override
+  XFile? get citizenshipFront;
+  @override
+  XFile? get citizenshipBack;
+  @override
   PlatformFile? get image;
+  @override
+  List<ImageModel>? get imagesKyc;
   @override
   @JsonKey(ignore: true)
   _$$UserDetailsSuccessImplCopyWith<_$UserDetailsSuccessImpl> get copyWith =>

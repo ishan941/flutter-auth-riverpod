@@ -41,7 +41,7 @@ class Role with _$Role {
 class ImageModel with _$ImageModel {
   const factory ImageModel({
     int? id,
-    String? url,
+    String? imageUrl,
     String? publicId,
     String? imageType,
   }) = _ImageModel;

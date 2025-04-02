@@ -5,6 +5,7 @@ import 'package:file_picker/file_picker.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:mime/mime.dart';
+import 'package:nepstayapp/features/Auth/data/model/auth_model/user_model.dart';
 import 'package:nepstayapp/features/profile/data/model/kyc/kyc_model.dart';
 import 'package:nepstayapp/features/profile/data/model/profile_model.dart';
 import 'package:nepstayapp/features/profile/data/model/user_details.dart';
@@ -53,13 +54,13 @@ class ProfileNotifier extends StateNotifier<UserDetailsState> {
     }
   }
 
-  Future<void> submitKycVefification(KycModel kyc) async {
+  Future<void> submitKycVefification(PostKYCModel kyc) async {
     try {
       state = const UserDetailsState.loading();
       final isSuccess = await verifyUseCase.call(kyc);
 
       if (isSuccess) {
-        state = const UserDetailsState.success(isSuccess: false);
+        state = UserDetailsState.success(isSuccess: isSuccess);
       } else {
         state = const UserDetailsState.success(isSuccess: false);
       }
@@ -120,6 +121,26 @@ class ProfileNotifier extends StateNotifier<UserDetailsState> {
     } else {}
   }
 
+  Future<void> pickKycImage(String? type) async {
+    final ImagePicker picker = ImagePicker();
+    final XFile? image = await picker.pickImage(source: ImageSource.gallery);
+
+    if (image != null) {
+      File file = File(image.path);
+      String base64String = await convertFileToBase64(file);
+      ImageModel newImage = ImageModel(imageUrl: base64String, imageType: type);
+
+      state = state.copyWith(
+          imagesKyc: [...?state.imagesKyc, newImage],
+          licenseImage: type == 'license' ? image : state.licenseImage,
+          vechileImage: type == 'vechile' ? image : state.vechileImage,
+          citizenshipFront:
+              type == 'citizenshipF' ? image : state.citizenshipFront,
+          citizenshipBack:
+              type == 'citizenshipB' ? image : state.citizenshipBack);
+    }
+  }
+
   Future<String> convertFileToBase64(File file) async {
     List<int> fileBytes = await file.readAsBytes();
     String base64String = base64Encode(fileBytes);
@@ -130,7 +151,15 @@ class ProfileNotifier extends StateNotifier<UserDetailsState> {
   }
 
   void resetAll() {
-    state = state.copyWith(file: null, image: null, imageUrl: null);
+    state = state.copyWith(
+        file: null,
+        image: null,
+        imageUrl: null,
+        citizenshipBack: null,
+        citizenshipFront: null,
+        imagesKyc: null,
+        licenseImage: null,
+        vechileImage: null);
   }
 }
 

@@ -630,7 +630,7 @@ ImageModel _$ImageModelFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$ImageModel {
   int? get id => throw _privateConstructorUsedError;
-  String? get url => throw _privateConstructorUsedError;
+  String? get imageUrl => throw _privateConstructorUsedError;
   String? get publicId => throw _privateConstructorUsedError;
   String? get imageType => throw _privateConstructorUsedError;
 
@@ -646,7 +646,7 @@ abstract class $ImageModelCopyWith<$Res> {
           ImageModel value, $Res Function(ImageModel) then) =
       _$ImageModelCopyWithImpl<$Res, ImageModel>;
   @useResult
-  $Res call({int? id, String? url, String? publicId, String? imageType});
+  $Res call({int? id, String? imageUrl, String? publicId, String? imageType});
 }
 
 /// @nodoc
@@ -663,7 +663,7 @@ class _$ImageModelCopyWithImpl<$Res, $Val extends ImageModel>
   @override
   $Res call({
     Object? id = freezed,
-    Object? url = freezed,
+    Object? imageUrl = freezed,
     Object? publicId = freezed,
     Object? imageType = freezed,
   }) {
@@ -672,9 +672,9 @@ class _$ImageModelCopyWithImpl<$Res, $Val extends ImageModel>
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as int?,
-      url: freezed == url
-          ? _value.url
-          : url // ignore: cast_nullable_to_non_nullable
+      imageUrl: freezed == imageUrl
+          ? _value.imageUrl
+          : imageUrl // ignore: cast_nullable_to_non_nullable
               as String?,
       publicId: freezed == publicId
           ? _value.publicId
@@ -696,7 +696,7 @@ abstract class _$$ImageModelImplCopyWith<$Res>
       __$$ImageModelImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({int? id, String? url, String? publicId, String? imageType});
+  $Res call({int? id, String? imageUrl, String? publicId, String? imageType});
 }
 
 /// @nodoc
@@ -711,7 +711,7 @@ class __$$ImageModelImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? id = freezed,
-    Object? url = freezed,
+    Object? imageUrl = freezed,
     Object? publicId = freezed,
     Object? imageType = freezed,
   }) {
@@ -720,9 +720,9 @@ class __$$ImageModelImplCopyWithImpl<$Res>
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as int?,
-      url: freezed == url
-          ? _value.url
-          : url // ignore: cast_nullable_to_non_nullable
+      imageUrl: freezed == imageUrl
+          ? _value.imageUrl
+          : imageUrl // ignore: cast_nullable_to_non_nullable
               as String?,
       publicId: freezed == publicId
           ? _value.publicId
@@ -739,7 +739,8 @@ class __$$ImageModelImplCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$ImageModelImpl implements _ImageModel {
-  const _$ImageModelImpl({this.id, this.url, this.publicId, this.imageType});
+  const _$ImageModelImpl(
+      {this.id, this.imageUrl, this.publicId, this.imageType});
 
   factory _$ImageModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$ImageModelImplFromJson(json);
@@ -747,7 +748,7 @@ class _$ImageModelImpl implements _ImageModel {
   @override
   final int? id;
   @override
-  final String? url;
+  final String? imageUrl;
   @override
   final String? publicId;
   @override
@@ -755,7 +756,7 @@ class _$ImageModelImpl implements _ImageModel {
 
   @override
   String toString() {
-    return 'ImageModel(id: $id, url: $url, publicId: $publicId, imageType: $imageType)';
+    return 'ImageModel(id: $id, imageUrl: $imageUrl, publicId: $publicId, imageType: $imageType)';
   }
 
   @override
@@ -764,7 +765,8 @@ class _$ImageModelImpl implements _ImageModel {
         (other.runtimeType == runtimeType &&
             other is _$ImageModelImpl &&
             (identical(other.id, id) || other.id == id) &&
-            (identical(other.url, url) || other.url == url) &&
+            (identical(other.imageUrl, imageUrl) ||
+                other.imageUrl == imageUrl) &&
             (identical(other.publicId, publicId) ||
                 other.publicId == publicId) &&
             (identical(other.imageType, imageType) ||
@@ -773,7 +775,8 @@ class _$ImageModelImpl implements _ImageModel {
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, id, url, publicId, imageType);
+  int get hashCode =>
+      Object.hash(runtimeType, id, imageUrl, publicId, imageType);
 
   @JsonKey(ignore: true)
   @override
@@ -792,7 +795,7 @@ class _$ImageModelImpl implements _ImageModel {
 abstract class _ImageModel implements ImageModel {
   const factory _ImageModel(
       {final int? id,
-      final String? url,
+      final String? imageUrl,
       final String? publicId,
       final String? imageType}) = _$ImageModelImpl;
 
@@ -802,7 +805,7 @@ abstract class _ImageModel implements ImageModel {
   @override
   int? get id;
   @override
-  String? get url;
+  String? get imageUrl;
   @override
   String? get publicId;
   @override

@@ -6,6 +6,7 @@ import 'package:nepstayapp/core/api_const.dart';
 import 'package:nepstayapp/core/error/dio_client.dart';
 import 'package:nepstayapp/core/error/exception_error.dart';
 import 'package:nepstayapp/core/utils/dio_http.dart';
+import 'package:nepstayapp/features/Auth/data/model/auth_model/user_model.dart';
 import 'package:nepstayapp/features/Auth/presentation/pages/login_page.dart';
 import 'package:nepstayapp/features/profile/data/model/kyc/kyc_model.dart';
 import 'package:nepstayapp/features/profile/data/model/profile_model.dart';
@@ -15,7 +16,7 @@ abstract class ProfileDatasource {
   Future<UserDetails> getUserDetails(String token, int id);
   Future<bool> updateUserDetails(
       String token, int userId, UserDetails userDetails);
-  Future<bool> verifyKyc(KycModel kycModel);
+  Future<bool> verifyKyc({required PostKYCModel kyc, String? token});
   Future<ImageModel> uploadImage(UploadImageModel image, String? token);
 }
 
@@ -84,10 +85,12 @@ class ProfileDataSouceImpl implements ProfileDatasource {
   }
 
   @override
-  Future<bool> verifyKyc(KycModel kyc) async {
+  Future<bool> verifyKyc({required PostKYCModel kyc, String? token}) async {
     try {
-      Response response =
-          await dioHttp.post(url: Api.baseUrl + Api.verifyKycApi);
+      Response response = await dioHttp.post(
+          url: Api.baseUrl + Api.verifyKycApi,
+          data: kyc.toJson(),
+          token: token);
       if (response.statusCode == 200 || response.statusCode == 201) {
         final responseData = response.data;
         if (responseData is Map<String, dynamic> &&

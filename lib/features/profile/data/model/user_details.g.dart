@@ -61,19 +61,3 @@ Map<String, dynamic> _$$UserDetailsImplToJson(_$UserDetailsImpl instance) =>
       'roleName': instance.roleName,
       'images': instance.images,
     };
-
-_$ImageModelImpl _$$ImageModelImplFromJson(Map<String, dynamic> json) =>
-    _$ImageModelImpl(
-      id: (json['id'] as num?)?.toInt(),
-      imageUrl: json['imageUrl'] as String?,
-      publicId: json['publicId'] as String?,
-      imageType: json['imageType'] as String?,
-    );
-
-Map<String, dynamic> _$$ImageModelImplToJson(_$ImageModelImpl instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'imageUrl': instance.imageUrl,
-      'publicId': instance.publicId,
-      'imageType': instance.imageType,
-    };

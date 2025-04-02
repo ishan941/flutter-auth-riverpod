@@ -307,3 +307,215 @@ abstract class _KycModel implements KycModel {
   _$$KycModelImplCopyWith<_$KycModelImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
+
+PostKYCModel _$PostKYCModelFromJson(Map<String, dynamic> json) {
+  return _PostKYCModel.fromJson(json);
+}
+
+/// @nodoc
+mixin _$PostKYCModel {
+  String get vechileType => throw _privateConstructorUsedError;
+  String get vechileNumber => throw _privateConstructorUsedError;
+  String get citizenShipNumber => throw _privateConstructorUsedError;
+  List<ImageModel>? get images => throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $PostKYCModelCopyWith<PostKYCModel> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $PostKYCModelCopyWith<$Res> {
+  factory $PostKYCModelCopyWith(
+          PostKYCModel value, $Res Function(PostKYCModel) then) =
+      _$PostKYCModelCopyWithImpl<$Res, PostKYCModel>;
+  @useResult
+  $Res call(
+      {String vechileType,
+      String vechileNumber,
+      String citizenShipNumber,
+      List<ImageModel>? images});
+}
+
+/// @nodoc
+class _$PostKYCModelCopyWithImpl<$Res, $Val extends PostKYCModel>
+    implements $PostKYCModelCopyWith<$Res> {
+  _$PostKYCModelCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? vechileType = null,
+    Object? vechileNumber = null,
+    Object? citizenShipNumber = null,
+    Object? images = freezed,
+  }) {
+    return _then(_value.copyWith(
+      vechileType: null == vechileType
+          ? _value.vechileType
+          : vechileType // ignore: cast_nullable_to_non_nullable
+              as String,
+      vechileNumber: null == vechileNumber
+          ? _value.vechileNumber
+          : vechileNumber // ignore: cast_nullable_to_non_nullable
+              as String,
+      citizenShipNumber: null == citizenShipNumber
+          ? _value.citizenShipNumber
+          : citizenShipNumber // ignore: cast_nullable_to_non_nullable
+              as String,
+      images: freezed == images
+          ? _value.images
+          : images // ignore: cast_nullable_to_non_nullable
+              as List<ImageModel>?,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$PostKYCModelImplCopyWith<$Res>
+    implements $PostKYCModelCopyWith<$Res> {
+  factory _$$PostKYCModelImplCopyWith(
+          _$PostKYCModelImpl value, $Res Function(_$PostKYCModelImpl) then) =
+      __$$PostKYCModelImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call(
+      {String vechileType,
+      String vechileNumber,
+      String citizenShipNumber,
+      List<ImageModel>? images});
+}
+
+/// @nodoc
+class __$$PostKYCModelImplCopyWithImpl<$Res>
+    extends _$PostKYCModelCopyWithImpl<$Res, _$PostKYCModelImpl>
+    implements _$$PostKYCModelImplCopyWith<$Res> {
+  __$$PostKYCModelImplCopyWithImpl(
+      _$PostKYCModelImpl _value, $Res Function(_$PostKYCModelImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? vechileType = null,
+    Object? vechileNumber = null,
+    Object? citizenShipNumber = null,
+    Object? images = freezed,
+  }) {
+    return _then(_$PostKYCModelImpl(
+      vechileType: null == vechileType
+          ? _value.vechileType
+          : vechileType // ignore: cast_nullable_to_non_nullable
+              as String,
+      vechileNumber: null == vechileNumber
+          ? _value.vechileNumber
+          : vechileNumber // ignore: cast_nullable_to_non_nullable
+              as String,
+      citizenShipNumber: null == citizenShipNumber
+          ? _value.citizenShipNumber
+          : citizenShipNumber // ignore: cast_nullable_to_non_nullable
+              as String,
+      images: freezed == images
+          ? _value._images
+          : images // ignore: cast_nullable_to_non_nullable
+              as List<ImageModel>?,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$PostKYCModelImpl implements _PostKYCModel {
+  _$PostKYCModelImpl(
+      {required this.vechileType,
+      required this.vechileNumber,
+      required this.citizenShipNumber,
+      final List<ImageModel>? images})
+      : _images = images;
+
+  factory _$PostKYCModelImpl.fromJson(Map<String, dynamic> json) =>
+      _$$PostKYCModelImplFromJson(json);
+
+  @override
+  final String vechileType;
+  @override
+  final String vechileNumber;
+  @override
+  final String citizenShipNumber;
+  final List<ImageModel>? _images;
+  @override
+  List<ImageModel>? get images {
+    final value = _images;
+    if (value == null) return null;
+    if (_images is EqualUnmodifiableListView) return _images;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
+
+  @override
+  String toString() {
+    return 'PostKYCModel(vechileType: $vechileType, vechileNumber: $vechileNumber, citizenShipNumber: $citizenShipNumber, images: $images)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$PostKYCModelImpl &&
+            (identical(other.vechileType, vechileType) ||
+                other.vechileType == vechileType) &&
+            (identical(other.vechileNumber, vechileNumber) ||
+                other.vechileNumber == vechileNumber) &&
+            (identical(other.citizenShipNumber, citizenShipNumber) ||
+                other.citizenShipNumber == citizenShipNumber) &&
+            const DeepCollectionEquality().equals(other._images, _images));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(runtimeType, vechileType, vechileNumber,
+      citizenShipNumber, const DeepCollectionEquality().hash(_images));
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$PostKYCModelImplCopyWith<_$PostKYCModelImpl> get copyWith =>
+      __$$PostKYCModelImplCopyWithImpl<_$PostKYCModelImpl>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$PostKYCModelImplToJson(
+      this,
+    );
+  }
+}
+
+abstract class _PostKYCModel implements PostKYCModel {
+  factory _PostKYCModel(
+      {required final String vechileType,
+      required final String vechileNumber,
+      required final String citizenShipNumber,
+      final List<ImageModel>? images}) = _$PostKYCModelImpl;
+
+  factory _PostKYCModel.fromJson(Map<String, dynamic> json) =
+      _$PostKYCModelImpl.fromJson;
+
+  @override
+  String get vechileType;
+  @override
+  String get vechileNumber;
+  @override
+  String get citizenShipNumber;
+  @override
+  List<ImageModel>? get images;
+  @override
+  @JsonKey(ignore: true)
+  _$$PostKYCModelImplCopyWith<_$PostKYCModelImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}

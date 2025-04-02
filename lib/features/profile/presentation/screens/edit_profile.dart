@@ -7,6 +7,7 @@ import 'package:nepstayapp/core/nef_custom/nef_elevated_button.dart';
 import 'package:nepstayapp/core/nef_custom/nef_padding.dart';
 import 'package:nepstayapp/core/nef_custom/nef_text_form_field.dart';
 import 'package:nepstayapp/core/utils/color_util.dart';
+import 'package:nepstayapp/features/Auth/data/model/auth_model/user_model.dart';
 import 'package:nepstayapp/features/profile/data/model/user_details.dart';
 import 'package:nepstayapp/features/profile/presentation/notifier/profile_notifier.dart';
 
@@ -99,6 +100,7 @@ class _EditProfileState extends ConsumerState<EditProfile> {
                                 as ImageProvider
                             : (profileState.file == null)
                                 ? NetworkImage(user.images.first.imageUrl ?? "")
+                                    as ImageProvider
                                 : FileImage(File(profileState.file!.path))
                                     as ImageProvider,
                         radius: 50,

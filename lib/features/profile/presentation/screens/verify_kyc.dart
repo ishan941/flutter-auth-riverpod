@@ -1,8 +1,13 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:nepstayapp/core/nef_custom/nef_app_bar.dart';
+import 'package:nepstayapp/core/nef_custom/nef_elevated_button.dart';
 import 'package:nepstayapp/core/utils/color_util.dart';
+import 'package:nepstayapp/features/profile/data/model/kyc/kyc_model.dart';
+import 'package:nepstayapp/features/profile/presentation/notifier/profile_notifier.dart';
 
 class VerifyKyc extends ConsumerStatefulWidget {
   const VerifyKyc({super.key});
@@ -15,29 +20,20 @@ class _VerifyKycState extends ConsumerState<VerifyKyc> {
   final TextEditingController _vehicleTypeController = TextEditingController();
   final TextEditingController _vehicleNumberController =
       TextEditingController();
-  XFile? _licenseImage;
-  XFile? _vehicleImage;
-
-  Future<void> _pickImage(bool isLicense) async {
-    final ImagePicker picker = ImagePicker();
-    final XFile? image = await picker.pickImage(source: ImageSource.gallery);
-    if (image != null) {
-      setState(() {
-        if (isLicense) {
-          _licenseImage = image;
-        } else {
-          _vehicleImage = image;
-        }
-      });
-    }
-  }
-
+  final TextEditingController _citizenNumberController =
+      TextEditingController();
   @override
   Widget build(BuildContext context) {
+    final profileState = ref.watch(profileProvider);
+    final profileNotifier = ref.watch(profileProvider.notifier);
     return Scaffold(
       appBar: NefAppBar(
         title: "Verify KYC",
         backgroundColor: primaryColor,
+        onBackButtonPressed: () {
+          profileNotifier.resetAll();
+          Navigator.pop(context);
+        },
       ),
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(16.0),
@@ -70,6 +66,21 @@ class _VerifyKycState extends ConsumerState<VerifyKyc> {
             ),
             const SizedBox(height: 24),
             const Text(
+              "Legal Information",
+              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+            ),
+            const SizedBox(height: 12),
+            TextFormField(
+              controller: _citizenNumberController,
+              decoration: InputDecoration(
+                labelText: "Citizenship Number",
+                border:
+                    OutlineInputBorder(borderRadius: BorderRadius.circular(12)),
+                prefixIcon: const Icon(Icons.medical_information_outlined),
+              ),
+            ),
+            const SizedBox(height: 24),
+            const Text(
               "Upload Documents",
               style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
             ),
@@ -77,27 +88,37 @@ class _VerifyKycState extends ConsumerState<VerifyKyc> {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
+                _buildImagePicker("License Image", profileState.licenseImage,
+                    () => profileNotifier.pickKycImage('license')),
+                _buildImagePicker("Vehicle Image", profileState.vechileImage,
+                    () => profileNotifier.pickKycImage('vechile')),
+              ],
+            ),
+            const SizedBox(height: 24),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
                 _buildImagePicker(
-                    "License Image", _licenseImage, () => _pickImage(true)),
+                    "FCitizenship Image",
+                    profileState.citizenshipFront,
+                    () => profileNotifier.pickKycImage('citizenshipF')),
                 _buildImagePicker(
-                    "Vehicle Image", _vehicleImage, () => _pickImage(false)),
+                    "BCitizenship Image",
+                    profileState.citizenshipBack,
+                    () => profileNotifier.pickKycImage('citizenshipB')),
               ],
             ),
             const SizedBox(height: 32),
-            SizedBox(
-              width: double.infinity,
-              child: ElevatedButton(
-                style: ElevatedButton.styleFrom(
-                  padding: const EdgeInsets.symmetric(vertical: 14),
-                  shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(12)),
-                ),
-                onPressed: () {},
-                child: const Text(
-                  "Submit",
-                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-                ),
-              ),
+            NefElevatedButton(
+              text: "Submit",
+              onPressed: () async {
+                PostKYCModel postKYCModel = PostKYCModel(
+                    vechileType: _vehicleTypeController.text,
+                    vechileNumber: _vehicleNumberController.text,
+                    citizenShipNumber: _citizenNumberController.text,
+                    images: profileState.imagesKyc);
+                await profileNotifier.submitKycVefification(postKYCModel);
+              },
             ),
           ],
         ),
@@ -121,14 +142,18 @@ class _VerifyKycState extends ConsumerState<VerifyKyc> {
                 children: [
                   const Icon(Icons.camera_alt, size: 40, color: Colors.grey),
                   const SizedBox(height: 8),
-                  Text(label,
-                      style: const TextStyle(fontSize: 14, color: Colors.grey)),
+                  Text(
+                    label,
+                    textAlign: TextAlign.center,
+                    style: const TextStyle(fontSize: 14, color: Colors.grey),
+                    maxLines: 2,
+                  ),
                 ],
               )
             : ClipRRect(
                 borderRadius: BorderRadius.circular(12),
-                child: Image.network(
-                  image.path,
+                child: Image.file(
+                  File(image.path),
                   width: 140,
                   height: 140,
                   fit: BoxFit.cover,

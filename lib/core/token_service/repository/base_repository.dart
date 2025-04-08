@@ -6,5 +6,5 @@ abstract class BaseRepository {
   BaseRepository({required this.tokenService});
 
   String get accessToken => tokenService.accessToken;
-  int get userId => tokenService.userId;
+  String get userId => tokenService.userId;
 }

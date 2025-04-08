@@ -44,28 +44,6 @@ class AuthNotifier extends StateNotifier<AuthState> {
     required this.sendOtpTpEmailUseCase,
   }) : super(const AuthState.idle());
 
-  // Future<void> getDeviceInfo() async {
-  //   if (Platform.isAndroid) {
-  //     state = state.copyWith(deviceType: "android");
-  //   } else if (Platform.isIOS) {
-  //     state = state.copyWith(deviceType: "ios");
-  //   }
-  // }
-
-  // Future<void> getFCMToken() async {
-  //   final messaging = FirebaseMessaging.instance;
-  //   String? firebaseToken;
-  //   if (Platform.isIOS) {
-  //     firebaseToken = await messaging.getAPNSToken();
-  //   } else if (Platform.isAndroid) {
-  //     firebaseToken = await messaging.getToken();
-  //   }
-  //   if (firebaseToken != null) {
-  //     state = state.copyWith(deviceToken: firebaseToken);
-  //     await login(firebaseToken);
-  //   }
-  // }
-
   //
 // Signup user
   Future<void> signUpUser() async {
@@ -73,16 +51,11 @@ class AuthNotifier extends StateNotifier<AuthState> {
       state = const AuthState.loading();
 
       final userModel = UserModel(
-          firstName: firstNameController.text,
-          lastName: lastNameController.text,
+          name: firstNameController.text,
           email: emailController.text,
           password: passwordController.text,
-          contactNumber: int.tryParse(contactNumberController.text) ?? 0,
-          gender: state.gender ?? "Not specified",
-          city: cityController.text,
-          street: streetController.text,
-          district: districtController.text,
-          role: "USER");
+          role: "User",
+          createdAt: DateTime.now());
 
       final userData = await signUpUserUseCase.execute(userModel);
       final user = UserModel.fromJson(userData);
@@ -111,9 +84,10 @@ class AuthNotifier extends StateNotifier<AuthState> {
     // Get FCM Token
     String? fcmToken = await FirebaseMessaging.instance.getToken();
     AuthenticationRequest authenticationRequest = AuthenticationRequest(
-        email: emailController.text,
-        password: passwordController.text,
-        fcmToken: fcmToken ?? "");
+      email: emailController.text,
+      password: passwordController.text,
+      // fcmToken: fcmToken ?? ""
+    );
 
     try {
       final authResponse = await loginUseCase.execute(authenticationRequest);

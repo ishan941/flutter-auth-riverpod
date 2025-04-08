@@ -20,22 +20,12 @@ UserModel _$UserModelFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$UserModel {
-  String? get firstName => throw _privateConstructorUsedError;
-  String? get lastName => throw _privateConstructorUsedError;
+  String? get name => throw _privateConstructorUsedError;
   String? get email => throw _privateConstructorUsedError;
   String? get password => throw _privateConstructorUsedError;
-  int? get contactNumber => throw _privateConstructorUsedError;
-  String? get gender => throw _privateConstructorUsedError;
-  String? get city => throw _privateConstructorUsedError;
-  String? get street => throw _privateConstructorUsedError;
-  String? get district => throw _privateConstructorUsedError;
-  bool get isVerified => throw _privateConstructorUsedError;
-  String? get verificationCode => throw _privateConstructorUsedError;
-  DateTime? get verificationCodeExpiresAt => throw _privateConstructorUsedError;
-  bool get isEmailVerified => throw _privateConstructorUsedError;
+  DateTime? get createdAt => throw _privateConstructorUsedError;
   String? get role => throw _privateConstructorUsedError;
   String? get roleName => throw _privateConstructorUsedError;
-  List<ImageModel>? get images => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -49,22 +39,12 @@ abstract class $UserModelCopyWith<$Res> {
       _$UserModelCopyWithImpl<$Res, UserModel>;
   @useResult
   $Res call(
-      {String? firstName,
-      String? lastName,
+      {String? name,
       String? email,
       String? password,
-      int? contactNumber,
-      String? gender,
-      String? city,
-      String? street,
-      String? district,
-      bool isVerified,
-      String? verificationCode,
-      DateTime? verificationCodeExpiresAt,
-      bool isEmailVerified,
+      DateTime? createdAt,
       String? role,
-      String? roleName,
-      List<ImageModel>? images});
+      String? roleName});
 }
 
 /// @nodoc
@@ -80,31 +60,17 @@ class _$UserModelCopyWithImpl<$Res, $Val extends UserModel>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? firstName = freezed,
-    Object? lastName = freezed,
+    Object? name = freezed,
     Object? email = freezed,
     Object? password = freezed,
-    Object? contactNumber = freezed,
-    Object? gender = freezed,
-    Object? city = freezed,
-    Object? street = freezed,
-    Object? district = freezed,
-    Object? isVerified = null,
-    Object? verificationCode = freezed,
-    Object? verificationCodeExpiresAt = freezed,
-    Object? isEmailVerified = null,
+    Object? createdAt = freezed,
     Object? role = freezed,
     Object? roleName = freezed,
-    Object? images = freezed,
   }) {
     return _then(_value.copyWith(
-      firstName: freezed == firstName
-          ? _value.firstName
-          : firstName // ignore: cast_nullable_to_non_nullable
-              as String?,
-      lastName: freezed == lastName
-          ? _value.lastName
-          : lastName // ignore: cast_nullable_to_non_nullable
+      name: freezed == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
               as String?,
       email: freezed == email
           ? _value.email
@@ -114,42 +80,10 @@ class _$UserModelCopyWithImpl<$Res, $Val extends UserModel>
           ? _value.password
           : password // ignore: cast_nullable_to_non_nullable
               as String?,
-      contactNumber: freezed == contactNumber
-          ? _value.contactNumber
-          : contactNumber // ignore: cast_nullable_to_non_nullable
-              as int?,
-      gender: freezed == gender
-          ? _value.gender
-          : gender // ignore: cast_nullable_to_non_nullable
-              as String?,
-      city: freezed == city
-          ? _value.city
-          : city // ignore: cast_nullable_to_non_nullable
-              as String?,
-      street: freezed == street
-          ? _value.street
-          : street // ignore: cast_nullable_to_non_nullable
-              as String?,
-      district: freezed == district
-          ? _value.district
-          : district // ignore: cast_nullable_to_non_nullable
-              as String?,
-      isVerified: null == isVerified
-          ? _value.isVerified
-          : isVerified // ignore: cast_nullable_to_non_nullable
-              as bool,
-      verificationCode: freezed == verificationCode
-          ? _value.verificationCode
-          : verificationCode // ignore: cast_nullable_to_non_nullable
-              as String?,
-      verificationCodeExpiresAt: freezed == verificationCodeExpiresAt
-          ? _value.verificationCodeExpiresAt
-          : verificationCodeExpiresAt // ignore: cast_nullable_to_non_nullable
+      createdAt: freezed == createdAt
+          ? _value.createdAt
+          : createdAt // ignore: cast_nullable_to_non_nullable
               as DateTime?,
-      isEmailVerified: null == isEmailVerified
-          ? _value.isEmailVerified
-          : isEmailVerified // ignore: cast_nullable_to_non_nullable
-              as bool,
       role: freezed == role
           ? _value.role
           : role // ignore: cast_nullable_to_non_nullable
@@ -158,10 +92,6 @@ class _$UserModelCopyWithImpl<$Res, $Val extends UserModel>
           ? _value.roleName
           : roleName // ignore: cast_nullable_to_non_nullable
               as String?,
-      images: freezed == images
-          ? _value.images
-          : images // ignore: cast_nullable_to_non_nullable
-              as List<ImageModel>?,
     ) as $Val);
   }
 }
@@ -175,22 +105,12 @@ abstract class _$$UserModelImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {String? firstName,
-      String? lastName,
+      {String? name,
       String? email,
       String? password,
-      int? contactNumber,
-      String? gender,
-      String? city,
-      String? street,
-      String? district,
-      bool isVerified,
-      String? verificationCode,
-      DateTime? verificationCodeExpiresAt,
-      bool isEmailVerified,
+      DateTime? createdAt,
       String? role,
-      String? roleName,
-      List<ImageModel>? images});
+      String? roleName});
 }
 
 /// @nodoc
@@ -204,31 +124,17 @@ class __$$UserModelImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? firstName = freezed,
-    Object? lastName = freezed,
+    Object? name = freezed,
     Object? email = freezed,
     Object? password = freezed,
-    Object? contactNumber = freezed,
-    Object? gender = freezed,
-    Object? city = freezed,
-    Object? street = freezed,
-    Object? district = freezed,
-    Object? isVerified = null,
-    Object? verificationCode = freezed,
-    Object? verificationCodeExpiresAt = freezed,
-    Object? isEmailVerified = null,
+    Object? createdAt = freezed,
     Object? role = freezed,
     Object? roleName = freezed,
-    Object? images = freezed,
   }) {
     return _then(_$UserModelImpl(
-      firstName: freezed == firstName
-          ? _value.firstName
-          : firstName // ignore: cast_nullable_to_non_nullable
-              as String?,
-      lastName: freezed == lastName
-          ? _value.lastName
-          : lastName // ignore: cast_nullable_to_non_nullable
+      name: freezed == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
               as String?,
       email: freezed == email
           ? _value.email
@@ -238,42 +144,10 @@ class __$$UserModelImplCopyWithImpl<$Res>
           ? _value.password
           : password // ignore: cast_nullable_to_non_nullable
               as String?,
-      contactNumber: freezed == contactNumber
-          ? _value.contactNumber
-          : contactNumber // ignore: cast_nullable_to_non_nullable
-              as int?,
-      gender: freezed == gender
-          ? _value.gender
-          : gender // ignore: cast_nullable_to_non_nullable
-              as String?,
-      city: freezed == city
-          ? _value.city
-          : city // ignore: cast_nullable_to_non_nullable
-              as String?,
-      street: freezed == street
-          ? _value.street
-          : street // ignore: cast_nullable_to_non_nullable
-              as String?,
-      district: freezed == district
-          ? _value.district
-          : district // ignore: cast_nullable_to_non_nullable
-              as String?,
-      isVerified: null == isVerified
-          ? _value.isVerified
-          : isVerified // ignore: cast_nullable_to_non_nullable
-              as bool,
-      verificationCode: freezed == verificationCode
-          ? _value.verificationCode
-          : verificationCode // ignore: cast_nullable_to_non_nullable
-              as String?,
-      verificationCodeExpiresAt: freezed == verificationCodeExpiresAt
-          ? _value.verificationCodeExpiresAt
-          : verificationCodeExpiresAt // ignore: cast_nullable_to_non_nullable
+      createdAt: freezed == createdAt
+          ? _value.createdAt
+          : createdAt // ignore: cast_nullable_to_non_nullable
               as DateTime?,
-      isEmailVerified: null == isEmailVerified
-          ? _value.isEmailVerified
-          : isEmailVerified // ignore: cast_nullable_to_non_nullable
-              as bool,
       role: freezed == role
           ? _value.role
           : role // ignore: cast_nullable_to_non_nullable
@@ -282,10 +156,6 @@ class __$$UserModelImplCopyWithImpl<$Res>
           ? _value.roleName
           : roleName // ignore: cast_nullable_to_non_nullable
               as String?,
-      images: freezed == images
-          ? _value._images
-          : images // ignore: cast_nullable_to_non_nullable
-              as List<ImageModel>?,
     ));
   }
 }
@@ -294,72 +164,32 @@ class __$$UserModelImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$UserModelImpl implements _UserModel {
   const _$UserModelImpl(
-      {this.firstName,
-      this.lastName,
+      {this.name,
       this.email,
       this.password,
-      this.contactNumber,
-      this.gender,
-      this.city,
-      this.street,
-      this.district,
-      this.isVerified = false,
-      this.verificationCode,
-      this.verificationCodeExpiresAt,
-      this.isEmailVerified = false,
+      this.createdAt,
       this.role,
-      this.roleName,
-      final List<ImageModel>? images})
-      : _images = images;
+      this.roleName});
 
   factory _$UserModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$UserModelImplFromJson(json);
 
   @override
-  final String? firstName;
-  @override
-  final String? lastName;
+  final String? name;
   @override
   final String? email;
   @override
   final String? password;
   @override
-  final int? contactNumber;
-  @override
-  final String? gender;
-  @override
-  final String? city;
-  @override
-  final String? street;
-  @override
-  final String? district;
-  @override
-  @JsonKey()
-  final bool isVerified;
-  @override
-  final String? verificationCode;
-  @override
-  final DateTime? verificationCodeExpiresAt;
-  @override
-  @JsonKey()
-  final bool isEmailVerified;
+  final DateTime? createdAt;
   @override
   final String? role;
   @override
   final String? roleName;
-  final List<ImageModel>? _images;
-  @override
-  List<ImageModel>? get images {
-    final value = _images;
-    if (value == null) return null;
-    if (_images is EqualUnmodifiableListView) return _images;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(value);
-  }
 
   @override
   String toString() {
-    return 'UserModel(firstName: $firstName, lastName: $lastName, email: $email, password: $password, contactNumber: $contactNumber, gender: $gender, city: $city, street: $street, district: $district, isVerified: $isVerified, verificationCode: $verificationCode, verificationCodeExpiresAt: $verificationCodeExpiresAt, isEmailVerified: $isEmailVerified, role: $role, roleName: $roleName, images: $images)';
+    return 'UserModel(name: $name, email: $email, password: $password, createdAt: $createdAt, role: $role, roleName: $roleName)';
   }
 
   @override
@@ -367,55 +197,21 @@ class _$UserModelImpl implements _UserModel {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$UserModelImpl &&
-            (identical(other.firstName, firstName) ||
-                other.firstName == firstName) &&
-            (identical(other.lastName, lastName) ||
-                other.lastName == lastName) &&
+            (identical(other.name, name) || other.name == name) &&
             (identical(other.email, email) || other.email == email) &&
             (identical(other.password, password) ||
                 other.password == password) &&
-            (identical(other.contactNumber, contactNumber) ||
-                other.contactNumber == contactNumber) &&
-            (identical(other.gender, gender) || other.gender == gender) &&
-            (identical(other.city, city) || other.city == city) &&
-            (identical(other.street, street) || other.street == street) &&
-            (identical(other.district, district) ||
-                other.district == district) &&
-            (identical(other.isVerified, isVerified) ||
-                other.isVerified == isVerified) &&
-            (identical(other.verificationCode, verificationCode) ||
-                other.verificationCode == verificationCode) &&
-            (identical(other.verificationCodeExpiresAt,
-                    verificationCodeExpiresAt) ||
-                other.verificationCodeExpiresAt == verificationCodeExpiresAt) &&
-            (identical(other.isEmailVerified, isEmailVerified) ||
-                other.isEmailVerified == isEmailVerified) &&
+            (identical(other.createdAt, createdAt) ||
+                other.createdAt == createdAt) &&
             (identical(other.role, role) || other.role == role) &&
             (identical(other.roleName, roleName) ||
-                other.roleName == roleName) &&
-            const DeepCollectionEquality().equals(other._images, _images));
+                other.roleName == roleName));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
-      runtimeType,
-      firstName,
-      lastName,
-      email,
-      password,
-      contactNumber,
-      gender,
-      city,
-      street,
-      district,
-      isVerified,
-      verificationCode,
-      verificationCodeExpiresAt,
-      isEmailVerified,
-      role,
-      roleName,
-      const DeepCollectionEquality().hash(_images));
+      runtimeType, name, email, password, createdAt, role, roleName);
 
   @JsonKey(ignore: true)
   @override
@@ -433,58 +229,28 @@ class _$UserModelImpl implements _UserModel {
 
 abstract class _UserModel implements UserModel {
   const factory _UserModel(
-      {final String? firstName,
-      final String? lastName,
+      {final String? name,
       final String? email,
       final String? password,
-      final int? contactNumber,
-      final String? gender,
-      final String? city,
-      final String? street,
-      final String? district,
-      final bool isVerified,
-      final String? verificationCode,
-      final DateTime? verificationCodeExpiresAt,
-      final bool isEmailVerified,
+      final DateTime? createdAt,
       final String? role,
-      final String? roleName,
-      final List<ImageModel>? images}) = _$UserModelImpl;
+      final String? roleName}) = _$UserModelImpl;
 
   factory _UserModel.fromJson(Map<String, dynamic> json) =
       _$UserModelImpl.fromJson;
 
   @override
-  String? get firstName;
-  @override
-  String? get lastName;
+  String? get name;
   @override
   String? get email;
   @override
   String? get password;
   @override
-  int? get contactNumber;
-  @override
-  String? get gender;
-  @override
-  String? get city;
-  @override
-  String? get street;
-  @override
-  String? get district;
-  @override
-  bool get isVerified;
-  @override
-  String? get verificationCode;
-  @override
-  DateTime? get verificationCodeExpiresAt;
-  @override
-  bool get isEmailVerified;
+  DateTime? get createdAt;
   @override
   String? get role;
   @override
   String? get roleName;
-  @override
-  List<ImageModel>? get images;
   @override
   @JsonKey(ignore: true)
   _$$UserModelImplCopyWith<_$UserModelImpl> get copyWith =>
@@ -825,7 +591,6 @@ AuthenticationRequest _$AuthenticationRequestFromJson(
 mixin _$AuthenticationRequest {
   String get email => throw _privateConstructorUsedError;
   String get password => throw _privateConstructorUsedError;
-  String? get fcmToken => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -839,7 +604,7 @@ abstract class $AuthenticationRequestCopyWith<$Res> {
           $Res Function(AuthenticationRequest) then) =
       _$AuthenticationRequestCopyWithImpl<$Res, AuthenticationRequest>;
   @useResult
-  $Res call({String email, String password, String? fcmToken});
+  $Res call({String email, String password});
 }
 
 /// @nodoc
@@ -858,7 +623,6 @@ class _$AuthenticationRequestCopyWithImpl<$Res,
   $Res call({
     Object? email = null,
     Object? password = null,
-    Object? fcmToken = freezed,
   }) {
     return _then(_value.copyWith(
       email: null == email
@@ -869,10 +633,6 @@ class _$AuthenticationRequestCopyWithImpl<$Res,
           ? _value.password
           : password // ignore: cast_nullable_to_non_nullable
               as String,
-      fcmToken: freezed == fcmToken
-          ? _value.fcmToken
-          : fcmToken // ignore: cast_nullable_to_non_nullable
-              as String?,
     ) as $Val);
   }
 }
@@ -886,7 +646,7 @@ abstract class _$$AuthenticationRequestImplCopyWith<$Res>
       __$$AuthenticationRequestImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String email, String password, String? fcmToken});
+  $Res call({String email, String password});
 }
 
 /// @nodoc
@@ -903,7 +663,6 @@ class __$$AuthenticationRequestImplCopyWithImpl<$Res>
   $Res call({
     Object? email = null,
     Object? password = null,
-    Object? fcmToken = freezed,
   }) {
     return _then(_$AuthenticationRequestImpl(
       email: null == email
@@ -914,10 +673,6 @@ class __$$AuthenticationRequestImplCopyWithImpl<$Res>
           ? _value.password
           : password // ignore: cast_nullable_to_non_nullable
               as String,
-      fcmToken: freezed == fcmToken
-          ? _value.fcmToken
-          : fcmToken // ignore: cast_nullable_to_non_nullable
-              as String?,
     ));
   }
 }
@@ -926,7 +681,7 @@ class __$$AuthenticationRequestImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$AuthenticationRequestImpl implements _AuthenticationRequest {
   const _$AuthenticationRequestImpl(
-      {required this.email, required this.password, this.fcmToken});
+      {required this.email, required this.password});
 
   factory _$AuthenticationRequestImpl.fromJson(Map<String, dynamic> json) =>
       _$$AuthenticationRequestImplFromJson(json);
@@ -935,12 +690,10 @@ class _$AuthenticationRequestImpl implements _AuthenticationRequest {
   final String email;
   @override
   final String password;
-  @override
-  final String? fcmToken;
 
   @override
   String toString() {
-    return 'AuthenticationRequest(email: $email, password: $password, fcmToken: $fcmToken)';
+    return 'AuthenticationRequest(email: $email, password: $password)';
   }
 
   @override
@@ -950,14 +703,12 @@ class _$AuthenticationRequestImpl implements _AuthenticationRequest {
             other is _$AuthenticationRequestImpl &&
             (identical(other.email, email) || other.email == email) &&
             (identical(other.password, password) ||
-                other.password == password) &&
-            (identical(other.fcmToken, fcmToken) ||
-                other.fcmToken == fcmToken));
+                other.password == password));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, email, password, fcmToken);
+  int get hashCode => Object.hash(runtimeType, email, password);
 
   @JsonKey(ignore: true)
   @override
@@ -977,8 +728,7 @@ class _$AuthenticationRequestImpl implements _AuthenticationRequest {
 abstract class _AuthenticationRequest implements AuthenticationRequest {
   const factory _AuthenticationRequest(
       {required final String email,
-      required final String password,
-      final String? fcmToken}) = _$AuthenticationRequestImpl;
+      required final String password}) = _$AuthenticationRequestImpl;
 
   factory _AuthenticationRequest.fromJson(Map<String, dynamic> json) =
       _$AuthenticationRequestImpl.fromJson;
@@ -987,8 +737,6 @@ abstract class _AuthenticationRequest implements AuthenticationRequest {
   String get email;
   @override
   String get password;
-  @override
-  String? get fcmToken;
   @override
   @JsonKey(ignore: true)
   _$$AuthenticationRequestImplCopyWith<_$AuthenticationRequestImpl>
@@ -1000,7 +748,7 @@ mixin _$AuthenticationResponse {
   String get accessToken => throw _privateConstructorUsedError;
   String get refreshToken => throw _privateConstructorUsedError;
   String get role => throw _privateConstructorUsedError;
-  int get userId => throw _privateConstructorUsedError;
+  String get userId => throw _privateConstructorUsedError;
   String? get imageUrl => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -1018,7 +766,7 @@ abstract class $AuthenticationResponseCopyWith<$Res> {
       {String accessToken,
       String refreshToken,
       String role,
-      int userId,
+      String userId,
       String? imageUrl});
 }
 
@@ -1058,7 +806,7 @@ class _$AuthenticationResponseCopyWithImpl<$Res,
       userId: null == userId
           ? _value.userId
           : userId // ignore: cast_nullable_to_non_nullable
-              as int,
+              as String,
       imageUrl: freezed == imageUrl
           ? _value.imageUrl
           : imageUrl // ignore: cast_nullable_to_non_nullable
@@ -1080,7 +828,7 @@ abstract class _$$AuthenticationResponseImplCopyWith<$Res>
       {String accessToken,
       String refreshToken,
       String role,
-      int userId,
+      String userId,
       String? imageUrl});
 }
 
@@ -1119,7 +867,7 @@ class __$$AuthenticationResponseImplCopyWithImpl<$Res>
       userId: null == userId
           ? _value.userId
           : userId // ignore: cast_nullable_to_non_nullable
-              as int,
+              as String,
       imageUrl: freezed == imageUrl
           ? _value.imageUrl
           : imageUrl // ignore: cast_nullable_to_non_nullable
@@ -1145,7 +893,7 @@ class _$AuthenticationResponseImpl implements _AuthenticationResponse {
   @override
   final String role;
   @override
-  final int userId;
+  final String userId;
   @override
   final String? imageUrl;
 
@@ -1186,7 +934,7 @@ abstract class _AuthenticationResponse implements AuthenticationResponse {
       {required final String accessToken,
       required final String refreshToken,
       required final String role,
-      required final int userId,
+      required final String userId,
       final String? imageUrl}) = _$AuthenticationResponseImpl;
 
   @override
@@ -1196,7 +944,7 @@ abstract class _AuthenticationResponse implements AuthenticationResponse {
   @override
   String get role;
   @override
-  int get userId;
+  String get userId;
   @override
   String? get imageUrl;
   @override

@@ -8,47 +8,24 @@ part of 'user_model.dart';
 
 _$UserModelImpl _$$UserModelImplFromJson(Map<String, dynamic> json) =>
     _$UserModelImpl(
-      firstName: json['firstName'] as String?,
-      lastName: json['lastName'] as String?,
+      name: json['name'] as String?,
       email: json['email'] as String?,
       password: json['password'] as String?,
-      contactNumber: (json['contactNumber'] as num?)?.toInt(),
-      gender: json['gender'] as String?,
-      city: json['city'] as String?,
-      street: json['street'] as String?,
-      district: json['district'] as String?,
-      isVerified: json['isVerified'] as bool? ?? false,
-      verificationCode: json['verificationCode'] as String?,
-      verificationCodeExpiresAt: json['verificationCodeExpiresAt'] == null
+      createdAt: json['createdAt'] == null
           ? null
-          : DateTime.parse(json['verificationCodeExpiresAt'] as String),
-      isEmailVerified: json['isEmailVerified'] as bool? ?? false,
+          : DateTime.parse(json['createdAt'] as String),
       role: json['role'] as String?,
       roleName: json['roleName'] as String?,
-      images: (json['images'] as List<dynamic>?)
-          ?.map((e) => ImageModel.fromJson(e as Map<String, dynamic>))
-          .toList(),
     );
 
 Map<String, dynamic> _$$UserModelImplToJson(_$UserModelImpl instance) =>
     <String, dynamic>{
-      'firstName': instance.firstName,
-      'lastName': instance.lastName,
+      'name': instance.name,
       'email': instance.email,
       'password': instance.password,
-      'contactNumber': instance.contactNumber,
-      'gender': instance.gender,
-      'city': instance.city,
-      'street': instance.street,
-      'district': instance.district,
-      'isVerified': instance.isVerified,
-      'verificationCode': instance.verificationCode,
-      'verificationCodeExpiresAt':
-          instance.verificationCodeExpiresAt?.toIso8601String(),
-      'isEmailVerified': instance.isEmailVerified,
+      'createdAt': instance.createdAt?.toIso8601String(),
       'role': instance.role,
       'roleName': instance.roleName,
-      'images': instance.images,
     };
 
 _$RoleImpl _$$RoleImplFromJson(Map<String, dynamic> json) => _$RoleImpl(
@@ -81,7 +58,6 @@ _$AuthenticationRequestImpl _$$AuthenticationRequestImplFromJson(
     _$AuthenticationRequestImpl(
       email: json['email'] as String,
       password: json['password'] as String,
-      fcmToken: json['fcmToken'] as String?,
     );
 
 Map<String, dynamic> _$$AuthenticationRequestImplToJson(
@@ -89,5 +65,4 @@ Map<String, dynamic> _$$AuthenticationRequestImplToJson(
     <String, dynamic>{
       'email': instance.email,
       'password': instance.password,
-      'fcmToken': instance.fcmToken,
     };

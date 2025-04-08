@@ -6,22 +6,12 @@ part 'user_model.g.dart';
 @freezed
 class UserModel with _$UserModel {
   const factory UserModel({
-    String? firstName,
-    String? lastName,
+    String? name,
     String? email,
     String? password,
-    int? contactNumber,
-    String? gender,
-    String? city,
-    String? street,
-    String? district,
-    @Default(false) bool isVerified,
-    String? verificationCode,
-    DateTime? verificationCodeExpiresAt,
-    @Default(false) bool isEmailVerified,
+    DateTime? createdAt,
     String? role,
     String? roleName,
-    List<ImageModel>? images,
   }) = _UserModel;
 
   factory UserModel.fromJson(Map<String, dynamic> json) =>
@@ -55,7 +45,7 @@ class AuthenticationRequest with _$AuthenticationRequest {
   const factory AuthenticationRequest({
     required String email,
     required String password,
-    String? fcmToken,
+    // String? fcmToken,
   }) = _AuthenticationRequest;
 
   factory AuthenticationRequest.fromJson(Map<String, dynamic> json) =>
@@ -68,7 +58,7 @@ class AuthenticationResponse with _$AuthenticationResponse {
     required String accessToken,
     required String refreshToken,
     required String role,
-    required int userId,
+    required String userId,
     String? imageUrl,
   }) = _AuthenticationResponse;
 
@@ -78,7 +68,7 @@ class AuthenticationResponse with _$AuthenticationResponse {
         refreshToken: json['RefreshToken'] as String? ?? '',
         role: json['role'] as String? ?? '',
         imageUrl: json['imageUrl'] as String?,
-        userId: json['userId'] as int);
+        userId: json['userId'] as String);
   }
 }
 

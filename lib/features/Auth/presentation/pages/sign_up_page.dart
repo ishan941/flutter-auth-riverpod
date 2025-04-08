@@ -7,6 +7,7 @@ import 'package:nepstayapp/core/nef_custom/nef_padding.dart';
 import 'package:nepstayapp/core/nef_custom/nef_text_form_field.dart';
 import 'package:nepstayapp/core/nef_custom/nef_typography_helper.dart';
 import 'package:nepstayapp/core/utils/color_util.dart';
+import 'package:nepstayapp/core/utils/info_helper.dart';
 import 'package:nepstayapp/core/utils/nef_spacing.dart';
 import 'package:nepstayapp/core/utils/rid_dropdown.dart';
 import 'package:nepstayapp/features/Auth/presentation/pages/login_page.dart';
@@ -22,10 +23,6 @@ class SignUpPage extends ConsumerStatefulWidget {
 }
 
 class _SignUpPageState extends ConsumerState<SignUpPage> {
-  final _emailController = TextEditingController();
-  final _userNameController = TextEditingController();
-  final _passwordController = TextEditingController();
-
   final FocusNode _emailFocusNode = FocusNode();
   final FocusNode _userNameFocusNode = FocusNode();
   final FocusNode _passwordFocusNode = FocusNode();
@@ -33,9 +30,6 @@ class _SignUpPageState extends ConsumerState<SignUpPage> {
 
   @override
   void dispose() {
-    _emailController.dispose();
-    _userNameController.dispose();
-    _passwordController.dispose();
     _emailFocusNode.dispose();
     _userNameFocusNode.dispose();
     _passwordFocusNode.dispose();
@@ -43,31 +37,16 @@ class _SignUpPageState extends ConsumerState<SignUpPage> {
   }
 
   void _handleSignUp() async {
-    final email = _emailController.text;
-    final username = _userNameController.text;
-    final password = _passwordController.text;
-
-    if (email.isEmpty || username.isEmpty || password.isEmpty) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('Please fill in all fields.')),
-      );
-      return;
-    }
-
     try {
       await ref.read(authProvider.notifier).signUpUser();
 
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('Signed up successfully!')),
-      );
+      InfoHelper.showSuccessToast(context, "User Register");
       Navigator.pushReplacement(
         context,
-        MaterialPageRoute(builder: (context) => VerifyEmaiPage()),
+        MaterialPageRoute(builder: (context) => LoginPage()),
       );
     } catch (error) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Error: $error')),
-      );
+      InfoHelper.showErrorToast(context, "Failed to Register");
     }
   }
 
@@ -84,10 +63,7 @@ class _SignUpPageState extends ConsumerState<SignUpPage> {
           child: NefPadding(
             child: Column(
               children: [
-                const Text(
-                  "Sign up with your email or phone number",
-                  style: NefTypographyHelper.hLgMedium,
-                ),
+                Text("Signup"),
                 const SizedBox(height: NefSpacing.spacing7),
                 NefTextFormField(
                   labelText: 'First name',
@@ -95,39 +71,14 @@ class _SignUpPageState extends ConsumerState<SignUpPage> {
                   focusNode: _userNameFocusNode,
                 ),
                 NefTextFormField(
-                  labelText: 'Last name',
-                  controller: authNotifier.lastNameController,
-                  focusNode: _userNameFocusNode,
-                ),
-                NefTextFormField(
                   labelText: 'Email',
                   controller: authNotifier.emailController,
                   focusNode: _emailFocusNode,
                 ),
-                IntlPhoneField(
-                  decoration: InputDecoration(
-                    labelText: 'Phone Number',
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(NefSpacing.spacing2),
-                    ),
-                    focusedBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(NefSpacing.spacing2),
-                      borderSide: const BorderSide(color: Colors.blue),
-                    ),
-                    enabledBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(NefSpacing.spacing2),
-                      borderSide: const BorderSide(color: Colors.grey),
-                    ),
-                  ),
-                  initialCountryCode: 'NP',
-                  controller: authNotifier.contactNumberController,
-                ),
-                NefDropdownGenderField(
-                  value: authState.gender,
-                  hintText: "Gender",
-                  onChanged: (gender) {
-                    ref.read(authProvider.notifier).setGender(gender);
-                  },
+                NefTextFormField(
+                  labelText: 'password',
+                  controller: authNotifier.passwordController,
+                  focusNode: _userNameFocusNode,
                 ),
                 Row(
                   children: [
@@ -170,17 +121,10 @@ class _SignUpPageState extends ConsumerState<SignUpPage> {
                 ),
                 const SizedBox(height: NefSpacing.spacing10),
                 NefElevatedButton(
-                  text: "Next",
-                  // onPressed: _handleSignUp,
-                  onPressed: () =>
-                      //     ref.watch(authProvider.notifier).signUpUser()
-
-                      Navigator.pushReplacement(
-                    context,
-                    MaterialPageRoute(builder: (context) => UploadProfile()),
-                  ),
-                  // authState.maybeWhen(loading: () => null, orElse: _handleSignUp),
-                ),
+                    text: "Next",
+                    onPressed: () {
+                      _handleSignUp();
+                    }),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [

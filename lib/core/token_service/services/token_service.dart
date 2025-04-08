@@ -2,11 +2,11 @@ import 'package:nepstayapp/core/utils/shared_preference.dart';
 
 class TokenService {
   String _accessToken = '';
-  int _userId = 0;
+  String _userId = '';
   final SharedPref sharedPref;
 
   String get accessToken => _accessToken;
-  int get userId => _userId;
+  String get userId => _userId;
 
   TokenService({required this.sharedPref}) {
     _init();
@@ -14,7 +14,7 @@ class TokenService {
 
   Future<void> _init() async {
     _accessToken = sharedPref.readStringValFrmPreference(accessTokenKey);
-    _userId = sharedPref.readIntValFrmPreference(userIdKey);
+    _userId = sharedPref.readStringValFrmPreference(userIdKey);
   }
 
   void updateAccessToken(String newAccessToken) {
@@ -22,7 +22,7 @@ class TokenService {
     sharedPref.saveDataToPreference(accessTokenKey, newAccessToken);
   }
 
-  void updateUserId(int newUserId) {
+  void updateUserId(String newUserId) {
     _userId = newUserId;
     sharedPref.saveDataToPreference(userIdKey, newUserId);
   }
